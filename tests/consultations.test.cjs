@@ -1,0 +1,7 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const handler=require('../api/consultations');
+const good={name:'테스트',phone:'010-1234-5678',purposes:['취미·입문'],courses:['연기 베이직'],consent:true};
+function res(){return {statusCode:0,setHeader(){},status(n){this.statusCode=n;return this},json(v){this.body=v;return this}}}
+test('valid request and server-side validation',()=>{assert.equal(handler.validate(good),null);for(const patch of [{consent:false},{phone:'abc'},{courses:['unknown']},{purposes:[]},{name:'a'}]) assert.ok(handler.validate({...good,...patch}));});
+test('unconfigured endpoint never reports success',async()=>{delete process.env.CONSULTATION_WEBHOOK_URL;const r=res();await handler({method:'POST',headers:{host:'localhost'},body:good},r);assert.equal(r.statusCode,503);assert.ok(r.body.error);});
+test('cross-origin submission rejected',async()=>{const r=res();await handler({method:'POST',headers:{host:'academy.example',origin:'https://other.example'},body:good},r);assert.equal(r.statusCode,403)});
+test('delivery must succeed before receipt is returned',async()=>{const prev=global.fetch;process.env.CONSULTATION_WEBHOOK_URL='https://example.test/hook';try{global.fetch=async()=>({ok:false});let r=res();await handler({method:'POST',headers:{},body:good},r);assert.equal(r.statusCode,502);global.fetch=async()=>({ok:true});r=res();await handler({method:'POST',headers:{},body:good},r);assert.equal(r.statusCode,201);assert.ok(r.body.id);}finally{global.fetch=prev;delete process.env.CONSULTATION_WEBHOOK_URL}});
