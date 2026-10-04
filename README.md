@@ -1,4 +1,4 @@
-# SCENE Acting Academy
+# 김정태 연기아카데미 · KIM JUNG TAE ACTING ACADEMY
 
 Static HTML/CSS/JavaScript site. GitHub `main` deploys to Vercel, with `dist` as the output directory. No Sites deployment is needed.
 
