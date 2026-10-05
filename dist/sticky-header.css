@@ -1,0 +1,36 @@
+/* Shared frosted navigation: always accessible while scrolling. */
+:root{--site-header-height:96px}
+html{scroll-padding-top:calc(var(--site-header-height) + 24px)}
+body>header{position:fixed!important;inset:0 0 auto!important;width:100%;max-width:none!important;height:var(--site-header-height)!important;min-height:0!important;margin:0!important;padding:0 max(4vw,24px)!important;z-index:100;background:rgba(17,18,24,.78)!important;color:#fff!important;border-bottom:1px solid #ffffff18;box-shadow:0 5px 24px #00000012;-webkit-backdrop-filter:blur(22px) saturate(125%);backdrop-filter:blur(22px) saturate(125%);animation:none!important;transform:none!important;opacity:1!important}
+body.course-page,body.subpage-page,body.faculty-page{padding-top:var(--site-header-height)}
+body>header nav a{color:#eee}
+body>header nav a:hover{color:var(--gold)}
+body>header .header-cta{color:#fff}
+body>header .brand{flex-basis:auto!important}
+.profile-tabs{top:var(--site-header-height)}
+.profile-section,.profile-talk{scroll-margin-top:70px}
+.skip,.faculty-skip{z-index:110}
+@supports not (backdrop-filter:blur(1px)){body>header{background:rgba(17,18,24,.96)!important}}
+@media(max-width:850px){
+ :root{--site-header-height:84px}
+ body>header{gap:16px!important;padding:0 22px!important;flex-wrap:nowrap!important}
+ body.subpage-page>header nav{width:auto;order:initial;margin:auto}
+}
+@media(max-width:720px){
+ :root{--site-header-height:78px}
+ body>header nav{top:calc(var(--site-header-height) + 8px);background:rgba(17,18,24,.96);box-shadow:0 12px 30px #0004;max-height:calc(100dvh - var(--site-header-height) - 32px);overflow-y:auto}
+ body.subpage-page>header nav{position:absolute;left:12px;right:12px;width:auto;padding:25px}
+ body.faculty-page,body.course-page{--site-header-height:116px}
+ body.faculty-page>header,body.course-page>header{flex-wrap:wrap!important;align-content:center;gap:14px!important;padding:14px 22px!important}
+ body.faculty-page>header nav,body.course-page>header nav{display:flex;position:static;order:3;width:100%;margin:0;padding:0;gap:16px;justify-content:space-between;white-space:nowrap;overflow-x:auto;box-shadow:none;background:none;font-size:10px}
+ body.course-page>header .button{margin-left:auto;padding:8px 12px;min-height:36px;font-size:11px}
+ body.course-page>header .brand .brand-ko{font-size:20px}
+ body.course-page>header .brand .brand-category{font-size:13px}
+ html:has(body.faculty-page),html:has(body.course-page){--site-header-height:116px}
+}
+@media(min-width:721px) and (max-width:800px){
+ body.faculty-page{--site-header-height:116px}
+ html:has(body.faculty-page){--site-header-height:116px}
+ body.faculty-page>header{flex-wrap:wrap!important;align-content:center;gap:14px!important;padding:14px 24px!important}
+ body.faculty-page>header nav{order:3;width:100%;margin:0;justify-content:space-between}
+}
