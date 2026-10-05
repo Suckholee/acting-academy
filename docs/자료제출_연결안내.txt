@@ -1,0 +1,80 @@
+김정태 배우아카데미 · 홈페이지 자료 제출
+
+페이지: https://scene-academy.vercel.app/materials
+공개 홈페이지 메뉴에서는 연결하지 않는 전용 페이지입니다.
+현재 상태: 양식·접근 제어·저장 코드 준비. Supabase 신규 프로젝트 연결 전에는 실제 제출 불가.
+
+1. 새 프로젝트 만들기
+- https://supabase.com/dashboard 에서 운영사가 관리할 계정으로 새 프로젝트를 생성합니다.
+- 가능하면 서울 리전을 선택합니다. 요금제는 계정 소유자가 선택합니다.
+- 프로젝트 SQL Editor에서 supabase/migrations/20261005_material_collection.sql 전체를 한 번 실행합니다.
+- 테이블 3개(material_members, material_submissions, material_reviews)와 비공개 academy-materials 파일 저장소가 생성됩니다.
+
+2. 공개 연결 값 설정
+Vercel 프로젝트 환경변수 Production / Preview에 다음을 설정합니다.
+SUPABASE_URL = Supabase 프로젝트 URL
+SUPABASE_PUBLISHABLE_KEY = 프로젝트 publishable key (sb_publishable_...) 또는 legacy anon key
+service_role / secret key는 넣지 않습니다. 이 앱은 해당 비밀 키를 사용하지 않습니다.
+Vercel에서 환경변수 설정 후 재배포해야 반영됩니다.
+
+3. 로그인과 메일 설정
+- Supabase Authentication > URL Configuration:
+  Site URL: https://scene-academy.vercel.app
+  Redirect URL: https://scene-academy.vercel.app/materials
+- Authentication에서 신규 공개 회원가입을 비활성화합니다.
+- 실제 강사에게 메일을 보내기 전에 Custom SMTP 발신 설정을 완료하고 발송 테스트를 합니다.
+  기본 제공 메일 서비스는 외부 수신자·발송량 제한이 있어 실제 접수용으로 바로 쓰지 않습니다.
+- 운영사 담당자와 강사 이메일을 Authentication > Users에 등록합니다.
+  초대 메일 발송은 대상 이메일과 발송 시점에 대한 운영사의 확인 후 진행합니다.
+- Auth에서 확인한 사용자 UUID와 아래 역할을 SQL Editor에서 등록합니다.
+  trainer: 본인 강사 자료만 작성
+  operator: 본인 운영사 자료만 작성
+  reviewer: 전체 자료 취합·파일 다운로드·보완 메모
+
+예시 (UUID와 이름은 실제 값으로 교체):
+insert into public.material_members(user_id, role, display_name)
+values ('등록된-사용자-UUID', 'trainer', '강사 이름');
+
+일반 사용자는 역할을 스스로 변경할 수 없습니다. 자료 확인 담당자에게만 reviewer를 부여합니다.
+역할은 프로필에 사용자가 적는 직함과 별개의 시스템 접근 권한입니다.
+
+4. 운영 흐름
+- 초대된 이메일로 /materials에서 로그인 링크를 요청합니다.
+- 본인 이메일의 링크로 로그인 → 새 자료 작성 → 임시 저장 → 파일 첨부 → 제출.
+- 임시 저장은 DB에 저장되므로 다른 기기에서도 동일한 계정으로 이어 쓸 수 있습니다.
+- 자동 저장은 아닙니다. 임시 저장 버튼을 눌러야 하며 저장되지 않은 내용은 이탈 시 안내합니다.
+- 제출 이후 파일 첨부/수정하려면 작성 재개를 누릅니다. 수정 후 다시 제출해주세요.
+- reviewer는 전체 목록에서 파일과 내용을 확인하고 확인 중/추가 자료 요청/확인 완료 메모를 저장합니다.
+- 후기·경력·사진은 제출만으로 홈페이지에 게시되지 않습니다. 공개 범위를 확인한 뒤 별도로 반영합니다.
+
+5. 첨부파일
+- JPG, PNG, WEBP, HEIC, HEIF, PDF, DOCX, PPTX. 파일당 최대 20MB.
+- 웹 화면은 자료 1건당 50개를 안내합니다. 전체 저장소 사용량은 운영자가 대시보드에서 관리합니다.
+- 큰 영상은 다운로드 가능한 외부 링크로 입력합니다.
+- 저장 파일명은 호환 가능한 영문·숫자·기호로 정리되어 표시될 수 있습니다.
+- 비공개 버킷. 다운로드는 로그인한 본인 또는 reviewer만 가능합니다.
+- 파일 업로드는 즉시 저장됩니다. 제출을 취소하더라도 이미 첨부한 파일은 임시 자료에 남습니다.
+- 보관기간과 삭제 요청 창구는 운영사가 확정해 실제 접수 전에 안내문에 반영해야 합니다.
+
+6. 연결 후 실제 접수 전 확인 (아직 미실행)
+- 강사 테스트 계정 A/B와 검토 담당자 계정으로 로그인 메일 수신 확인
+- A의 자료·파일을 B가 읽거나 변경하지 못하는지 확인
+- 임시 저장 → 새 기기 로그인 → 복원 확인
+- 실제 사진/PDF 업로드 및 다운로드, 제출 후 수정 재개 확인
+- reviewer가 전체 제출과 파일을 읽고 보완 메모를 남길 수 있는지 확인
+- 사용자 제거·삭제 요청 처리 및 보관 정책 확인
+
+개발 검증
+- npm ci
+- npm run build
+- npm test
+DB 정책은 PGlite의 PostgreSQL 엔진에서 정상/차단 시나리오를 검증합니다.
+실제 Supabase Auth 메일·Storage API 연동 확인은 신규 프로젝트 연결 후에 가능합니다.
+
+제출 요청 메시지 예시
+안녕하세요. 김정태 배우아카데미 홈페이지에 사용할 자료를 아래 페이지에서 작성해주세요.
+https://scene-academy.vercel.app/materials
+초대받은 이메일로 로그인 후 아는 내용부터 적어주시면 됩니다.
+문장은 메모 형태도 괜찮고, 미정인 항목은 '미정'으로 적어주세요.
+사진은 원본 파일을 첨부하고, 큰 영상은 다운로드 링크를 남겨주세요.
+임시 저장 후 나중에 이어 쓸 수 있으며, 작성이 끝나면 '담당자에게 제출'을 눌러주세요.

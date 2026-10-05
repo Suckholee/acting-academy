@@ -26,3 +26,11 @@ Native sticky scroll stages, IntersectionObserver reveals, requestAnimationFrame
 `/trainers`에서 분야 필터를 이용하고 `/trainers/foundation`, `/trainers/camera`, `/trainers/audition`, `/trainers/scene`에서 프로필을 확인할 수 있습니다. 현재 인물과 소개는 예시이며 실제 강사의 경력으로 표시하지 않습니다.
 
 문구와 분야별 데이터를 `content/trainers.json`에서 수정한 뒤 `node scripts/build-trainers.cjs`로 정적 페이지를 다시 생성합니다. 스타일과 필터/등장 효과는 `dist/faculty.css`, `dist/faculty.js`에서 관리합니다. 실제 인물 등록 시 생성 스크립트의 사진 및 학력·경력 항목도 함께 교체하세요.
+
+## Private material collection
+
+`/materials` provides separate operator/trainer forms, explicit account-based draft saving, private attachments, submission status and reviewer notes. It is not linked from the public navigation. With no Supabase configuration it displays a setup notice and a non-submitting form preview.
+
+Run `npm ci && npm run build` before local preview; `npm test` includes PostgreSQL RLS checks using PGlite. `src/materials/` is the editable client source; `dist/materials-app.js` is bundled output. Vercel builds it automatically.
+
+Apply `supabase/migrations/20261005_material_collection.sql` to a new Supabase project, configure public connection variables, email delivery and invited members. See `docs/자료제출_연결안내.txt` for setup. No Supabase project is connected yet; real Auth/Storage integration remains to be verified after connection. Never put service-role/secret keys into the public configuration endpoint.
