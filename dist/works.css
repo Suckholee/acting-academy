@@ -1,0 +1,588 @@
+/* ================================================================
+   김정태 연기아카데미 - 수강생 작품 활동 (STUDENT WORKS) 스타일
+   ================================================================ */
+:root {
+  --works-bg: #0d0e12;
+  --works-card-bg: #15171e;
+  --gold: #c5a869;
+  --gold-glow: #c5a86940;
+}
+
+.works-page {
+  background: #fbfbfa;
+  color: #17181c;
+}
+
+.works-page header {
+  position: relative;
+  height: 110px;
+  padding: 0 max(5vw, 24px);
+  gap: 28px;
+  background: var(--works-bg);
+  color: white;
+}
+
+.works-page header nav {
+  display: flex;
+}
+
+.works-page header nav a[aria-current="page"] {
+  color: var(--gold);
+}
+
+.works-wrap {
+  width: min(1180px, 88%);
+  margin-inline: auto;
+}
+
+/* --- 배너 섹션 --- */
+.works-banner {
+  background: var(--works-bg);
+  color: white;
+  padding: 80px 0 40px;
+  border-bottom: 1px solid #ffffff15;
+}
+
+.works-kicker {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.works-banner h1 {
+  font-size: clamp(38px, 5.2vw, 70px);
+  letter-spacing: -2.5px;
+  line-height: 1.25;
+  font-weight: 500;
+  margin: 0 0 40px;
+}
+
+.works-banner h1 span {
+  display: block;
+}
+
+.works-banner h1 span+span {
+  color: #d0d0d5;
+}
+
+.works-banner-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #ffffff20;
+  padding-top: 24px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.works-stats {
+  display: flex;
+  gap: 30px;
+}
+
+.works-stats strong {
+  color: var(--gold);
+  font-size: 16px;
+  margin-right: 6px;
+}
+
+/* --- 메인 리스트 섹션 --- */
+.works-main {
+  padding: 70px 0 110px;
+}
+
+.works-header-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  gap: 30px;
+}
+
+.works-header-intro h2 {
+  font-size: 32px;
+  letter-spacing: -1.5px;
+  line-height: 1.3;
+}
+
+.works-header-intro p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+/* 필터 탭 */
+.works-filters {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.works-filters button {
+  border: 1px solid #e0e0e0;
+  background: white;
+  color: #555;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.works-filters button:hover {
+  background: #f0f0f0;
+  border-color: #ccc;
+  color: #111;
+}
+
+.works-filters button.active,
+.works-filters button[aria-pressed="true"] {
+  background: #17181d;
+  color: white;
+  border-color: #17181d;
+}
+
+.works-filters .works-total-badge {
+  margin-left: auto;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 1.5px;
+}
+
+/* 수강생 카드 그리드 */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px 28px;
+}
+
+.student-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 25px #0000000a;
+  border: 1px solid #ebebeb;
+  transition: transform .35s cubic-bezier(0.2, 0, 0, 1), box-shadow .35s cubic-bezier(0.2, 0, 0, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.student-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px #00000018;
+  border-color: var(--gold);
+}
+
+.student-card[hidden] {
+  display: none !important;
+}
+
+.student-card a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.student-photo-box {
+  position: relative;
+  aspect-ratio: 1 / 1.15;
+  background: #1a1b20;
+  overflow: hidden;
+}
+
+.student-photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease, filter .6s ease;
+  filter: grayscale(20%);
+}
+
+.student-card:hover .student-photo-box img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.casting-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #111115cc;
+  backdrop-filter: blur(8px);
+  color: var(--gold);
+  border: 1px solid #c5a86960;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.course-tag {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: #000000a0;
+  color: #ddd;
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.student-info {
+  padding: 24px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.student-name-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.student-name-row h3 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.student-name-row span {
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+.student-latest-work {
+  font-size: 13px;
+  color: #222;
+  font-weight: 600;
+  margin: 6px 0 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.student-work-count {
+  font-size: 12px;
+  color: #777;
+  border-top: 1px dashed #eee;
+  padding-top: 12px;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.student-work-count .btn-more {
+  color: var(--gold);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform .2s ease;
+}
+
+.student-card:hover .btn-more {
+  transform: translateX(4px);
+}
+
+/* ================================================================
+   수강생 상세 프로필 (STUDENT DETAIL PROFILE) 스타일
+   ================================================================ */
+.student-profile-page {
+  background: var(--works-bg);
+  color: white;
+}
+
+.student-profile-page header {
+  background: var(--works-bg);
+}
+
+.student-profile-hero {
+  padding: 30px 0 70px;
+}
+
+.back-to-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 30px;
+  transition: color .2s;
+  text-decoration: none;
+}
+
+.back-to-list:hover {
+  color: var(--gold);
+}
+
+.profile-hero-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.profile-photo-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px #00000080;
+  border: 1px solid #ffffff15;
+}
+
+.profile-photo-container img {
+  width: 100%;
+  aspect-ratio: 1 / 1.25;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-hero-content .student-sub-badge {
+  display: inline-block;
+  background: #ffffff12;
+  border: 1px solid #ffffff25;
+  color: var(--gold);
+  font-size: 11px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-hero-content h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: -2px;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.profile-hero-content h1 small {
+  font-size: 16px;
+  color: #888;
+  letter-spacing: 2px;
+  font-weight: 400;
+  display: block;
+  margin-top: 6px;
+}
+
+.profile-student-quote {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #e5e5e5;
+  margin: 30px 0 35px;
+  padding-left: 20px;
+  border-left: 3px solid var(--gold);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.profile-quick-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  background: #171820;
+  padding: 24px 28px;
+  border-radius: 14px;
+  border: 1px solid #ffffff10;
+}
+
+.meta-item span {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.meta-item strong {
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* 필모그래피 (작품 활동 내역) */
+.filmography-section {
+  padding: 80px 0 100px;
+  background: #13141a;
+  border-top: 1px solid #ffffff10;
+}
+
+.section-title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 45px;
+  border-bottom: 1px solid #ffffff15;
+  padding-bottom: 20px;
+}
+
+.section-title-wrap h2 {
+  font-size: 32px;
+  letter-spacing: -1.2px;
+  font-weight: 600;
+}
+
+.section-title-wrap span {
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+.filmography-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.film-item-card {
+  background: #1a1c24;
+  border: 1px solid #ffffff10;
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 30px;
+  align-items: center;
+  transition: border-color .3s, transform .3s;
+}
+
+.film-item-card:hover {
+  border-color: var(--gold);
+  transform: translateX(6px);
+}
+
+.film-genre-tag {
+  display: inline-block;
+  background: #252834;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.film-year {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+}
+
+.film-details h3 {
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  margin: 0 0 8px;
+  color: white;
+}
+
+.film-role {
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.film-desc {
+  font-size: 13.5px;
+  color: #999;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.film-status-pill {
+  background: #ffffff0d;
+  border: 1px solid #c5a86940;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+/* 코치 코멘트 */
+.coach-comment-box {
+  background: #171821;
+  border-radius: 18px;
+  padding: 40px;
+  margin-top: 60px;
+  border-left: 4px solid var(--gold);
+}
+
+.coach-comment-box h4 {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin: 0 0 16px;
+}
+
+.coach-comment-box p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #ccc;
+  margin: 0 0 20px;
+}
+
+.coach-comment-author {
+  font-size: 13px;
+  color: #888;
+  text-align: right;
+}
+
+/* 반응형 */
+@media (max-width: 992px) {
+  .works-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .profile-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .profile-photo-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .film-item-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+  .works-header-intro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .works-stats {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .works-filters {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 12px;
+  }
+  .profile-quick-meta {
+    grid-template-columns: 1fr;
+  }
+}
