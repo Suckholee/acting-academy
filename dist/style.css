@@ -24,3 +24,24 @@ nav a[aria-current="page"]{color:#ecc04c!important;font-weight:600;text-decorati
 .subpage-banner p.banner-desc{font-size:18px;line-height:1.8;color:#a1a1aa;max-width:680px;margin:0}
 .subpage-content{max-width:1180px;margin:0 auto;padding:80px max(4vw,20px)}
 @media(max-width:850px){.subpage-page header{height:auto;padding:16px 20px;flex-wrap:wrap;gap:14px}.subpage-page header nav{order:3;width:100%;justify-content:space-between;font-size:12px;gap:12px}.subpage-banner{padding:50px 20px 40px}.subpage-content{padding:50px 20px}}
+
+/* Light section course buttons fix */
+.section-top .course-button,
+.mentors .course-button,
+.programs .section-top .course-button,
+.facilities .section-top .course-button,
+.faq .course-button {
+  color: #1a1a1a !important;
+  border: 1px solid #bb9129 !important;
+  background: rgba(187, 145, 41, 0.08) !important;
+  font-weight: 500 !important;
+}
+.section-top .course-button:hover,
+.mentors .course-button:hover,
+.programs .section-top .course-button:hover,
+.facilities .section-top .course-button:hover,
+.faq .course-button:hover {
+  color: #111 !important;
+  border-color: #bb9129 !important;
+  background: rgba(187, 145, 41, 0.22) !important;
+}

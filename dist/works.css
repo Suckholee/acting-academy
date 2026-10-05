@@ -586,3 +586,39 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+/* 수강생 프로필 스티키 탭 네비게이션 */
+.student-profile-page .profile-tabs {
+  position: sticky;
+  top: var(--site-header-height, 96px);
+  z-index: 10;
+  background: #111218f0;
+  backdrop-filter: blur(15px);
+  border-block: 1px solid #ffffff20;
+}
+.student-profile-page .profile-tabs > div {
+  display: flex;
+  gap: 36px;
+}
+.student-profile-page .profile-tabs a {
+  padding: 18px 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #aaa;
+  text-decoration: none;
+  transition: color .2s, border-color .2s;
+  border-bottom: 2px solid transparent;
+}
+.student-profile-page .profile-tabs a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+@media (max-width: 720px) {
+  .student-profile-page .profile-tabs > div {
+    gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+}

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>이준호 수강생 작품 활동 | 김정태 연기아카데미</title>
-  <meta name="description" content="김정태 연기아카데미 수강생 이준호의 필모그래피와 작품 활동 내역(숏폼드라마, 웹드라마, 단편영화 등)을 만나보세요.">
+  <title>이준호 수강생 작품 활동 | 김정태 배우아카데미</title>
+  <meta name="description" content="김정태 배우아카데미 수강생 이준호의 필모그래피와 작품 활동 내역(숏폼드라마, 웹드라마, 단편영화 등)을 만나보세요.">
   <link rel="icon" href="/favicon.svg">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/sticky-header.css">
@@ -32,7 +32,7 @@
 
   <main id="main">
     <!-- 수강생 프로필 히어로 섹션 -->
-    <section class="student-profile-hero works-wrap">
+    <section class="student-profile-hero works-wrap" id="overview">
       <a class="back-to-list" href="/works">← 수강생 작품 활동 목록으로 돌아가기</a>
       
       <div class="profile-hero-grid">
@@ -73,8 +73,18 @@
       </div>
     </section>
 
+    <!-- 강사 프로필과 동일한 구조의 상단 탭 네비게이션 -->
+    <div class="profile-tabs">
+      <div class="works-wrap">
+        <a href="#overview">수강생 프로필 요약</a>
+        <a href="#filmography">작품 활동 내역 (FILMOGRAPHY)</a>
+        <a href="#coach-perspective">코치 추천사 &amp; 평가</a>
+        <a href="#other-students">다른 수강생 보기</a>
+      </div>
+    </div>
+
     <!-- 필모그래피 (출연 작품 내역) 섹션 -->
-    <section class="filmography-section">
+    <section class="filmography-section" id="filmography">
       <div class="works-wrap">
         <div class="section-title-wrap">
           <h2>작품 활동 내역 (FILMOGRAPHY)</h2>
@@ -148,7 +158,7 @@
         </div>
 
         <!-- 담당 코치 추천 코멘트 -->
-        <div class="coach-comment-box">
+        <div class="coach-comment-box" id="coach-perspective">
           <h4>COACH'S PERSPECTIVE</h4>
           <p>“이준호 배우는 대본의 단어 뒤에 숨은 심리를 읽는 직관이 매우 뛰어납니다. 카메라 앵글의 크기에 구애받지 않고 스스로를 솔직하게 드러내는 용기가 지금의 좋은 캐스팅 결과로 이어졌습니다.”</p>
           <div class="coach-comment-author">— 김정태 원장 &amp; 카메라 연기 담당 코칭팀</div>
@@ -157,7 +167,7 @@
     </section>
 
     <!-- 다른 수강생 둘러보기 섹션 -->
-    <section class="works-wrap" style="padding: 80px 0 100px;">
+    <section class="works-wrap" id="other-students" style="padding: 80px 0 100px;">
       <div class="section-title-wrap">
         <h2>다른 수강생 작품 활동도 만나보세요</h2>
         <a href="/works" style="color: var(--gold); font-size: 13px; text-decoration: none;">전체 목록 보기 ↗</a>
@@ -246,14 +256,14 @@
       <a href="/faq">자주 묻는 질문</a>
     </div>
     <div class="footer-bottom">
-      <span>주식회사 스토리나인 | 김정태 연기아카데미</span>
+      <span>주식회사 스토리나인 | 김정태 배우아카데미</span>
       <span>© 2026 주식회사 스토리나인 (STORY NINE Inc.) All rights reserved.</span>
       <span>수업 및 인물 사진은 AI로 제작한 목업 이미지입니다.</span>
     </div>
   </footer>
 
   <button class="sticky-inquiry" data-consult>
-    <span>김정태 연기아카데미</span>
+    <span>김정태 배우아카데미</span>
     <strong>간편 수강료 · 교육 상담</strong><b>＋</b>
   </button>
   <button class="back-top" aria-label="맨 위로 이동">↑</button>

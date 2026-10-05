@@ -1,0 +1,327 @@
+{
+  "status": "awaiting_google_login",
+  "settings": {
+    "allowResponseEdits": true,
+    "publishResponseSummary": false,
+    "limitOneResponse": false,
+    "confirmation": "자료가 접수되었습니다. 수정할 내용이 있다면 응답 수정 링크를 이용해주세요. 제출 자료는 홈페이지에 바로 공개되지 않으며 담당자가 확인 후 반영합니다."
+  },
+  "forms": [
+    {
+      "kind": "trainer",
+      "title": "김정태 배우아카데미 | 강사소개 자료 제출",
+      "description": "홈페이지 제작에 필요한 자료를 모으는 양식입니다. 완성된 문장이 아니어도 괜찮습니다. 아는 내용부터 메모로 적고, 미정인 항목은 미정으로 남겨주세요. 파일 업로드를 위해 Google 로그인이 필요합니다. 자료 확인용 연락처는 홈페이지에 공개하지 않습니다.",
+      "sections": [
+        {
+          "title": "프로필 기본 정보",
+          "description": "강사소개 페이지에 들어갈 내용입니다.",
+          "questions": [
+            {
+              "key": "name",
+              "title": "공개할 이름",
+              "help": "김정태",
+              "type": "short_answer",
+              "required": true
+            },
+            {
+              "key": "english",
+              "title": "영문 이름 · 선택",
+              "help": "",
+              "type": "short_answer",
+              "required": false
+            },
+            {
+              "key": "title",
+              "title": "공식 직함 / 담당 과정",
+              "help": "강사 · 매체 연기",
+              "type": "short_answer",
+              "required": false
+            },
+            {
+              "key": "contact",
+              "title": "자료 확인용 연락처",
+              "help": "이메일 또는 전화번호 · 홈페이지에는 공개되지 않습니다.",
+              "type": "short_answer",
+              "required": true
+            },
+            {
+              "key": "intro",
+              "title": "한 줄 소개",
+              "help": "어떤 연기를 가르치는지 한 문장으로",
+              "type": "short_answer",
+              "required": false
+            },
+            {
+              "key": "bio",
+              "title": "자기소개",
+              "help": "완성된 문장이 아니어도 괜찮습니다. 메모로 적어주세요.",
+              "type": "paragraph",
+              "required": false
+            }
+          ]
+        },
+        {
+          "title": "경력과 수업 이야기",
+          "description": "미정이거나 비공개인 항목은 그대로 적어주세요.",
+          "questions": [
+            {
+              "key": "credits",
+              "title": "출연 작품",
+              "help": "작품명 / 연도 / 역할을 줄바꿈해서 작성",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "teaching",
+              "title": "지도 경력",
+              "help": "기관 / 기간 / 담당 수업",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "education",
+              "title": "학력·수상 · 선택",
+              "help": "공개를 원하는 내용만 작성",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "approach",
+              "title": "수업 방식과 추천 대상",
+              "help": "어떤 분에게, 무엇을, 어떻게 가르치나요?",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "message",
+              "title": "처음 배우는 분께 전할 말",
+              "help": "수업에서 가장 중요하게 생각하는 것",
+              "type": "paragraph",
+              "required": false
+            }
+          ]
+        },
+        {
+          "title": "사진과 공개 범위",
+          "description": "프로필 사진과 수업 사진은 아래 첨부 영역에 올려주세요.",
+          "questions": [
+            {
+              "key": "links",
+              "title": "영상·쇼릴·SNS 링크 · 선택",
+              "help": "다운로드 가능한 영상 링크와 설명",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "restrictions",
+              "title": "사진 출처 / 공개 제한 / 추후 전달 자료",
+              "help": "촬영자 표기, 게시 가능일, 비공개 항목 등",
+              "type": "paragraph",
+              "required": false
+            }
+          ]
+        },
+        {
+          "title": "원본 파일과 전달 확인",
+          "description": "파일이 아직 없다면 건너뛰어도 됩니다. 큰 영상은 앞의 링크란에 남겨주세요.",
+          "questions": [
+            {
+              "key": "files",
+              "title": "프로필 사진·수업 사진·기존 소개서",
+              "type": "file_upload",
+              "required": false,
+              "maxFiles": 10,
+              "maxFileSizeMB": 100,
+              "help": "사진은 원본으로 보내주세요. 업로드한 파일은 담당자의 Drive에 보관됩니다."
+            },
+            {
+              "key": "consent",
+              "title": "자료 제출 확인",
+              "type": "checkbox",
+              "required": true,
+              "options": [
+                "입력한 내용과 첨부파일을 주식회사 스토리나인의 홈페이지 제작·자료 확인 목적으로 전달하는 데 동의합니다."
+              ],
+              "help": "홈페이지 공개 제한이나 사진 출처가 있다면 본문에 적어주세요. 제출 자료는 담당자 검토 후 반영합니다. 수정·삭제 요청은 자료를 요청한 담당자에게 전달해주세요."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operator",
+      "title": "김정태 배우아카데미 | 운영사 홈페이지 자료 제출",
+      "description": "홈페이지 제작에 필요한 자료를 모으는 양식입니다. 완성된 문장이 아니어도 괜찮습니다. 아는 내용부터 메모로 적고, 미정인 항목은 미정으로 남겨주세요. 파일 업로드를 위해 Google 로그인이 필요합니다. 자료 확인용 연락처는 홈페이지에 공개하지 않습니다.",
+      "sections": [
+        {
+          "title": "운영사 기본 정보",
+          "description": "상담과 위치 안내에 필요한 정보를 모읍니다.",
+          "questions": [
+            {
+              "key": "name",
+              "title": "자료 담당자 이름",
+              "help": "",
+              "type": "short_answer",
+              "required": true
+            },
+            {
+              "key": "contact",
+              "title": "담당자 연락처",
+              "help": "이메일 또는 전화번호 · 내부 확인용",
+              "type": "short_answer",
+              "required": true
+            },
+            {
+              "key": "company",
+              "title": "법인명 / 대표자 / 사업자·학원 등록정보",
+              "help": "홈페이지에 표기할 정보를 작성",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "location",
+              "title": "주소와 찾아오는 길",
+              "help": "층·호수, 주차 안내 포함",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "inquiry",
+              "title": "대표 전화 / 상담 시간 / 접수 담당자",
+              "help": "공개 연락처와 내부 담당자를 구분해주세요.",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "channels",
+              "title": "공식 SNS·카카오채널 주소",
+              "help": "미개설이면 미정으로 적어주세요.",
+              "type": "paragraph",
+              "required": false
+            }
+          ]
+        },
+        {
+          "title": "아카데미와 원장 소개",
+          "description": "소개 페이지와 첫 화면에 들어갈 내용입니다.",
+          "questions": [
+            {
+              "key": "philosophy",
+              "title": "소개 / 교육 철학 / 차별점",
+              "help": "전하고 싶은 내용을 메모로 적어주세요.",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "director",
+              "title": "대표·원장 소개",
+              "help": "공식 직함, 인사말, 공개할 주요 경력",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "production",
+              "title": "영상 제작·오디션 지원 범위",
+              "help": "지원 대상, 영상 종류, 횟수, 추가 비용, 결과물 사용 범위",
+              "type": "paragraph",
+              "required": false
+            }
+          ]
+        },
+        {
+          "title": "교육과정과 운영 안내",
+          "description": "과정이 여러 개라면 과정명을 구분해서 작성해주세요.",
+          "questions": [
+            {
+              "key": "courses",
+              "title": "과정별 교육 정보",
+              "help": "과정명 / 강사 / 대상·연령 / 수업 내용 / 기간 / 주당 횟수 / 회당 시간 / 정원 / 개강일",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "pricing",
+              "title": "수강료·시간표 / 공개 여부",
+              "help": "공개 또는 상담 시 안내 여부 포함",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "policies",
+              "title": "등록·결제·보강·결석·환불 안내",
+              "help": "확정된 정책만 적고 나머지는 미정으로 표시",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "facilities",
+              "title": "공간별 이름과 용도",
+              "help": "시설 사진은 첨부 영역에 올려주세요.",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "notices",
+              "title": "오픈·모집·특강 공지와 FAQ",
+              "help": "정확한 날짜와 공개 가능 여부",
+              "type": "paragraph",
+              "required": false
+            }
+          ]
+        },
+        {
+          "title": "후기·활동 자료와 최종 확인",
+          "description": "실제 자료가 준비된 경우에만 전달해주세요.",
+          "questions": [
+            {
+              "key": "stories",
+              "title": "실제 후기 / 작품 활동",
+              "help": "이름·공개 동의 여부 / 과정 또는 작품 / 시기 / 역할 / 후기 원문",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "links",
+              "title": "홍보 영상·자료 폴더 링크",
+              "help": "용량이 큰 영상은 다운로드 가능한 링크로 전달",
+              "type": "paragraph",
+              "required": false
+            },
+            {
+              "key": "restrictions",
+              "title": "최종 승인자 / 공개 제한 / 추후 전달 자료",
+              "help": "원본 사용 권한, 미정 사항, 전달 예정일",
+              "type": "paragraph",
+              "required": false
+            }
+          ]
+        },
+        {
+          "title": "원본 파일과 전달 확인",
+          "description": "파일이 아직 없다면 건너뛰어도 됩니다. 큰 영상은 앞의 링크란에 남겨주세요.",
+          "questions": [
+            {
+              "key": "files",
+              "title": "로고·원장 사진·시설 사진·교육과정 소개서",
+              "type": "file_upload",
+              "required": false,
+              "maxFiles": 10,
+              "maxFileSizeMB": 100,
+              "help": "사진은 원본으로 보내주세요. 업로드한 파일은 담당자의 Drive에 보관됩니다."
+            },
+            {
+              "key": "consent",
+              "title": "자료 제출 확인",
+              "type": "checkbox",
+              "required": true,
+              "options": [
+                "입력한 내용과 첨부파일을 주식회사 스토리나인의 홈페이지 제작·자료 확인 목적으로 전달하는 데 동의합니다."
+              ],
+              "help": "홈페이지 공개 제한이나 사진 출처가 있다면 본문에 적어주세요. 제출 자료는 담당자 검토 후 반영합니다. 수정·삭제 요청은 자료를 요청한 담당자에게 전달해주세요."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
