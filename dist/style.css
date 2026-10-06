@@ -40,8 +40,165 @@ nav a[aria-current="page"]{color:#ecc04c!important;font-weight:600;text-decorati
 .mentors .course-button:hover,
 .programs .section-top .course-button:hover,
 .facilities .section-top .course-button:hover,
+.reviews-home .course-button:hover,
 .faq .course-button:hover {
   color: #111 !important;
   border-color: #bb9129 !important;
   background: rgba(187, 145, 41, 0.22) !important;
 }
+
+/* ==========================================
+   Home Reviews Section
+   ========================================== */
+.reviews-home {
+  background: #fbfbfa;
+  border-bottom: 1px solid #ebebed;
+}
+
+.reviews-home .section-top {
+  margin-bottom: 40px;
+}
+
+.reviews-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e7e7ea;
+  border-radius: 16px;
+  padding: 24px 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.reviews-stat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reviews-stat-box strong {
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.5px;
+}
+
+.reviews-stat-box strong .star-icon {
+  color: #eab308;
+  font-size: 0.9em;
+  margin-right: 2px;
+}
+
+.reviews-stat-box span {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.reviews-grid-home {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.review-home-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.review-home-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+  border-color: #d1b77c;
+}
+
+.review-home-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.review-home-stars {
+  color: #f59e0b;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.review-home-badge {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #856404;
+  background: #fff3cd;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.review-home-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #111827;
+  margin: 0 0 12px;
+  letter-spacing: -0.4px;
+}
+
+.review-home-card p.review-quote {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #4b5563;
+  margin: 0 0 24px;
+  flex-grow: 1;
+}
+
+.review-home-footer {
+  border-top: 1px solid #f3f4f6;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-home-user {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-home-user strong {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.review-home-user span {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.review-home-status {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b48c26;
+  background: rgba(180, 140, 38, 0.08);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+@media (max-width: 850px) {
+  .reviews-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+    gap: 20px;
+  }
+  .reviews-grid-home {
+    grid-template-columns: 1fr;
+  }
+}
+

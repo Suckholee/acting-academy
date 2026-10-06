@@ -1,0 +1,472 @@
+/* ================================================================
+   김정태 연기아카데미 - 수강후기 (STUDENT REVIEWS) 스타일
+   ================================================================ */
+:root {
+  --reviews-bg: #0d0e12;
+  --reviews-card-bg: #15171e;
+  --gold: #c5a869;
+  --gold-glow: #c5a86940;
+  --gold-light: #ecc04c;
+}
+
+.reviews-page {
+  background: #fbfbfa;
+  color: #17181c;
+}
+
+.reviews-page header {
+  position: relative;
+  height: 110px;
+  padding: 0 max(5vw, 24px);
+  gap: 28px;
+  background: var(--reviews-bg);
+  color: white;
+}
+
+.reviews-page header nav {
+  display: flex;
+}
+
+.reviews-page header nav a[aria-current="page"] {
+  color: var(--gold-light);
+}
+
+.reviews-wrap {
+  width: min(1180px, 88%);
+  margin-inline: auto;
+}
+
+/* --- 상단 배너 섹션 --- */
+.reviews-banner {
+  background: var(--reviews-bg);
+  color: white;
+  padding: 70px 0 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.reviews-kicker {
+  color: var(--gold-light);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.reviews-banner h1 {
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.3;
+  margin-bottom: 40px;
+}
+
+.reviews-banner h1 span {
+  display: block;
+}
+
+.reviews-banner-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 32px;
+}
+
+.reviews-stats {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.reviews-stats > div {
+  font-size: 14px;
+  color: #a1a1aa;
+}
+
+.reviews-stats strong {
+  display: block;
+  font-size: clamp(26px, 3.5vw, 36px);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.reviews-stats strong span.star {
+  color: var(--gold-light);
+  font-size: 0.85em;
+  margin-right: 4px;
+}
+
+.reviews-archive-tag {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* --- 메인 콘텐츠 영역 --- */
+.reviews-main {
+  padding: 80px 0 100px;
+}
+
+.reviews-header-intro {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.reviews-header-intro h2 {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.reviews-header-intro p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --- 카테고리 필터 버튼 --- */
+.reviews-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 50px;
+  align-items: center;
+}
+
+.reviews-filters button {
+  appearance: none;
+  background: white;
+  border: 1px solid #e2e2e5;
+  color: #555;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reviews-filters button:hover {
+  border-color: #111;
+  color: #111;
+}
+
+.reviews-filters button.active {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+.reviews-total-badge {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* --- 포커스 인터뷰 (Featured Story) --- */
+.featured-story-section {
+  background: #15171e;
+  color: #fff;
+  border-radius: 20px;
+  padding: 48px;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(197, 168, 105, 0.25);
+}
+
+.featured-story-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(197, 168, 105, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.featured-badge {
+  display: inline-block;
+  background: rgba(197, 168, 105, 0.2);
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.featured-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.featured-avatar-wrap {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.featured-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-profile-info h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #fff;
+}
+
+.featured-profile-info p.featured-meta {
+  color: var(--gold-light);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+
+.featured-profile-info p.featured-casting {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #ddd;
+  line-height: 1.5;
+  margin: 0;
+  border-left: 3px solid var(--gold);
+}
+
+.featured-interview {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.interview-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px 22px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.interview-item h4 {
+  font-size: 15px;
+  color: var(--gold-light);
+  font-weight: 600;
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.interview-item h4::before {
+  content: "Q.";
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.interview-item p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #ccc;
+  margin: 0;
+}
+
+/* --- 수강후기 카드 그리드 --- */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.review-card {
+  background: #ffffff;
+  border: 1px solid #e7e7eb;
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+  border-color: #d1b77c;
+}
+
+.review-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.review-stars {
+  color: #f59e0b;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.review-course-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #795d18;
+  background: rgba(187, 145, 41, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.review-headline {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.45;
+  margin: 0 0 14px;
+  letter-spacing: -0.5px;
+}
+
+.review-body {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: #4b5563;
+  margin: 0 0 24px;
+  flex-grow: 1;
+}
+
+.review-author {
+  border-top: 1px solid #f1f1f4;
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.review-author-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 2px;
+}
+
+.review-author-meta {
+  font-size: 12.5px;
+  color: #9ca3af;
+}
+
+.review-achievement {
+  font-size: 12px;
+  font-weight: 600;
+  color: #bb9129;
+  text-align: right;
+  max-width: 160px;
+  line-height: 1.35;
+}
+
+/* --- 하단 안내 & 상담 유도 배너 --- */
+.reviews-cta-banner {
+  margin-top: 70px;
+  background: linear-gradient(135deg, #15171e 0%, #20242e 100%);
+  color: white;
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.reviews-cta-banner h3 {
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: -1px;
+}
+
+.reviews-cta-banner p {
+  font-size: 16px;
+  color: #a1a1aa;
+  margin: 0 auto 28px;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.reviews-cta-banner .cta-btn-gold {
+  display: inline-block;
+  background: var(--gold-light);
+  color: #111;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(236, 192, 76, 0.3);
+}
+
+.reviews-cta-banner .cta-btn-gold:hover {
+  background: #f7d268;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(236, 192, 76, 0.45);
+}
+
+/* --- 반응형 미디어 쿼리 --- */
+@media (max-width: 900px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .featured-story-section {
+    padding: 32px 24px;
+  }
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .reviews-stats {
+    gap: 20px;
+  }
+  .reviews-banner h1 {
+    font-size: 28px;
+  }
+  .reviews-cta-banner {
+    padding: 36px 20px;
+  }
+}
