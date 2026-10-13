@@ -105,3 +105,16 @@ main p,main summary{overflow-wrap:break-word}
 .video-orbit-card .video-slot-symbol{background:#15120b70;border-color:#ecc04c;color:#f5d279;box-shadow:0 0 22px #ecc04c20}
 .video-orbit-card .video-slot-overlay strong{color:#fff}
 .video-orbit-card .video-slot-overlay>span:last-child{color:#f5f0e5}
+/* Keep perspective local to each card: a wide scrolling perspective plane can
+   project offscreen cards at extreme scales in mobile browsers. */
+.video-orbit-track{perspective:none;max-width:100%;min-width:0}
+.video-orbit-card{transform:perspective(1100px) rotateY(var(--orbit-turn,0deg)) scale(var(--orbit-scale,1))}
+@media(max-width:700px){
+ .video-orbit{width:100%;min-width:0}
+ .video-orbit-track{padding-inline:calc((100% - min(240px,72vw))/2);gap:16px;perspective:none}
+ .video-orbit-card{flex:0 0 min(240px,72vw);width:min(240px,72vw);max-width:min(240px,72vw);transform:rotateY(var(--orbit-turn,0deg)) scale(var(--orbit-scale,1))}
+ .video-orbit-card .video-slot-frame{width:100%;height:auto;aspect-ratio:9/16;min-width:0}
+ .video-orbit-card .video-slot-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+ .video-orbit>.video-slot-heading{padding-inline:24px}
+}
+@media(prefers-reduced-motion:reduce){.video-orbit-card{transform:none}}
