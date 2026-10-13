@@ -118,3 +118,5 @@ main p,main summary{overflow-wrap:break-word}
  .video-orbit>.video-slot-heading{padding-inline:24px}
 }
 @media(prefers-reduced-motion:reduce){.video-orbit-card{transform:none}}
+#instructor-video .video-slot-frame img{opacity:.68;filter:none;object-position:center}
+#instructor-video .video-slot-overlay{background:linear-gradient(180deg,#0001,#0001 30%,#0007 85%)}

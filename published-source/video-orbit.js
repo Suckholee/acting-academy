@@ -14,5 +14,8 @@
  let drag;track.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;drag={x:e.clientX,left:track.scrollLeft};track.setPointerCapture(e.pointerId);track.classList.add('is-dragging');});
  track.addEventListener('pointermove',e=>{if(drag)track.scrollLeft=drag.left+drag.x-e.clientX;});
  const end=()=>{if(!drag)return;drag=null;track.classList.remove('is-dragging');go(current);};track.addEventListener('pointerup',end);track.addEventListener('pointercancel',end);
- new ResizeObserver(update).observe(track);document.fonts?.ready.then(update);update();
+ new ResizeObserver(update).observe(track);
+ const initialIndex=cards.findIndex(card=>card.getAttribute('aria-label')?.startsWith('김정태'));
+ const start=()=>{const card=cards[Math.max(0,initialIndex)];track.scrollTo({left:card.offsetLeft+card.offsetWidth/2-track.clientWidth/2,behavior:'instant'});paint();};
+ requestAnimationFrame(start);document.fonts?.ready.then(update);
 })();
