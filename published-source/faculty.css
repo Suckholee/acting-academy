@@ -1,0 +1,432 @@
+.faculty-page{--faculty-bg:#101115;background:#fff}.faculty-page header{position:relative;inset:auto;height:110px;padding:0 max(5vw,24px);gap:28px;background:var(--faculty-bg);color:white}.faculty-page header nav{display:flex}.faculty-page header nav a[aria-current]{color:var(--gold)}.faculty-page .header-cta{white-space:nowrap}.faculty-wrap{width:min(1180px,88%);margin-inline:auto}.faculty-skip{position:fixed;top:-100px;left:20px;z-index:100;background:var(--gold);padding:15px}.faculty-skip:focus{top:10px}.faculty-banner{background:var(--faculty-bg);color:white;padding:76px 0 34px;overflow:hidden}.faculty-kicker{font-size:11px;letter-spacing:2px;color:#b39b62;font-weight:600}.faculty-banner h1{font-size:clamp(40px,5.5vw,76px);letter-spacing:-3px;line-height:1.3;font-weight:500;margin:30px 0 68px}.faculty-banner h1 span{display:block;animation:faculty-enter .95s both}.faculty-banner h1 span+span{animation-delay:.14s;color:#dadada}.banner-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ffffff30;padding-top:22px;font-size:14px}.banner-bottom p span{font-size:11px;margin-left:18px;color:#999}.banner-bottom>span{font-size:10px;letter-spacing:2px}.faculty-list{padding-block:78px 110px}.faculty-list-intro{display:flex;justify-content:space-between;align-items:center;gap:25px;margin-bottom:42px}.faculty-list-intro h2{font-size:30px;letter-spacing:-1.4px}.faculty-list-intro p{font-size:13px;line-height:1.9;color:#777}.faculty-filters{display:flex;gap:10px;align-items:center;border-bottom:1px solid #ddd;padding-bottom:22px;flex-wrap:wrap}.faculty-filters button{border:0;background:#f3f3f3;border-radius:30px;padding:13px 23px;transition:background .25s,color .25s,transform .25s}.faculty-filters button:hover{transform:translateY(-3px)}.faculty-filters button[aria-pressed=true]{background:#17181d;color:white}.faculty-count{margin-left:auto;font-size:11px;letter-spacing:2px}.faculty-notice{font-size:11px;color:#888;line-height:1.8;margin:22px 0 34px}.faculty-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:65px 36px}.faculty-card[hidden]{display:none}.faculty-card a{display:block}.faculty-photo{position:relative;aspect-ratio:1/1.08;background:#343536;border-radius:20px;overflow:hidden;isolation:isolate}.faculty-photo img{position:absolute;top:-5%;width:400%;max-width:none;height:auto;transition:filter .7s,translate .8s;filter:grayscale(100%)}.faculty-photo.portrait-0 img{left:0}.faculty-photo.portrait-1 img{left:-100%}.faculty-photo.portrait-2 img{left:-200%}.faculty-photo.portrait-3 img{left:-300%}.faculty-card a:hover img,.faculty-card a:focus-visible img{filter:grayscale(0);translate:0 -8px}.sample-label{position:absolute;left:23px;bottom:22px;font-size:9px;letter-spacing:1.8px;color:white;background:#1119;border:1px solid #ffffff30;padding:8px 12px;border-radius:20px}.faculty-card-copy{padding:24px 2px 0}.faculty-label{font-size:11px;color:#777}.faculty-card h2{font-size:clamp(25px,3.1vw,44px);line-height:1.1;font-weight:800;letter-spacing:-1.8px;margin:10px 0 14px}.faculty-card p{font-size:16px;margin:0;display:flex;justify-content:space-between;align-items:center}.faculty-card p span{display:grid;place-items:center;border:1px solid #ddd;width:38px;height:38px;border-radius:50%;transition:background .3s,rotate .3s}.faculty-card a:hover p span{background:var(--gold);rotate:45deg}.faculty-footer{background:#0b0c0f;color:white;padding:60px 6% 120px;display:block}.faculty-footer p{font-size:11px;line-height:1.9;color:#999;margin-top:30px}.faculty-footer small{font-size:9px;color:#777;letter-spacing:1px}.faculty-dock{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:20;background:#17181def;border:1px solid #d9b452;color:#bbb;box-shadow:0 8px 35px #0003;backdrop-filter:blur(15px);border-radius:40px;padding:16px 25px;display:flex;gap:30px;align-items:center;white-space:nowrap;font-size:11px}.faculty-dock strong{color:var(--gold);font-size:13px}.profile-page{background:var(--faculty-bg);color:#fff}.profile-back{display:inline-block;color:#aaa;font-size:12px;margin:32px 0}.profile-layout{display:grid;grid-template-columns:1.05fr 1fr;gap:8%;align-items:center;padding:15px 0 75px}.profile-layout>.faculty-photo{animation:faculty-enter .9s both}.profile-heading{animation:faculty-enter 1s .15s both}.profile-heading .faculty-kicker span{color:#777;margin-left:12px;font-size:9px}.profile-heading h1{font-size:clamp(46px,5.8vw,82px);line-height:1.02;letter-spacing:-4px;margin:28px 0 20px}.profile-heading h2{font-size:21px;font-weight:500}.profile-quote{font-size:23px;line-height:1.65;letter-spacing:-.8px;margin:38px 0 18px}.profile-description{font-size:14px;line-height:2;color:#aaa}.profile-heading .button{margin-top:26px;font-size:12px}.profile-tabs{position:sticky;top:0;z-index:10;background:#101115ed;backdrop-filter:blur(15px);border-block:1px solid #ffffff20}.profile-tabs>div{display:flex;gap:40px}.profile-tabs a{padding:23px 0;font-size:12px;color:#aaa;transition:color .3s}.profile-tabs a:hover{color:var(--gold)}.profile-section{display:grid;grid-template-columns:1fr 1.15fr;gap:9%;padding:85px 0;border-bottom:1px solid #ffffff20;scroll-margin-top:65px}.profile-section h2{font-size:30px;line-height:1.6;letter-spacing:-1px;font-weight:500}.approach-points{list-style:none;counter-reset:points;padding:0}.approach-points li{counter-increment:points;border-top:1px solid #ffffff20;padding:22px 0;font-size:14px}.approach-points li:before{content:'0' counter(points);color:var(--gold);font-size:11px;margin-right:25px}.career-list>div{display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid #ffffff20;padding:15px 0 25px;align-items:center}.career-list h3{font-size:14px}.career-list p{font-size:13px;color:#888}.profile-talk{padding:90px 0;scroll-margin-top:65px}.profile-talk>h2{font-size:clamp(52px,8vw,100px);letter-spacing:-4px;margin:25px 0}.profile-talk em{font-style:normal;color:var(--gold)}.profile-talk article{display:grid;grid-template-columns:90px 1fr;gap:25px;padding:38px 0;border-top:1px solid #ffffff20}.profile-talk article>span{color:var(--gold);font-size:12px;padding-top:7px}.profile-talk h3{font-size:22px;font-weight:500;margin:0 0 20px}.profile-talk article p{font-size:14px;line-height:2;color:#aaa;max-width:760px}.profile-list-link{display:flex;justify-content:space-between;border:1px solid #ffffff40;padding:22px 28px;margin-top:30px;border-radius:40px;font-size:13px;transition:background .3s}.profile-list-link:hover{background:#ffffff15}.faculty-related{background:#f4f3ef;color:#191919;padding:75px 0 95px}.faculty-related h2{font-size:30px;letter-spacing:-1px;margin-bottom:40px}.faculty-related .faculty-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}.faculty-related .faculty-card h2{font-size:26px;margin-bottom:16px}.faculty-related .faculty-card p{font-size:14px}.faculty-motion .faculty-reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.faculty-motion .faculty-reveal.is-visible{opacity:1;transform:none}.faculty-card.is-entering{animation:faculty-enter .65s both;animation-delay:var(--card-delay,0ms)}@keyframes faculty-enter{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:800px){.faculty-page header{height:95px;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:15px}.faculty-page header nav{order:3;width:100%;justify-content:space-between;gap:15px;font-size:11px;margin:0}.faculty-page .header-cta{padding:8px 12px;font-size:10px}.faculty-banner{padding-top:55px}.faculty-banner h1{letter-spacing:-2px;margin-bottom:45px}.banner-bottom>span{display:none}.faculty-list{padding-block:45px 70px}.faculty-list-intro{display:block}.faculty-list-intro h2{font-size:25px}.faculty-filters{gap:6px}.faculty-filters button{font-size:12px;padding:11px 15px}.faculty-count{width:100%;margin:12px 0 0}.faculty-grid{gap:35px 18px}.faculty-photo{border-radius:14px}.sample-label{left:10px;bottom:10px;font-size:7px;padding:6px 8px;letter-spacing:1px}.faculty-card h2{font-size:24px;letter-spacing:-1px}.faculty-card p{font-size:13px}.faculty-card p span{width:28px;height:28px}.profile-layout{grid-template-columns:1fr;gap:30px}.profile-layout>.faculty-photo{max-width:520px;width:100%;margin:auto;aspect-ratio:1/1}.profile-heading h1{font-size:60px;letter-spacing:-3px}.profile-quote{margin-top:26px}.profile-section{grid-template-columns:1fr;gap:20px;padding:50px 0}.profile-talk article{grid-template-columns:45px 1fr;gap:10px}.profile-talk h3{font-size:19px}.faculty-related .faculty-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.faculty-related .faculty-card:last-child{display:none}.faculty-related .faculty-card h2{font-size:23px}.faculty-dock{padding:14px 20px;gap:20px}.profile-tabs>div{justify-content:space-between;gap:15px}.faculty-footer .brand{display:inline-flex}}
+@media(max-width:420px){.faculty-grid{grid-template-columns:1fr}.faculty-card h2{font-size:35px}.faculty-photo{aspect-ratio:1/1}.faculty-related .faculty-grid{grid-template-columns:1fr}.faculty-related .faculty-card:last-child{display:block}.faculty-page .brand .brand-ko{font-size:19px}.faculty-page .brand .brand-en{font-size:7px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.faculty-page *, .faculty-page *:before{animation:none!important;transition:none!important}.faculty-motion .faculty-reveal{opacity:1;transform:none}}
+/* Frame each individual from the shared placeholder portrait. */
+.faculty-photo img{width:360%;top:0}.faculty-photo.portrait-0 img{left:-22%}.faculty-photo.portrait-1 img{left:-94%;top:-32%}.faculty-photo.portrait-2 img{left:-166%;top:-35%}.faculty-photo.portrait-3 img{left:-238%}
+@media(max-width:800px){.faculty-page header nav{position:static;padding:0;background:none;border-radius:0;width:100%}.faculty-page .header-cta{display:block}.profile-layout>*{min-width:0}.profile-heading h1{font-size:clamp(42px,13vw,60px)}.profile-heading h1 span{display:inline-block}.profile-tabs{overflow:hidden}}
+/* Individual instructor portraits and supplied work credits. */
+.faculty-photo.faculty-real-photo img{inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:none}
+.faculty-card a:hover .faculty-real-photo img{translate:none}
+.profile-credit-list{list-style:none;padding:0;margin:0}
+.profile-credit-list li{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:20px 0;border-bottom:1px solid #ffffff20;line-height:1.7}
+.profile-credit-list strong{font-size:15px;font-weight:500;flex:1 1 200px;overflow-wrap:anywhere}
+.profile-credit-list span{font-size:13px;color:#bbb}
+.profile-credit-list small{font-size:11px;color:var(--gold);border:1px solid #ffffff30;border-radius:20px;padding:2px 10px}
+@media(max-width:600px){.profile-credit-list li{gap:8px 12px}.profile-credit-list strong{flex-basis:100%}.career-list>div{align-items:start;gap:12px}.career-list p{line-height:1.8}}
+.faculty-photo.kim-current-photo img{inset:0 auto auto -100%;width:200%;height:auto;object-fit:contain;filter:none}
+.head-trainer-badge{position:absolute;left:22px;bottom:22px;padding:9px 15px;border-radius:30px;background:var(--gold);color:#17181d;font-size:12px;font-weight:600}
+.head-trainer-intro{font-size:clamp(20px,2.2vw,28px);line-height:1.7;letter-spacing:-.7px;margin-top:32px}
+.head-photo-credit{font-size:10px;color:#888;margin-top:18px}
+.head-photo-section{padding:75px 0;scroll-margin-top:80px;border-bottom:1px solid #ffffff20}
+.head-photo-section h2{font-size:30px;font-weight:500;margin-bottom:35px}
+.head-photo-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.head-photo-gallery figure{margin:0;min-width:0}
+.head-gallery-photo{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:16px;background:#24252a}
+.head-gallery-photo img{width:100%;height:100%;object-fit:cover}
+.head-gallery-photo.kim-current-photo img{position:absolute;left:-100%;width:200%;height:auto;object-fit:contain;max-width:none}
+.head-gallery-photo.kim-archive-photo img{object-fit:contain}
+.head-photo-gallery figcaption{display:grid;gap:9px;margin-top:18px;font-size:10px;color:#888;line-height:1.6}
+.head-photo-gallery figcaption strong{font-size:14px;color:#eee;font-weight:500}
+.head-photo-gallery figcaption a{color:var(--gold)}
+.head-source-section{padding:35px 0 80px}
+.head-source-section>div{display:flex;flex-wrap:wrap;gap:15px 25px;font-size:11px;color:#999;line-height:1.8}
+@media(max-width:800px){.head-photo-gallery{grid-template-columns:1fr 1fr}.head-photo-gallery figure:last-child{grid-column:1/-1;max-width:400px}.head-trainer-badge{left:15px;bottom:15px}.profile-tabs a{white-space:nowrap;font-size:11px}.head-trainer-intro{margin-top:25px}}
+@media(max-width:420px){.head-photo-gallery{grid-template-columns:1fr}.head-photo-gallery figure:last-child{grid-column:auto;max-width:none}.profile-tabs>div{gap:12px}}
+.faculty-photo.hyung-min-photo img{object-position:65% 40%}
+.hyung-min-title{color:var(--gold);font-size:15px;margin:24px 0 18px}
+.hyung-min-year-group{margin-bottom:36px}
+.hyung-min-year-group>h3{font-size:16px;color:var(--gold);letter-spacing:1px;margin:0 0 8px;font-weight:500}
+.hyung-min-group-title{font-size:17px;font-weight:500;color:var(--gold);margin:30px 0 15px}
+.hyung-min-group-title:first-child{margin-top:0}
+.head-gallery-photo.hyung-min-gallery-0 img{object-position:65% center}
+.head-gallery-photo.hyung-min-gallery-1{aspect-ratio:960/665}
+.head-gallery-photo.hyung-min-gallery-1 img{object-fit:contain}
+.head-gallery-photo.hyung-min-gallery-2 img{object-position:center 20%;object-fit:contain}
+.hyung-min-tabs{overflow-x:auto}
+.hyung-min-tabs>div{gap:30px;min-width:max-content}
+.hyung-min-tabs a{white-space:nowrap}
+@media(max-width:800px){.hyung-min-tabs>div{justify-content:flex-start;gap:25px}.hyung-min-year-group{margin-bottom:28px}}
+.hyung-min-photo+.profile-heading h2{font-size:16px;letter-spacing:2px;line-height:1.5}
+.profile-photo-viewer{min-width:0;width:100%;max-width:560px;margin-inline:auto}
+.profile-photo-stage{position:relative;aspect-ratio:1/1.08;overflow:hidden;border-radius:20px;background:#202126}
+.profile-photo-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.profile-photo-slide.is-active{opacity:1}
+.profile-photo-slide.photo-fit-0{object-fit:cover;object-position:65% 40%}
+.profile-photo-thumbs{display:flex;gap:12px;margin-top:16px}
+.profile-photo-thumbs button{width:82px;height:70px;padding:3px;border:2px solid transparent;border-radius:10px;background:#25262b;cursor:pointer;opacity:.6;transition:opacity .2s,border-color .2s}
+.profile-photo-thumbs button img{width:100%;height:100%;object-fit:cover;border-radius:5px}
+.profile-photo-thumbs button[aria-pressed=true]{border-color:var(--gold);opacity:1}
+.profile-photo-thumbs button:hover{opacity:1}
+.profile-photo-thumbs button:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.profile-photo-status{font-size:11px;line-height:1.7;color:#aaa;margin:12px 0 0}
+.hyung-min-heading h2{font-size:16px;letter-spacing:2px;line-height:1.5}
+@media(max-width:800px){.profile-photo-viewer{max-width:520px}.profile-photo-stage{aspect-ratio:1/1;border-radius:14px}.profile-photo-thumbs button{width:76px;height:64px}}
+/* Keep the supplied credits compact and give the work column more room. */
+.hyung-min-section{grid-template-columns:220px minmax(0,1fr);gap:48px;padding:52px 0;align-items:start}
+.hyung-min-section h2{font-size:28px;margin:12px 0 0;line-height:1.45}
+.hyung-min-section .faculty-kicker{margin-top:4px}
+.hyung-min-section-content{min-width:0;padding:4px 28px;background:#ffffff03;border:1px solid #ffffff12;border-radius:14px}
+.hyung-min-section .hyung-min-year-group{display:grid;grid-template-columns:92px minmax(0,1fr);gap:24px;margin:0;padding:20px 0;border-bottom:1px solid #ffffff16}
+.hyung-min-section .hyung-min-year-group:last-child{border-bottom:0}
+.hyung-min-section .hyung-min-year-group>h3{font-size:16px;line-height:1.7;margin:0;padding-top:3px}
+.hyung-min-section .profile-credit-list li{padding:6px 0;border-bottom:0;gap:10px 20px}
+.hyung-min-section .profile-credit-list strong{font-size:16px}
+.hyung-min-section .profile-credit-list span{font-size:12px}
+.hyung-min-section .career-list>div{border-bottom:0;padding:15px 0;gap:16px}
+.hyung-min-section .career-list p{color:#bbb;line-height:1.8}
+.hyung-min-section .hyung-min-group-title{margin:24px 0 10px}
+.hyung-min-section .hyung-min-group-title:first-child{margin-top:18px}
+#commercial.hyung-min-section .profile-credit-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;padding-bottom:18px}
+@media(max-width:800px){.hyung-min-section{grid-template-columns:1fr;gap:20px;padding:36px 0}.hyung-min-section-content{padding:4px 20px}.hyung-min-section .hyung-min-year-group{grid-template-columns:75px minmax(0,1fr);gap:16px;padding:17px 0}.hyung-min-section .profile-credit-list strong{font-size:14px}.hyung-min-section .profile-credit-list span{flex-basis:100%}.hyung-min-section h2{font-size:25px}}
+@media(max-width:420px){#commercial.hyung-min-section .profile-credit-list{grid-template-columns:1fr}.hyung-min-section .hyung-min-year-group{grid-template-columns:65px minmax(0,1fr);gap:12px}.hyung-min-section .hyung-min-year-group>h3{font-size:13px}}
+/* Soft teaching atmosphere behind the entire Kim Hyung Min profile. */
+.hyung-min-atmosphere{position:relative;isolation:isolate;background:#191b1d}
+.hyung-min-atmosphere::before{content:"";position:fixed;inset:-12px;z-index:-2;background:url('/assets/kim-hyung-min-teaching-ai.png') center center/cover no-repeat;filter:blur(5px) saturate(.6) brightness(.65);pointer-events:none}
+.hyung-min-atmosphere::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,15,18,.69),rgba(12,15,18,.5) 55%,rgba(12,15,18,.64));pointer-events:none}
+.hyung-min-atmosphere header{background:rgba(16,17,21,.83);backdrop-filter:blur(16px)}
+.hyung-min-atmosphere .profile-tabs{background:rgba(16,17,21,.78)}
+.hyung-min-atmosphere .hyung-min-section-content{background:rgba(16,19,22,.64);border-color:#ffffff20;backdrop-filter:blur(8px)}
+.hyung-min-atmosphere .profile-description,.hyung-min-atmosphere .career-list p{color:#d0d0ce}
+.hyung-min-atmosphere .profile-heading{text-shadow:0 2px 20px #0006}
+.hyung-min-atmosphere .faculty-footer{background:rgba(11,12,15,.86)}
+.profile-background-credit{font-size:10px;color:#a9aaa7;line-height:1.8;padding:18px 0 30px;margin:0}
+@media(max-width:800px){.hyung-min-atmosphere::before{background-position:60% center;filter:blur(4px) saturate(.6) brightness(.6)}.hyung-min-atmosphere::after{background:rgba(12,15,18,.62)}}
+.im-do-yoon-atmosphere{position:relative;isolation:isolate;background:#191b1d}
+.im-do-yoon-atmosphere::before{content:"";position:fixed;inset:-12px;z-index:-2;background:url('/assets/im-do-yoon-teaching-ai.png') center center/cover no-repeat;filter:blur(5px) saturate(.6) brightness(.65);pointer-events:none}
+.im-do-yoon-atmosphere::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,15,18,.69),rgba(12,15,18,.5) 55%,rgba(12,15,18,.64));pointer-events:none}
+.im-do-yoon-atmosphere header{background:rgba(16,17,21,.83);backdrop-filter:blur(16px)}
+.im-do-yoon-atmosphere .profile-tabs{background:rgba(16,17,21,.78)}
+.im-do-yoon-atmosphere .profile-section>div:last-child{padding:20px 24px;background:rgba(16,19,22,.64);border:1px solid #ffffff20;border-radius:14px;backdrop-filter:blur(8px);min-width:0}
+.im-do-yoon-atmosphere .profile-description,.im-do-yoon-atmosphere .career-list p{color:#d0d0ce}
+.im-do-yoon-atmosphere .profile-heading{text-shadow:0 2px 20px #0006}
+.im-do-yoon-atmosphere .faculty-footer{background:rgba(11,12,15,.86)}
+.im-do-yoon-atmosphere .faculty-related{background:rgba(16,19,22,.78);color:#fff}
+@media(max-width:800px){.im-do-yoon-atmosphere::before{background-position:60% center;filter:blur(4px) saturate(.6) brightness(.6)}.im-do-yoon-atmosphere::after{background:rgba(12,15,18,.62)}.im-do-yoon-atmosphere .profile-section>div:last-child{padding:16px 20px}}
+.im-profile-slide{object-fit:cover;object-position:center 25%}
+.im-do-yoon-atmosphere .profile-photo-thumbs{gap:10px;flex-wrap:wrap}
+
+.pyeon-atmosphere{position:relative;isolation:isolate;background:#191b1d}
+.pyeon-atmosphere::before{content:"";position:fixed;inset:-12px;z-index:-2;background:url('/assets/pyeon-bo-seung-teaching-ai.png') center center/cover no-repeat;filter:blur(5px) saturate(.6) brightness(.65);pointer-events:none}
+.pyeon-atmosphere::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,15,18,.69),rgba(12,15,18,.5) 55%,rgba(12,15,18,.64));pointer-events:none}
+.pyeon-atmosphere header{background:rgba(16,17,21,.83);backdrop-filter:blur(16px)}
+.pyeon-atmosphere .profile-tabs{background:rgba(16,17,21,.78)}
+.pyeon-atmosphere .profile-section>div:last-child{padding:20px 24px;background:rgba(16,19,22,.64);border:1px solid #ffffff20;border-radius:14px;backdrop-filter:blur(8px);min-width:0}
+.pyeon-atmosphere .profile-description,.pyeon-atmosphere .career-list p{color:#d0d0ce}
+.pyeon-atmosphere .profile-heading{text-shadow:0 2px 20px #0006}
+.pyeon-atmosphere .faculty-footer{background:rgba(11,12,15,.86)}
+.pyeon-atmosphere .faculty-related{background:rgba(16,19,22,.78);color:#fff}
+@media(max-width:800px){.pyeon-atmosphere::before{background-position:60% center;filter:blur(4px) saturate(.6) brightness(.6)}.pyeon-atmosphere::after{background:rgba(12,15,18,.62)}.pyeon-atmosphere .profile-section>div:last-child{padding:16px 20px}}
+.pyeon-atmosphere .profile-photo-thumbs{gap:10px;flex-wrap:wrap}
+
+.jung-tae-atmosphere{position:relative;isolation:isolate;background:#191b1d}
+.jung-tae-atmosphere::before{content:"";position:fixed;inset:-12px;z-index:-2;background:url('/assets/kim-jung-tae-teaching-ai.png') center center/cover no-repeat;filter:blur(5px) saturate(.6) brightness(.65);pointer-events:none}
+.jung-tae-atmosphere::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,15,18,.69),rgba(12,15,18,.5) 55%,rgba(12,15,18,.64));pointer-events:none}
+.jung-tae-atmosphere header{background:rgba(16,17,21,.83);backdrop-filter:blur(16px)}
+.jung-tae-atmosphere .profile-tabs{background:rgba(16,17,21,.78)}
+.jung-tae-atmosphere .profile-section>div:last-child{padding:20px 24px;background:rgba(16,19,22,.64);border:1px solid #ffffff20;border-radius:14px;backdrop-filter:blur(8px);min-width:0}
+.jung-tae-atmosphere .profile-description,.jung-tae-atmosphere .career-list p{color:#d0d0ce}
+.jung-tae-atmosphere .profile-heading{text-shadow:0 2px 20px #0006}
+.jung-tae-atmosphere .faculty-footer{background:rgba(11,12,15,.86)}
+.jung-tae-atmosphere .faculty-related{background:rgba(16,19,22,.78);color:#fff}
+@media(max-width:800px){.jung-tae-atmosphere::before{background-position:60% center;filter:blur(4px) saturate(.6) brightness(.6)}.jung-tae-atmosphere::after{background:rgba(12,15,18,.62)}.jung-tae-atmosphere .profile-section>div:last-child{padding:16px 20px}}
+.jung-tae-atmosphere .profile-photo-thumbs{gap:10px;flex-wrap:wrap}
+.jung-tae-atmosphere .kim-slide-0{left:-100%;right:auto;width:200%;height:auto;max-width:none;object-fit:contain}
+.jung-tae-atmosphere .kim-slide-2{object-fit:cover;object-position:center top}
+
+/* Compact career overview: preserve all supplied credits and their categories. */
+.profile-page .profile-back{margin:18px 0}
+.profile-page .profile-layout{grid-template-columns:300px 1fr;gap:40px;padding:0 0 28px;align-items:center}
+.profile-page .profile-photo-viewer{max-width:300px}
+.profile-page .profile-photo-stage{aspect-ratio:1/1}
+.profile-page .profile-photo-thumbs{gap:8px;margin-top:8px}
+.profile-page .profile-photo-thumbs button{width:54px;height:44px}
+.profile-page .profile-heading h1{font-size:52px;margin:16px 0 12px;letter-spacing:-2px}
+.profile-page .head-trainer-intro{font-size:20px;margin-top:18px}
+.profile-page .profile-description{line-height:1.7;margin:12px 0}
+.profile-page .profile-heading .button{margin-top:14px}
+.profile-page .profile-tabs a{padding:15px 0}
+.profile-page .profile-section{grid-template-columns:1fr;gap:14px;padding:26px 0;scroll-margin-top:65px}
+.profile-page .profile-section h2{font-size:22px;line-height:1.35;margin:6px 0}
+.profile-page .profile-section h2 br{display:none}
+.profile-page .profile-section .faculty-notice{margin:8px 0}
+.profile-page .profile-section>div:last-child{min-width:0;padding:16px 20px}
+.profile-page .profile-credit-list{column-count:2;column-gap:32px}
+.profile-page .profile-credit-list li{break-inside:avoid;gap:5px 10px;padding:7px 0;line-height:1.5}
+.profile-page .profile-credit-list strong{font-size:13px;flex:1 1 160px}
+.profile-page .profile-credit-list span{font-size:12px}
+.profile-page .profile-credit-list small{font-size:10px;padding:1px 7px}
+.profile-page .hyung-min-year-group{margin-bottom:14px}
+.profile-page .hyung-min-year-group>h3{font-size:13px;margin:0 0 4px}
+.profile-page .hyung-min-group-title{font-size:14px;margin:18px 0 8px}
+.profile-page .career-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
+.profile-page .career-list>div{grid-template-columns:70px 1fr;gap:12px;padding:8px 0;align-items:baseline}
+.profile-page .career-list h3,.profile-page .career-list p{font-size:13px;line-height:1.6;margin:0}
+.profile-page .head-photo-section{padding:36px 0}
+@media(max-width:800px){
+ .profile-page .profile-layout{grid-template-columns:180px 1fr;gap:22px}
+ .profile-page .profile-heading h1{font-size:38px}
+ .profile-page .profile-heading h2{font-size:16px}
+ .profile-page .head-trainer-intro{font-size:16px}
+ .profile-page .profile-photo-viewer{max-width:180px}
+ .profile-page .profile-credit-list{column-count:1}
+ .profile-page .career-list{grid-template-columns:1fr}
+ .profile-page .profile-section>div:last-child{padding:12px 16px}
+}
+@media(max-width:540px){
+ .profile-page .profile-layout{grid-template-columns:1fr;gap:18px}
+ .profile-page .profile-photo-viewer{max-width:220px}
+ .profile-page .profile-heading h1{font-size:40px}
+ .profile-page .profile-credit-list strong{flex-basis:100%}
+ .profile-page .profile-section{padding:22px 0}
+}
+.profile-page #film .hyung-min-section-content,.profile-page #drama .hyung-min-section-content,.profile-page #stage .hyung-min-section-content{column-count:2;column-gap:32px}
+.profile-page .hyung-min-year-group{break-inside:avoid}
+.profile-page .hyung-min-year-group .profile-credit-list{column-count:1}
+@media(max-width:800px){.profile-page #film .hyung-min-section-content,.profile-page #drama .hyung-min-section-content,.profile-page #stage .hyung-min-section-content{column-count:1}}
+/* Show the complete instructor team together in the listing. */
+.faculty-list .faculty-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.faculty-list .faculty-card{min-width:0}
+.faculty-list .faculty-card-copy{padding-top:18px}
+.faculty-list .faculty-card h2{font-size:30px;letter-spacing:-1px;margin:10px 0 12px}
+.faculty-list .faculty-card p{font-size:12px;gap:8px}
+.faculty-list .faculty-card p span{width:28px;height:28px;flex-shrink:0}
+.faculty-list .head-trainer-badge{left:12px;bottom:12px;padding:7px 11px;font-size:10px}
+@media(max-width:800px){
+ .faculty-list .faculty-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px}
+ .faculty-list .faculty-card h2{font-size:25px}
+ .faculty-list .faculty-card p{font-size:11px}
+}
+/* Desktop profile spread: portrait at left, complete career overview at right. */
+@media(min-width:1100px){
+ .profile-page main{display:grid;grid-template-columns:240px minmax(0,1fr);gap:0 34px;width:min(1440px,92%);margin:0 auto;padding:24px 0 36px;align-items:start}
+ .profile-page .profile-hero{width:100%;grid-column:1;grid-row:1 / span 3}
+ .profile-page .profile-back{margin:0 0 16px;font-size:11px}
+ .profile-page .profile-layout{display:flex;flex-direction:column;align-items:stretch;gap:20px;padding:0}
+ .profile-page .profile-photo-viewer{max-width:240px}
+ .profile-page .profile-photo-stage{aspect-ratio:4/4.5;border-radius:14px}
+ .profile-page .profile-heading{animation:none}
+ .profile-page .profile-heading h1{font-size:38px;margin:12px 0 10px}
+ .profile-page .profile-heading h2{font-size:16px;line-height:1.5}
+ .profile-page .hyung-min-title{font-size:11px;margin:12px 0}
+ .profile-page .profile-description{font-size:12px;line-height:1.65}
+ .profile-page .head-trainer-intro{font-size:15px;line-height:1.65;margin-top:16px}
+ .profile-page .faculty-kicker{font-size:9px;letter-spacing:1.4px}
+ .profile-page .profile-heading .button{padding:12px 18px;font-size:12px}
+ .profile-page .profile-tabs{grid-column:2;position:static;background:transparent;backdrop-filter:none;border-top:0;margin:0 0 18px}
+ .profile-page .profile-tabs>.faculty-wrap{width:100%;gap:24px;min-width:0;flex-wrap:wrap}
+ .profile-page .profile-tabs a{padding:0 0 12px;font-size:11px}
+ .profile-page .profile-body{grid-column:2;width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 22px;align-items:start}
+ .profile-page .profile-section{display:block;padding:0;border:0;scroll-margin-top:120px}
+ .profile-page .profile-section h2{font-size:17px;margin:6px 0 12px;line-height:1.4}
+ .profile-page .profile-section>div:last-child{padding:12px 14px;border-radius:10px;background:rgba(16,19,22,.8)}
+ .profile-page .profile-section#career{grid-column:1 / -1}
+ .profile-page .profile-section#career>div:first-child{display:flex;align-items:center;gap:16px}
+ .profile-page .profile-section#career h2{margin:0 0 10px}
+ .profile-page .profile-section#career .faculty-kicker{margin:0 0 10px}
+ .profile-page .profile-section#career .hyung-min-group-title{margin:8px 0 4px;font-size:12px}
+ .profile-page .profile-section#career .profile-credit-list{column-count:2}
+ .profile-page .profile-section#film,.profile-page .profile-section#drama,.profile-page .profile-section#stage{grid-row:2}
+ .profile-page .profile-section#film{grid-column:1}
+ .profile-page .profile-section#drama{grid-column:2}
+ .profile-page .profile-section#stage{grid-column:3}
+ .profile-page .profile-section#commercial{grid-column:3;grid-row:3}
+ .profile-page .profile-section#notes{grid-column:3;grid-row:2}
+ .profile-page #film .hyung-min-section-content,.profile-page #drama .hyung-min-section-content,.profile-page #stage .hyung-min-section-content,.profile-page .profile-credit-list{column-count:1}
+ .profile-page .profile-credit-list li{padding:4px 0;gap:4px;line-height:1.4}
+ .profile-page .profile-credit-list strong{font-size:12px;font-weight:400;flex-basis:100%}
+ .profile-page .hyung-min-year-group{margin-bottom:9px}
+ .profile-page .hyung-min-year-group>h3{font-size:10px;margin:0 0 2px}
+ .profile-page .hyung-min-group-title{font-size:12px;margin:10px 0 4px}
+ .profile-page .career-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px}
+ .profile-page .career-list>div{grid-template-columns:1fr;gap:3px;padding:4px 0}
+ .profile-page .career-list h3{font-size:10px;color:var(--gold)}
+ .profile-page .career-list p{font-size:12px}
+ .profile-page .head-photo-section{display:none}
+ .profile-page .profile-tabs a[href="#photos"]{display:none}
+ .profile-page .head-source-section{grid-column:1 / -1;padding:12px 0}
+ .profile-page .head-source-section .faculty-kicker{display:none}
+ .profile-page .profile-list-link{grid-column:1 / -1;font-size:11px;padding:12px 18px;margin:0}
+ .profile-page .profile-background-credit{grid-column:1 / -1;font-size:10px;margin:0}
+ .profile-page .faculty-related{grid-column:1 / -1;margin-top:30px;padding:30px 0}
+ .profile-page .faculty-reveal{opacity:1;transform:none;transition:none}
+ .profile-page .faculty-dock{display:none}
+}
+@media(min-width:1100px){
+ .profile-page .profile-extra-column{grid-column:3;grid-row:2;display:grid;gap:20px}
+ .profile-page .profile-extra-column #stage,.profile-page .profile-extra-column #commercial{grid-column:auto;grid-row:auto}
+ .profile-page #drama .hyung-min-year-group{display:grid;grid-template-columns:32px 1fr;gap:8px;margin-bottom:5px}
+ .profile-page #drama .hyung-min-year-group>h3{padding-top:4px}
+ .profile-page #commercial .profile-credit-list{column-count:2;column-gap:12px}
+ .profile-page #commercial .profile-credit-list strong{font-size:11px}
+}
+@media(min-width:1100px){
+ .profile-page .profile-section .hyung-min-year-group{padding:0 0 5px;gap:8px;grid-template-columns:42px 1fr;margin:0 0 5px}
+ .profile-page .profile-section .hyung-min-year-group>h3{font-size:10px;margin:0;padding-top:4px}
+ .profile-page .profile-extra-column .profile-section{padding:0}
+ .profile-page .profile-section .hyung-min-group-title{margin:8px 0 4px;font-size:12px}
+ .profile-page .profile-section .profile-credit-list li{padding:3px 0;line-height:1.4}
+}
+@media(min-width:1100px){
+ .profile-page .profile-body{grid-template-columns:.85fr 1.4fr 1fr}
+ .profile-page #drama .hyung-min-section-content{column-count:2;column-gap:16px}
+ .profile-page #drama .hyung-min-year-group{display:block;break-inside:avoid}
+ .profile-page #drama .hyung-min-year-group>h3{padding:0;margin-bottom:3px}
+ .profile-page #commercial .hyung-min-group-title{padding:0;margin:8px 0 4px}
+ .profile-page .profile-extra-column{gap:14px}
+ .profile-page #commercial h2{font-size:15px}
+}
+.profile-credit-anchor{display:block;height:0;scroll-margin-top:120px}
+.profile-page #works .hyung-min-section-content{column-count:2;column-gap:24px}
+.profile-page #works .profile-credit-list{column-count:1}
+@media(min-width:1100px){
+ .profile-page .profile-credit-anchor{grid-column:1 / -1;margin:-9px 0}
+ .profile-page .profile-section#works{grid-column:1 / span 2;grid-row:2}
+ .profile-page #works .hyung-min-section-content{column-count:3;column-gap:18px}
+ .profile-page #works .hyung-min-year-group{display:block;padding:0 0 5px;break-inside:avoid}
+ .profile-page #works .hyung-min-year-group>h3{padding:0;margin:0 0 3px}
+ .profile-page #works .hyung-min-section-content>.profile-credit-list{column-count:3;column-gap:18px}
+}
+@media(max-width:800px){.profile-page #works .hyung-min-section-content{column-count:1}}
+.profile-page .work-browser>div.work-browser-shell{padding:0;overflow:hidden;border:1px solid #ffffff20;background:rgba(16,19,22,.85);border-radius:14px}
+.work-category-tabs{display:flex;gap:6px;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid #ffffff18}
+.work-category-tabs button{border:0;border-radius:24px;padding:9px 17px;background:transparent;color:#aaa;font:inherit;font-size:12px;cursor:pointer;transition:background .2s,color .2s}
+.work-category-tabs button[aria-selected=true]{background:var(--gold);color:#17181c;font-weight:600}
+.work-category-tabs button:hover{color:#fff;background:#ffffff15}
+.work-category-tabs button[aria-selected=true]:hover{background:var(--gold);color:#17181c}
+.work-category-tabs button:focus-visible,.work-panel:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+.work-panel[hidden]{display:none}
+.work-panel{padding:20px 22px;min-height:250px}
+.work-panel-content{column-count:2;column-gap:28px}
+.profile-page .work-panel-content>.profile-credit-list{column-count:2}
+.profile-page .work-panel-content .hyung-min-year-group{break-inside:avoid;padding:0 0 8px;display:block}
+.profile-page .work-panel-content .hyung-min-year-group>h3{font-size:11px;margin:0 0 6px;padding:0}
+.profile-page .work-panel-content .hyung-min-year-group .profile-credit-list{column-count:1}
+@media(min-width:1100px){
+ .profile-page .profile-section#works{grid-column:1 / -1;grid-row:2}
+ .profile-page .work-panel-content{column-count:3;column-gap:30px}
+ .profile-page .work-panel-content>.profile-credit-list{column-count:3}
+ .profile-page .work-panel{min-height:340px;padding:20px 24px}
+ .profile-page .work-panel .profile-credit-list strong{font-size:13px}
+ .profile-page .work-panel .profile-credit-list li{padding:6px 0}
+ .profile-page .profile-section#notes{grid-column:1 / -1;grid-row:auto}
+}
+@media(max-width:600px){
+ .work-category-tabs{padding:12px;gap:4px}
+ .work-category-tabs button{font-size:11px;padding:8px 12px}
+ .work-panel{padding:16px;min-height:220px}
+ .work-panel-content,.profile-page .work-panel-content>.profile-credit-list{column-count:1}
+}
+.work-panel-content:has(>.profile-credit-list){column-count:1}
+.work-panel:not([hidden]){animation:work-panel-enter .55s cubic-bezier(.2,.65,.3,1) both}
+@keyframes work-panel-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.work-panel:not([hidden]){animation:none}}
+.profile-photo-slide{transition:opacity .7s ease}
+@media(prefers-reduced-motion:reduce){.profile-photo-slide{transition:none}}
+/* Compact mobile profile: identity and portrait share the first row. */
+@media(max-width:800px){
+ .profile-page .faculty-wrap{width:92%}
+ .profile-page .profile-back{font-size:10px;margin:12px 0}
+ .profile-page .profile-layout{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;align-items:start;padding:0 0 18px}
+ .profile-page .profile-photo-viewer{width:100%;max-width:110px;margin:0}
+ .profile-page .profile-photo-stage{aspect-ratio:3/4;border-radius:10px}
+ .profile-page .profile-photo-thumbs{gap:4px;margin-top:6px}
+ .profile-page .profile-photo-thumbs button{width:32px;height:30px;border-radius:6px;padding:1px}
+ .profile-page .profile-heading .faculty-kicker{font-size:8px;letter-spacing:.8px;margin:0}
+ .profile-page .profile-heading .faculty-kicker span{display:none}
+ .profile-page .profile-heading h1{font-size:29px;letter-spacing:-1px;margin:9px 0 7px}
+ .profile-page .profile-heading h2{font-size:13px;line-height:1.5;margin:0}
+ .profile-page .hyung-min-title{font-size:9px;margin:7px 0}
+ .profile-page .profile-description{font-size:11px;line-height:1.6;margin:9px 0}
+ .profile-page .head-trainer-intro{font-size:12px;line-height:1.6;margin:10px 0}
+ .profile-page .profile-heading .button{font-size:10px;padding:9px 13px;margin-top:7px}
+ .profile-page .head-photo-credit{font-size:8px;margin:7px 0}
+ .profile-page .profile-tabs>div{justify-content:flex-start;gap:24px;min-width:0}
+ .profile-page .profile-tabs a{padding:12px 0;font-size:11px}
+ .profile-page .profile-tabs a[href="#photos"]{display:none}
+ .profile-page .profile-section{padding:16px 0;gap:10px}
+ .profile-page .profile-section>div:first-child{display:flex;align-items:center;gap:10px}
+ .profile-page .profile-section>div:first-child .faculty-kicker{font-size:8px;letter-spacing:.8px;margin:0}
+ .profile-page .profile-section h2{font-size:16px;margin:0}
+ .profile-page .profile-section>div:last-child{padding:10px 12px}
+ .profile-page .career-list{grid-template-columns:1fr}
+ .profile-page .career-list>div{padding:5px 0;grid-template-columns:56px 1fr;gap:8px}
+ .profile-page .career-list h3,.profile-page .career-list p{font-size:11px}
+ .profile-page #career .hyung-min-group-title{font-size:11px;margin:8px 0 4px}
+ .profile-page #career .profile-credit-list li{padding:4px 0}
+ .profile-page #career .profile-credit-list strong{font-size:11px}
+ .profile-page .work-browser>div.work-browser-shell{padding:0}
+ .profile-page .work-category-tabs{padding:9px;gap:3px}
+ .profile-page .work-category-tabs button{font-size:10px;padding:7px 10px}
+ .profile-page .work-panel{padding:12px;min-height:160px}
+ .profile-page .work-panel-content{column-count:2;column-gap:14px}
+ .profile-page .work-panel-content:has(>.profile-credit-list){column-count:1}
+ .profile-page .work-panel-content>.profile-credit-list{column-count:2;column-gap:14px}
+ .profile-page .work-panel-content .hyung-min-year-group{padding:0 0 4px;margin:0 0 6px}
+ .profile-page .work-panel-content .hyung-min-year-group>h3{font-size:9px;margin:0 0 3px}
+ .profile-page .work-panel .profile-credit-list li{padding:3px 0;line-height:1.5}
+ .profile-page .work-panel .profile-credit-list strong{font-size:11px}
+ .profile-page .head-photo-section{display:none}
+ .profile-page .profile-list-link{padding:12px 16px;font-size:11px;margin-top:14px}
+ .profile-page .head-source-section{padding:16px 0}
+ .profile-page .head-source-section .faculty-kicker{font-size:9px}
+ .profile-page .faculty-related{padding:24px 0}
+ .profile-page .faculty-related h2{font-size:20px;margin-bottom:20px}
+ .profile-page .faculty-dock{display:none}
+}
+.profile-page .work-panel{height:350px;min-height:0;display:flex;flex-direction:column;gap:10px;box-sizing:border-box}
+.profile-page .work-panel[hidden]{display:none}
+.work-panel-viewport{height:270px;flex:none;overflow:hidden}
+.work-more{align-self:flex-end;border:1px solid #d9b45266;border-radius:20px;background:transparent;color:var(--gold);font:inherit;font-size:12px;padding:7px 14px;cursor:pointer}
+.work-more[hidden]{display:none}
+.work-full-dialog{width:min(800px,90vw);max-height:80dvh;box-sizing:border-box;padding:24px;background:#17191d;color:#eee;border:1px solid #d9b45266;border-radius:18px;overflow:auto}
+.work-full-dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
+.work-dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}
+.work-dialog-heading h2{font-size:20px;margin:0}
+.work-dialog-heading button{font:inherit;font-size:12px;background:transparent;color:#ddd;border:1px solid #ffffff30;border-radius:20px;padding:8px 14px;cursor:pointer}
+.work-dialog-content .work-panel-content{column-count:2;column-gap:28px}
+.work-dialog-content .hyung-min-year-group{break-inside:avoid;margin-bottom:16px}
+.work-dialog-content h3{font-size:12px;color:#d9b452;margin:0 0 6px}
+.work-dialog-content .profile-credit-list li{padding:7px 0}
+.work-dialog-content .profile-credit-list strong{font-size:13px}
+@media(max-width:800px){
+ .profile-page .work-panel{height:240px;padding:12px;gap:6px}
+ .work-panel-viewport{height:175px}
+ .work-more{font-size:11px;padding:6px 12px}
+ .work-full-dialog{padding:18px}
+ .work-dialog-heading h2{font-size:16px}
+ .work-dialog-content .work-panel-content{column-count:1}
+}
+.profile-identity{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 14px}
+.profile-page .profile-identity h1{margin:0;line-height:1.3}
+.profile-page .profile-identity h2{margin:0;font-size:14px;line-height:1.5}
+@media(min-width:1100px){.profile-page .profile-identity h1{font-size:30px}.profile-page .profile-identity{gap:6px 10px}.profile-page .profile-identity h2{font-size:12px}}
+@media(max-width:800px){.profile-page .profile-identity h1{font-size:27px}.profile-page .profile-identity h2{font-size:11px}.profile-page .profile-identity{gap:4px 8px}.profile-page .profile-layout{align-items:center}}
+.profile-page .career-preview{max-height:160px;overflow:hidden}
+.career-more{display:block;margin:10px 0 0 auto;border:1px solid #d9b45266;border-radius:20px;background:transparent;color:var(--gold);font:inherit;font-size:12px;padding:7px 14px;cursor:pointer}
+@media(max-width:800px){.profile-page .career-preview{max-height:135px}.career-more{font-size:11px;padding:6px 12px}}
+/* Mobile first-screen budget: details remain available through More. */
+@media(max-width:800px){
+ .profile-page .profile-layout{grid-template-columns:86px minmax(0,1fr);gap:14px;padding-bottom:12px}
+ .profile-page .profile-photo-viewer{max-width:86px}
+ .profile-page .profile-photo-stage{aspect-ratio:1/1.15}
+ .profile-page .profile-photo-thumbs button{width:26px;height:25px}
+ .profile-page .profile-photo-thumbs{gap:3px}
+ .profile-page .profile-back{margin:9px 0;font-size:10px}
+ .profile-page .profile-identity h1{font-size:25px}
+ .profile-page .profile-section{padding:12px 0;gap:8px}
+ .profile-page .profile-tabs a{padding:10px 0}
+ .profile-page .career-preview{max-height:88px}
+ .profile-page .career-more{margin-top:7px}
+ .profile-page .work-panel{height:185px}
+ .profile-page .work-panel-viewport{height:123px}
+ .profile-page .work-category-tabs{padding:7px 8px}
+ .profile-page .work-category-tabs button{padding:6px 9px}
+ .profile-page .profile-list-link{margin-top:8px;padding:9px 12px;font-size:10px}
+ .profile-page .profile-background-credit{font-size:9px;margin:8px 0}
+}
+@media(max-width:800px){.profile-page .profile-tabs{display:none}}
+.career-summary p{display:grid;grid-template-columns:58px 1fr;gap:8px;font-size:12px;line-height:1.6;margin:0 0 6px;color:#eee}
+.career-summary p:last-child{margin-bottom:0}
+.career-summary span{color:var(--gold);font-size:10px}
+@media(max-width:800px){.career-summary p{font-size:11px;line-height:1.5;margin-bottom:5px;grid-template-columns:48px 1fr;gap:7px}}

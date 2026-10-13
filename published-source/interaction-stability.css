@@ -1,0 +1,50 @@
+/* Keep control geometry stable across selection and modal transitions. */
+html{scrollbar-gutter:stable}
+.filters button,.faculty-filters button,.work-category-tabs button,.reviews-filters button,.works-filters button{font-weight:500;transform:none!important;transition:background-color .18s,color .18s,border-color .18s}
+.work-category-tabs button[aria-selected=true]{font-weight:500}
+.button:hover,.button:active,.course-button:hover,.course-button:active{transform:none;box-shadow:none}
+.faculty-card.is-entering{animation:stable-content-fade .2s both;animation-delay:0ms}
+.work-panel:not([hidden]){animation:stable-content-fade .2s both}
+.motion-toggle,[data-team-motion]{min-width:140px}
+[data-play]{min-width:100px}
+@keyframes stable-content-fade{from{opacity:.4}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.faculty-card.is-entering,.work-panel:not([hidden]){animation:none}}
+.course-grid,.faculty-grid,.reviews-grid,.works-grid{align-content:start}
+.phone-consult-dialog{width:min(480px,calc(100% - 32px));max-height:calc(100dvh - 40px);padding:40px 28px;border:1px solid #ddd;border-radius:24px;background:#fff;color:#191919;text-align:center;position:fixed}
+.phone-consult-dialog::backdrop{background:#0009}
+.phone-consult-dialog h2{font-size:26px;line-height:1.4;margin:12px 0 20px}
+.phone-consult-dialog p{font-size:14px;line-height:1.8;color:#666}
+.phone-consult-dialog .phone-consult-kicker{font-size:11px;color:#9e7620;letter-spacing:2px}
+.phone-consult-close{position:absolute;top:12px;right:16px;border:0;background:none;color:#222;font-size:28px;padding:4px 8px;cursor:pointer}
+.phone-consult-person{margin:28px 0 8px}
+.phone-consult-number{display:block;font-size:clamp(24px,6vw,34px);font-weight:700;letter-spacing:.5px;color:#191919}
+.phone-consult-call{display:block;margin-top:26px;padding:16px 20px;background:#ecc04c;color:#191919;border-radius:32px;font-weight:600;text-decoration:none}
+/* Editorial emphasis within body copy, without changing the paragraph rhythm. */
+.copy-emphasis{font-weight:700;color:inherit;font-size:1.035em;line-height:inherit}
+.copy-emphasis-gold{color:#8b6514}
+.scene-atmosphere .copy-emphasis{color:#f4f4f5}
+.scene-atmosphere .copy-emphasis-gold{color:#ecc04c}
+/* Value statements have two fields, unlike the former numbered curriculum rows. */
+.class-values article{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:32px}
+.class-values article h3{margin:0;font-size:24px;line-height:1.5;min-width:0;word-break:keep-all;overflow-wrap:anywhere}
+.class-values article p{grid-column:auto;margin:0;min-width:0;font-size:16px;line-height:1.9;overflow-wrap:anywhere}
+@media(max-width:800px){
+ .class-values article{grid-template-columns:minmax(0,1fr);gap:14px;padding:26px 0}
+ .class-values article h3{font-size:21px;line-height:1.5}
+ .class-values article p{grid-column:1;font-size:14px;line-height:1.85}
+}
+/* Korean typography: restrained tracking, predictable emphasis and safe wrapping. */
+main h1,main h2,main h3{overflow-wrap:anywhere}
+main p,main summary{overflow-wrap:break-word}
+.copy-emphasis{font-size:1em}
+.footer-top{flex-wrap:wrap}
+.footer-top>a:not(.brand){flex-shrink:0}
+@media(max-width:850px){
+ .faq-consult-panel{grid-template-columns:minmax(0,1fr)!important;gap:24px!important;padding:30px 24px!important}
+ .faq-consult-panel>div{min-width:0;text-align:left!important}
+ .faq-consult-panel .button{max-width:100%;padding:16px 22px!important}
+ main h1{letter-spacing:-.035em}
+ main h2{letter-spacing:-.025em}
+ main h3{letter-spacing:-.015em}
+ .footer-top{gap:20px 24px}
+}

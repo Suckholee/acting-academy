@@ -1,0 +1,44 @@
+/* Instructor imagery remains decorative so headings, controls and real work stay clear. */
+.scene-atmosphere{position:relative;isolation:isolate;overflow:hidden;background:#101217}
+.scene-atmosphere::before{content:"";position:absolute;inset:-12px;z-index:-2;background-image:var(--scene-image);background-size:cover;background-position:var(--scene-position,center 42%);filter:blur(4px) saturate(.55) brightness(.85);pointer-events:none}
+.scene-atmosphere::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,13,18,.88) 0%,rgba(10,13,18,.77) 42%,rgba(10,13,18,.53) 100%),linear-gradient(0deg,rgba(10,13,18,.58),transparent 45%);pointer-events:none}
+.scene-atmosphere-camera{--scene-image:url('/assets/kim-hyung-min-camera-ai.png');--scene-position:center 42%}
+.scene-atmosphere-feedback{--scene-image:url('/assets/im-do-yoon-feedback-ai.png');--scene-position:center 45%}
+.scene-atmosphere-jung-tae{--scene-image:url('/assets/kim-jung-tae-teaching-ai.png');--scene-position:center 38%}
+.scene-atmosphere-pyeon{--scene-image:url('/assets/pyeon-bo-seung-teaching-ai.png');--scene-position:65% 40%}
+.scene-atmosphere-hyung-min{--scene-image:url('/assets/kim-hyung-min-teaching-ai.png');--scene-position:center 40%}
+.scene-atmosphere-im-do-yoon{--scene-image:url('/assets/im-do-yoon-teaching-ai.png');--scene-position:center 38%}
+.programs.scene-atmosphere::before{background-position:65% top;background-size:auto max(850px,100%);filter:blur(6px) saturate(.5) brightness(.65)}
+.programs.scene-atmosphere::after{background:linear-gradient(180deg,#10121780,#101217d9 65%,#101217f2)}
+.actors-section.scene-atmosphere::after{background:rgba(10,13,18,.8)}
+.scene-atmosphere .banner-desc,.scene-atmosphere .section-top>p,.scene-atmosphere .course-body>p:not(.tag){color:#d0d0d4}
+.scene-atmosphere .eyebrow.dark{color:#d0d0d4}
+.scene-atmosphere-credit{max-width:1180px;margin:0 auto;padding:20px max(4vw,20px);font-size:11px;line-height:1.7;color:#777}
+@media(max-width:800px){.scene-atmosphere::before{background-position:var(--scene-mobile-position,65% center);filter:blur(4px) saturate(.5) brightness(.7)}.scene-atmosphere::after{background:linear-gradient(90deg,#0a0d12dd,#0a0d12a8),linear-gradient(0deg,#0a0d1280,transparent)}.scene-atmosphere-camera{--scene-mobile-position:70% center}.scene-atmosphere-feedback{--scene-mobile-position:72% center}.programs.scene-atmosphere::before{background-size:cover;background-position:60% top}.programs.scene-atmosphere::after{background:#0a0d12dc}}
+.instructor-team-photo{position:relative;margin:0}
+.instructor-team-photo>img{display:block;width:100%;height:auto;border-radius:20px}
+.instructor-team-photo figcaption{font-size:11px;color:#b6b6bc;line-height:1.7;margin-top:12px}
+.instructor-team-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:28px}
+.instructor-team-links>a{padding:20px 0;border-top:1px solid #ffffff38}
+.instructor-team-links>a>span{font-size:12px;color:#ccb775}
+.instructor-team-links h3{font-size:25px;margin:12px 0 0}
+.instructor-team-links h3 small{font-size:16px;float:right;color:var(--gold)}
+.instructor-team-links>a:hover h3{color:var(--gold)}
+.instructor-team .actors-heading .course-button{margin-top:16px;color:var(--gold);display:inline-flex;gap:15px}
+@media(max-width:720px){.instructor-team-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px;margin-top:20px}.instructor-team-links h3{font-size:22px}.instructor-team-photo>img{border-radius:12px}.instructor-team .actors-heading{align-items:start}.instructor-team-photo figcaption{font-size:10px}}
+/* Retain the original flowing portrait-card design with the real instructor composite. */
+.instructor-team .portrait-grid{animation-play-state:running}
+.instructor-team .portrait-window:hover .portrait-grid,.instructor-team .portrait-window:focus-within .portrait-grid,.instructor-team.team-paused .portrait-grid{animation-play-state:paused}
+.instructor-team .instructor-portrait{position:relative;overflow:hidden}
+.instructor-team .instructor-portrait img{position:absolute;width:400%;max-width:none;height:auto;top:-6px;object-fit:initial;object-position:initial}
+.instructor-portrait-0 img{left:0}
+.instructor-portrait-1 img{left:-100%}
+.instructor-portrait-2 img{left:-200%}
+.instructor-portrait-3 img{left:-300%}
+.instructor-team [data-team-motion]{padding:10px 15px;border:1px solid #777;background:transparent;color:#fff;border-radius:30px;font-size:12px;cursor:pointer}
+.team-image-credit{font-size:11px;color:#aaa;line-height:1.7;margin-top:18px;position:relative;z-index:1}
+.instructor-team .portrait-grid a{display:block}
+.instructor-team .portrait-grid a:hover h3{color:var(--gold)}
+@media(prefers-reduced-motion:reduce){.instructor-team [data-team-motion]{display:none}}
+.mentor-card .instructor-portrait{position:relative;overflow:hidden}
+.mentor-card .instructor-portrait img{position:absolute;width:400%;max-width:none;height:auto;top:-6px;object-fit:initial;object-position:initial}

@@ -1,0 +1,3 @@
+const config=require('./materials-config');
+module.exports=(req,res)=>{const wrapper={setHeader:(...v)=>res.setHeader(...v),status(n){res.status(n);return this},json(data){return res.json({...data,providers:(process.env.MEMBER_OAUTH_PROVIDERS||'').split(',').filter(v=>['google','kakao'].includes(v)),policiesReady:Boolean(safe(process.env.MEMBER_TERMS_URL)&&safe(process.env.MEMBER_PRIVACY_URL)),termsUrl:safe(process.env.MEMBER_TERMS_URL),privacyUrl:safe(process.env.MEMBER_PRIVACY_URL)});}};return config(req,wrapper);};
+function safe(v){return typeof v==='string'&&/^\/(?!\/)[a-z0-9/_.-]+$/.test(v)?v:null;}

@@ -1,0 +1,9 @@
+.page-sharing{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:10px;padding:18px max(6vw,24px);color:#777;background:transparent}
+.page-sharing button{font:inherit;font-size:12px;cursor:pointer;border:1px solid #8885;border-radius:20px;background:transparent;color:inherit;padding:8px 14px}
+.page-sharing button:hover{color:#b48b24;border-color:#b48b24}
+.page-sharing button:focus-visible{outline:2px solid #b48b24;outline-offset:3px}
+.page-sharing .page-sharing-status{font-size:12px;line-height:1.5;margin:0}
+.page-sharing-status:empty{display:none}
+.page-sharing-fallback{font-size:12px;width:100%;text-align:right}
+.page-sharing-fallback[hidden]{display:none}
+.page-sharing-fallback input{display:block;width:100%;max-width:560px;margin:8px 0 0 auto;padding:10px;font:inherit;border:1px solid #8885;border-radius:6px}

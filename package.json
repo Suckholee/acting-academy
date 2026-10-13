@@ -1,1 +1,29 @@
-{"name":"kjt-actor-academy","private":true,"scripts":{"build":"esbuild src/materials/app.js --bundle --format=esm --minify --outfile=dist/materials-app.js","test":"node --test tests/*.test.cjs"},"dependencies":{"@supabase/supabase-js":"^2.117.2"},"devDependencies":{"@electric-sql/pglite":"^0.5.8","esbuild":"^0.28.2"}}
+{
+  "name": "kjt-actor-academy",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build:react": "vite build",
+    "build": "node scripts/build-published.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "build:legacy": "esbuild src/materials/app.js --bundle --format=esm --minify --outfile=dist/materials-app.js && node scripts/build-real-trainers.cjs && node scripts/build-head-trainer.cjs && node scripts/build-kim-hyung-min.cjs && node scripts/build-pyeon-bo-seung.cjs && node scripts/build-atmosphere.cjs && node scripts/build-instructor-group.cjs && node scripts/build-instructor-scenes.cjs && node scripts/build-real-imagery.cjs && node scripts/build-tuition.cjs && node scripts/build-real-facilities.cjs && node scripts/build-operation-info.cjs && node scripts/build-student-scenarios.cjs && node scripts/build-sharing.cjs && node scripts/build-branding.cjs && node scripts/build-profile-overview.cjs",
+    "preview:published": "node scripts/preview-published.cjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
+    "firebase": "^13.0.0",
+    "lucide-react": "^1.55.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.2",
+    "autoprefixer": "^10.6.1",
+    "esbuild": "^0.28.2",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.4"
+  }
+}

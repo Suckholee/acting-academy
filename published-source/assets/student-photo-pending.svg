@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+ <rect width="800" height="1000" fill="#eeece6"/>
+ <rect x="60" y="60" width="680" height="880" rx="12" fill="none" stroke="#d6d0c3"/>
+ <text x="400" y="470" text-anchor="middle" fill="#8b7b5c" font-family="sans-serif" font-size="20" letter-spacing="4">STUDENT PROFILE</text>
+ <text x="400" y="530" text-anchor="middle" fill="#57534b" font-family="sans-serif" font-size="32">수강생 사진 준비 중</text>
+ <path d="M340 580h120" stroke="#b8a578" stroke-width="2"/>
+</svg>
