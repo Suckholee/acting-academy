@@ -75,3 +75,26 @@ main p,main summary{overflow-wrap:break-word}
 .video-orbit-current{font-size:12px;letter-spacing:2px;min-width:70px;text-align:center;color:#777}
 @media(max-width:700px){.video-orbit{padding-inline:0}.video-orbit-heading,.video-orbit>.video-slot-heading{padding-inline:24px}.video-orbit-track{gap:16px;padding-inline:calc((100% - 240px)/2)}.video-orbit-card{flex-basis:240px}}
 @media(prefers-reduced-motion:reduce){.video-orbit-card{transform:none;opacity:1}}
+/* A dark screening space lets the reel cards retain their cinematic contrast. */
+.video-orbit{max-width:none;background:radial-gradient(ellipse at 50% 48%,rgba(154,114,39,.14),transparent 60%),linear-gradient(145deg,#17181c,#0d0e11 70%);color:#f5f5f6;border-top:1px solid #ffffff0d;border-bottom:1px solid #ffffff0d;padding-top:72px;padding-bottom:64px}
+.video-orbit>.video-slot-heading{max-width:1120px;margin:0 auto;padding-inline:24px}
+.video-orbit .video-slot-heading h2{color:#f5f5f6}
+.video-orbit .video-slot-heading>p:first-child{color:#ecc04c}
+.video-orbit .video-slot-heading>p:last-child{color:#b9b9c0}
+.video-orbit .copy-emphasis{color:#f5f5f6}
+.video-orbit .copy-emphasis-gold{color:#ecc04c}
+.video-orbit-track{max-width:1400px;margin-inline:auto}
+.video-orbit-card .video-slot-frame{border-color:#ffffff20;box-shadow:0 18px 48px #0005}
+.video-orbit-controls button{background:#ffffff08;color:#eee;border-color:#ffffff25;transition:background-color .18s,border-color .18s}
+.video-orbit-controls button:hover{background:#ecc04c18;border-color:#ecc04c80}
+.video-orbit-current{color:#b4b2aa}
+@media(max-width:700px){.video-orbit{padding-top:48px;padding-bottom:40px}}
+/* Soft stage lighting: bright surroundings, with the performance in focus. */
+.video-orbit{position:relative;isolation:isolate;background:#090a0c}
+.video-orbit::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 25% 48%,rgba(239,223,194,.2) 0%,rgba(214,194,157,.07) 23%,transparent 48%),radial-gradient(ellipse at 75% 48%,rgba(239,223,194,.2) 0%,rgba(214,194,157,.07) 23%,transparent 48%),radial-gradient(ellipse at 50% 100%,rgba(207,180,123,.12),transparent 55%)}
+.video-orbit-track{isolation:isolate;background:radial-gradient(ellipse at 50% 100%,rgba(255,240,208,.08),transparent 64%)}
+.video-orbit-track::before,.video-orbit-track::after{content:"";position:sticky;flex:0 0 0;align-self:stretch;top:0;width:0;pointer-events:none;z-index:-1;filter:blur(24px)}
+.video-orbit-card .video-slot-frame{border-color:#eee1cb38;box-shadow:0 24px 48px #0007,0 0 60px rgba(233,216,183,.12)}
+.video-orbit .video-slot-heading{position:relative;z-index:1}
+.video-orbit::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:conic-gradient(from 155deg at 18% 0%,transparent 0deg,rgba(255,242,213,.10) 14deg,rgba(255,242,213,.03) 32deg,transparent 43deg),conic-gradient(from 162deg at 82% 0%,transparent 0deg,rgba(255,242,213,.03) 12deg,rgba(255,242,213,.10) 28deg,transparent 43deg);filter:blur(20px);opacity:.75}
+.video-orbit-track::before,.video-orbit-track::after{content:none}
