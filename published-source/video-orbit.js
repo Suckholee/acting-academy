@@ -3,7 +3,7 @@
  const track=section.querySelector('.video-orbit-track'),cards=[...track.querySelectorAll('.video-orbit-card')],counter=section.querySelector('.video-orbit-current');
  const reduced=matchMedia('(prefers-reduced-motion:reduce)');let current=0,queued=false;
  const paint=()=>{queued=false;const center=track.scrollLeft+track.clientWidth/2;let nearest=0,distance=Infinity;
-  cards.forEach((card,i)=>{const delta=(card.offsetLeft+card.offsetWidth/2-center)/card.offsetWidth;const d=Math.abs(delta);if(d<distance){distance=d;nearest=i;}card.style.setProperty('--orbit-turn',Math.max(-1,Math.min(1,delta))*-18+'deg');card.style.setProperty('--orbit-scale',1-Math.min(d,1)*.14);card.style.setProperty('--orbit-opacity',1-Math.min(d,1)*.38);});
+  cards.forEach((card,i)=>{const delta=(card.offsetLeft+card.offsetWidth/2-center)/card.offsetWidth;const d=Math.abs(delta);if(d<distance){distance=d;nearest=i;}card.style.setProperty('--orbit-turn',Math.max(-1,Math.min(1,delta))*-18+'deg');card.style.setProperty('--orbit-scale',1-Math.min(d,1)*.14);card.style.setProperty('--orbit-opacity',1-Math.min(d,1)*.12);});
   current=nearest;counter.textContent=String(current+1).padStart(2,'0')+' / '+String(cards.length).padStart(2,'0');
  };
  const update=()=>{if(!queued){queued=true;requestAnimationFrame(paint);}};

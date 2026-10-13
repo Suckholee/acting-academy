@@ -98,3 +98,10 @@ main p,main summary{overflow-wrap:break-word}
 .video-orbit .video-slot-heading{position:relative;z-index:1}
 .video-orbit::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:conic-gradient(from 155deg at 18% 0%,transparent 0deg,rgba(255,242,213,.10) 14deg,rgba(255,242,213,.03) 32deg,transparent 43deg),conic-gradient(from 162deg at 82% 0%,transparent 0deg,rgba(255,242,213,.03) 12deg,rgba(255,242,213,.10) 28deg,transparent 43deg);filter:blur(20px);opacity:.75}
 .video-orbit-track::before,.video-orbit-track::after{content:none}
+/* Distinct illuminated frames separate each video from the dark stage. */
+.video-orbit-card .video-slot-frame{border:2px solid rgba(242,224,181,.65);background:#39332b;box-shadow:0 20px 40px #0009,0 0 0 1px #fff1,0 0 28px rgba(241,210,150,.22)}
+.video-orbit-card .video-slot-frame img{opacity:.82;filter:none}
+.video-orbit-card .video-slot-overlay{background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.08) 25%,rgba(0,0,0,.56) 62%,rgba(0,0,0,.36));text-shadow:0 2px 10px #000a}
+.video-orbit-card .video-slot-symbol{background:#15120b70;border-color:#ecc04c;color:#f5d279;box-shadow:0 0 22px #ecc04c20}
+.video-orbit-card .video-slot-overlay strong{color:#fff}
+.video-orbit-card .video-slot-overlay>span:last-child{color:#f5f0e5}
