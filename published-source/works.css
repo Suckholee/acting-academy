@@ -626,3 +626,5 @@
 .works-page .skip-link,.student-profile-page .skip-link{position:fixed;top:-100px;left:16px;z-index:100;background:var(--gold);color:#17181c;padding:12px 18px}
 .works-page .skip-link:focus,.student-profile-page .skip-link:focus{top:12px}
 @media(max-width:800px){.works-page header nav,.student-profile-page header nav{overflow-x:auto;justify-content:flex-start;gap:18px;white-space:nowrap;max-width:100%}}
+
+.student-photo-box:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(8,9,13,.85));pointer-events:none}.student-vision-caption{position:absolute;bottom:65px;left:28px;right:24px;color:white;z-index:2}.student-vision-caption span{font-size:9px;letter-spacing:2.5px;color:#e2cd9c}.student-vision-caption strong{display:block;font-size:28px;margin:12px 0;font-weight:500;letter-spacing:-1px}.student-vision-caption p{font-size:12px;margin:0;color:#d2d1d0}.student-photo-box .course-tag{z-index:3}.student-photo-box .casting-badge{z-index:3}
