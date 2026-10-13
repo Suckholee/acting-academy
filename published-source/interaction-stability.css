@@ -131,3 +131,21 @@ main p,main summary{overflow-wrap:break-word}
 .review-home-status{color:#806018}
 .student-work-count .btn-more{color:#806018}
 .faculty-skip{color:#191919}
+
+/* Readable secondary text without increasing section spacing. */
+.tuition-info .eyebrow.dark{color:#806018}
+.tuition-grid small{color:#6b6253}
+.recommend>span,.video-slot-heading>p:first-child{color:#806018}
+.facility-card>p,.faculty-notice,.reviews-total-badge,.works-total-badge,.student-work-count{color:#62626b}
+.gallery-open span{background:#17191de6;color:#fff}
+.student-work-count>span{color:#62626b}
+.page-sharing button,.scene-atmosphere-credit{color:#62626b}
+footer:not(.faculty-footer) p,footer:not(.faculty-footer)>span{color:#62626b}
+.faculty-label{color:#62626b}
+.profile-page .faculty-label,.faculty-footer small{color:#b8b8c0}
+.profile-page .video-slot-heading>p:first-child{color:#f4d481}
+
+.location-access{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:start;margin-top:32px}
+.location-map{margin:0;min-width:0}.location-map img{display:block;width:100%;height:auto;border:1px solid #e2dfd6;border-radius:20px}.location-map figcaption{font-size:12px;color:#62626b;line-height:1.6;margin-top:10px}
+.location-transit h3{font-size:22px;margin:0 0 18px}.location-transit dl{margin:0}.location-transit dl>div{padding:16px 0;border-bottom:1px solid #e6e2d9}.location-transit dt{font-size:14px;font-weight:700;margin-bottom:8px}.location-transit dd{margin:0;font-size:14px;line-height:1.8;color:#45454d}.location-transit small{display:block;font-size:12px;line-height:1.6;color:#62626b;margin-top:8px}.line-five{background:#8545ad;color:#fff;border-radius:20px;font-size:12px;padding:3px 9px;margin-left:6px}.location-map-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.location-map-links a{border:1px solid #d8d3c6;border-radius:24px;padding:10px 16px;font-size:13px;color:#24242a;background:#faf9f5}
+@media(max-width:800px){.location-access{grid-template-columns:1fr;gap:22px}.location-transit h3{font-size:20px}.location-map figcaption{font-size:11px}}

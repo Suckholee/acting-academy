@@ -430,3 +430,13 @@
 .career-summary p:last-child{margin-bottom:0}
 .career-summary span{color:var(--gold);font-size:10px}
 @media(max-width:800px){.career-summary p{font-size:11px;line-height:1.5;margin-bottom:5px;grid-template-columns:48px 1fr;gap:7px}}
+
+/* Preserve compact profile layout, previews, and More dialogs. */
+.profile-page .head-photo-credit,.profile-page .head-photo-credit a{color:#b8b8c0}
+@media(max-width:800px){
+ .profile-page .profile-description{font-size:12px;line-height:1.5;margin:7px 0}
+ .profile-page .head-photo-credit{font-size:10px;line-height:1.4;margin:5px 0}
+ .profile-page .hyung-min-title{font-size:11px;line-height:1.4;margin:5px 0}
+ .profile-page .profile-heading .button{font-size:12px;padding:8px 12px;margin-top:5px}
+ .profile-page .profile-background-credit{font-size:10px;color:#b8b8c0}
+}
