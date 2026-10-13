@@ -120,3 +120,14 @@ main p,main summary{overflow-wrap:break-word}
 @media(prefers-reduced-motion:reduce){.video-orbit-card{transform:none}}
 #instructor-video .video-slot-frame img{opacity:.68;filter:none;object-position:center}
 #instructor-video .video-slot-overlay{background:linear-gradient(180deg,#0001,#0001 30%,#0007 85%)}
+
+/* Keep text legible across light content and dark photographic sections. */
+.scene-atmosphere .section-top .course-button{color:#f4d481!important;border-color:#d2ac52!important;background:#242019!important}
+.scene-atmosphere .section-top .course-button:hover,.scene-atmosphere .section-top .course-button:focus-visible{color:#171717!important;background:#ecc04c!important;border-color:#ecc04c!important}
+.section:not(.scene-atmosphere) .section-top>p,.facilities .section-top>p{color:#62626b}
+.mentors .mentor-card .tag{color:#806018}
+.review-home-user span{color:#626b78}
+.review-home-stars,.review-stars,.star-icon{color:#95600a!important}
+.review-home-status{color:#806018}
+.student-work-count .btn-more{color:#806018}
+.faculty-skip{color:#191919}
