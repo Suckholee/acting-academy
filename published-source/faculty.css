@@ -444,3 +444,6 @@
 /* Kim Hyung Min: supplied October 2026 profile photographs. */
 .faculty-photo img[src*="kim-hyung-min-profile-20261014"],.hyung-min-atmosphere .profile-photo-slide.photo-fit-0{object-position:50% 30%}
 .hyung-min-atmosphere .profile-photo-slide.photo-fit-2{object-fit:cover;object-position:50% 35%}
+
+/* Keep Pyeon Bo Seung's face inside every instructor card. */
+.faculty-photo.faculty-real-photo img[src="/assets/pyeon-bo-seung-1.jpg"]{object-position:50% 0%;translate:none}
