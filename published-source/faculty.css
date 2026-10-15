@@ -447,3 +447,6 @@
 
 /* Keep Pyeon Bo Seung's face inside every instructor card. */
 .faculty-photo.faculty-real-photo img[src="/assets/pyeon-bo-seung-1.jpg"]{object-position:50% 0%;translate:none}
+
+/* Preserve the original headroom throughout Pyeon Bo Seung's profile gallery. */
+.pyeon-atmosphere .profile-photo-slide{object-position:50% 0%}
