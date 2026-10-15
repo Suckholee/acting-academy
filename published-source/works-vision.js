@@ -1,0 +1,1 @@
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-shown');observer.unobserve(entry.target);}}),{threshold:.12});document.querySelectorAll('.vision-panel').forEach(el=>{el.classList.add('is-pending');observer.observe(el);});}

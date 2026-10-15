@@ -42,3 +42,6 @@
 @media(prefers-reduced-motion:reduce){.instructor-team [data-team-motion]{display:none}}
 .mentor-card .instructor-portrait{position:relative;overflow:hidden}
 .mentor-card .instructor-portrait img{position:absolute;width:400%;max-width:none;height:auto;top:-6px;object-fit:initial;object-position:initial}
+
+/* Supplied individual portrait replaces the group-image crop. */
+.instructor-team .supplied-kim-portrait img,.mentor-card .supplied-kim-portrait img{inset:0;width:100%;height:100%;max-width:100%;object-fit:cover;object-position:50% 30%}

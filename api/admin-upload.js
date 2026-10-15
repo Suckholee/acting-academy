@@ -1,6 +1,6 @@
 const {randomUUID}=require('node:crypto');const auth=require('./_admin');
 module.exports=async(req,res)=>{
- res.setHeader('Cache-Control','no-store');if(!auth.requireAdmin(req,res))return;
+ res.setHeader('Cache-Control','no-store');if(!await auth.requireAdmin(req,res))return;
  if(req.method!=='POST')return res.status(405).json({error:'지원하지 않는 요청입니다.'});
  try{
   const data=auth.body(req);const match=/^data:image\/(jpeg|png|webp);base64,([A-Za-z0-9+/=]+)$/.exec(data?.image||'');

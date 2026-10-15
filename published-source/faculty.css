@@ -440,3 +440,7 @@
  .profile-page .profile-heading .button{font-size:12px;padding:8px 12px;margin-top:5px}
  .profile-page .profile-background-credit{font-size:10px;color:#b8b8c0}
 }
+
+/* Kim Hyung Min: supplied October 2026 profile photographs. */
+.faculty-photo img[src*="kim-hyung-min-profile-20261014"],.hyung-min-atmosphere .profile-photo-slide.photo-fit-0{object-position:50% 30%}
+.hyung-min-atmosphere .profile-photo-slide.photo-fit-2{object-fit:cover;object-position:50% 35%}

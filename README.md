@@ -1,8 +1,32 @@
 # 김정태 배우아카데미 · KIM JUNG TAE ACTING ACADEMY
 
-Static HTML/CSS/JavaScript site. GitHub `main` deploys to Vercel, with `dist` as the output directory. No Sites deployment is needed.
+실제 배포 디자인을 보관한 `published-source/`에 컴포넌트 편집기를 결합합니다. `npm run build`의 출력과 Vercel 배포 경로는 `dist-published/`입니다. 관리자 운영 설정과 로컬 검수는 [컴포넌트 편집 안내](docs/component-editor-setup.md)를 확인하세요.
 
-## Local preview
+`npm run preview:published -- --demo` → http://127.0.0.1:4174 (테스트 비밀번호 `preview-only`, 메모리 저장). 운영에서는 서버 인증과 Supabase 설정이 필요합니다.
+
+교육과정은 `content/courses.json`의 확정 6개 반을 기준으로 빌드합니다. 메인·교육과정 목록·추천·상세 안내·사이트맵에 함께 반영하며, 세부 커리큘럼과 반별 일정은 추후 안내로 표시합니다.
+
+아래 React/Vite 안내와 기존 정적 생성 스크립트는 이전 개발 구성에 대한 참고 자료입니다. 실제 배포용 컴포넌트 편집기와 인증 방식은 위 안내를 따릅니다.
+
+## React + Vite 개발 서버 및 인라인 관리자 (kFSSEC 스타일)
+
+- `npm run dev` 실행 시 `http://localhost:5173`에서 실행됩니다.
+- **다국어 지원 (i18n)**:
+  - 헤더의 언어 드롭다운 또는 관리자 상단 툴바에서 **한국어(KO) / 영어(EN) / 일본어(JA) / 중국어(ZH)** 로 실시간 언어 전환이 가능합니다.
+- **kFSSEC 스타일 인라인 관리자 라이브 편집기**:
+  - 이전 React 관리자 로그인은 비활성화되었습니다. 실제 운영 홈페이지의 관리자 모드 또는 `/admin/members`에서 서버 인증을 사용합니다.
+  - **인라인 텍스트 수정**: 화면 상의 텍스트를 마우스로 클릭하여 바로 타이핑하여 수정 (`Tab`키로 다음 문구 이동, `Esc`로 취소)
+  - **인라인 이미지 교체**: 이미지 위에 마우스를 올리고 [이미지 교체] 클릭 시 URL 변경 또는 파일 업로드 가능
+  - **상단 라이브 툴바**:
+    - `편집 모드 ON/OFF`: 라이브 인라인 편집 토글
+    - `가이드 ON/OFF`: 수정 가능한 영역의 점선 테두리 및 펜 아이콘 강조 토글
+    - `방문자 시점`: 편집선 없는 실제 사용자 화면 미리보기
+    - `지금 화면 저장`: 수정사항을 로컬/스토리지에 영구 저장
+    - `되돌리기`: 저장되지 않은 수정사항 취소
+    - `관리 서랍`: 상담 신청 내역(신규/상담중/등록완료 상태 변경 및 메모) 실시간 확인, 기본 학원 정보 수정, JSON 백업/복원
+    - `로그아웃`: 관리자 모드 종료
+
+## Local preview (Legacy Static)
 
 Run `node scripts/dev.cjs` and open http://127.0.0.1:4173. The preview includes the consultation API and clean course URLs.
 
@@ -34,3 +58,7 @@ Native sticky scroll stages, IntersectionObserver reveals, requestAnimationFrame
 Run `npm ci && npm run build` before local preview; `npm test` includes PostgreSQL RLS checks using PGlite. `src/materials/` is the editable client source; `dist/materials-app.js` is bundled output. Vercel builds it automatically.
 
 Apply `supabase/migrations/20261005_material_collection.sql` to a new Supabase project, configure public connection variables, email delivery and invited members. See `docs/자료제출_연결안내.txt` for setup. No Supabase project is connected yet; real Auth/Storage integration remains to be verified after connection. Never put service-role/secret keys into the public configuration endpoint.
+
+## 회원 서비스
+
+`/login`, `/signup`, `/account`, `/reset-password`, `/admin/members` 페이지를 제공합니다. [회원 인증 연결 안내](docs/member-auth-setup.md)에 AXYZ 기준과 계정 연결 정책, 운영 설정·미검증 사항을 정리했습니다. 회원가입만으로 관리자 권한을 얻을 수 없습니다.

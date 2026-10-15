@@ -8,7 +8,7 @@ module.exports=async(req,res)=>{
   if(!store.ready())return res.json({ready:false,pages:{},revision:0});
   try{const rows=await store.request('/rest/v1/academy_cms?key=eq.pages&select=value,revision');return res.json({ready:true,pages:rows[0]?.value||{},revision:rows[0]?.revision||0});}catch{return res.status(503).json({error:'콘텐츠 저장소를 확인해주세요.'});}
  }
- if(!auth.requireAdmin(req,res))return;
+ if(!await auth.requireAdmin(req,res))return;
  if(req.method!=='PUT')return res.status(405).json({error:'지원하지 않는 요청입니다.'});
  try{const data=auth.body(req);if(!valid(data?.pages)||!Number.isInteger(data.revision)||data.revision<0)return res.status(400).json({error:'콘텐츠 형식을 확인해주세요.'});
   const result=await store.request('/rest/v1/rpc/save_academy_content',{method:'POST',body:JSON.stringify({new_value:data.pages,expected_revision:data.revision})});
