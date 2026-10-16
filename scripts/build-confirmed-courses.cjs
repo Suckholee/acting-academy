@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const courses = require('../content/courses.json');
 const source = path.resolve(__dirname, '../published-source');
-const note = '과정별 세부 교육 내용과 수업 일정은 상담을 통해 안내합니다.';
+const note = '세부 커리큘럼과 반별 수업 일정은 추후 안내합니다. 상담 시 관심 있는 반을 말씀해주세요.';
 const display = c => c.title + (c.audience && c.id !== 'senior-model' ? ` (${c.audience})` : '');
 const filters = '<div class="filters" role="group" aria-label="교육과정 분류">' + [['all','전체 과정'],['acting','연기·오디션'],['expression','스피치·모델'],['hobby','취미반']].map(([id,label],i)=>`<button data-filter="${id}" aria-pressed="${i===0}"${i===0?' class="active"':''}>${label}</button>`).join('') + '</div>';
 const cards = '<div class="course-grid">' + courses.map((c,i)=>`<article class="course" data-category="${c.category}"><div class="course-art"><img src="${c.image}" alt="${c.imageAlt}" loading="lazy" width="1536" height="1024"><span class="art-label">${c.label}</span><span class="art-number">${c.title}<span>${String(i+1).padStart(2,'0')}</span></span><span class="art-foot">KIM JUNG TAE ACTING ACADEMY</span></div><div class="course-body"><p class="tag">${c.label}${c.audience?' / '+c.audience:''}</p><h3>${display(c)}</h3><p>${c.intro}</p><button class="course-button" data-course="${c.id}">과정 안내 보기 <span>＋</span></button></div></article>`).join('') + '</div>';
@@ -33,7 +33,7 @@ for (const c of courses) {
   const url = `https://www.kactstar.com/courses/${c.id}`;
   const title = `${display(c)} | 김정태 배우아카데미 · 마곡`;
   const description = `${c.intro} 서울 강서구 마곡역에서 도보 약 2분. ${note}`;
-  const main = `<main><section class="course-page-hero"><img src="${c.image}" alt="${c.imageAlt}" width="1536" height="1024"><div><p class="eyebrow">/ ${c.label} /</p><h1>${display(c)}</h1><p>${c.intro}</p></div></section><section class="section course-overview"><div><p class="eyebrow dark">/ Class Information /</p><h2>나에게 맞는 수업,<br>함께 찾아갑니다.</h2></div><p>${c.intro} 서울 강서구 마곡역 인근에서 관심 분야와 수강 목적에 맞는 반을 상담받으세요. ${note}</p></section><section class="section curriculum class-values"><p class="eyebrow dark">/ Class Information /</p><h2>과정 안내</h2><article><h3>${display(c)}</h3><p>${c.intro}</p></article><article><h3>커리큘럼 및 일정 안내</h3><p>${note}</p></article></section><section class="section course-notes"><h2>수강 상담 안내</h2><p>희망하는 반과 수강 목적을 알려주시면 담당자가 안내합니다.</p><p>서울 강서구 공항대로 186, 로뎀타워 3층 · 마곡역 5번 출구에서 도보 약 2분<br><a href="/facilities#location">마곡역에서 오시는 길 ↗</a></p><a class="button gold" href="/?consult=${c.id}">이 과정 상담하기</a></section></main>`;
+  const main = `<main><section class="course-page-hero"><img src="${c.image}" alt="${c.imageAlt}" width="1536" height="1024"><div><p class="eyebrow">/ ${c.label} /</p><h1>${display(c)}</h1><p>${c.intro}</p></div></section><section class="section course-overview"><div><p class="eyebrow dark">/ Class Information /</p><h2>나에게 맞는 수업,<br>함께 찾아갑니다.</h2></div><p>${c.intro} ${note}</p></section><section class="section curriculum class-values"><p class="eyebrow dark">/ Class Information /</p><h2>과정 안내</h2><article><h3>${display(c)}</h3><p>${c.intro}</p></article><article><h3>커리큘럼 및 일정 안내</h3><p>${note}</p></article></section><section class="section course-notes"><h2>수강 상담 안내</h2><p>희망하는 반과 수강 목적을 알려주시면 담당자가 안내합니다.</p><a class="button gold" href="/?consult=${c.id}">이 과정 상담하기</a></section></main>`;
   const html = template.replace(/<title>[\s\S]*?<\/title>/,`<title>${title}</title>`)
     .replace(/<meta name="description"[^>]*>/,`<meta name="description" content="${description}">`)
     .replace(/<meta property="og:title"[^>]*>/g,'')
