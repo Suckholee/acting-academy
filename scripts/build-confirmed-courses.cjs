@@ -19,7 +19,7 @@ for (const page of ['index','programs']) {
     .replace(/수업의 핵심 가치/g,'과정 안내')
     .replace(/href="\/courses\/basic" id="course-page-link"/g,'href="/courses/camera" id="course-page-link"')
     .replace(/(<p class="dialog-note">)[\s\S]*?(<\/p>)/,`$1${note}$2`)
-    .replace(/(<p class="class-arrangement-note">)[\s\S]*?(<\/p>)/,`$1카메라 연기·무대 연기는 성인·시니어 대상이며, 취미반은 뮤지컬·연기·보컬로 구성됩니다. ${note}$2`);
+    .replace(/\s*<p class="class-arrangement-note">[\s\S]*?<\/p>/g,'');
   fs.writeFileSync(file,html);
 }
 const appFile = path.join(source,'app.js');
