@@ -16,7 +16,7 @@ function normalizeSearchBranding(html, home = false) {
   html = html.replace(/<meta\b(?=[^>]*\bproperty=["']og:site_name["'])[^>]*>/gi, '');
   html = html.replace('</head>', `<meta property="og:site_name" content="${BRAND}"></head>`);
   if (home) {
-    const title = `${BRAND} | KIM JUNG TAE ACTING ACADEMY`;
+    const title = `${BRAND} | 마곡 성인·시니어 연기학원`;
     html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${title}</title>`)
       .replace(/<meta\b(?=[^>]*\bproperty=["']og:title["'])[^>]*>/gi, `<meta property="og:title" content="${title}">`)
       .replace(/<script\b[^>]*\bid=["']academy-search-identity["'][^>]*>[\s\S]*?<\/script>/gi, '');
@@ -25,7 +25,11 @@ function normalizeSearchBranding(html, home = false) {
       '@graph': [
         {'@type': 'WebSite', '@id': `${ORIGIN}/#website`, url: `${ORIGIN}/`, name: BRAND,
           publisher: {'@id': `${ORIGIN}/#academy`}},
-        {'@type': 'EducationalOrganization', '@id': `${ORIGIN}/#academy`, url: `${ORIGIN}/`, name: BRAND}
+        {'@type': 'EducationalOrganization', '@id': `${ORIGIN}/#academy`, url: `${ORIGIN}/`, name: BRAND,
+          description: '서울 강서구 마곡역 인근의 배우아카데미. 성인·시니어 카메라 연기와 무대 연기, 뮤지컬·연기·보컬 취미반을 안내합니다.',
+          telephone: '+82-2-2666-4528',
+          address: {'@type': 'PostalAddress', addressCountry: 'KR', addressRegion: '서울특별시',
+            addressLocality: '강서구', streetAddress: '공항대로 186, 로뎀타워 3층'}}
       ]
     };
     html = html.replace('</head>', `<script id="academy-search-identity" type="application/ld+json">${JSON.stringify(identity)}</script></head>`);
