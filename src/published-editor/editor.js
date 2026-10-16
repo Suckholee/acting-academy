@@ -1,5 +1,6 @@
 const {GROUP_SELECTOR,validImage,normalizePage,sharedKey}=require('./model.cjs');
 const page=normalizePage(location.pathname);
+const adminEntry=new URLSearchParams(location.search).get('admin')==='1';
 const defaultCurricula=__KJT_COURRICULUM__;
 const groups=[];let pages={},revision=0,ready=false,admin=false,preview=false,dirty=false,returnFocus;
 const originals=new Map();
@@ -46,7 +47,7 @@ function draftEntries(){return [...originals].filter(([,f])=>!f.sharedId).map(([
 function sharedEntries(){const result=new Map((pages['/shared']||[]).map(e=>[e.key,e]));for(const f of originals.values()){if(!f.sharedId)continue;const value=f.type==='image'?f.node.getAttribute('src'):f.node.innerText||f.node.textContent;if(value!==f.value||result.has(f.sharedId))result.set(f.sharedId,{key:f.sharedId,type:f.type,value});}return [...result.values()];}
 function el(tag,text,attrs={}){const n=document.createElement(tag);if(text)n.textContent=text;for(const [k,v]of Object.entries(attrs))n.setAttribute(k,v);return n;}
 async function request(url,options={}){const r=await fetch(url,{credentials:'same-origin',...options,headers:{'Content-Type':'application/json',...options.headers}});const data=await r.json();if(!r.ok)throw new Error(data.error||'요청을 완료하지 못했습니다.');return data;}
-const toggle=el('button','관리자 모드',{type:'button',class:'kjt-editor-toggle'});document.body.append(toggle);
+const toggle=el('button','관리자 모드',{type:'button',class:'kjt-editor-toggle',hidden:''});document.body.append(toggle);
 const toolbar=el('div',null,{class:'kjt-editor-toolbar','aria-label':'컴포넌트 편집 도구'});
 const status=el('span','컴포넌트를 눌러 수정하세요',{role:'status'});
 const save=el('button','홈페이지에 저장',{type:'button'});const cancel=el('button','변경 취소',{type:'button'});const view=el('button','방문자 미리보기',{type:'button'});const logout=el('button','로그아웃',{type:'button'});
@@ -54,7 +55,7 @@ const membersLink=el('a','회원 관리',{href:'/admin/members'});toolbar.append
 const modal=el('dialog',null,{class:'kjt-editor-dialog','aria-label':'컴포넌트 수정'});document.body.append(modal);
 const notice=el('p',null,{class:'kjt-editor-notice',role:'status'});
 function message(text){status.textContent=text;}
-function renderMode(){document.body.classList.toggle('kjt-editing',admin&&!preview);toolbar.hidden=!admin;toggle.hidden=admin;save.disabled=!dirty||!ready;cancel.disabled=!dirty;view.textContent=preview?'편집 화면으로':'방문자 미리보기';}
+function renderMode(){document.body.classList.toggle('kjt-editing',admin&&!preview);toolbar.hidden=!admin;toggle.hidden=admin||!adminEntry;save.disabled=!dirty||!ready;cancel.disabled=!dirty;view.textContent=preview?'편집 화면으로':'방문자 미리보기';}
 function closeModal(){modal.close();returnFocus?.focus();}
 function openModal(title){returnFocus=document.activeElement;modal.replaceChildren();const header=el('div',null,{class:'kjt-editor-heading'});const heading=el('h2',title);heading.id='kjt-editor-title';modal.setAttribute('aria-labelledby',heading.id);const close=el('button','닫기',{type:'button'});close.onclick=closeModal;header.append(heading,close);modal.append(header);modal.showModal();}
 modal.addEventListener('close',()=>returnFocus?.focus());
