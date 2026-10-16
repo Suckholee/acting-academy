@@ -46,18 +46,27 @@
     },
     {
       "id": "audition-prep",
-      "output": "course-audition-actors-ai-20261016.jpg",
+      "output": "course-audition-actors-ai-20261016-v2.jpg",
       "references": [
         "kim-jung-tae-profile-2025.jpg",
         "pyeon-bo-seung-1.jpg"
       ],
       "prompt": "Use case: identity-preserve, photorealistic-natural. Create ONE new square 1:1 editorial photograph for a Korean acting academy course card. The input portraits are identity references, not photos to reproduce. Preserve the referenced adult instructor's distinct recognizable face, age and hairstyle accurately, with realistic skin and natural body proportions. Fictional AI-created promotional teaching scene, not documentary. Cohesive series art direction: premium cinematic but candid educational photography, charcoal and warm taupe surroundings, restrained amber practical lights, soft natural face lighting, rich realistic textures, subtle film grain, not glamour retouching. Medium-wide composition with all important people and faces within the central 70 percent, faces fully visible with ample headroom. Keep the lower quarter visually quiet for existing website course-name overlay; the website adds its own text. NO lettering, title, subtitle, logos, branding, watermark, borders or UI. Avoid split panels, collage, crowded people, deformed fingers or duplicate faces. All people are adults. Reference image 1 is a composite: ONLY the mature adult man on the RIGHT HALF is instructor Kim Jung Tae; completely exclude the younger person on its left. Reference image 2 is instructor Pyeon Bo Seung. Preserve both adult instructors' distinct faces and ages. AUDITION TRAINING scene: Kim Jung Tae wearing a navy blazer and white tee, and Pyeon wearing charcoal, sit together at a simple casting table with scripts, watching a Korean adult learner around 30 perform a monologue, seen in side/back three-quarter at the edge. Kim Jung Tae is the main clear face and gives a thoughtful reassuring feedback gesture; Pyeon listens. Quiet dark rehearsal room and amber practical lights. Keep the evaluators' faces large and unblocked. No branded posters or readable paperwork. This is a supportive simulated audition, not an actual casting announcement.",
-      "assetPath": "published-source/assets/course-audition-actors-ai-20261016.jpg",
-      "originalPath": "output/imagegen/course-audition-actors-ai-20261016.png",
+      "assetPath": "published-source/assets/course-audition-actors-ai-20261016-v2.jpg",
+      "originalPath": "output/imagegen/course-audition-actors-ai-20261016-v2.png",
       "dimensions": {
         "width": 1254,
         "height": 1254
-      }
+      },
+      "repairs": [
+        {
+          "mode": "built-in image_gen edit",
+          "editTarget": "published-source/assets/course-audition-actors-ai-20261016.jpg",
+          "prompt": "Use case: identity-preserve and precise-object-edit. Edit the provided square audition-training photo to FIX THE MISSING LOWER BODIES of the two seated male instructors. Currently both torsos end at the tabletop and there is impossible empty floor below them. Reconstruct anatomically coherent seated bodies for BOTH men: hips on chair seats, thighs leading naturally to bent knees, two trousered lower legs per person and shoes resting on the floor. Show plausible chairs and their legs in perspective, with correct occlusion by the existing tabletop. The man on the left wears the same charcoal pinstripe suit with matching dark trousers and dark shoes; the man on the right wears the same navy blazer, white T-shirt, dark trousers and dark shoes. Preserve both distinct faces, hairstyles, ages, upper-body poses, facial expressions, hands, scripts, table props, the auditioning adult in right foreground, warm charcoal rehearsal-room setting and cinematic photographic lighting. Pull the camera back slightly if necessary to show the complete seated figures and shoes within the square image; keep their faces clear and recognizable with good top headroom. The area beneath the table must visibly contain their natural connected lower bodies. Do not hide the defect with a tablecloth, solid front panel, excessive darkness, cropping, blur, new foreground objects or extra people. No floating or disconnected limbs, no extra legs or hands. Keep realistic proportions, chair-floor contact and cast shadows. No text, logos, watermark or UI. This is an AI-created promotional illustration, not documentary.",
+          "assetPath": "published-source/assets/course-audition-actors-ai-20261016-v2.jpg",
+          "originalPath": "output/imagegen/course-audition-actors-ai-20261016-v2.png"
+        }
+      ]
     },
     {
       "id": "senior-model",
