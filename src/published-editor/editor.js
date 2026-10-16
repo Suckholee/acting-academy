@@ -4,12 +4,13 @@ const adminEntry=new URLSearchParams(location.search).get('admin')==='1';
 const defaultCurricula=__KJT_COURRICULUM__;
 const groups=[];let pages={},revision=0,ready=false,admin=false,preview=false,dirty=false,returnFocus;
 const originals=new Map();
+const courseIdFor=element=>{const node=element.querySelector('[data-course-id],[data-course]');return node?.dataset.courseId||node?.dataset.course;};
 function elementPath(node){const parts=[];while(node&&node!==document.body){const siblings=node.parentElement?[...node.parentElement.children].filter(n=>n.tagName===node.tagName):[node];parts.unshift(node.tagName.toLowerCase()+':'+siblings.indexOf(node));node=node.parentElement;}return parts.join('/');}
 const candidates=[...document.querySelectorAll(GROUP_SELECTOR)];
 for(const [index,element] of candidates.entries()){
  const fields=[];
  for(const node of element.querySelectorAll('h1,h2,h3,h4,p,summary,dd,li,small,img,span')){
-  if(node.closest(GROUP_SELECTOR)!==element||node.closest('nav,form,.profile-photo-thumbs')||(node.tagName!=='IMG'&&node.closest('button')))continue;
+  if(node.closest(GROUP_SELECTOR)!==element||node.closest('nav,form,.profile-photo-thumbs,[aria-hidden="true"]')||(node.tagName!=='IMG'&&node.closest('button')))continue;
   if(node.tagName==='SMALL'&&node.closest('dd'))continue;
   if(node.tagName==='SPAN'&&(node.children.length||!node.textContent.trim()||node.textContent.trim().length<3))continue;
   if(node.tagName!=='IMG'&&node.querySelector('h1,h2,h3,h4,p,li,span,img'))continue;
@@ -17,18 +18,19 @@ for(const [index,element] of candidates.entries()){
   const value=type==='image'?node.getAttribute('src'):node.innerText||node.textContent;
   if(!value?.trim())continue;
   const key=sharedKey(page,elementPath(node));
-  const course=element.querySelector('[data-course]')?.dataset.course;
+  const course=courseIdFor(element);
   const shared=element.classList.contains('tuition-info')?'tuition':course&&element.classList.contains('course')?'course-'+course:null;
   const trainer=element.querySelector('a[href*="/trainers/"]')?.getAttribute('href')?.split('/').pop()||(element.classList.contains('profile-hero')?page.split('/').pop():null);
   const trainerSlot=trainer&&['김정태','편보승','임도윤','김형민'].includes(value.trim())?'name':trainer&&['대표 강사','주임강사','전임강사','상담 및 강사'].includes(value.trim())?'role':null;
   const curriculumId=element.classList.contains('curriculum')?page.split('/').pop():null;
   const article=node.closest('.curriculum article');const articleIndex=article?[...element.querySelectorAll('article')].indexOf(article):-1;
   const curriculumSlot=articleIndex>=0&&(node.tagName==='H3'||node.tagName==='P')?`step-${articleIndex}-${node.tagName==='H3'?'title':'description'}`:null;
-  const sharedId=curriculumSlot?sharedKey('class-values-'+curriculumId,curriculumSlot):trainerSlot?sharedKey('trainer-'+trainer,trainerSlot):shared?sharedKey(shared,fields.length):null;
+  const courseSlot=course&&element.classList.contains('course')?(node.tagName==='IMG'?0:node.matches('.art-label')?1:node.matches('.art-foot')?2:node.matches('.tag')?3:node.tagName==='H3'?4:node.matches('.course-intro,.course-body p:not(.tag)')?5:fields.length):fields.length;
+  const sharedId=curriculumSlot?sharedKey('class-values-'+curriculumId,curriculumSlot):trainerSlot?sharedKey('trainer-'+trainer,trainerSlot):shared?sharedKey(shared,courseSlot):null;
   fields.push({key,sharedId,type,node,value,label:type==='image'?(node.alt||'사진'):node.tagName==='DD'?(node.previousElementSibling?.textContent.trim()||'수업 정보'):trainerSlot==='name'?'강사 이름':trainerSlot==='role'?'강사 직함':value.trim().slice(0,36)});
   originals.set(key,{node,type,value,sharedId,html:node.innerHTML});
  }
- const courseId=element.classList.contains('course')?element.querySelector('[data-course]')?.dataset.course:null;
+ const courseId=element.classList.contains('course')?courseIdFor(element):null;
  if(courseId)for(const [i,step]of (defaultCurricula[courseId]||[]).entries())for(const slot of ['title','description']){
   const node=el('span',step[slot]);const key=sharedKey(page,`values-${courseId}-${i}-${slot}`);const sharedId=sharedKey('class-values-'+courseId,`step-${i}-${slot}`);const f={key,type:'text',node,value:step[slot],sharedId,label:`핵심 가치 ${i+1} ${slot==='title'?'제목':'설명'}`};fields.push(f);originals.set(key,{...f,html:node.innerHTML});
  }
@@ -82,4 +84,4 @@ window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.return
 (async()=>{try{const content=await request('/api/site-content');pages=content.pages||{};revision=content.revision||0;ready=content.ready;applyContent();const auth=await request('/api/admin-auth');admin=auth.authenticated;renderMode();if(admin)message(ready?'수정할 컴포넌트를 누르세요.':'저장소 미연결: 편집 미리보기만 가능합니다.');}catch(e){message(e.message);renderMode();}})();
 renderMode();
 
-window.kjtEditableCourse=id=>{const group=groups.find(g=>g.element.classList.contains('course')&&g.element.querySelector('[data-course]')?.dataset.course===id);const get=(i,slot)=>{const field=[...originals.values()].find(f=>f.sharedId===sharedKey('class-values-'+id,`step-${i}-${slot}`));const saved=(pages['/shared']||[]).find(f=>f.key===sharedKey('class-values-'+id,`step-${i}-${slot}`));return field?.node.textContent??saved?.value??defaultCurricula[id]?.[i]?.[slot]??'';};return {title:group?.element.querySelector('h3')?.textContent,intro:group?.element.querySelector('.course-body p:not(.tag)')?.textContent,steps:(defaultCurricula[id]||[]).map((_,i)=>get(i,'title')+' — '+get(i,'description'))};};
+window.kjtEditableCourse=id=>{const group=groups.find(g=>g.element.classList.contains('course')&&courseIdFor(g.element)===id);const get=(i,slot)=>{const field=[...originals.values()].find(f=>f.sharedId===sharedKey('class-values-'+id,`step-${i}-${slot}`));const saved=(pages['/shared']||[]).find(f=>f.key===sharedKey('class-values-'+id,`step-${i}-${slot}`));return field?.node.textContent??saved?.value??defaultCurricula[id]?.[i]?.[slot]??'';};return {title:group?.element.querySelector('h3')?.textContent,intro:group?.element.querySelector('.course-intro,.course-body p:not(.tag)')?.textContent,steps:(defaultCurricula[id]||[]).map((_,i)=>get(i,'title')+' — '+get(i,'description'))};};

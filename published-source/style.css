@@ -218,3 +218,31 @@ nav a[aria-current="page"]{color:#ecc04c!important;font-weight:600;text-decorati
 /* Skip navigation is available on keyboard focus without occupying page space. */
 body .skip-link{position:fixed;top:-100px;left:16px;z-index:110;max-width:calc(100vw - 32px);padding:12px 18px;background:var(--gold,#d9b452);color:#17181c;font-size:14px;line-height:1.5;border-radius:6px}
 body .skip-link:focus{top:12px;outline:2px solid #17181c;outline-offset:3px}
+
+/* Each course is one linked image card, with its information inside the image. */
+.programs .course-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;scroll-margin-top:calc(var(--site-header-height,96px) + 20px)}
+.programs .course{min-width:0}
+.programs .course-link{display:flex;height:250px;min-height:0;padding:20px;border-radius:18px;color:#fff;isolation:isolate;transition:box-shadow .2s}
+.programs .course-link::after{z-index:0;background:linear-gradient(180deg,#0005,transparent 35%,#000b 75%,#000e)}
+.programs .course-link img{object-position:50% 38%}
+.programs .course-link .art-label{font-size:10px;letter-spacing:1px;line-height:1.5;padding-right:38px}
+.programs .course-index{position:absolute;top:20px;right:20px;z-index:1;font-size:12px;color:#f4d481}
+.programs .course-content{position:relative;z-index:1;margin-top:auto}
+.programs .course-content h3{font-size:22px;line-height:1.4;letter-spacing:-.6px;margin:0}
+.programs .course-intro{font-size:13px;line-height:1.65;color:#e2e2e6;margin:8px 0 0}
+.programs .course-link:hover{box-shadow:0 0 0 1px #ecc04c99}
+.programs .course-link:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+@media(min-width:1024px){
+ .programs{padding-top:36px;padding-bottom:40px}
+ .programs .filters{gap:8px;margin:20px 0 18px}
+ .programs .filters button{padding:9px 14px;font-size:12px}
+ .programs .course-link{height:clamp(180px,calc((100svh - var(--site-header-height,96px) - 260px)/2),260px)}
+}
+@media(min-width:721px) and (max-width:1023px){
+ .programs .course-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:720px){
+ .programs .course-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+ .programs .course-link{height:280px}
+ .programs .course-content h3{font-size:22px}
+}
