@@ -1,8 +1,8 @@
 [
-  {"id":"camera","title":"카메라 연기","audience":"성인·시니어","category":"acting","label":"ON CAMERA","intro":"성인·시니어를 위한 카메라 연기 과정입니다.","image":"/assets/kim-hyung-min-camera-ai.png","imageAlt":"AI로 제작한 카메라 연기 수업 이미지","goal":"카메라 연기를 배우고 싶어요"},
-  {"id":"stage","title":"무대 연기","audience":"성인·시니어","category":"acting","label":"ON STAGE","intro":"성인·시니어를 위한 무대 연기 과정입니다.","image":"/assets/class-camera-instructors-ai-v2.png","imageAlt":"AI로 제작한 장면 연기 수업 이미지","goal":"무대에서 연기하고 싶어요"},
-  {"id":"speech","title":"스피치","audience":"","category":"expression","label":"SPEECH","intro":"말로 나를 표현하는 스피치 과정입니다.","image":"/assets/class-coaching-instructors-ai-v2.png","imageAlt":"AI로 제작한 코칭 이미지","goal":"말하기와 표현을 배우고 싶어요"},
-  {"id":"audition-prep","title":"오디션 트레이닝","audience":"","category":"acting","label":"AUDITION TRAINING","intro":"오디션 준비를 위한 트레이닝 과정입니다.","image":"/assets/class-audition-prep-instructors-ai-v2.png","imageAlt":"AI로 제작한 오디션 준비 이미지","goal":"오디션을 준비하고 있어요"},
-  {"id":"senior-model","title":"시니어 모델 트레이닝","audience":"시니어","category":"expression","label":"SENIOR MODEL","intro":"시니어를 위한 모델 트레이닝 과정입니다.","image":"/assets/facility-practice-corrected.png","imageAlt":"아카데미 연습 공간 실제 사진 AI 보정본","goal":"시니어 모델에 도전하고 싶어요"},
+  {"id":"camera","title":"카메라 연기","audience":"성인·시니어","category":"camera","label":"ON CAMERA","intro":"성인·시니어를 위한 카메라 연기 과정입니다.","image":"/assets/kim-hyung-min-camera-ai.png","imageAlt":"AI로 제작한 카메라 연기 수업 이미지","goal":"카메라 연기를 배우고 싶어요"},
+  {"id":"stage","title":"무대 연기","audience":"성인·시니어","category":"stage","label":"ON STAGE","intro":"성인·시니어를 위한 무대 연기 과정입니다.","image":"/assets/class-camera-instructors-ai-v2.png","imageAlt":"AI로 제작한 장면 연기 수업 이미지","goal":"무대에서 연기하고 싶어요"},
+  {"id":"speech","title":"스피치","audience":"","category":"speech","label":"SPEECH","intro":"말로 나를 표현하는 스피치 과정입니다.","image":"/assets/class-coaching-instructors-ai-v2.png","imageAlt":"AI로 제작한 코칭 이미지","goal":"말하기와 표현을 배우고 싶어요"},
+  {"id":"audition-prep","title":"오디션 트레이닝","audience":"","category":"audition-prep","label":"AUDITION TRAINING","intro":"오디션 준비를 위한 트레이닝 과정입니다.","image":"/assets/class-audition-prep-instructors-ai-v2.png","imageAlt":"AI로 제작한 오디션 준비 이미지","goal":"오디션을 준비하고 있어요"},
+  {"id":"senior-model","title":"시니어 모델 트레이닝","audience":"시니어","category":"senior-model","label":"SENIOR MODEL","intro":"시니어를 위한 모델 트레이닝 과정입니다.","image":"/assets/facility-practice-corrected.png","imageAlt":"아카데미 연습 공간 실제 사진 AI 보정본","goal":"시니어 모델에 도전하고 싶어요"},
   {"id":"hobby","title":"취미반","audience":"뮤지컬·연기·보컬","category":"hobby","label":"MUSICAL · ACTING · VOCAL","intro":"뮤지컬·연기·보컬을 취미로 배우는 과정입니다.","image":"/assets/facility-classroom-corrected.png","imageAlt":"아카데미 강의실 실제 사진 AI 보정본","goal":"뮤지컬·연기·보컬을 취미로 배우고 싶어요"}
 ]

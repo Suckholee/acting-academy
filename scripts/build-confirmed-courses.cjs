@@ -4,7 +4,7 @@ const courses = require('../content/courses.json');
 const source = path.resolve(__dirname, '../published-source');
 const note = '세부 커리큘럼과 반별 수업 일정은 추후 안내합니다. 상담 시 관심 있는 반을 말씀해주세요.';
 const display = c => c.title + (c.audience && c.id !== 'senior-model' ? ` (${c.audience})` : '');
-const filters = '<div class="filters" role="group" aria-label="교육과정 분류">' + [['all','전체 과정'],['acting','연기·오디션'],['expression','스피치·모델'],['hobby','취미반']].map(([id,label],i)=>`<button data-filter="${id}" aria-pressed="${i===0}"${i===0?' class="active"':''}>${label}</button>`).join('') + '</div>';
+const filters = '<div class="filters" role="group" aria-label="교육과정 분류">' + [['all','전체 과정'],...courses.map(c=>[c.id,display(c)])].map(([id,label],i)=>`<button data-filter="${id}" aria-pressed="${i===0}"${i===0?' class="active"':''}>${label}</button>`).join('') + '</div>';
 const cards = '<div class="course-grid">' + courses.map((c,i)=>`<article class="course" data-category="${c.category}"><div class="course-art"><img src="${c.image}" alt="${c.imageAlt}" loading="lazy" width="1536" height="1024"><span class="art-label">${c.label}</span><span class="art-number">${c.title}<span>${String(i+1).padStart(2,'0')}</span></span><span class="art-foot">KIM JUNG TAE ACTING ACADEMY</span></div><div class="course-body"><p class="tag">${c.label}${c.audience?' / '+c.audience:''}</p><h3>${display(c)}</h3><p>${c.intro}</p><button class="course-button" data-course="${c.id}">과정 안내 보기 <span>＋</span></button></div></article>`).join('') + '</div>';
 for (const page of ['index','programs']) {
   const file = path.join(source,page+'.html');
