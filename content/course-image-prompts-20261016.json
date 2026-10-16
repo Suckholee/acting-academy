@@ -1,0 +1,94 @@
+{
+  "mode": "built-in image_gen",
+  "purpose": "AI-created course-card teaching illustrations using the academy instructors as identity references",
+  "jobs": [
+    {
+      "id": "camera",
+      "output": "course-camera-actors-ai-20261016.jpg",
+      "references": [
+        "kim-hyung-min-profile-20261014-1.jpeg"
+      ],
+      "prompt": "Use case: identity-preserve, photorealistic-natural. Create ONE new square 1:1 editorial photograph for a Korean acting academy course card. The input portraits are identity references, not photos to reproduce. Preserve the referenced adult instructor's distinct recognizable face, age and hairstyle accurately, with realistic skin and natural body proportions. Fictional AI-created promotional teaching scene, not documentary. Cohesive series art direction: premium cinematic but candid educational photography, charcoal and warm taupe surroundings, restrained amber practical lights, soft natural face lighting, rich realistic textures, subtle film grain, not glamour retouching. Medium-wide composition with all important people and faces within the central 70 percent, faces fully visible with ample headroom. Keep the lower quarter visually quiet for existing website course-name overlay; the website adds its own text. NO lettering, title, subtitle, logos, branding, watermark, borders or UI. Avoid split panels, collage, crowded people, deformed fingers or duplicate faces. All people are adults. Reference image 1 is instructor Kim Hyung Min. Make him the clear featured instructor, wearing a charcoal casual blazer and cream knit. On-camera acting workshop: he reviews a small field monitor beside a professional cinema camera on tripod, giving friendly focused feedback to a Korean woman around 55 and a Korean man around 30 who have just rehearsed a scene. Instructor face in three-quarter view and clearly recognizable. The cinema camera and rehearsal monitor make ON-CAMERA ACTING unmistakable, without dominating the scene. Intimate dark rehearsal studio, credible teaching interaction, not a posed team photo.",
+      "assetPath": "published-source/assets/course-camera-actors-ai-20261016.jpg",
+      "originalPath": "output/imagegen/course-camera-actors-ai-20261016.png",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "id": "stage",
+      "output": "course-stage-actors-ai-20261016.jpg",
+      "references": [
+        "pyeon-bo-seung-1.jpg"
+      ],
+      "prompt": "Use case: identity-preserve, photorealistic-natural. Create ONE new square 1:1 editorial photograph for a Korean acting academy course card. The input portraits are identity references, not photos to reproduce. Preserve the referenced adult instructor's distinct recognizable face, age and hairstyle accurately, with realistic skin and natural body proportions. Fictional AI-created promotional teaching scene, not documentary. Cohesive series art direction: premium cinematic but candid educational photography, charcoal and warm taupe surroundings, restrained amber practical lights, soft natural face lighting, rich realistic textures, subtle film grain, not glamour retouching. Medium-wide composition with all important people and faces within the central 70 percent, faces fully visible with ample headroom. Keep the lower quarter visually quiet for existing website course-name overlay; the website adds its own text. NO lettering, title, subtitle, logos, branding, watermark, borders or UI. Avoid split panels, collage, crowded people, deformed fingers or duplicate faces. All people are adults. Reference image 1 is instructor Pyeon Bo Seung. Make him the featured instructor in a charcoal pinstripe blazer and black shirt. STAGE ACTING lesson in a small black-box theater with black curtains and warm theatrical side lights. He stands center with a script at his side, demonstrating grounded open-body expression to two Korean adult learners, a woman around 60 and a man around 35, rehearsing a dramatic scene facing each other. Show their upper bodies and natural gestures. No film cameras, no desk or lecture setup. The stage, theatrical light, and acting exchange must clearly distinguish this from camera acting or audition judging.",
+      "assetPath": "published-source/assets/course-stage-actors-ai-20261016.jpg",
+      "originalPath": "output/imagegen/course-stage-actors-ai-20261016.png",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "id": "speech",
+      "output": "course-speech-actors-ai-20261016.jpg",
+      "references": [
+        "im-do-yoon.jpeg"
+      ],
+      "prompt": "Use case: identity-preserve, photorealistic-natural. Create ONE new square 1:1 editorial photograph for a Korean acting academy course card. The input portraits are identity references, not photos to reproduce. Preserve the referenced adult instructor's distinct recognizable face, age and hairstyle accurately, with realistic skin and natural body proportions. Fictional AI-created promotional teaching scene, not documentary. Cohesive series art direction: premium cinematic but candid educational photography, charcoal and warm taupe surroundings, restrained amber practical lights, soft natural face lighting, rich realistic textures, subtle film grain, not glamour retouching. Medium-wide composition with all important people and faces within the central 70 percent, faces fully visible with ample headroom. Keep the lower quarter visually quiet for existing website course-name overlay; the website adds its own text. NO lettering, title, subtitle, logos, branding, watermark, borders or UI. Avoid split panels, collage, crowded people, deformed fingers or duplicate faces. All people are adults. Reference image 1 is instructor Im Do Yoon. Preserve her face and tied-back dark hair; dress her in an elegant beige blazer over a dark simple blouse. SPEECH and verbal expression coaching: she stands next to a Korean male adult learner around 45 who is practicing a short presentation at a simple lectern with a slim microphone. She demonstrates calm open-palmed emphasis and clear eye contact, coaching posture and articulation; a second adult learner listens softly out of focus. Small refined teaching studio with muted charcoal background and warm lights. Instructor and learner both face three-quarter toward the viewer so the instructor's face is clear. Distinct presentation lesson, not dramatic acting, not a business meeting.",
+      "assetPath": "published-source/assets/course-speech-actors-ai-20261016.jpg",
+      "originalPath": "output/imagegen/course-speech-actors-ai-20261016.png",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "id": "audition-prep",
+      "output": "course-audition-actors-ai-20261016.jpg",
+      "references": [
+        "kim-jung-tae-profile-2025.jpg",
+        "pyeon-bo-seung-1.jpg"
+      ],
+      "prompt": "Use case: identity-preserve, photorealistic-natural. Create ONE new square 1:1 editorial photograph for a Korean acting academy course card. The input portraits are identity references, not photos to reproduce. Preserve the referenced adult instructor's distinct recognizable face, age and hairstyle accurately, with realistic skin and natural body proportions. Fictional AI-created promotional teaching scene, not documentary. Cohesive series art direction: premium cinematic but candid educational photography, charcoal and warm taupe surroundings, restrained amber practical lights, soft natural face lighting, rich realistic textures, subtle film grain, not glamour retouching. Medium-wide composition with all important people and faces within the central 70 percent, faces fully visible with ample headroom. Keep the lower quarter visually quiet for existing website course-name overlay; the website adds its own text. NO lettering, title, subtitle, logos, branding, watermark, borders or UI. Avoid split panels, collage, crowded people, deformed fingers or duplicate faces. All people are adults. Reference image 1 is a composite: ONLY the mature adult man on the RIGHT HALF is instructor Kim Jung Tae; completely exclude the younger person on its left. Reference image 2 is instructor Pyeon Bo Seung. Preserve both adult instructors' distinct faces and ages. AUDITION TRAINING scene: Kim Jung Tae wearing a navy blazer and white tee, and Pyeon wearing charcoal, sit together at a simple casting table with scripts, watching a Korean adult learner around 30 perform a monologue, seen in side/back three-quarter at the edge. Kim Jung Tae is the main clear face and gives a thoughtful reassuring feedback gesture; Pyeon listens. Quiet dark rehearsal room and amber practical lights. Keep the evaluators' faces large and unblocked. No branded posters or readable paperwork. This is a supportive simulated audition, not an actual casting announcement.",
+      "assetPath": "published-source/assets/course-audition-actors-ai-20261016.jpg",
+      "originalPath": "output/imagegen/course-audition-actors-ai-20261016.png",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "id": "senior-model",
+      "output": "course-senior-model-actors-ai-20261016.jpg",
+      "references": [
+        "kim-hyung-min-profile-20261014-1.jpeg",
+        "facility-classroom-corrected.png"
+      ],
+      "prompt": "Use case: identity-preserve, photorealistic-natural. Create ONE new square 1:1 editorial photograph for a Korean acting academy course card. The input portraits are identity references, not photos to reproduce. Preserve the referenced adult instructor's distinct recognizable face, age and hairstyle accurately, with realistic skin and natural body proportions. Fictional AI-created promotional teaching scene, not documentary. Cohesive series art direction: premium cinematic but candid educational photography, charcoal and warm taupe surroundings, restrained amber practical lights, soft natural face lighting, rich realistic textures, subtle film grain, not glamour retouching. Medium-wide composition with all important people and faces within the central 70 percent, faces fully visible with ample headroom. Keep the lower quarter visually quiet for existing website course-name overlay; the website adds its own text. NO lettering, title, subtitle, logos, branding, watermark, borders or UI. Avoid split panels, collage, crowded people, deformed fingers or duplicate faces. All people are adults. Reference image 1 is instructor Kim Hyung Min; reference image 2 is the rehearsal-room environment reference with gray walls, mirrors, pale parquet floor and linear ceiling lights. SENIOR MODEL TRAINING with actual people, not an empty interior: instructor in understated charcoal smart casual clothing stands alongside a Korean woman about 65 with short silver hair and a Korean man about 65 with natural gray hair. The two mature learners practice confident runway walking and poised standing posture while the instructor demonstrates a small hand cue. Full bodies or three-quarter bodies, natural graceful movement, fashionable but practical beige/charcoal outfits and low comfortable shoes. The seniors are the primary subjects and visibly mature, with natural skin and real age. Frame them within central 70 percent, with space above their heads and quiet floor area below for the website text. Preserve the reference room's charcoal, mirror and wooden-floor character but use warm natural editorial lighting.",
+      "assetPath": "published-source/assets/course-senior-model-actors-ai-20261016.jpg",
+      "originalPath": "output/imagegen/course-senior-model-actors-ai-20261016.png",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "id": "hobby",
+      "output": "course-hobby-actors-ai-20261016.jpg",
+      "references": [
+        "im-do-yoon.jpeg",
+        "pyeon-bo-seung-1.jpg",
+        "facility-classroom-corrected.png"
+      ],
+      "prompt": "Use case: identity-preserve, photorealistic-natural. Create ONE new square 1:1 editorial photograph for a Korean acting academy course card. The input portraits are identity references, not photos to reproduce. Preserve the referenced adult instructor's distinct recognizable face, age and hairstyle accurately, with realistic skin and natural body proportions. Fictional AI-created promotional teaching scene, not documentary. Cohesive series art direction: premium cinematic but candid educational photography, charcoal and warm taupe surroundings, restrained amber practical lights, soft natural face lighting, rich realistic textures, subtle film grain, not glamour retouching. Medium-wide composition with all important people and faces within the central 70 percent, faces fully visible with ample headroom. Keep the lower quarter visually quiet for existing website course-name overlay; the website adds its own text. NO lettering, title, subtitle, logos, branding, watermark, borders or UI. Avoid split panels, collage, crowded people, deformed fingers or duplicate faces. All people are adults. Reference image 1 is instructor Im Do Yoon, reference image 2 is instructor Pyeon Bo Seung, reference image 3 is the gray mirrored rehearsal-room environment. ADULT HOBBY CLASS combining musical theater, acting and singing: Im Do Yoon in a warm cream cardigan over a dark blouse leads two adult Korean hobby learners, one woman around 40 and one man around 55, in a small joyful musical-theater rehearsal, singing naturally and marking a simple expressive movement with scripts in hand. Pyeon Bo Seung in charcoal smart casual clothing accompanies their acting exchange, observing and encouraging at the side. A modest digital piano is partly visible in the background to suggest vocal and musical practice. Four adults only. Relaxed welcoming expressions, not a choreographed pop performance or formal concert. Preserve the recognizable instructor faces. Gray rehearsal studio and warm light, comfortable everyday outfits, people are the image focus, not the empty room.",
+      "assetPath": "published-source/assets/course-hobby-actors-ai-20261016.jpg",
+      "originalPath": "output/imagegen/course-hobby-actors-ai-20261016.png",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      }
+    }
+  ]
+}
