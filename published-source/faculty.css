@@ -448,5 +448,9 @@
 /* Keep Pyeon Bo Seung's face inside every instructor card. */
 .faculty-photo.faculty-real-photo img[src="/assets/pyeon-bo-seung-1.jpg"]{object-position:50% 0%;translate:none}
 
+/* Match the team's upper-body framing without enlarging Kim Jung Tae's face. */
+.faculty-photo.kim-listing-photo{background:#fafafa}
+.faculty-photo.kim-listing-photo img{inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;padding-top:14px;filter:none;translate:none}
+
 /* Preserve the original headroom throughout Pyeon Bo Seung's profile gallery. */
 .pyeon-atmosphere .profile-photo-slide{object-position:50% 0%}
