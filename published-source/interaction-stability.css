@@ -163,3 +163,8 @@ footer:not(.faculty-footer) p,footer:not(.faculty-footer)>span{color:#62626b}
 
 .location-map-guide .location-guide-canvas{background:#f7f6f2}.location-map-guide .location-guide-canvas>img{width:100%;height:auto}.location-access:has(.location-map-guide){grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px}
 @media(max-width:800px){.location-access:has(.location-map-guide){grid-template-columns:1fr}.location-map-guide .location-guide-canvas{overflow-x:auto;-webkit-overflow-scrolling:touch}.location-map-guide .location-guide-canvas>img{width:640px;max-width:none}.location-map-guide .location-guide-canvas{direction:rtl}.location-map-guide figcaption:after{content:"지도를 좌우로 밀어 주변 건물을 확인하세요.";display:block;font-size:11px;color:#62626b}.location-map-guide figcaption{flex-wrap:wrap}.location-map-guide figcaption:after{flex-basis:100%}}
+
+/* A profile video is a full-width section, not an item in the portrait column. */
+.profile-page main>.video-slot-section{grid-column:1 / -1;width:100%;min-width:0;max-width:1180px;justify-self:center;box-sizing:border-box}
+.profile-page main>.video-slot-section .video-slot-heading{width:100%;min-width:0}
+.profile-page main>.video-slot-section .video-slot-heading h2{word-break:keep-all;overflow-wrap:break-word;letter-spacing:-.025em;text-wrap:pretty}
