@@ -88,3 +88,13 @@ body.kjt-editing:not(.kjt-guides) .kjt-editable-component:hover>.kjt-component-e
 .kjt-collection-item{scroll-margin-top:calc(var(--kjt-toolbar-height,64px) + 24px)}
 @media(min-width:601px) and (max-width:900px){body.kjt-panel-visible{--kjt-panel-width:50vw;margin-right:var(--kjt-panel-width)}body.kjt-panel-visible>header{right:var(--kjt-panel-width)!important}.kjt-context-panel{width:var(--kjt-panel-width);padding:18px}.kjt-content-row{padding:12px}.kjt-content-row button{padding:8px}}
 @media(max-width:600px){body.kjt-panel-visible{padding-bottom:55dvh}.kjt-context-panel{top:auto;height:55dvh;max-height:calc(100dvh - var(--kjt-toolbar-height,64px));width:100%;border-radius:18px 18px 0 0;box-shadow:0 -10px 30px #0002;padding:18px}.kjt-panel-heading{position:sticky;top:-18px;background:#fffdf8;z-index:10;padding:12px 0}.kjt-collection-item-tools{font-size:11px}.kjt-content-row button{padding:9px}}
+
+/* Keep the title, close action and apply feedback visible while editing. */
+.kjt-context-panel{--kjt-panel-padding:20px}
+.kjt-context-panel .kjt-panel-heading{position:sticky;top:calc(-1 * var(--kjt-panel-padding));z-index:30;background:#fffdf8;margin:calc(-1 * var(--kjt-panel-padding)) calc(-1 * var(--kjt-panel-padding)) 22px;padding:18px var(--kjt-panel-padding);flex-wrap:wrap;box-shadow:0 4px 8px #14241e08}
+.kjt-panel-heading>div{flex:1;min-width:0}
+.kjt-panel-heading>button{flex-shrink:0}
+.kjt-context-panel .kjt-panel-feedback{flex-basis:100%;margin:0;padding:9px 12px;border-radius:8px;background:#e7f2ec;color:#25533e;font-weight:600}
+.kjt-context-panel .kjt-panel-feedback.is-error{background:#fbece7;color:#9d3524}
+.kjt-context-panel .kjt-editor-actions{z-index:20}
+@media(max-width:900px){.kjt-context-panel{--kjt-panel-padding:18px}}
