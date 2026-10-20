@@ -16,6 +16,24 @@
           "value": "no-store"
         }
       ]
+    },
+    {
+      "source": "/admin/consultation",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
     }
-  ]
+  ],
+  "functions": {
+    "api/admin-consultation.js": {
+      "includeFiles": "private-assets/consultation/**"
+    }
+  }
 }
