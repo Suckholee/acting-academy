@@ -45,7 +45,7 @@ function openModal(title){returnFocus=document.activeElement;modal.replaceChildr
 modal.addEventListener('close',()=>returnFocus?.focus());
 modal.addEventListener('click',e=>{if(e.target===modal){const r=modal.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeModal();}});
 function showPanel(title,group=null){
- if(panelPending&&!confirm('아직 영역에 적용하지 않은 입력이 있습니다. 닫고 이동할까요?'))return false;panelPending=false;panelVersion++;collections?.clearSelection();
+ if(panelPending&&!confirm('아직 영역에 적용하지 않은 입력이 있습니다. 닫고 이동할까요?'))return false;panelPending=false;panelVersion++;collections?.clearSelection();if(innerWidth<1100)railOpen=false;
  selectedGroup?.element.classList.remove('kjt-component-selected');selectedGroup=group;
  if(group)group.element.classList.add('kjt-component-selected');
  panel.replaceChildren();panel.hidden=false;panel.scrollTop=0;
@@ -135,7 +135,7 @@ async function openInquiries(){
  }catch(e){loading.textContent=e.message;}
 }
 editMode.onclick=()=>{if(editing&&!closePanel())return;editing=!editing;preview=false;renderMode();};guideMode.onclick=()=>{guides=!guides;renderMode();};
-menu.onclick=()=>{railOpen=!railOpen;renderMode();};inquiries.onclick=openInquiries;renderRail();
+menu.onclick=()=>{if(!railOpen&&innerWidth<1100&&!closePanel())return;railOpen=!railOpen;renderMode();};inquiries.onclick=openInquiries;renderRail();
 for(const group of groups){group.element.classList.add('kjt-editable-component');const button=el('button',`${group.title} 수정`,{type:'button',class:'kjt-component-edit'});button.onclick=e=>{e.preventDefault();e.stopPropagation();edit(group);};group.element.append(button);}
 // Match the KFSSEC interaction: type in place; right-click/long-press for block tools.
 function changedCount(){let count=0;for(const [key,f]of originals){const entries=pages[f.sharedId?'/shared':page]||[];const saved=entries.find(e=>e.key===(f.sharedId||key)||(!f.sharedId&&e.key===f.legacyKey));const current=fieldValue(f);if(current!==(saved?.value??f.value))count++;}return count;}
