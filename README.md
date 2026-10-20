@@ -62,3 +62,7 @@ Apply `supabase/migrations/20261005_material_collection.sql` to a new Supabase p
 ## 회원 서비스
 
 `/login`, `/signup`, `/account`, `/reset-password`, `/admin/members` 페이지를 제공합니다. [회원 인증 연결 안내](docs/member-auth-setup.md)에 AXYZ 기준과 계정 연결 정책, 운영 설정·미검증 사항을 정리했습니다. 회원가입만으로 관리자 권한을 얻을 수 없습니다.
+
+## AI 상담 및 관리자 작업실
+
+홈페이지의 AI 상담과 `/admin/ai` 작업실을 제공합니다. 로컬 예시 시연 및 실제 AI 연결 조건은 [AI 연결 안내](docs/ai-assistant-setup.md)를 확인하세요.

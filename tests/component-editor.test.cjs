@@ -12,3 +12,19 @@ test('CMS RPC rejects stale saves and private records are not browser-readable',
  await assert.rejects(db.exec("insert into storage.objects(bucket_id,name) values('academy-site-media','x.png')"));
  await db.exec('reset role;set role service_role;');assert.equal((await db.query("select public.save_academy_content('{\"/\":[]}',0) as revision")).rows[0].revision,1);assert.equal((await db.query("select public.save_academy_content('{}',0) as revision")).rows[0].revision,null);assert.equal((await db.query('select revision from public.academy_cms')).rows[0].revision,1);
  }finally{await db.close();}});
+test('inquiry management authenticates reads/writes and validates record changes',async()=>{
+ const store=require('../api/_cms-store'),handler=require('../api/admin-inquiries');const beforeAuth=auth.requireAdmin,beforeRequest=store.request;
+ const response=()=>({code:200,setHeader(){},status(n){this.code=n;return this;},json(v){this.data=v;return this;}});
+ try{
+  auth.requireAdmin=async(req,res)=>{res.status(401).json({error:'auth required'});return false;};store.request=async()=>{throw Error('must not reach database');};
+  for(const method of ['GET','PATCH']){const res=response();await handler({method,body:{}},res);assert.equal(res.code,401);}
+  auth.requireAdmin=async()=>true;
+  const invalid=response();await handler({method:'PATCH',body:{id:'invalid',memo:'',status:'신규'}},invalid);assert.equal(invalid.code,400);
+  const record={id:'b079d152-62a0-4396-a32a-12960bc2fb65',status:'연락 중',memo:'연락 예정'};
+  store.request=async(route,options)=>{if(options){assert.equal(options.method,'PATCH');assert.deepEqual(JSON.parse(options.body),{status:record.status,memo:record.memo});}return [record];};
+  const list=response();await handler({method:'GET'},list);assert.deepEqual(list.data.records,[record]);
+  const patched=response();await handler({method:'PATCH',body:record},patched);assert.equal(patched.data.record.id,record.id);
+  store.request=async()=>[];const missing=response();await handler({method:'PATCH',body:record},missing);assert.equal(missing.code,404);
+  store.request=async()=>{throw Error('unavailable');};const failed=response();await handler({method:'GET'},failed);assert.equal(failed.code,503);
+ }finally{auth.requireAdmin=beforeAuth;store.request=beforeRequest;}
+});

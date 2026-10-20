@@ -1,86 +1,161 @@
+const {primaryPages,detailPages,pageTitle}=require('./page-catalog.cjs');
+const {validVideo,validVideoFile}=require('./video-model.cjs');
+const {renderVideo}=require('./video-player.cjs');
+const {contentDiff}=require('./history-model.cjs');
 const {GROUP_SELECTOR,validImage,normalizePage,sharedKey}=require('./model.cjs');
 const page=normalizePage(location.pathname);
 const adminEntry=new URLSearchParams(location.search).get('admin')==='1';
 const defaultCurricula=__KJT_COURRICULUM__;
-const groups=[];let pages={},revision=0,ready=false,admin=false,preview=false,dirty=false,returnFocus;
-const originals=new Map();
+let pages={},revision=0,ready=false,admin=false,preview=false,editing=true,guides=true,dirty=false,returnFocus;
+const {groups,originals}=require('./scan.cjs').scan(document,page,defaultCurricula);
+const moduleRegistry=require('../../content/editor-registry.json');
+const originalAliases=new Map();
+for(const group of groups){const definition=Object.values(moduleRegistry.modules).find(m=>m.page===page&&m.legacyId===group.legacyId);if(!definition)continue;group.module=definition;group.element.dataset.cmsModule=definition.id;for(const field of group.fields){const descriptor=definition.fields.find(f=>f.legacyKey===field.key);if(!descriptor)continue;const legacyKey=field.key;const original=originals.get(legacyKey);originals.delete(legacyKey);field.legacyKey=legacyKey;field.id=descriptor.id;field.key=sharedKey(definition.id,descriptor.id);originals.set(field.key,{...original,...field});originalAliases.set(legacyKey,field.key);}}
 const courseIdFor=element=>{const node=element.querySelector('[data-course-id],[data-course]');return node?.dataset.courseId||node?.dataset.course;};
-function elementPath(node){const parts=[];while(node&&node!==document.body){const siblings=node.parentElement?[...node.parentElement.children].filter(n=>n.tagName===node.tagName):[node];parts.unshift(node.tagName.toLowerCase()+':'+siblings.indexOf(node));node=node.parentElement;}return parts.join('/');}
-const candidates=[...document.querySelectorAll(GROUP_SELECTOR)];
-for(const [index,element] of candidates.entries()){
- const fields=[];
- for(const node of element.querySelectorAll('h1,h2,h3,h4,p,summary,dd,li,small,img,span')){
-  if(node.closest(GROUP_SELECTOR)!==element||node.closest('nav,form,.profile-photo-thumbs,[aria-hidden="true"]')||(node.tagName!=='IMG'&&node.closest('button')))continue;
-  if(node.tagName==='SMALL'&&node.closest('dd'))continue;
-  if(node.tagName==='SPAN'&&(node.children.length||!node.textContent.trim()||node.textContent.trim().length<3))continue;
-  if(node.tagName!=='IMG'&&node.querySelector('h1,h2,h3,h4,p,li,span,img'))continue;
-  const type=node.tagName==='IMG'?'image':'text';
-  const value=type==='image'?node.getAttribute('src'):node.innerText||node.textContent;
-  if(!value?.trim())continue;
-  const key=sharedKey(page,elementPath(node));
-  const course=courseIdFor(element);
-  const shared=element.classList.contains('tuition-info')?'tuition':course&&element.classList.contains('course')?'course-'+course:null;
-  const trainer=element.querySelector('a[href*="/trainers/"]')?.getAttribute('href')?.split('/').pop()||(element.classList.contains('profile-hero')?page.split('/').pop():null);
-  const trainerSlot=trainer&&['김정태','편보승','임도윤','김형민'].includes(value.trim())?'name':trainer&&['대표 강사','주임강사','전임강사','상담 및 강사'].includes(value.trim())?'role':null;
-  const curriculumId=element.classList.contains('curriculum')?page.split('/').pop():null;
-  const article=node.closest('.curriculum article');const articleIndex=article?[...element.querySelectorAll('article')].indexOf(article):-1;
-  const curriculumSlot=articleIndex>=0&&(node.tagName==='H3'||node.tagName==='P')?`step-${articleIndex}-${node.tagName==='H3'?'title':'description'}`:null;
-  const courseSlot=course&&element.classList.contains('course')?(node.tagName==='IMG'?0:node.matches('.art-label')?1:node.matches('.art-foot')?2:node.matches('.tag')?3:node.tagName==='H3'?4:node.matches('.course-intro,.course-body p:not(.tag)')?5:fields.length):fields.length;
-  const sharedId=curriculumSlot?sharedKey('class-values-'+curriculumId,curriculumSlot):trainerSlot?sharedKey('trainer-'+trainer,trainerSlot):shared?sharedKey(shared,courseSlot):null;
-  fields.push({key,sharedId,type,node,value,label:type==='image'?(node.alt||'사진'):node.tagName==='DD'?(node.previousElementSibling?.textContent.trim()||'수업 정보'):trainerSlot==='name'?'강사 이름':trainerSlot==='role'?'강사 직함':value.trim().slice(0,36)});
-  originals.set(key,{node,type,value,sharedId,html:node.innerHTML});
- }
- const courseId=element.classList.contains('course')?courseIdFor(element):null;
- if(courseId)for(const [i,step]of (defaultCurricula[courseId]||[]).entries())for(const slot of ['title','description']){
-  const node=el('span',step[slot]);const key=sharedKey(page,`values-${courseId}-${i}-${slot}`);const sharedId=sharedKey('class-values-'+courseId,`step-${i}-${slot}`);const f={key,type:'text',node,value:step[slot],sharedId,label:`핵심 가치 ${i+1} ${slot==='title'?'제목':'설명'}`};fields.push(f);originals.set(key,{...f,html:node.innerHTML});
- }
- if(!fields.length)continue;
- const title=element.querySelector('h1,h2,h3')?.textContent.trim()|| (element.classList.contains('tuition-info')?'수강료 및 수업 안내':'홈페이지 영역');
- groups.push({element,fields,title});
-}
-function setField(field,value){if(field.type==='image'){field.node.setAttribute('src',value);const gallery=field.node.closest('[data-profile-gallery]');if(gallery){const index=[...gallery.querySelectorAll('.profile-photo-slide')].indexOf(field.node);const thumb=gallery.querySelectorAll('.profile-photo-thumbs img')[index];if(thumb)thumb.src=value;}}else {field.node.textContent=value;field.node.style.whiteSpace='pre-line';}}
+function fieldValue(field){return field.type==='video'?(field.node.dataset.videoSource||''):field.type==='image'?field.node.getAttribute('src'):field.node.innerText||field.node.textContent;}
+function setField(field,value){if(field.type==='video'){renderVideo(field.node,value);return;}if(field.type==='image'){field.node.setAttribute('src',value);const video=field.node.parentElement.querySelector(':scope > video.kjt-video-player');if(video)video.poster=value;const gallery=field.node.closest('[data-profile-gallery]');if(gallery){const index=[...gallery.querySelectorAll('.profile-photo-slide')].indexOf(field.node);const thumb=gallery.querySelectorAll('.profile-photo-thumbs img')[index];if(thumb)thumb.src=value;}}else {field.node.textContent=value;field.node.style.whiteSpace='pre-line';}}
 function refreshLabels(){for(const group of groups){const link=group.element.querySelector('a[href*="/trainers/"]');const name=group.fields.find(f=>f.label==='강사 이름');const role=group.fields.find(f=>f.label==='강사 직함');if(link&&name)link.setAttribute('aria-label',name.node.textContent+' '+(role?.node.textContent||'')+' 프로필 보기');}}
 function applyContent(){
- for(const original of originals.values()){const entry=(pages['/shared']||[]).find(e=>e.key===original.sharedId);if(entry&&entry.type===original.type&&(entry.type!=='image'||validImage(entry.value)))setField(original,entry.value);}
- for(const entry of pages[page]||[]){const original=originals.get(entry.key);if(original&&!original.sharedId&&original.type===entry.type&&(entry.type!=='image'||validImage(entry.value)))setField({...original},entry.value);}
+ for(const original of originals.values()){const entry=(pages['/shared']||[]).find(e=>e.key===original.sharedId);if(entry&&entry.type===original.type&&(entry.type!=='image'||validImage(entry.value))&&(entry.type!=='video'||validVideo(entry.value)))setField(original,entry.value);}
+ for(const entry of pages[page]||[]){const original=originals.get(entry.key)||originals.get(originalAliases.get(entry.key));if(original&&!original.sharedId&&original.type===entry.type&&(entry.type!=='image'||validImage(entry.value))&&(entry.type!=='video'||validVideo(entry.value)))setField({...original},entry.value);}
  refreshLabels();
 }
-function draftEntries(){return [...originals].filter(([,f])=>!f.sharedId).map(([key,f])=>({key,type:f.type,value:f.type==='image'?f.node.getAttribute('src'):f.node.innerText||f.node.textContent})).filter(e=>e.value!==originals.get(e.key).value);}
-function sharedEntries(){const result=new Map((pages['/shared']||[]).map(e=>[e.key,e]));for(const f of originals.values()){if(!f.sharedId)continue;const value=f.type==='image'?f.node.getAttribute('src'):f.node.innerText||f.node.textContent;if(value!==f.value||result.has(f.sharedId))result.set(f.sharedId,{key:f.sharedId,type:f.type,value});}return [...result.values()];}
+function draftEntries(){return [...originals].filter(([,f])=>!f.sharedId).map(([key,f])=>({key,type:f.type,value:fieldValue(f)})).filter(e=>e.value!==originals.get(e.key).value);}
+function sharedEntries(){const result=new Map((pages['/shared']||[]).map(e=>[e.key,e]));for(const f of originals.values()){if(!f.sharedId)continue;const value=fieldValue(f);if(value!==f.value||result.has(f.sharedId))result.set(f.sharedId,{key:f.sharedId,type:f.type,value});}return [...result.values()];}
 function el(tag,text,attrs={}){const n=document.createElement(tag);if(text)n.textContent=text;for(const [k,v]of Object.entries(attrs))n.setAttribute(k,v);return n;}
 async function request(url,options={}){const r=await fetch(url,{credentials:'same-origin',...options,headers:{'Content-Type':'application/json',...options.headers}});const data=await r.json();if(!r.ok)throw new Error(data.error||'요청을 완료하지 못했습니다.');return data;}
 const toggle=el('button','관리자 모드',{type:'button',class:'kjt-editor-toggle',hidden:''});document.body.append(toggle);
 const toolbar=el('div',null,{class:'kjt-editor-toolbar','aria-label':'컴포넌트 편집 도구'});
 const status=el('span','컴포넌트를 눌러 수정하세요',{role:'status'});
 const save=el('button','홈페이지에 저장',{type:'button'});const cancel=el('button','변경 취소',{type:'button'});const view=el('button','방문자 미리보기',{type:'button'});const logout=el('button','로그아웃',{type:'button'});
-const membersLink=el('a','회원 관리',{href:'/admin/members'});toolbar.append(status,save,cancel,view,membersLink,logout);document.body.append(toolbar);
+const membersLink=el('a','회원 관리',{href:'/admin/members'});const menu=el('button','페이지 메뉴',{type:'button','aria-expanded':'true'});const inquiries=el('button','문의 관리',{type:'button'});const brand=el('strong','KJT · '+pageTitle(page)+' 관리');const editMode=el('button','편집 모드 켜짐',{type:'button','aria-pressed':'true'});const guideMode=el('button','수정 영역 강조 켜짐',{type:'button','aria-pressed':'true'});const historyButton=el('button','저장 이력 · 복원',{type:'button'});toolbar.append(brand,menu,editMode,guideMode,status,save,cancel,historyButton,view,inquiries,membersLink,logout);document.body.append(toolbar);
 const modal=el('dialog',null,{class:'kjt-editor-dialog','aria-label':'컴포넌트 수정'});document.body.append(modal);
+const panel=el('aside',null,{class:'kjt-context-panel',hidden:'','aria-label':'선택 영역 관리'});document.body.append(panel);
+const rail=el('aside',null,{class:'kjt-admin-rail',hidden:'','aria-label':'페이지와 영역 메뉴'});document.body.append(rail);
+let railOpen=true,selectedGroup=null,panelPending=false,panelVersion=0;
 const notice=el('p',null,{class:'kjt-editor-notice',role:'status'});
 function message(text){status.textContent=text;}
-function renderMode(){document.body.classList.toggle('kjt-editing',admin&&!preview);toolbar.hidden=!admin;toggle.hidden=admin||!adminEntry;save.disabled=!dirty||!ready;cancel.disabled=!dirty;view.textContent=preview?'편집 화면으로':'방문자 미리보기';}
+function renderMode(){document.body.classList.toggle('kjt-editing',admin&&!preview&&editing);document.body.classList.toggle('kjt-guides',admin&&!preview&&editing&&guides);for(const f of originals.values())if(f.type==='text'&&f.node.isConnected){if(admin&&!preview&&editing){f.node.setAttribute('contenteditable','plaintext-only');f.node.setAttribute('spellcheck','false');f.node.classList.add('kjt-direct-text');f.node.title='클릭해서 바로 수정 · 우클릭 또는 길게 눌러 상세 편집';}else{f.node.removeAttribute('contenteditable');f.node.classList.remove('kjt-direct-text');f.node.removeAttribute('spellcheck');f.node.removeAttribute('title');}}editMode.textContent=editing?'편집 모드 켜짐':'편집 모드 꺼짐';editMode.setAttribute('aria-pressed',String(editing));guideMode.textContent=guides?'수정 영역 강조 켜짐':'수정 영역 강조 꺼짐';guideMode.setAttribute('aria-pressed',String(guides));toolbar.hidden=!admin;toggle.hidden=admin||!adminEntry;save.disabled=!dirty||!ready;cancel.disabled=!dirty;view.textContent=preview?'편집 화면으로':'방문자 미리보기';rail.hidden=!admin||preview||!editing||!railOpen;document.body.classList.toggle('kjt-admin-active',admin);document.body.classList.toggle('kjt-rail-visible',admin&&!preview&&editing&&railOpen);document.body.classList.toggle('kjt-panel-visible',admin&&!preview&&editing&&!panel.hidden);if(!admin||preview||!editing)panel.hidden=true;menu.setAttribute('aria-expanded',String(!rail.hidden));syncToolbarHeight();}
 function closeModal(){modal.close();returnFocus?.focus();}
 function openModal(title){returnFocus=document.activeElement;modal.replaceChildren();const header=el('div',null,{class:'kjt-editor-heading'});const heading=el('h2',title);heading.id='kjt-editor-title';modal.setAttribute('aria-labelledby',heading.id);const close=el('button','닫기',{type:'button'});close.onclick=closeModal;header.append(heading,close);modal.append(header);modal.showModal();}
 modal.addEventListener('close',()=>returnFocus?.focus());
 modal.addEventListener('click',e=>{if(e.target===modal){const r=modal.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeModal();}});
-function edit(group){
- openModal(`${group.title} 수정`);const profile=group.element.querySelector('a[href*="/trainers/"]')?.getAttribute('href');if(profile)modal.append(el('a','학력·경력·작품은 상세 프로필에서 편집하기',{href:profile}));const form=el('form');const inputs=[];
- const priority=f=>['강사 이름','강사 직함'].includes(f.label)?0:f.node.matches('h1,h2,h3')?1:f.type==='image'?3:f.label.startsWith('커리큘럼')?4:2;
- for(const field of [...group.fields].sort((a,b)=>priority(a)-priority(b))){
-  const label=el('label',field.label,{class:'kjt-editor-field'});const input=el(field.type==='image'?'input':'textarea');input.value=field.type==='image'?field.node.getAttribute('src'):field.node.innerText||field.node.textContent;
-  if(field.type==='image'){input.type='text';input.inputMode='url';input.placeholder='/assets/사진.jpg 또는 https://…';const file=el('input',null,{type:'file',accept:'image/jpeg,image/png,image/webp'});const upload=el('span','사진 파일은 2MB 이하 JPG·PNG·WEBP');file.onchange=async()=>{const f=file.files[0];if(!f)return;if(f.size>2*1024*1024){notice.textContent='사진은 2MB 이하로 선택해주세요.';return;}file.disabled=true;try{const image=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(f);});const data=await request('/api/admin-upload',{method:'POST',body:JSON.stringify({image})});input.value=data.url;notice.textContent='사진을 업로드했습니다. 컴포넌트에 적용 후 홈페이지에 저장하세요.';}catch(e){notice.textContent=e.message;}finally{file.disabled=false;}};label.append(input,file,upload);}else{input.rows=Math.min(6,Math.max(2,input.value.split('\n').length));label.append(input);}
-  inputs.push({field,input});form.append(label);
- }
- notice.textContent='컴포넌트에 적용한 뒤 상단의 홈페이지에 저장을 누르세요.';const actions=el('div',null,{class:'kjt-editor-actions'});const discard=el('button','취소',{type:'button'});discard.onclick=closeModal;const apply=el('button','컴포넌트에 적용',{type:'submit'});actions.append(discard,apply);form.append(notice,actions);
- form.onsubmit=e=>{e.preventDefault();if(inputs.some(({field,input})=>input.value.length>12000||(field.type==='image'&&!validImage(input.value)))){notice.textContent='사진 경로 또는 입력 길이를 확인해주세요.';return;}for(const {field,input}of inputs){const current=field.type==='image'?field.node.getAttribute('src'):field.node.innerText||field.node.textContent;if(current===input.value)continue;setField(field,input.value);if(field.sharedId)for(const f of originals.values())if(f.sharedId===field.sharedId)setField(f,input.value);}refreshLabels();dirty=true;renderMode();message('변경사항이 있습니다. 홈페이지에 저장해주세요.');closeModal();};modal.append(form);
+function showPanel(title,group=null){
+ if(panelPending&&!confirm('아직 영역에 적용하지 않은 입력이 있습니다. 닫고 이동할까요?'))return false;panelPending=false;panelVersion++;
+ selectedGroup?.element.classList.remove('kjt-component-selected');selectedGroup=group;
+ if(group)group.element.classList.add('kjt-component-selected');
+ panel.replaceChildren();panel.hidden=false;panel.scrollTop=0;
+ const heading=el('div',null,{class:'kjt-panel-heading'});const copy=el('div');copy.append(el('small',group?pageTitle(page)+' · 선택한 영역':'홈페이지 운영 관리'),el('h2',title));const close=el('button','닫기',{type:'button'});close.onclick=closePanel;heading.append(copy,close);panel.append(heading);renderMode();return true;
 }
+function closePanel(){if(panelPending&&!confirm('아직 영역에 적용하지 않은 입력을 취소할까요?'))return false;panelPending=false;panelVersion++;panel.hidden=true;selectedGroup?.element.classList.remove('kjt-component-selected');selectedGroup=null;renderMode();return true;}
+function syncToolbarHeight(){document.body.style.setProperty('--kjt-toolbar-height',admin?toolbar.offsetHeight+'px':'0px');}
+window.addEventListener('resize',syncToolbarHeight);
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(syncToolbarHeight).observe(toolbar);
+function inlineAI(field,input){
+ const box=el('div',null,{class:'kjt-inline-ai'});const button=el('button','✦ AI 문구 다듬기',{type:'button'});const help=el('p','현재 입력한 문구를 바탕으로 제안합니다. 적용 전 내용을 확인하세요.');const body=el('div',null,{hidden:''});const consentLabel=el('label',null,{class:'kjt-ai-consent'});const consent=el('input',null,{type:'checkbox'});consentLabel.append(consent,document.createTextNode('개인정보를 제외한 문구를 OpenAI에 보내는 데 동의합니다.'));
+ const result=el('textarea',null,{'aria-label':field.label+' AI 제안',rows:'4'});const apply=el('button','이 문구 사용',{type:'button'});const state=el('p','',{role:'status'});body.append(help,consentLabel,result,apply,state);box.append(button,body);
+ button.onclick=async()=>{body.hidden=false;button.disabled=true;apply.hidden=true;state.textContent='AI 연결을 확인하고 있습니다.';try{const config=await request('/api/ai-assistant');consentLabel.hidden=config.mode!=='live';if(!config.ready)throw Error('AI 연결 준비 중입니다. 문구는 직접 수정할 수 있습니다.');if(config.mode==='live'&&!consent.checked){state.textContent='처리 안내에 동의한 뒤 AI 문구 다듬기를 다시 눌러주세요.';return;}const data=await request('/api/ai-assistant',{method:'POST',body:JSON.stringify({task:'polish',text:input.value,consent:consent.checked})});result.value=data.answer;apply.hidden=false;state.textContent=data.mode==='demo'?'시연 모드: 원문 공백을 정리한 예시입니다.':'제안 문구를 확인한 뒤 사용하세요.';}catch(e){state.textContent=e.message;}finally{button.disabled=false;}};
+ apply.onclick=()=>{input.value=result.value;panelPending=true;state.textContent='입력란에 반영했습니다. 아래 영역 적용 후 상단에서 저장하세요.';};return box;
+}
+function videoControl(field){
+ const wrap=el('div',null,{class:'kjt-field-wrap kjt-video-control'});wrap.append(el('h3','영상 등록'));
+ const label=el('label','영상 링크',{class:'kjt-editor-field'});const input=el('input',null,{type:'text',inputmode:'url',placeholder:'YouTube · Vimeo · MP4 · WEBM 링크','aria-label':'재생할 영상 링크'});input.value=fieldValue(field);label.append(input);wrap.append(label,el('p','영상 파일을 올리거나 YouTube·Vimeo·MP4·WEBM 주소를 넣어주세요. 비우면 영상 준비 화면으로 돌아갑니다.'));
+ const file=el('input',null,{type:'file',accept:'video/mp4,video/webm,.mp4,.webm','aria-label':'영상 파일 선택'});const progress=el('p','MP4·WEBM · 최대 100MB',{role:'status'});const previewFrame=el('div',null,{class:'video-slot-frame kjt-video-preview'});const poster=field.node.querySelector(':scope > img');if(poster)previewFrame.append(el('img',null,{src:poster.getAttribute('src'),alt:'영상 표지'}));
+ const preview=el('button','영상 미리보기',{type:'button'});preview.onclick=()=>{if(!validVideo(input.value)){progress.textContent='지원하는 영상 링크를 입력해주세요.';return;}renderVideo(previewFrame,input.value);progress.textContent=input.value?'재생 버튼으로 영상을 확인하세요.':'영상이 설정되지 않았습니다.';};
+ const clear=el('button','영상 비우기',{type:'button'});clear.onclick=()=>{input.value='';panelPending=true;renderVideo(previewFrame,'');progress.textContent='영역에 적용하면 영상 준비 화면으로 돌아갑니다.';};
+ file.onchange=async()=>{const selected=file.files[0];if(!selected)return;const type=selected.type||(/\.mp4$/i.test(selected.name)?'video/mp4':/\.webm$/i.test(selected.name)?'video/webm':'');const metadata={name:selected.name,type,size:selected.size};if(!validVideoFile(metadata)){progress.textContent='100MB 이하 MP4·WEBM 영상을 선택해주세요.';return;}file.disabled=true;progress.textContent='영상 파일을 업로드하고 있습니다. 완료될 때까지 기다려주세요.';
+ try{const config=await request('/api/admin-video-upload');let url;if(config.demo){const response=await fetch('/api/admin-video-file',{method:'POST',credentials:'same-origin',headers:{'Content-Type':type},body:selected});const data=await response.json();if(!response.ok)throw Error(data.error||'영상 업로드에 실패했습니다.');url=data.url;}else{const data=await request('/api/admin-video-upload',{method:'POST',body:JSON.stringify(metadata)});const response=await fetch(data.signedUrl,{method:'PUT',headers:{'Content-Type':type,'x-upsert':'false'},body:selected});if(!response.ok)throw Error('영상 업로드를 완료하지 못했습니다. 파일 형식과 저장소 설정을 확인해주세요.');url=data.url;}
+ input.value=url;panelPending=true;renderVideo(previewFrame,url);progress.textContent=config.demo?'시연용 영상 업로드 완료 · 영역에 적용 후 홈페이지에 저장하세요. 서버 재시작 시 파일은 사라집니다.':'영상 업로드 완료 · 영역에 적용 후 홈페이지에 저장하세요.';
+ }catch(e){progress.textContent=e.message;}finally{file.disabled=false;}};
+ wrap.append(file,progress,preview,clear,previewFrame);return {wrap,input};
+}
+function edit(group){
+ if(!showPanel(group.title,group))return;const profile=group.element.querySelector('a[href*="/trainers/"]')?.getAttribute('href');const course=courseIdFor(group.element);
+ const work=group.element.querySelector('a[href^="/works/"]')?.getAttribute('href');const related=profile||work||(course?'/courses/'+course:null);if(related)panel.append(el('a',profile?'상세 프로필 페이지 편집 →':work?'작품 상세 페이지 편집 →':'교육과정 상세 페이지 편집 →',{href:related+'?admin=1',class:'kjt-panel-related'}));
+ const form=el('form');form.addEventListener('input',()=>{panelPending=true;});const inputs=[];
+ const priority=f=>f.type==='video'?-1:['강사 이름','강사 직함'].includes(f.label)?0:f.node.matches('h1,h2,h3')?1:f.type==='image'?3:f.label.startsWith('커리큘럼')?4:2;
+ for(const field of [...group.fields].sort((a,b)=>priority(a)-priority(b))){
+  if(field.type==='video'){const control=videoControl(field);inputs.push({field,input:control.input});form.append(control.wrap);continue;}
+  const wrap=el('div',null,{class:'kjt-field-wrap'});const label=el('label',field.type==='image'&&!field.label.startsWith('영상 표지')?'사진 · '+field.label:field.label,{class:'kjt-editor-field'});const input=el(field.type==='image'?'input':'textarea');input.value=fieldValue(field);
+  if(field.type==='image'){input.type='text';input.inputMode='url';input.placeholder='/assets/사진.jpg 또는 https://…';const image=el('img',null,{src:input.value,alt:field.label,class:'kjt-field-image'});const file=el('input',null,{type:'file',accept:'image/jpeg,image/png,image/webp'});const upload=el('span','사진 파일은 2MB 이하 JPG·PNG·WEBP');file.onchange=async()=>{const f=file.files[0];if(!f)return;if(f.size>2*1024*1024){notice.textContent='사진은 2MB 이하로 선택해주세요.';return;}file.disabled=true;try{const dataURL=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(f);});const data=await request('/api/admin-upload',{method:'POST',body:JSON.stringify({image:dataURL})});input.value=data.url;image.src=data.url;panelPending=true;notice.textContent='사진을 업로드했습니다. 영역에 적용 후 홈페이지에 저장하세요.';}catch(e){notice.textContent=e.message;}finally{file.disabled=false;}};input.onchange=()=>{if(validImage(input.value))image.src=input.value;};label.append(image,input,file,upload);}else{input.rows=Math.min(6,Math.max(2,input.value.split('\n').length));label.append(input);}
+  inputs.push({field,input});wrap.append(label);if(field.type==='text')wrap.append(inlineAI(field,input));form.append(wrap);
+ }
+ notice.textContent='영역에 적용하면 가운데 화면에서 확인할 수 있습니다. 상단 저장 버튼을 눌러 최종 반영하세요.';const actions=el('div',null,{class:'kjt-editor-actions'});const discard=el('button','패널 닫기',{type:'button'});discard.onclick=closePanel;const apply=el('button','영역에 적용',{type:'submit'});actions.append(discard,apply);form.append(notice,actions);
+ form.onsubmit=e=>{e.preventDefault();if(inputs.some(({field,input})=>input.value.length>12000||(field.type==='image'&&!validImage(input.value))||(field.type==='video'&&!validVideo(input.value)))){notice.textContent='영상 링크·사진 경로 또는 입력 길이를 확인해주세요.';return;}let changed=false;for(const {field,input}of inputs){const current=fieldValue(field);if(current===input.value)continue;changed=true;setField(field,input.value);if(field.sharedId)for(const f of originals.values())if(f.sharedId===field.sharedId)setField(f,input.value);}panelPending=false;if(changed){refreshLabels();dirty=true;renderMode();message('변경사항이 있습니다. 홈페이지에 저장해주세요.');notice.textContent='화면에 적용했습니다. 상단의 홈페이지에 저장을 눌러주세요.';}};panel.append(form);
+ if(group.module){const direct=form;const version=panelVersion;const tabs=el('div',null,{class:'kjt-edit-tabs','aria-label':'영역 편집 방식'});const manual=el('button','직접 편집',{type:'button','aria-pressed':'true'});const ai=el('button','AI에게 요청',{type:'button','aria-pressed':'false'});const chat=require('./inline-chat.cjs').createChat({module:group.module,request,active:()=>panelVersion===version&&selectedGroup===group,values:()=>Object.fromEntries(inputs.filter(i=>i.field.id).map(i=>[i.field.id,i.input.value])),apply:changes=>{for(const change of changes){const item=inputs.find(i=>i.field.id===change.fieldId);if(!item||item.input.value!==change.before)return false;}for(const change of changes)inputs.find(i=>i.field.id===change.fieldId).input.value=change.after;panelPending=true;form.requestSubmit();return !panelPending;}});chat.hidden=true;tabs.append(manual,ai);panel.insertBefore(tabs,form);panel.append(chat);manual.onclick=()=>{manual.setAttribute('aria-pressed','true');ai.setAttribute('aria-pressed','false');direct.hidden=false;chat.hidden=true;};ai.onclick=()=>{manual.setAttribute('aria-pressed','false');ai.setAttribute('aria-pressed','true');direct.hidden=true;chat.hidden=false;};}
+ if(group.element.matches('.closing,.course-notes')||group.element.querySelector('[data-consult]')){const manage=el('button','상담 · 문의 목록 열기',{type:'button',class:'kjt-context-manage'});manage.onclick=openInquiries;panel.append(manage);}
+}
+function resetRenderedContent(){for(const f of originals.values()){if(f.type==='image'||f.type==='video')setField(f,f.value);else{f.node.innerHTML=f.html;f.node.style.whiteSpace='';}}applyContent();}
+async function openHistory(){
+ if(!showPanel('저장 이력 · 복원'))return;
+ const version=panelVersion;
+ const help=el('p','저장할 때마다 홈페이지 전체의 문구·사진·영상 경로를 보관합니다. 복원해도 이후 이력은 삭제되지 않습니다.');const state=el('p','저장 이력을 불러오고 있습니다.',{role:'status'});const list=el('div',null,{class:'kjt-history-list'});const more=el('button','이전 이력 더 보기',{type:'button',hidden:''});panel.append(help,state,list,more);let before=null;
+ const titles={'/':'메인 홈페이지','/shared':'공통 정보','/about':'아카데미 소개','/programs':'교육과정','/trainers':'강사소개','/works':'수강생 작품','/reviews':'수강후기','/facilities':'시설 안내','/faq':'FAQ'};
+ async function load(){more.disabled=true;try{const data=await request('/api/admin-content-history'+(before!==null?'?before='+before:''));if(version!==panelVersion)return;state.textContent=data.demo?'로컬 시연 이력입니다. 서버 재시작 시 초기화됩니다.':'저장 시각은 한국 시간입니다. 이력 수집을 시작하기 전의 변경은 포함되지 않습니다.';before=data.nextBefore;more.hidden=before===null;
+ if(!data.records.length&&!list.children.length)list.append(el('p','아직 저장된 이력이 없습니다.'));
+ for(const record of data.records){const item=el('article',null,{class:'kjt-history-item'});const date=new Date(record.created_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'});item.append(el('strong','저장 #'+record.revision+(record.revision===revision?' · 현재':'')),el('p',date),el('p',record.action==='restore'?'저장 #'+record.restored_from+' 복원본':record.action==='baseline'?'이력 수집 시작 시점':'홈페이지 저장'));
+ const inspect=el('button','변경 내용 확인',{type:'button'});const detail=el('div',null,{hidden:'',class:'kjt-history-detail'});item.append(inspect,detail);list.append(item);
+ inspect.onclick=async()=>{inspect.disabled=true;detail.hidden=false;detail.replaceChildren(el('p','내용을 확인하고 있습니다.'));try{const data=await request('/api/admin-content-history?revision='+record.revision);if(version!==panelVersion)return;const changes=contentDiff(pages,data.record.value);detail.replaceChildren(el('p','현재 저장본 → 선택한 시점 · '+changes.length+'개 항목 변경'));
+ for(const change of changes){const field=[...originals].find(([key,f])=>(change.page==='/shared'?f.sharedId===change.key:change.page===page&&key===change.key))?.[1];const diff=el('div',null,{class:'kjt-history-change'});diff.append(el('strong',(titles[change.page]||change.page)+' · '+(field?.node?.alt||field?.value?.slice(0,34)||change.key)));
+ const base=field?.value;const value=text=>text===null?(base??'기본 콘텐츠로 돌아갑니다.'):text;diff.append(el('small','현재'),el('pre',value(change.before)),el('small','복원 후'),el('pre',value(change.after)));detail.append(diff);}
+ if(!changes.length){detail.append(el('p','현재 저장본과 같은 내용입니다.'));return;}
+ const restore=el('button','이 시점으로 복원',{type:'button',class:'kjt-history-restore'});detail.append(el('p','복원하면 다른 페이지와 공통 정보도 선택한 시점으로 돌아갑니다. 사진 파일 자체와 문의·회원 데이터는 복원 대상이 아닙니다.'),restore);
+ restore.onclick=async()=>{if(!confirm(date+' (저장 #'+record.revision+') 시점의 홈페이지 전체 내용으로 복원할까요?'+((dirty||panelPending)?' 저장하지 않은 현재 수정은 취소됩니다.':'')+' 복원 전 상태도 이력에서 다시 선택할 수 있습니다.'))return;restore.disabled=true;state.textContent='이전 시점으로 복원하고 있습니다.';try{const result=await request('/api/admin-content-history',{method:'POST',body:JSON.stringify({targetRevision:record.revision,revision})});pages=result.pages;revision=result.revision;dirty=false;panelPending=false;resetRenderedContent();refreshLabels();renderMode();message('저장 #'+record.revision+' 시점으로 복원했습니다. 복원본은 #'+revision+' 이력에 남겼습니다.');await openHistory();}catch(e){state.textContent=e.message;restore.disabled=false;}};
+ }catch(e){detail.replaceChildren(el('p',e.message,{role:'status'}));}finally{inspect.disabled=false;}};
+ }
+ }catch(e){state.textContent=e.message;}finally{more.disabled=false;}}
+ more.onclick=load;await load();
+}
+historyButton.onclick=openHistory;
+function renderRail(){
+ rail.replaceChildren();rail.append(el('small','INLINE ADMIN'),el('h2','페이지 관리'));
+ const nav=el('nav',null,{'aria-label':'편집할 페이지'});
+ for(const [url,title]of primaryPages)nav.append(el('a',title,{href:url+'?admin=1',...(page===url?{'aria-current':'page'}:{})}));
+ for(const category of detailPages){const section=el('details',null,{class:'kjt-page-category',...(category.pages.some(([url])=>url===page)?{open:''}:{})});section.append(el('summary',category.title));for(const [url,title]of category.pages)section.append(el('a',title,{href:url+'?admin=1',...(page===url?{'aria-current':'page'}:{})}));nav.append(section);}
+ rail.append(nav,el('h3',pageTitle(page)+' · 편집 영역'));
+
+ const list=el('div',null,{class:'kjt-section-list'});
+ groups.forEach((group,i)=>{const b=el('button',String(i+1).padStart(2,'0')+' '+group.title,{type:'button'});b.onclick=()=>{if(group.element.matches('details'))group.element.open=true;const hiddenPanel=group.element.closest('[aria-hidden="true"]');if(hiddenPanel){message('현재 숨겨진 슬라이드입니다. 방문자 미리보기에서 해당 슬라이드를 선택한 뒤 편집해주세요.');}group.element.scrollIntoView({behavior:'smooth',block:'center'});edit(group);};list.append(b);});rail.append(list);
+ const manage=el('button','상담 · 문의 목록',{type:'button',class:'kjt-rail-inquiries'});manage.onclick=openInquiries;rail.append(manage,el('p','실제 홈페이지에서 영역을 눌러 수정하세요. 변경사항은 저장 후 방문자에게 반영됩니다.'));
+}
+async function openInquiries(){
+ if(!showPanel('상담 · 문의 관리'))return;const version=panelVersion;const loading=el('p','문의 목록을 불러오고 있습니다.',{role:'status'});panel.append(loading);
+ try{const data=await request('/api/admin-inquiries');if(version!==panelVersion)return;loading.textContent=data.demo?'시연용 문의입니다. 서버를 재시작하면 초기화됩니다.':'최근 접수된 문의 최대 200건입니다. 전화 상담과 AI 대화는 자동으로 저장되지 않습니다.';
+ const tools=el('div',null,{class:'kjt-inquiry-filters'});const search=el('input',null,{type:'search',placeholder:'이름·과정 검색','aria-label':'문의 검색'});const filter=el('select',null,{'aria-label':'문의 처리 상태'});for(const label of ['전체','신규','연락 중','상담완료'])filter.append(el('option',label,{value:label}));tools.append(search,filter);const list=el('div',null,{class:'kjt-inquiry-list'});panel.append(tools,list);
+ const records=data.records||[];
+ function draw(){list.replaceChildren();const matches=records.filter(r=>(filter.value==='전체'||r.status===filter.value)&&[r.name,...(r.courses||[])].join(' ').includes(search.value.trim()));if(!matches.length)list.append(el('p','표시할 문의가 없습니다.'));for(const record of matches){const card=el('details',null,{class:'kjt-inquiry-card'});card.append(el('summary',record.name+' · '+record.status));card.append(el('p',new Date(record.created_at).toLocaleString('ko-KR',{timeZone:'Asia/Seoul'})),el('p','희망 과정: '+(record.courses||[]).join(', ')),el('p','수강 목적: '+(record.purposes||[]).join(', ')),el('a',record.phone,{href:'tel:'+String(record.phone).replace(/[^0-9+]/g,'')}));
+ const form=el('form');const stateLabel=el('label','처리 상태',{class:'kjt-editor-field'});const select=el('select',null,{'aria-label':record.name+' 처리 상태'});for(const value of ['신규','연락 중','상담완료'])select.append(el('option',value,{value}));select.value=record.status;stateLabel.append(select);const memoLabel=el('label','담당자 메모',{class:'kjt-editor-field'});const memo=el('textarea',null,{rows:'4',maxlength:'4000'});memo.value=record.memo||'';memoLabel.append(memo);const saveRecord=el('button','문의 처리 저장',{type:'submit'});const note=el('p','',{role:'status'});form.append(stateLabel,memoLabel,saveRecord,note);form.onsubmit=async e=>{e.preventDefault();saveRecord.disabled=true;try{const result=await request('/api/admin-inquiries',{method:'PATCH',body:JSON.stringify({id:record.id,status:select.value,memo:memo.value})});Object.assign(record,result.record);card.querySelector('summary').textContent=record.name+' · '+record.status;note.textContent='문의 처리 내용을 저장했습니다.';}catch(err){note.textContent=err.message;}finally{saveRecord.disabled=false;}};card.append(form);list.append(card);}}
+ search.oninput=draw;filter.onchange=draw;draw();
+ }catch(e){loading.textContent=e.message;}
+}
+editMode.onclick=()=>{if(editing&&!closePanel())return;editing=!editing;preview=false;renderMode();};guideMode.onclick=()=>{guides=!guides;renderMode();};
+menu.onclick=()=>{railOpen=!railOpen;renderMode();};inquiries.onclick=openInquiries;renderRail();
 for(const group of groups){group.element.classList.add('kjt-editable-component');const button=el('button',`${group.title} 수정`,{type:'button',class:'kjt-component-edit'});button.onclick=e=>{e.preventDefault();e.stopPropagation();edit(group);};group.element.append(button);}
-document.addEventListener('click',e=>{if(!admin||preview||e.target.closest('.kjt-editor-dialog,.kjt-editor-toolbar,.kjt-component-edit'))return;const group=groups.find(g=>g.element===e.target.closest('.kjt-editable-component'));if(!group)return;e.preventDefault();e.stopImmediatePropagation();edit(group);},true);
+// Match the KFSSEC interaction: type in place; right-click/long-press for block tools.
+function changedCount(){let count=0;for(const [key,f]of originals){const entries=pages[f.sharedId?'/shared':page]||[];const saved=entries.find(e=>e.key===(f.sharedId||key)||(!f.sharedId&&e.key===f.legacyKey));const current=fieldValue(f);if(current!==(saved?.value??f.value))count++;}return count;}
+for(const [key,field]of originals){
+ if(field.type!=='text'||!field.node.isConnected)continue;
+ let snapshot='',html='',wasDirty=false;
+ field.node.addEventListener('focus',()=>{snapshot=field.node.innerText||field.node.textContent;html=field.node.innerHTML;wasDirty=dirty;if(!panel.hidden&&!closePanel())field.node.blur();});
+ field.node.addEventListener('input',()=>{if(!admin||preview||!editing)return;dirty=true;save.disabled=!ready;cancel.disabled=false;message('문구를 수정하고 있습니다. 완료 후 홈페이지에 저장하세요.');});
+ field.node.addEventListener('blur',()=>{if(!admin||preview||!editing)return;const value=field.node.innerText||field.node.textContent;if(value.length>12000){field.node.innerHTML=html;dirty=wasDirty;renderMode();message('문구는 12,000자 이하로 입력해주세요.');return;}if(value!==snapshot){setField(field,value);if(field.sharedId)for(const f of originals.values())if(f.sharedId===field.sharedId)setField(f,value);refreshLabels();dirty=true;message(changedCount()+'개 항목 수정됨 · 홈페이지에 저장해주세요.');}renderMode();});
+ field.node.addEventListener('keydown',event=>{if(event.isComposing)return;if(event.key==='Escape'){event.preventDefault();field.node.innerHTML=html;dirty=wasDirty;field.node.blur();renderMode();message('해당 문구의 입력을 취소했습니다.');}else if(event.key==='Enter'&&!event.shiftKey&&field.node.matches('h1,h2,h3,h4,span,summary,small')){event.preventDefault();field.node.blur();}});
+ field.node.addEventListener('paste',event=>{if(!admin||preview||!editing)return;event.preventDefault();const text=event.clipboardData.getData('text/plain');const selection=window.getSelection();if(!selection?.rangeCount)return;const range=selection.getRangeAt(0);if(!field.node.contains(range.commonAncestorContainer)&&range.commonAncestorContainer!==field.node)return;range.deleteContents();const inserted=document.createTextNode(text);range.insertNode(inserted);range.setStartAfter(inserted);range.collapse(true);selection.removeAllRanges();selection.addRange(range);field.node.dispatchEvent(new Event('input',{bubbles:true}));});
+}
+function contextGroup(target){if(!admin||preview||!editing||target.closest('.kjt-context-panel,.kjt-admin-rail,.kjt-editor-toolbar'))return null;return groups.find(g=>g.element===target.closest('.kjt-editable-component'));}
+document.addEventListener('contextmenu',event=>{const group=contextGroup(event.target);if(!group)return;event.preventDefault();edit(group);});
+let holdTimer,holdStart;
+const cancelHold=()=>{clearTimeout(holdTimer);holdTimer=null;};
+document.addEventListener('pointerdown',event=>{if(event.pointerType!=='touch')return;const group=contextGroup(event.target);if(!group)return;holdStart=[event.clientX,event.clientY];holdTimer=setTimeout(()=>{document.activeElement?.blur();edit(group);},600);});
+document.addEventListener('pointermove',event=>{if(holdTimer&&Math.hypot(event.clientX-holdStart[0],event.clientY-holdStart[1])>10)cancelHold();});
+for(const type of ['pointerup','pointercancel'])document.addEventListener(type,cancelHold);
+document.addEventListener('click',e=>{if(e.target.closest('.faculty-filters button,.works-filters button,.reviews-filters button,.work-category-tabs button,[data-work-browser] button,.profile-tabs a,.profile-photo-thumbs button,.carousel-controls button,[data-journey],[data-orbit-prev],[data-orbit-next]'))return;if(admin&&!preview&&editing&&e.target.closest('[contenteditable]')&&e.target.closest('a')){e.preventDefault();e.stopPropagation();return;}if(!admin||preview||!editing||e.target.closest('.kjt-editor-dialog,.kjt-editor-toolbar,.kjt-component-edit,.kjt-context-panel,.kjt-admin-rail,.kjt-video-player,[contenteditable]'))return;const group=groups.find(g=>g.element===e.target.closest('.kjt-editable-component'));if(!group)return;e.preventDefault();e.stopImmediatePropagation();edit(group);},true);
 toggle.onclick=()=>{openModal('관리자 로그인');const form=el('form');const label=el('label','관리자 비밀번호',{class:'kjt-editor-field'});const input=el('input',null,{type:'password',autocomplete:'current-password',required:''});label.append(input);const help=el('p','운영용 관리자 계정으로 로그인하세요.',{role:'status'});const submit=el('button','로그인',{type:'submit'});form.append(label,help,submit);form.onsubmit=async e=>{e.preventDefault();submit.disabled=true;try{await request('/api/admin-auth',{method:'POST',body:JSON.stringify({password:input.value})});admin=true;renderMode();message(ready?'수정할 컴포넌트를 누르세요.':'저장소 미연결: 편집 미리보기만 가능합니다.');closeModal();}catch(err){help.textContent=err.message;}finally{submit.disabled=false;}};modal.append(form);input.focus();};
 save.onclick=async()=>{save.disabled=true;try{const next={...pages,[page]:draftEntries(),'/shared':sharedEntries()};const result=await request('/api/site-content',{method:'PUT',body:JSON.stringify({pages:next,revision})});pages=next;revision=result.revision;dirty=false;message('저장했습니다. 방문자 화면에도 반영됩니다.');}catch(e){message(e.message);}finally{renderMode();}};
-cancel.onclick=()=>{if(!confirm('저장하지 않은 변경사항을 취소할까요?'))return;for(const f of originals.values()){if(f.type==='image')f.node.setAttribute('src',f.value);else f.node.innerHTML=f.html;}applyContent();dirty=false;message('저장된 내용으로 되돌렸습니다.');renderMode();};
-view.onclick=()=>{preview=!preview;renderMode();};
-logout.onclick=async()=>{if(dirty&&!confirm('저장하지 않은 변경이 있습니다. 취소하고 로그아웃할까요?'))return;try{await request('/api/admin-auth',{method:'DELETE'});location.reload();}catch(e){message(e.message);}};
-window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
+cancel.onclick=()=>{if(!confirm('저장하지 않은 변경사항을 취소할까요?'))return;resetRenderedContent();dirty=false;message('저장된 내용으로 되돌렸습니다.');renderMode();};
+view.onclick=()=>{if(!preview&&!closePanel())return;preview=!preview;renderMode();};
+logout.onclick=async()=>{if((dirty||panelPending)&&!confirm('저장하지 않은 변경이 있습니다. 취소하고 로그아웃할까요?'))return;try{await request('/api/admin-auth',{method:'DELETE'});location.reload();}catch(e){message(e.message);}};
+window.addEventListener('beforeunload',e=>{if(dirty||panelPending){e.preventDefault();e.returnValue='';}});
 (async()=>{try{const content=await request('/api/site-content');pages=content.pages||{};revision=content.revision||0;ready=content.ready;applyContent();const auth=await request('/api/admin-auth');admin=auth.authenticated;renderMode();if(admin)message(ready?'수정할 컴포넌트를 누르세요.':'저장소 미연결: 편집 미리보기만 가능합니다.');}catch(e){message(e.message);renderMode();}})();
 renderMode();
 
