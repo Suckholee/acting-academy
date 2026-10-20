@@ -1,0 +1,28 @@
+/* Touch layouts verified on phone/tablet, portrait and landscape. */
+@media(pointer:coarse),(max-width:1180px){
+ .filters button,.faculty-filters button,.work-category-tabs button,.reviews-filters button,.works-filters button,.journey-tabs button,.page-sharing button{min-height:44px;min-width:44px}
+ .filters button,.faculty-filters button{line-height:1.5;padding-top:11px;padding-bottom:11px}
+ .journey-tabs button{padding:10px 5px}
+ .phone-consult-close,.dialog-x,.close-dialog{min-width:44px;min-height:44px}
+}
+@media(max-width:850px){
+ body>header .mobile-menu-button{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
+ body>header nav a{min-height:44px}
+ .sticky-inquiry{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+ body .ai-launcher{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+ footer{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+ .phone-consult-dialog{overscroll-behavior:contain;scroll-padding-block:24px}
+ .phone-consult-dialog .phone-consult-close{position:sticky;display:block;top:0;margin-left:auto;right:auto;z-index:1;background:#fff;border-radius:50%}
+}
+@media(max-width:480px){
+ .planner-time-grid{grid-template-columns:1fr;gap:8px}
+ .planner-day{grid-template-columns:24px repeat(4,minmax(0,1fr));gap:5px;align-items:center}
+ .planner-day>span{font-size:13px;padding:0}
+ .planner-day button{font-size:12px;letter-spacing:-.025em;min-height:46px;padding:10px 2px}
+}
+@media(max-height:500px) and (orientation:landscape){
+ body .sticky-inquiry{left:auto;right:16px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:auto;min-width:180px;min-height:46px;padding:6px 8px 6px 18px;gap:16px}
+ .sticky-inquiry>span{display:none}.sticky-inquiry strong{font-size:13px}.sticky-inquiry b{width:32px;height:32px;font-size:22px}
+ body .ai-launcher{right:16px;bottom:calc(68px + env(safe-area-inset-bottom,0px));font-size:12px;padding:10px 16px;min-height:44px}
+ .phone-consult-dialog{max-height:calc(100dvh - 24px);padding:16px 24px}
+}

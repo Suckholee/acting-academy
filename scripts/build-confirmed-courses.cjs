@@ -32,7 +32,7 @@ const template = fs.readFileSync(path.join(source,'courses/camera.html'),'utf8')
 for (const c of courses) {
   const url = `https://www.kactstar.com/courses/${c.id}`;
   const title = `${display(c)} | 김정태 배우아카데미 · 마곡`;
-  const description = `${c.intro} 서울 강서구 마곡역에서 도보 약 2분. ${note}`;
+  const description = `${c.intro} 서울 강서구 마곡역 4번 출구에서 도보 약 1분. ${note}`;
   const main = `<main><section class="course-page-hero"><img style="object-position:50% 0%" src="${c.image}" alt="${c.imageAlt}" width="${c.imageWidth || 1536}" height="${c.imageHeight || 1024}"><div><p class="eyebrow">/ ${c.label} /</p><h1>${display(c)}</h1><p>${c.intro}</p></div></section><section class="section course-overview"><div><p class="eyebrow dark">/ Class Information /</p><h2>나에게 맞는 수업,<br>함께 찾아갑니다.</h2></div><p>${c.intro} ${note}</p></section><section class="section curriculum class-values"><p class="eyebrow dark">/ Class Information /</p><h2>과정 안내</h2><article><h3>${display(c)}</h3><p>${c.intro}</p></article><article><h3>커리큘럼 및 일정 안내</h3><p>${note}</p></article></section><section class="section course-notes"><h2>수강 상담 안내</h2><p>희망하는 반과 수강 목적을 알려주시면 담당자가 안내합니다.</p><a class="button gold" href="/?consult=${c.id}">이 과정 상담하기</a></section></main>`;
   const html = template.replace(/<title>[\s\S]*?<\/title>/,`<title>${title}</title>`)
     .replace(/<meta name="description"[^>]*>/,`<meta name="description" content="${description}">`)
@@ -45,11 +45,11 @@ for (const c of courses) {
     .replace(/<main>[\s\S]*?<\/main>/,main);
   fs.writeFileSync(path.join(source,'courses',c.id+'.html'),html);
 }
-for (const [id,target] of [['basic','/programs'],['coaching','/programs'],['audition','/courses/audition-prep']]) {
+for (const [id,target] of [['basic','/programs'],['coaching','/programs'],['audition','/courses/audition-prep'],['stage','/courses/camera-advanced'],['speech','/programs']]) {
   fs.writeFileSync(path.join(source,'courses',id+'.html'),`<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="robots" content="noindex, follow"><meta http-equiv="refresh" content="0;url=${target}"><title>교육과정 안내 | 김정태 배우아카데미</title></head><body><a href="${target}">확정 교육과정 보기</a></body></html>`);
 }
 const sitemapFile = path.join(source,'sitemap.xml');
 let sitemap = fs.readFileSync(sitemapFile,'utf8').replace(/\s*<url><loc>[^<]*\/courses\/[^<]*<\/loc>[\s\S]*?<\/url>/g,'');
-sitemap = sitemap.replace('</urlset>',courses.map(c=>`  <url><loc>https://www.kactstar.com/courses/${c.id}</loc><lastmod>2026-10-16</lastmod></url>`).join('\n')+'\n</urlset>');
+sitemap = sitemap.replace('</urlset>',courses.map(c=>`  <url><loc>https://www.kactstar.com/courses/${c.id}</loc><lastmod>2026-10-20</lastmod></url>`).join('\n')+'\n</urlset>');
 fs.writeFileSync(sitemapFile,sitemap);
 console.log('Confirmed courses: '+courses.map(display).join(', '));

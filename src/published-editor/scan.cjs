@@ -6,6 +6,7 @@ const courseIdFor=element=>{const node=element.querySelector('[data-course-id],[
 function elementPath(node){const parts=[];while(node&&node!==document.body){const siblings=node.parentElement?[...node.parentElement.children].filter(n=>n.tagName===node.tagName):[node];parts.unshift(node.tagName.toLowerCase()+':'+siblings.indexOf(node));node=node.parentElement;}return parts.join('/');}
 const candidates=[...document.querySelectorAll(GROUP_SELECTOR)];
 for(const [index,element] of candidates.entries()){
+ if(element.matches('.class-planner'))continue;
  const fields=[];
  for(const node of element.querySelectorAll('h1,h2,h3,h4,p,summary,dd,li,small,img,span')){
   if(node.closest(GROUP_SELECTOR)!==element||(node.closest('nav,form,.profile-photo-thumbs')||(node.closest('[aria-hidden="true"]')&&!node.closest('.journey-panel,[data-profile-gallery]')))||(node.tagName!=='IMG'&&node.closest('button')))continue;

@@ -15,10 +15,10 @@ const tasks = {
 };
 const publicTasks = new Set(['inquiry','recommend']);
 const sourceLinks = [{title:'교육과정 안내',url:'/programs'},{title:'자주 묻는 질문',url:'/faq'}];
-const knowledge = () => '김정태 배우아카데미 승인 과정 자료:\n'+courses.map(c=>`${c.title}${c.audience?' ('+c.audience+')':''}: ${c.intro}`).join('\n')+'\n세부 커리큘럼·반별 일정은 추후 안내. 수강료·정원·개강일·할인·등록 가능 여부는 담당자 확인 필요. 대표전화 02-2666-4528, 상담 담당 임도윤 실장 010-9942-4528. 전화 연결은 상담 접수 완료를 의미하지 않음.';
+const knowledge = () => '김정태 배우아카데미 승인 과정 자료:\n'+courses.map(c=>`${c.title}${c.audience?' ('+c.audience+')':''}: ${c.intro}`).join('\n')+'\n세부 커리큘럼·반별 일정은 추후 안내. 기본 교습비 월 40만 원, 주 1회, 회당 3시간(8명 기준), 최대 8명. 기본 교습비 기준 3개월 등록 시 10% 할인(108만 원). 프리미엄·개인 레슨은 별도 문의. 운영 시간 09:00~21:00. 반별 일정·휴무일·인원별 수업 시간·등록 가능 여부는 담당자 확인 필요. 외부 오디션 일정이나 지원 링크는 공개 상담에 제공하지 말고 학원 상담을 안내. 대표전화 02-2666-4528, 상담 담당 임도윤 실장 010-9942-4528. 전화 연결은 상담 접수 완료를 의미하지 않음.';
 function demoAnswer(task, text) {
  if(task==='polish')return text.trim().replace(/[ \t]+/g,' ').replace(/\n{3,}/g,'\n\n');
- const match = courses.filter(c=>({camera:/카메라|촬영/,stage:/무대|연극/,speech:/스피치|발표|말하기/,'audition-prep':/오디션|입시/,'senior-model':/모델|워킹/,hobby:/취미|뮤지컬|보컬/}[c.id]).test(text));
+ const match = courses.filter(c=>({camera:/카메라|촬영|무대|기초|스피치|발표|말하기/,'camera-advanced':/카메라|촬영|무대|심화/,premium:/프리미엄|기성|아이돌|가수/,'audition-prep':/오디션|입시/,'senior-model':/모델|워킹/,hobby:/취미|뮤지컬|보컬/}[c.id]).test(text));
  const selection = (match.length?match:courses).map(c=>c.title+(c.audience?' ('+c.audience+')':'')).join(', ');
  const contact='세부 일정과 수강료는 상담 담당자(010-9942-4528)에게 확인해주세요.';
  if(publicTasks.has(task))return (match.length?`말씀하신 관심 분야와 관련된 과정은 ${selection}입니다.`:`현재 운영 안내 과정은 ${selection}입니다. 관심 분야와 수강 목적을 알려주세요.`)+'\n\n'+contact;

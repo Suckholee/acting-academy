@@ -27,7 +27,7 @@ test('live connection requires configuration and consent, preserves limits and h
   keys.forEach(k=>process.env[k]='test-only');
   const handler=api.createHandler({limit:async()=>0,fetcher:async(url,options)=>{sent=JSON.parse(options.body);assert.equal(url,'https://api.openai.com/v1/responses');return {ok:true,json:async()=>({status:'completed',output:[{type:'message',role:'assistant',content:[{type:'output_text',text:'안내 답변'}]}]})};}});
   assert.equal((await call(handler,{task:'inquiry',text:'질문'})).code,400);
-  const answer=await call(handler,{task:'inquiry',text:'질문',consent:true});assert.equal(answer.data.mode,'live');assert.equal(sent.store,false);assert.match(sent.instructions,/카메라 연기/);assert.equal(sent.input,'질문');
+  const answer=await call(handler,{task:'inquiry',text:'질문',consent:true});assert.equal(answer.data.mode,'live');assert.equal(sent.store,false);assert.match(sent.instructions,/카메라·무대 연기 기초/);assert.equal(sent.input,'질문');
   let fetched=false;const limited=api.createHandler({limit:async()=>60,fetcher:async()=>{fetched=true;}});
   const blocked=await call(limited,{task:'inquiry',text:'질문',consent:true});assert.equal(blocked.code,429);assert.equal(blocked.headers['Retry-After'],'60');assert.equal(fetched,false);
   const failed=api.createHandler({limit:async()=>{throw Error('storage');},fetcher:async()=>{fetched=true;}});assert.equal((await call(failed,{task:'inquiry',text:'질문',consent:true})).code,503);assert.equal(fetched,false);

@@ -1,0 +1,29 @@
+/* Shared Korean reading rhythm. Keep display text and reading text distinct. */
+body{font-family:'Noto Sans KR',Manrope,-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-.015em;font-kerning:normal;text-rendering:optimizeLegibility}
+main :is(h1,h2,h3,h4){word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
+main h1{letter-spacing:-.04em;line-height:1.28}
+main h2{letter-spacing:-.035em;line-height:1.4}
+main h3{letter-spacing:-.025em;line-height:1.5}
+main :is(p,li,dd){word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty;letter-spacing:-.015em}
+main p{line-height:1.85}
+main :is(.eyebrow,.faculty-kicker,.planner-kicker,.partners-kicker){font-family:Manrope,'Noto Sans KR',sans-serif;font-size:12px;letter-spacing:.12em;line-height:1.6;text-wrap:balance}
+.hero h1{letter-spacing:-.045em;line-height:1.18}.hero .hero-copy{font-size:14px;line-height:1.9;letter-spacing:-.01em}.hero .hero-korean{letter-spacing:.12em;line-height:1.6}
+.banner-desc,.section-top>p,.actors-heading>p,.video-slot-heading>p:last-child{line-height:1.85;letter-spacing:-.015em;text-wrap:pretty}
+.section-top>p{max-width:38em}.video-slot-heading h2{line-height:1.45;letter-spacing:-.035em}
+.intro-copy>p{line-height:1.95;max-width:38em}.intro-copy>p:first-of-type{font-size:17px;line-height:1.85}
+.course .course-content h3{font-size:clamp(20px,1.8vw,25px);line-height:1.5;letter-spacing:-.035em}.course .course-intro{line-height:1.8;letter-spacing:-.015em}
+.leadership-copy h3{letter-spacing:-.035em;line-height:1.55;max-width:22em;margin-bottom:32px}.leadership-copy>p{font-size:16px;line-height:1.95;letter-spacing:-.018em;max-width:38em;margin-bottom:24px}.leadership-copy .leadership-signature{font-size:14px;line-height:1.8;margin-top:40px}.leader-name{letter-spacing:-.03em;line-height:1.5}.leader-name span{letter-spacing:0}.leadership-signature strong{display:inline-block;white-space:nowrap;letter-spacing:.03em}.leadership-value-grid h3{line-height:1.55}.leadership-value-grid p{line-height:1.85}
+.planner-heading h2{line-height:1.45}.planner-heading>p:last-child{font-size:15px;line-height:1.9}.planner-fields label{font-size:14px;letter-spacing:-.015em;line-height:1.6}.planner-fields select{font-size:14px;line-height:1.6;letter-spacing:-.015em;padding:13px 12px}.planner-result h3{font-size:23px;line-height:1.5;letter-spacing:-.03em}.planner-course{line-height:1.7}.planner-price{font-family:Manrope,'Noto Sans KR',sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.035em;line-height:1.35;white-space:nowrap}.planner-calculation{font-variant-numeric:tabular-nums;line-height:1.8}.planner-time-grid button{font-family:Manrope,'Noto Sans KR',sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.02em}.planner-selected{line-height:1.9}.planner-disclaimer,.planner-contact-note{line-height:1.85}
+.tuition-grid dd{font-variant-numeric:tabular-nums;letter-spacing:-.025em;line-height:1.5}.tuition-discount{font-size:15px;line-height:1.8;margin:24px 0 10px}.tuition-note{font-size:13px;line-height:1.85;color:#676767;max-width:60em}
+.faq-list summary{letter-spacing:-.025em;line-height:1.65}.faq-list p{line-height:1.95;max-width:62em}
+main :is(.button,.course-button){line-height:1.5;letter-spacing:-.015em;text-wrap:balance}.faculty-card h2{letter-spacing:-.03em;line-height:1.4}.profile-hero p,.profile-section p{line-height:1.9}
+@media(max-width:720px){
+ main h1{letter-spacing:-.035em;line-height:1.35}main h2{letter-spacing:-.03em;line-height:1.45}main h3{letter-spacing:-.02em;line-height:1.55}
+ .hero h1{letter-spacing:-.04em;line-height:1.24}.hero .hero-copy{font-size:13px;line-height:1.95}.hero .hero-korean{font-size:12px;letter-spacing:.1em}
+ main :is(.eyebrow,.faculty-kicker,.planner-kicker,.partners-kicker){font-size:11px;letter-spacing:.1em}
+ .banner-desc,.section-top>p,.actors-heading>p{font-size:14px;line-height:1.9}.video-slot-heading h2{line-height:1.5}.video-slot-heading>p:last-child{font-size:14px;line-height:1.9}
+ .intro-copy>p,.intro-copy>p:first-of-type{font-size:15px;line-height:1.95}.course .course-content h3{font-size:21px;line-height:1.5}
+ .leadership-copy h3{font-size:25px;line-height:1.6;letter-spacing:-.035em;margin-bottom:28px}.leadership-copy>p{font-size:15px;line-height:1.95;letter-spacing:-.015em;margin-bottom:24px}.leadership-copy .leadership-signature{font-size:12px;line-height:2.1}.leadership-signature strong{font-size:21px;margin-left:10px}
+ .planner-result h3{font-size:22px}.planner-price{font-size:34px}.planner-heading>p:last-child{font-size:14px}.planner-fields select{font-size:14px}.planner-description,.planner-selected{font-size:13px}.planner-disclaimer,.planner-contact-note{font-size:12px}
+ .tuition-discount{font-size:14px}.tuition-note{font-size:12px}
+}

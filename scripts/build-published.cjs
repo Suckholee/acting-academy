@@ -1,6 +1,8 @@
 const fs=require('node:fs'),path=require('node:path'),esbuild=require('esbuild');
 const root=path.resolve(__dirname,'..'),source=path.join(root,'published-source'),out=path.join(root,'dist-published');
 require('./build-confirmed-courses.cjs');
+require('./build-class-finder.cjs');
+require('./build-leadership.cjs');
 if(!fs.existsSync(path.join(source,'index.html')))throw Error('published-source snapshot is missing');
 fs.rmSync(out,{recursive:true,force:true});fs.cpSync(source,out,{recursive:true});
 esbuild.buildSync({entryPoints:[path.join(root,'src/materials/app.js')],outfile:path.join(out,'materials-app.js'),bundle:true,format:'esm',minify:true});

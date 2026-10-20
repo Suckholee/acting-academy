@@ -168,3 +168,9 @@ footer:not(.faculty-footer) p,footer:not(.faculty-footer)>span{color:#62626b}
 .profile-page main>.video-slot-section{grid-column:1 / -1;width:100%;min-width:0;max-width:1180px;justify-self:center;box-sizing:border-box}
 .profile-page main>.video-slot-section .video-slot-heading{width:100%;min-width:0}
 .profile-page main>.video-slot-section .video-slot-heading h2{word-break:keep-all;overflow-wrap:break-word;letter-spacing:-.025em;text-wrap:pretty}
+
+/* Approved map: fit the complete map on every screen. */
+.location-map-guide .location-guide-canvas{direction:ltr;overflow:hidden}.location-map-guide .location-guide-canvas>img{display:block;width:100%;max-width:100%;height:auto}.location-map-guide figcaption:after{display:none}
+
+/* Keep the director visible in the portrait crop of the AI hero. */
+@media(max-width:720px){.hero-img[src*="kim-jung-tae-camera-hero-ai-20261020"]{object-position:77% center}}

@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-20",
+  "hero": {
+    "asset": "/assets/kim-jung-tae-camera-hero-ai-20261020.png",
+    "reference": "kim-jung-tae-profile-2025.jpg (right adult only)",
+    "purpose": "김정태 원장 카메라 연기 지도 AI 장면"
+  },
+  "instructorGroup": {
+    "asset": "/assets/instructors-group-kim-hyung-min-updated-ai-20261020.png",
+    "reference": "kim-hyung-min-profile-20261014-1.jpeg",
+    "purpose": "메인 단체 이미지 오른쪽 김형민 얼굴·헤어 수정"
+  },
+  "verification": {
+    "build": "passed",
+    "viewports": [
+      1440,
+      390
+    ],
+    "horizontalOverflow": false
+  },
+  "deployment": "local only; existing CMS image overrides require updating before production display"
+}

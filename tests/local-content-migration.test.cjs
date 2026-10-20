@@ -13,7 +13,7 @@ test('local import preserves saved server values, reuses legacy fields, and fill
  assert.equal(identities.length,new Set(fields.map(f=>f.storagePage+':'+f.key)).size);
  const legacy=plan({[field.storagePage]:[{key:field.legacyKey,type:field.type,value:'기존 로컬 수정'}]});
  assert.equal(legacy.pages[field.storagePage].find(e=>e.key===field.key).value,'기존 로컬 수정');
- assert.equal(result.media.size,45);
+ assert.deepEqual([...result.media.keys()].sort(),[...new Set(fields.filter(f=>['image','video'].includes(f.type)&&f.defaultValue.startsWith('/assets/')).map(f=>f.defaultValue))].sort());
 });
 test('subsequent editor saves retain imported defaults and legacy aliases in the database',()=>{
  const {shouldPersistEntry}=require('../src/published-editor/model.cjs');

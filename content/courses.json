@@ -1,8 +1,78 @@
 [
-  {"id":"camera","title":"카메라 연기","audience":"성인·시니어","category":"camera","label":"ON CAMERA","intro":"성인·시니어를 위한 카메라 연기 과정입니다.","image":"/assets/course-camera-actors-ai-20261016.jpg","imageAlt":"김형민 강사 프로필을 바탕으로 AI로 제작한 카메라 연기 지도 장면","goal":"카메라 연기를 배우고 싶어요","imageWidth":1254,"imageHeight":1254},
-  {"id":"stage","title":"무대 연기","audience":"성인·시니어","category":"stage","label":"ON STAGE","intro":"성인·시니어를 위한 무대 연기 과정입니다.","image":"/assets/course-stage-actors-ai-20261016.jpg","imageAlt":"편보승 강사 프로필을 바탕으로 AI로 제작한 무대 연기 지도 장면","goal":"무대에서 연기하고 싶어요","imageWidth":1254,"imageHeight":1254},
-  {"id":"speech","title":"스피치","audience":"","category":"speech","label":"SPEECH","intro":"말로 나를 표현하는 스피치 과정입니다.","image":"/assets/course-speech-actors-ai-20261016.jpg","imageAlt":"임도윤 강사 프로필을 바탕으로 AI로 제작한 스피치 코칭 장면","goal":"말하기와 표현을 배우고 싶어요","imageWidth":1254,"imageHeight":1254},
-  {"id":"audition-prep","title":"오디션 트레이닝","audience":"","category":"audition-prep","label":"AUDITION TRAINING","intro":"오디션 준비를 위한 트레이닝 과정입니다.","image":"/assets/course-audition-actors-ai-20261016-v2.jpg","imageAlt":"김정태·편보승 강사 프로필을 바탕으로 AI로 제작한 오디션 트레이닝 장면","goal":"오디션을 준비하고 있어요","imageWidth":1254,"imageHeight":1254},
-  {"id":"senior-model","title":"시니어 모델 트레이닝","audience":"시니어","category":"senior-model","label":"SENIOR MODEL","intro":"시니어를 위한 모델 트레이닝 과정입니다.","image":"/assets/course-senior-model-actors-ai-20261016.jpg","imageAlt":"김형민 강사 프로필을 바탕으로 AI로 제작한 시니어 모델 워킹 수업 장면","goal":"시니어 모델에 도전하고 싶어요","imageWidth":1254,"imageHeight":1254},
-  {"id":"hobby","title":"취미반","audience":"뮤지컬·연기·보컬","category":"hobby","label":"MUSICAL · ACTING · VOCAL","intro":"뮤지컬·연기·보컬을 취미로 배우는 과정입니다.","image":"/assets/course-hobby-actors-ai-20261016.jpg","imageAlt":"임도윤·편보승 강사 프로필을 바탕으로 AI로 제작한 뮤지컬·연기·보컬 취미 수업 장면","goal":"뮤지컬·연기·보컬을 취미로 배우고 싶어요","imageWidth":1254,"imageHeight":1254}
+  {
+    "id": "camera",
+    "title": "카메라·무대 연기 기초",
+    "audience": "성인·시니어",
+    "category": "camera",
+    "label": "ACTING FOUNDATION",
+    "intro": "몸과 목소리의 기초부터 카메라·무대 연기의 기본을 배우는 과정입니다.",
+    "image": "/assets/course-camera-actors-ai-20261016.jpg",
+    "imageAlt": "김형민 강사 프로필을 바탕으로 AI로 제작한 카메라 연기 지도 장면",
+    "goal": "연기의 기초부터 배우고 싶어요",
+    "imageWidth": 1254,
+    "imageHeight": 1254
+  },
+  {
+    "id": "camera-advanced",
+    "title": "카메라·무대 연기 심화",
+    "audience": "성인·시니어",
+    "category": "camera-advanced",
+    "label": "ACTING ADVANCED",
+    "intro": "기초를 바탕으로 장면과 인물을 표현하는 카메라·무대 연기 심화 과정입니다.",
+    "image": "/assets/course-stage-actors-ai-20261016.jpg",
+    "imageAlt": "편보승 강사 프로필을 바탕으로 AI로 제작한 무대 연기 지도 장면",
+    "goal": "연기 실력을 더 발전시키고 싶어요",
+    "imageWidth": 1254,
+    "imageHeight": 1254
+  },
+  {
+    "id": "premium",
+    "title": "프리미엄",
+    "audience": "",
+    "category": "premium",
+    "label": "PREMIUM",
+    "intro": "기성 배우·가수·아이돌 등 활동 중인 아티스트를 위한 연기 교육 과정입니다.",
+    "image": "/assets/kim-jung-tae-teaching-ai.png",
+    "imageAlt": "김정태 원장 프로필을 바탕으로 AI로 제작한 연기 지도 장면",
+    "goal": "활동 경험에 맞는 연기 교육을 받고 싶어요"
+  },
+  {
+    "id": "audition-prep",
+    "title": "오디션 트레이닝",
+    "audience": "",
+    "category": "audition-prep",
+    "label": "AUDITION TRAINING",
+    "intro": "오디션 준비를 위한 트레이닝 과정입니다.",
+    "image": "/assets/course-audition-actors-ai-20261016-v2.jpg",
+    "imageAlt": "김정태·편보승 강사 프로필을 바탕으로 AI로 제작한 오디션 트레이닝 장면",
+    "goal": "오디션을 준비하고 있어요",
+    "imageWidth": 1254,
+    "imageHeight": 1254
+  },
+  {
+    "id": "senior-model",
+    "title": "시니어 모델 트레이닝",
+    "audience": "시니어",
+    "category": "senior-model",
+    "label": "SENIOR MODEL",
+    "intro": "시니어를 위한 모델 트레이닝 과정입니다.",
+    "image": "/assets/course-senior-model-actors-ai-20261016.jpg",
+    "imageAlt": "김형민 강사 프로필을 바탕으로 AI로 제작한 시니어 모델 워킹 수업 장면",
+    "goal": "시니어 모델에 도전하고 싶어요",
+    "imageWidth": 1254,
+    "imageHeight": 1254
+  },
+  {
+    "id": "hobby",
+    "title": "취미반",
+    "audience": "뮤지컬·연기·보컬",
+    "category": "hobby",
+    "label": "MUSICAL · ACTING · VOCAL",
+    "intro": "뮤지컬·연기·보컬을 취미로 배우는 과정입니다.",
+    "image": "/assets/course-hobby-actors-ai-20261016.jpg",
+    "imageAlt": "임도윤·편보승 강사 프로필을 바탕으로 AI로 제작한 뮤지컬·연기·보컬 취미 수업 장면",
+    "goal": "뮤지컬·연기·보컬을 취미로 배우고 싶어요",
+    "imageWidth": 1254,
+    "imageHeight": 1254
+  }
 ]
