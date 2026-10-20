@@ -2,4 +2,5 @@ const GROUP_SELECTOR='.hero,.course,.faculty-card,.mentor-card,.profile-hero,.pr
 function validImage(value){return typeof value==='string'&&(/^(https:\/\/[^\s]+|\/(?!\/)[^\s]*)$/.test(value));}
 function normalizePage(path){return path.replace(/\.html$/,'').replace(/\/$/,'')||'/';}
 function sharedKey(identity,slot){let hash=2166136261;for(const c of identity+":"+slot){hash=Math.imul(hash^c.charCodeAt(0),16777619);}return `cms-${hash>>>0}`;}
-module.exports={sharedKey,GROUP_SELECTOR,validImage,normalizePage};
+function shouldPersistEntry(entry,originalValue,savedEntries=[],aliases=new Map()){return entry.value!==originalValue||savedEntries.some(saved=>saved.type===entry.type&&(saved.key===entry.key||aliases.get(saved.key)===entry.key));}
+module.exports={shouldPersistEntry,sharedKey,GROUP_SELECTOR,validImage,normalizePage};

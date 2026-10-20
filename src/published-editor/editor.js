@@ -2,7 +2,7 @@ const {primaryPages,detailPages,pageTitle}=require('./page-catalog.cjs');
 const {validVideo,validVideoFile}=require('./video-model.cjs');
 const {renderVideo}=require('./video-player.cjs');
 const {contentDiff}=require('./history-model.cjs');
-const {GROUP_SELECTOR,validImage,normalizePage,sharedKey}=require('./model.cjs');
+const {GROUP_SELECTOR,validImage,normalizePage,sharedKey,shouldPersistEntry}=require('./model.cjs');
 const page=normalizePage(location.pathname);
 const adminEntry=new URLSearchParams(location.search).get('admin')==='1';
 const defaultCurricula=__KJT_COURRICULUM__;
@@ -20,7 +20,7 @@ function applyContent(){
  for(const entry of pages[page]||[]){const original=originals.get(entry.key)||originals.get(originalAliases.get(entry.key));if(original&&!original.sharedId&&original.type===entry.type&&(entry.type!=='image'||validImage(entry.value))&&(entry.type!=='video'||validVideo(entry.value)))setField({...original},entry.value);}
  refreshLabels();
 }
-function draftEntries(){return [...originals].filter(([,f])=>!f.sharedId).map(([key,f])=>({key,type:f.type,value:fieldValue(f)})).filter(e=>e.value!==originals.get(e.key).value);}
+function draftEntries(){return [...originals].filter(([,f])=>!f.sharedId).map(([key,f])=>({key,type:f.type,value:fieldValue(f)})).filter(e=>shouldPersistEntry(e,originals.get(e.key).value,pages[page]||[],originalAliases));}
 function sharedEntries(){const result=new Map((pages['/shared']||[]).map(e=>[e.key,e]));for(const f of originals.values()){if(!f.sharedId)continue;const value=fieldValue(f);if(value!==f.value||result.has(f.sharedId))result.set(f.sharedId,{key:f.sharedId,type:f.type,value});}return [...result.values()];}
 function el(tag,text,attrs={}){const n=document.createElement(tag);if(text)n.textContent=text;for(const [k,v]of Object.entries(attrs))n.setAttribute(k,v);return n;}
 async function request(url,options={}){const r=await fetch(url,{credentials:'same-origin',...options,headers:{'Content-Type':'application/json',...options.headers}});const data=await r.json();if(!r.ok)throw new Error(data.error||'요청을 완료하지 못했습니다.');return data;}

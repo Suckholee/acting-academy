@@ -100,3 +100,9 @@ Vercel 서버 환경에 `ADMIN_PASSWORD`, 32자 이상 `ADMIN_SESSION_SECRET`, `
 로컬 `--demo`는 규칙 기반 시연입니다. 사진 첨부·변경안·적용·저장·복원을 확인할 수 있지만 사진 해석이나 자유로운 AI 문장 생성은 하지 않습니다. 시연 사진과 이력은 서버 재시작 시 사라집니다. 실제 OpenAI 호출은 별도 설정 후 확인해야 합니다.
 
 API 참고: [이미지 입력](https://developers.openai.com/api/docs/guides/images-vision), [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs).
+
+## 로컬 공개 콘텐츠를 Supabase로 이관
+
+`node --env-file=.env.local scripts/migrate-local-content.cjs`는 실제 저장본과 로컬 등록 항목을 비교하는 읽기 전용 사전 점검입니다. `--snapshot=/절대경로/콘텐츠스냅샷.json`으로 이전에 저장한 로컬 수정본을 포함할 수 있습니다. 서버에 이미 저장된 값이 우선이며, 없는 항목만 로컬 수정본과 기본 콘텐츠로 채웁니다. 시연 회원·문의는 가져오지 않습니다.
+
+검토 후 `--apply`를 추가하면 등록된 로컬 사진·영상을 내용 해시 기반 새 스토리지 경로에 올리고, 모든 파일의 크기·접근 상태를 확인한 뒤 CMS를 하나의 새 저장 이력으로 반영합니다. 중간에 다른 관리자가 저장하면 버전 충돌로 CMS 반영을 중단합니다. 이전 저장본과 결과 파일은 `output/migration/`에 보관합니다. 이 폴더의 스냅샷은 버전 관리에 포함하지 마세요. 사이트 기본 디자인과 HTML은 기존 배포 소스를 유지합니다.
