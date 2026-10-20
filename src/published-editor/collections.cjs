@@ -27,7 +27,7 @@ function createCollections({page,groups,registry,request,fieldValue,setField,pan
    const base=state.base.find(g=>'item-base-'+g.legacyId===record.id);
    const node=base?base.element:template.html.cloneNode(true);
    node.querySelectorAll('.kjt-component-edit,.kjt-collection-item-tools').forEach(n=>n.remove());
-   if(!base){node.removeAttribute('id');node.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));}
+   if(!base){node.removeAttribute('id');node.classList.add('is-visible');node.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));node.querySelectorAll('.reveal,.faculty-reveal').forEach(n=>n.classList.add('is-visible'));}
    node.dataset.collection=state.id;node.dataset.item=record.id;node.dataset.category=record.category;node.classList.add('kjt-collection-item');node.classList.toggle('kjt-collection-unpublished',!record.visible);
    for(const field of template.group.fields){const target=atPath(node,template.paths.get(field.id));if(!target)continue;const value=record.values[field.id];if(value===undefined)continue;
     target.removeAttribute('contenteditable');target.classList.remove('kjt-direct-text');
