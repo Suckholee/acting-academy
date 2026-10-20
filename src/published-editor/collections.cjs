@@ -4,7 +4,7 @@ const {renderText}=require('./text-renderer.cjs');
 const make=(tag,text,attrs={})=>{const n=document.createElement(tag);if(text)n.textContent=text;for(const [key,value]of Object.entries(attrs))n.setAttribute(key,value);return n;};
 const pathOf=(root,node)=>{const path=[];while(node!==root){if(!node.parentElement)return null;path.unshift([...node.parentElement.children].indexOf(node));node=node.parentElement;}return path;};
 const atPath=(root,path)=>path?.reduce((node,index)=>node?.children[index],root);
-function createCollections({page,groups,registry,request,fieldValue,setField,panel,showPanel,changed,mode,pending}){
+function createCollections({page,groups,registry,request,fieldValue,setField,panel,showPanel,changed,mode,pending,videoControl}){
  const states=[];let selected=null;
  for(const def of catalog.filter(d=>d.page===page)){
   const matches=groups.filter(g=>g.element.matches(def.selector)&&g.module);const parents=[...new Set(matches.map(g=>g.element.parentElement))];
@@ -13,11 +13,11 @@ function createCollections({page,groups,registry,request,fieldValue,setField,pan
    const templates=new Map(local.map(group=>[group.module.id,{group,html:group.element.cloneNode(true),paths:new Map(group.fields.map(f=>[f.id,pathOf(group.element,f.node)]))}]));
    const sectionTitle=parent.closest('.partners-simple-category')?.querySelector('h2,h3')?.textContent;
    const state={...def,title:sectionTitle?def.title+' · '+sectionTitle:def.title,id,parent,marker,templates,base:local,records:[],nodes:[],persisted:false,touched:false};
-   const bar=make('button',def.title+' 목록 관리',{type:'button',class:'kjt-collection-manage'});bar.onclick=e=>{e.preventDefault();e.stopPropagation();openList(state);};parent.insertBefore(bar,marker);state.bar=bar;states.push(state);
+   const bar=make('button',def.title+' 목록 관리',{type:'button',class:'kjt-collection-manage'});bar.onclick=e=>{e.preventDefault();e.stopPropagation();openList(state);};if(def.kind==='videos')parent.before(bar);else parent.insertBefore(bar,marker);state.bar=bar;states.push(state);
   });
  }
  function defaults(state){return state.base.map((group,index)=>({id:'item-base-'+group.legacyId,template:group.module.id,visible:true,values:Object.fromEntries(group.fields.map(f=>[f.id,fieldValue(f)])),category:group.element.dataset.category||'',detail:group.element.querySelector('a[href^="/trainers/"],a[href^="/courses/"],a[href^="/works/"]')?.getAttribute('href')||''}));}
- function label(state,record){const module=registry.modules[record.template];const named=module.fields.find(f=>/^name-|^headline-|^h[1-4]-|^summary-/.test(f.id));return (record.values[named?.id]||module.title).replace(/\s+/g,' ').slice(0,64);}
+ function label(state,record){const module=registry.modules[record.template];const named=module.fields.find(f=>/^name-|^headline-|^h[1-4]-|^summary-/.test(f.id));return (record.values[named?.id]||Object.values(record.values).find(v=>v&& !v.startsWith('/')&&!v.startsWith('https:'))||module.title).replace(/\s+/g,' ').slice(0,64);}
  function changedState(state){state.touched=true;render(state);changed(state.title+' 목록을 변경했습니다. 상단에서 홈페이지에 저장해주세요.');}
  function render(state){
   for(const node of [...state.nodes,...state.base.map(g=>g.element)])node.remove();state.nodes=[];
@@ -39,6 +39,7 @@ function createCollections({page,groups,registry,request,fieldValue,setField,pan
    const edit=make('button','이 콘텐츠 관리',{type:'button'});edit.onclick=e=>{e.preventDefault();e.stopPropagation();openItem(state,record);};tools.append(edit);node.append(tools);
    anchor.after(node);anchor=node;state.nodes.push(node);
   }
+  state.parent.dispatchEvent(new CustomEvent('kjt-collection-change',{bubbles:true}));
   state.bar.textContent=state.title+' 목록 관리 · '+state.records.length+'개';renderMode();applyFilter(state);
  }
  function applyFilter(state){
@@ -71,7 +72,8 @@ function createCollections({page,groups,registry,request,fieldValue,setField,pan
   const categories=[...new Set(state.base.map(g=>g.element.dataset.category||''))];let category=null;
   if(categories.some(Boolean)){const label=make('label','콘텐츠 분류',{class:'kjt-editor-field'});category=make('select',null,{'aria-label':'콘텐츠 분류'});for(const value of categories){const button=[...document.querySelectorAll('[data-filter],[data-category]')].find(n=>n.tagName==='BUTTON'&&(n.dataset.filter===value||n.dataset.category===value));category.append(make('option',button?.textContent||value||'기본 분류',{value}));}category.value=record.category;label.append(category);form.append(label);}
   const visibility=make('label','이 목록에서 공개',{class:'kjt-editor-field'});const visible=make('input',null,{type:'checkbox'});visible.checked=record.visible;visibility.append(visible);form.append(visibility);
-  for(const field of module.fields){
+  for(const field of [...module.fields].sort((a,b)=>(a.type==='video'?-1:0)-(b.type==='video'?-1:0))){
+   if(field.type==='video'&&videoControl){const source=template.group.fields.find(f=>f.id===field.id);const control=videoControl({...source,node:source.node.cloneNode(true)});control.input.value=record.values[field.id];inputs.set(field.id,control.input);form.append(control.wrap);continue;}
    const heading=field.type==='image'?'사진':field.type==='video'?'영상 링크':field.id.startsWith('summary-')?'질문':field.id.startsWith('headline-')||/^h[1-4]-/.test(field.id)?'제목':field.id.startsWith('body-')?'후기 본문':field.id.startsWith('p-')?'설명 / 답변':module.kind==='review'?({'span-1':'카드 상단 표기','span-2':'분야 표기','span-3':'작성자 / 출처','span-4':'하단 보조 표기'}[field.id]||field.label):field.label;
    const label=make('label',heading,{class:'kjt-editor-field'}),input=make(field.type==='text'?'textarea':'input',null,{'aria-label':heading+' · '+field.id,maxlength:String(field.maxLength)});input.value=record.values[field.id];if(field.type==='text')input.rows=3;inputs.set(field.id,input);label.append(input);
    if(field.type==='image'){

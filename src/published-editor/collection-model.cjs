@@ -7,7 +7,8 @@ const catalog=[
  {page:'/programs',kind:'courses',title:'교육과정',selector:'.course'},
  {page:'/works',kind:'works',title:'수강생 작품',selector:'.student-card'},
  {page:'/facilities',kind:'facilities',title:'시설 사진',selector:'.facility-card'},
- {page:'/partners',kind:'partners',title:'파트너 기관',selector:'.partners-simple-item'}
+ {page:'/partners',kind:'partners',title:'파트너 기관',selector:'.partners-simple-item'},
+ {page:'/',kind:'videos',title:'홍보 영상',selector:'.video-orbit-card'}
 ];
 const collectionPath=id=>'/collections/'+id;
 const indexKey=sharedKey('collection','index');
