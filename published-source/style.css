@@ -246,3 +246,7 @@ body .skip-link:focus{top:12px;outline:2px solid #17181c;outline-offset:3px}
  .programs .course-link{height:280px}
  .programs .course-content h3{font-size:22px}
 }
+
+/* Korean introduction copy: consistent tracking and natural phrase wrapping. */
+.intro-copy>p,.intro-copy .principles{letter-spacing:-.02em;word-spacing:0;word-break:keep-all;overflow-wrap:break-word;text-align:left;text-wrap:pretty}
+.intro-copy>p{line-height:1.85}
