@@ -27,17 +27,18 @@ function openJournal({room,dialog,el,button,field,queue,saveAll,updateRoomBadge,
   if(!recordConsent.checked){state.textContent='참여자에게 녹음 이용을 안내한 뒤 체크해주세요.';return;}
   if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){state.textContent='이 브라우저에서는 직접 녹음을 지원하지 않습니다. 녹음 파일을 첨부해주세요.';return;}
   if((room.annotations._recordings||[]).length>=20){state.textContent='상담방당 녹음은 20개까지 보관할 수 있습니다.';return;}
+  record.disabled=true;file.disabled=true;
   try{
    stream=await navigator.mediaDevices.getUserMedia({audio:true});const type=['audio/webm;codecs=opus','audio/mp4','audio/webm'].find(t=>MediaRecorder.isTypeSupported(t));
    recorder=new MediaRecorder(stream,{...(type?{mimeType:type}:{}),audioBitsPerSecond:64000});const chunks=[];seconds=0;
    recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
-   recorder.onstop=async()=>{clearInterval(timer);stream.getTracks().forEach(t=>t.stop());record.textContent='● 녹음 시작';record.classList.remove('recording');const blob=new Blob(chunks,{type:recorder.mimeType});recorder=null;if(blob.size){pendingAudio.set(room.id,{blob,consent:true});drawRecordings();await uploadPending();}};
+   recorder.onstop=async()=>{clearInterval(timer);stream.getTracks().forEach(t=>t.stop());record.textContent='● 녹음 시작';record.classList.remove('recording');const blob=new Blob(chunks,{type:recorder.mimeType});recorder=null;file.disabled=false;if(blob.size){pendingAudio.set(room.id,{blob,consent:true});drawRecordings();await uploadPending();}};
    recorder.onerror=()=>{state.textContent='녹음이 중단되었습니다. 저장된 분량을 확인해주세요.';if(recorder?.state==='recording')recorder.stop();};
-   recorder.start(1000);record.textContent='■ 녹음 종료 · 00:00';record.classList.add('recording');state.textContent='녹음 중입니다. 10분마다 종료 후 저장해주세요.';
+   recorder.start(1000);record.disabled=false;record.textContent='■ 녹음 종료 · 00:00';record.classList.add('recording');state.textContent='녹음 중입니다. 10분마다 종료 후 저장해주세요.';
    timer=setInterval(()=>{seconds++;record.textContent='■ 녹음 종료 · '+String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');if(seconds>=600&&recorder?.state==='recording')recorder.stop();},1000);
-  }catch{stream?.getTracks().forEach(t=>t.stop());state.textContent='마이크를 사용할 수 없습니다. 브라우저의 마이크 권한을 확인해주세요.';}
+  }catch{record.disabled=false;file.disabled=false;stream?.getTracks().forEach(t=>t.stop());state.textContent='마이크를 사용할 수 없습니다. 브라우저의 마이크 권한을 확인해주세요.';}
  });
- const fileLabel=el('label','녹음 파일 첨부',{class:'journal-file'}),file=el('input',null,{type:'file',accept:'audio/*,video/webm'});fileLabel.append(file);file.onchange=async()=>{if(!recordConsent.checked){state.textContent='녹음 이용 동의를 먼저 확인해주세요.';file.value='';return;}const blob=file.files[0];if(!blob)return;if(pendingAudio.has(room.id)){state.textContent='저장 대기 중인 녹음을 먼저 저장해주세요.';return;}if(blob.size>20*1024*1024){state.textContent='녹음 파일은 20MB 이하로 첨부해주세요.';return;}pendingAudio.set(room.id,{blob,consent:true});drawRecordings();await uploadPending();file.value='';};
+ const fileLabel=el('label','녹음 파일 첨부',{class:'journal-file'}),file=el('input',null,{type:'file',accept:'audio/*,video/webm'});fileLabel.append(file);file.onchange=async()=>{if(recorder||uploading){state.textContent='진행 중인 녹음을 먼저 종료해주세요.';file.value='';return;}if(!recordConsent.checked){state.textContent='녹음 이용 동의를 먼저 확인해주세요.';file.value='';return;}const blob=file.files[0];if(!blob)return;if(pendingAudio.has(room.id)){state.textContent='저장 대기 중인 녹음을 먼저 저장해주세요.';return;}if(blob.size>20*1024*1024){state.textContent='녹음 파일은 20MB 이하로 첨부해주세요.';return;}pendingAudio.set(room.id,{blob,consent:true});drawRecordings();await uploadPending();file.value='';};
  const call=async(action,extra={})=>{await saveAll();return(await fetch('/api/admin-consultation-notes',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({roomId:room.id,revision:room.revision,action,...extra})})).json().then(data=>{if(data.error)throw new Error(data.error);return data;});};
  const acceptRecord=data=>{room.revision=data.record.revision;room.updated_at=data.record.updated_at;room.annotations=data.record.annotations;};
  async function uploadPending(){
