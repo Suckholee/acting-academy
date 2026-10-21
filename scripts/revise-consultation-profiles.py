@@ -1,4 +1,4 @@
-"""Replace only the four instructor pages; retain existing navigation and other pages."""
+"""Revise instructor profiles and the audition page; retain navigation and other pages."""
 import argparse
 import io
 import json
@@ -66,12 +66,34 @@ for profile in profiles:
     line(42,957,684);text(42,981,'KIM JUNG TAE ACTING ACADEMY',9,MUT,'E')
     for title,x in [('처음',452),('과정',516),('수강료',580)]:text(x,978,title,14,MUT)
     text(679,979,f"{profile['page']:02d} / 09",11,MUT,'E');c.showPage()
+# A photo-free program overview gives the audition and production opportunities priority.
+c.setFillColor(HexColor('#F7F4ED'));c.rect(0,0,W,H,fill=1,stroke=0)
+text(42,29,'김정태 배우아카데미',16);text(555,34,'CONSULTATION GUIDE',10,MUT,'E');line(42,67,684)
+text(42,103,'PROGRAMS & OUR DIFFERENCE',10.5,GOLD,'E')
+text(42,140,'배움이, 다음 장면으로.',35,INK,'KB')
+text(42,195,'나에게 맞는 과정에서 시작하는 연기.',18,MUT)
+courses=[('카메라·무대 연기 기초','김형민 강사'),('카메라·무대 연기 중급','편보승 주임강사'),('카메라·무대 연기 프리미엄','김정태 원장'),('오디션 트레이닝','오디션 준비'),('취미반','뮤지컬·연기·보컬'),('시니어 모델 트레이닝','시니어 모델의 시작')]
+for index,(title,subtitle) in enumerate(courses):
+    x=42+(index%2)*350;y=250+(index//2)*98
+    text(x,y,title,19,INK,'KB');text(x,y+33,subtitle,15,MUT);line(x,y+72,334)
+# The lower half replaces the former small advantage note with a high-contrast centerpiece.
+c.setFillColor(HexColor('#222823'));c.roundRect(42,H-930,684,360,10,fill=1,stroke=0)
+text(70,595,'THE KJT ADVANTAGE',11,'#D2B980','E')
+text(70,634,'4개월마다,',42,'#F7F4ED','KB')
+text(70,692,'자체 오디션.',46,'#E4C487','KB')
+text(70,771,'현직 배우·액팅코치의 수업',22,'#F7F4ED','KB')
+text(70,811,'자체 제작 작품 참여',22,'#F7F4ED','KB')
+text(70,851,'협력 에이전시·감독 오디션 및 캐스팅 연계',20,'#F7F4ED')
+text(70,901,'일정·참여 조건은 별도 안내합니다.',13,'#CAD0C1')
+line(42,957,684);text(42,981,'KIM JUNG TAE ACTING ACADEMY',9,MUT,'E')
+for title,x in [('처음',452),('과정',516),('수강료',580)]:text(x,978,title,14,MUT)
+text(679,979,'06 / 09',11,MUT,'E');c.showPage()
 c.save();stream.seek(0)
 original=PdfReader(args.source);replacement=PdfReader(stream)
 assert len(original.pages)==9 and all(tuple(p.mediabox)==(0,0,768,1024) for p in original.pages)
 writer=PdfWriter();writer.clone_document_from_reader(original)
-for profile,page in zip(profiles,replacement.pages):
-    target=writer.pages[profile['page']-1]
+for number,page in zip([profile['page'] for profile in profiles]+[6],replacement.pages):
+    target=writer.pages[number-1]
     for key in ['/Contents','/Resources']:target[NameObject(key)]=page.raw_get(key).clone(writer)
 writer.add_metadata({'/Title':'김정태 배우아카데미 | 경력·출연작 중심 상담 가이드','/Author':'김정태 배우아카데미'})
 args.output.parent.mkdir(parents=True,exist_ok=True)
@@ -84,4 +106,7 @@ for profile in profiles:
     for column in profile['columns']:
         for group in column:
             for title in group['items']:assert ''.join(title.split()) in ''.join(page.extract_text().split()),title
+assert len(check.pages[5].images)==0, 'The program page must contain no photos'
+assert '4개월마다' in check.pages[5].extract_text()
+assert len(check.pages[5].get('/Annots',[]))==len(original.pages[5].get('/Annots',[]))
 print(args.output)
