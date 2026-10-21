@@ -73,7 +73,7 @@ function paintJourney() {
   journeyFrame = false;
   if (!journey) return;
   const r = journey.getBoundingClientRect();
-  const staticMode = experienceReduced.matches || document.body.classList.contains('motion-paused');
+  const staticMode = matchMedia('(max-width:720px)').matches || experienceReduced.matches || document.body.classList.contains('motion-paused');
   if (!staticMode && r.top < innerHeight && r.bottom > 0) {
     const travel = Math.max(1, journey.offsetHeight - innerHeight);
     const t = Math.max(0, Math.min(1, -r.top / travel));

@@ -26,3 +26,22 @@
  body .ai-launcher{right:16px;bottom:calc(68px + env(safe-area-inset-bottom,0px));font-size:12px;padding:10px 16px;min-height:44px}
  .phone-consult-dialog{max-height:calc(100dvh - 24px);padding:16px 24px}
 }
+
+/* Editor markers must not change the positioning of the journey slides. */
+.journey .journey-panel{position:absolute}
+@media(max-width:720px){
+ .journey{height:auto}
+ .journey .journey-sticky{position:relative;top:auto;display:block;height:auto;min-height:0;padding:40px 20px;overflow:visible}
+ .journey .journey-copy{margin-bottom:20px}
+ .journey .journey-tabs{gap:16px;flex-wrap:wrap}
+ .journey .journey-tabs button{min-width:72px;min-height:44px}
+ .journey .journey-stage{height:auto;min-height:0}
+ .journey .journey-panel{position:relative;inset:auto;display:none;height:auto;opacity:1;transform:none;transition:none;border-radius:18px;background:#1a1a22}
+ .journey .journey-panel.active{display:block}
+ .journey .journey-panel img,.journey .journey-panel.active img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;transform:none;transition:none}
+ .journey .journey-panel:after{display:none}
+ .journey .journey-panel>div{position:relative;inset:auto;padding:20px}
+ .journey .journey-panel h3{font-size:21px;line-height:1.45;margin:12px 0}
+ .journey .journey-panel p{font-size:13px;line-height:1.8;margin:0}
+ .journey .journey-line{display:none}
+}
