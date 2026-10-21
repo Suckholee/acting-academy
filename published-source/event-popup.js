@@ -5,14 +5,21 @@
   if (new URLSearchParams(location.search).has('admin')) return;
   const base = '/assets/events/respect-for-acting-20261024/';
   const posters = [
-    { file: 'poster.png', label: '특강 포스터', alt: 'RESPECT FOR ACTING 김정태 원장 특강. 10월 24일 오후 1시, 마곡역 4번 출구 로뎀타워 306호. 문의 02-2666-4528.' },
-    { file: 'announcement.png', label: '특별강연 안내', alt: '연기를 향한 존중, 배우로 살아간다는 것. 김정태 배우아카데미 원장 특별강연 안내.' }
+    { file: 'poster.webp', label: '특강 포스터', alt: 'RESPECT FOR ACTING 김정태 원장 특강. 10월 24일 오후 1시, 마곡역 4번 출구 로뎀타워 306호. 문의 02-2666-4528.' },
+    { file: 'announcement.webp', label: '특별강연 안내', alt: '연기를 향한 존중, 배우로 살아간다는 것. 김정태 배우아카데미 원장 특별강연 안내.' }
   ];
   const dialog = document.createElement('dialog');
   dialog.className = 'academy-event-popup';
   dialog.setAttribute('aria-label', '김정태 원장 특별강연 안내');
-  dialog.innerHTML = `<div class="event-popup-header"><span>김정태 원장 특별강연</span><button type="button" data-close aria-label="팝업 닫기">✕</button></div><div class="event-popup-tabs" aria-label="특강 이미지 선택">${posters.map((p, i) => `<button type="button" data-poster="${i}" aria-pressed="${i === 0}">${p.label}</button>`).join('')}</div><div class="event-popup-image"><img width="941" height="1672" src="${base + posters[0].file}" alt="${posters[0].alt}"></div><div class="event-popup-footer"><button type="button" data-hide>오늘 하루 보지 않기</button><button type="button" data-close>닫기</button></div>`;
+  dialog.innerHTML = `<div class="event-popup-header"><span>김정태 원장 특별강연</span><button type="button" data-close aria-label="팝업 닫기">✕</button></div><div class="event-popup-tabs" aria-label="특강 이미지 선택">${posters.map((p, i) => `<button type="button" data-poster="${i}" aria-pressed="${i === 0}">${p.label}</button>`).join('')}</div><div class="event-popup-image"><img fetchpriority="high" decoding="async" width="941" height="1672" src="${base + posters[0].file}" alt="${posters[0].alt}"></div><div class="event-popup-footer"><button type="button" data-hide>오늘 하루 보지 않기</button><button type="button" data-close>닫기</button></div>`;
   document.body.append(dialog);
+  // Fetch the other poster after the first has finished, so switching is instant.
+  dialog.querySelector('img').addEventListener('load', () => {
+    const next = new Image();
+    next.decoding = 'async';
+    next.fetchPriority = 'low';
+    next.src = base + posters[1].file;
+  }, { once: true });
   // Use the visible viewport as well as CSS sizing (mobile zoom and browser bars).
   const viewport = window.visualViewport;
   const fitViewport = () => {
@@ -44,8 +51,8 @@
     const poster = posters[Number(button.dataset.poster)];
     const img = dialog.querySelector('img');
     img.src = base + poster.file; img.alt = poster.alt;
-    img.width = poster.file === 'poster.png' ? 941 : 1278;
-    img.height = poster.file === 'poster.png' ? 1672 : 1230;
+    img.width = poster.file === 'poster.webp' ? 941 : 1278;
+    img.height = poster.file === 'poster.webp' ? 1672 : 1230;
     dialog.querySelectorAll('[data-poster]').forEach(tab => tab.setAttribute('aria-pressed', String(tab === button)));
     dialog.querySelector('.event-popup-image').scrollTop = 0;
   }));
