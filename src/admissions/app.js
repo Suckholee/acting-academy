@@ -1,0 +1,40 @@
+const {STAGES}=require('./model.cjs');
+const root=document.querySelector('#admissions-root');
+const el=(tag,text,attrs={})=>{const n=document.createElement(tag);if(text)n.textContent=text;for(const[k,v]of Object.entries(attrs))n.setAttribute(k,v);return n;};
+async function request(url,options={}){const r=await fetch(url,{credentials:'same-origin',...options,headers:{'Content-Type':'application/json',...options.headers}});const data=await r.json();if(!r.ok)throw Error(data.error||'요청을 완료하지 못했습니다.');return data;}
+const day=value=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(value);
+const time=value=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(value));
+let records=[],view='list',filter='전체',search='',date=day(new Date()),ready=false;
+const header=el('header');const brand=el('strong','KJT · 관리자');const modes=el('nav',null,{'aria-label':'관리 모드'});modes.append(el('a','UI변경',{href:'/?admin=1'}),el('a','상담관리',{href:'/admin/admissions','aria-current':'page'}));header.append(brand,modes,el('a','상담실',{href:'/admin/consultation'}),el('a','회원 관리',{href:'/admin/members'}));root.append(header);
+const body=el('section',null,{class:'workspace'});root.append(body);
+async function load(){try{const data=await request('/api/admin-inquiries');records=data.records;ready=data.scheduleReady;render();}catch(error){body.replaceChildren(el('p',error.message));}}
+function render(){body.replaceChildren();const title=el('div',null,{class:'page-title'});title.append(el('div','상담 인원 관리'),el('p','신청 → 비대면 상담 진행 → 대면 상담 진행 → 확정'));body.append(title);
+ if(!ready)body.append(el('p','상담 단계·예약 시간표를 사용하려면 데이터베이스 연결 업데이트가 필요합니다. 신청 명단은 확인할 수 있습니다.',{class:'warning',role:'status'}));
+ const stats=el('div',null,{class:'stats'});for(const stage of STAGES){const button=el('button',stage+' '+records.filter(r=>r.status===stage).length,{type:'button','aria-pressed':String(filter===stage)});button.onclick=()=>{filter=filter===stage?'전체':stage;render();};stats.append(button);}body.append(stats);
+ const tools=el('div',null,{class:'tools'});for(const [id,label]of [['list','리스트형'],['calendar','타임테이블형']]){const button=el('button',label,{type:'button','aria-pressed':String(view===id)});button.onclick=()=>{view=id;render();};tools.append(button);}
+ const input=el('input',null,{type:'search',placeholder:'이름·연락처·과정 검색','aria-label':'상담자 검색'});input.value=search;input.onchange=()=>{search=input.value;render();};const refresh=el('button','새로고침',{type:'button'});refresh.onclick=load;tools.append(input,refresh);body.append(tools);
+ const filtered=records.filter(r=>(filter==='전체'||r.status===filter)&&[r.name,r.phone,...r.courses].join(' ').includes(search));
+ if(view==='calendar')renderCalendar(filtered);else{const list=el('div',null,{class:'list'});for(const record of filtered){const row=el('button',null,{type:'button',class:'person'});const info=el('span');info.append(el('strong',record.name),el('small',record.phone+' · '+record.courses.join(', ')),el('small',(record.startsAt?day(new Date(record.startsAt))+' '+time(record.startsAt)+'~'+time(record.endsAt):'대면 상담 일정 미정')));row.append(info,el('span',record.status,{class:'stage'}));row.onclick=()=>edit(record);list.append(row);}if(!filtered.length)list.append(el('p','해당하는 상담자가 없습니다.'));body.append(list);}}
+function renderCalendar(filtered){
+ const datebar=el('div',null,{class:'datebar'});const field=el('input',null,{type:'date','aria-label':'상담 날짜'});field.value=date;field.onchange=()=>{date=field.value;render();};datebar.append(field,el('span','임도윤 실장 · 한국 시간'));body.append(datebar);
+ const appointments=filtered.filter(r=>r.startsAt&&day(new Date(r.startsAt))===date).sort((a,b)=>a.startsAt.localeCompare(b.startsAt));
+ const table=el('div',null,{class:'timetable'});for(let minutes=9*60;minutes<21*60;minutes+=30){const hour=String(Math.floor(minutes/60)).padStart(2,'0')+':'+String(minutes%60).padStart(2,'0');const slot=el('div',null,{class:'slot'});slot.append(el('time',hour));const events=el('div');for(const record of appointments.filter(r=>{const start=Date.parse(date+'T'+hour+':00+09:00');return Date.parse(r.startsAt)<start+30*60000&&Date.parse(r.endsAt)>start;})){const event=el('button',record.name+' · '+time(record.startsAt)+'~'+time(record.endsAt)+' · '+record.status,{type:'button',class:'appointment'});event.onclick=()=>edit(record);events.append(event);}slot.append(events);table.append(slot);}body.append(table);
+ const outside=appointments.filter(r=>time(r.startsAt)<'09:00'||time(r.startsAt)>='21:00');for(const record of outside){const item=el('button',record.name+' · '+time(record.startsAt)+'~'+time(record.endsAt),{type:'button'});item.onclick=()=>edit(record);body.append(item);}
+ body.append(el('p','일정 등록·변경은 리스트에서 상담자를 선택해 진행하세요.',{class:'muted'}));
+}
+function edit(record){const dialog=el('dialog',null,{class:'detail','aria-label':record.name+' 상담 관리'}),form=el('form');dialog.append(form);form.append(el('h2',record.name+' 상담 관리'),el('p',record.phone+' · '+record.courses.join(', ')),el('p','수강 목적: '+record.purposes.join(', ')));
+ const stage=el('select',null,{'aria-label':'진행 단계'});for(const s of STAGES)stage.append(el('option',s,{value:s}));stage.value=record.status;form.append(label('진행 단계',stage));
+ const scheduled=el('input',null,{type:'checkbox'});scheduled.checked=Boolean(record.startsAt);form.append(label('대면 상담 일정 예약',scheduled));
+ const dateInput=el('input',null,{type:'date','aria-label':'대면 상담 날짜'});dateInput.value=record.startsAt?day(new Date(record.startsAt)):date;
+ const timeInput=el('input',null,{type:'time','aria-label':'시작 시간',step:'900'});timeInput.value=record.startsAt?time(record.startsAt):'10:00';
+ const duration=el('select',null,{'aria-label':'소요 시간'});for(const m of [30,60,90,120,180,240])duration.append(el('option',m+'분',{value:String(m)}));duration.value=record.startsAt?String((Date.parse(record.endsAt)-Date.parse(record.startsAt))/60000):'60';
+ form.append(label('날짜',dateInput),label('시작 시간 (한국 시간)',timeInput),label('소요 시간',duration));
+ stage.onchange=()=>{if(stage.value==='대면 상담 진행')scheduled.checked=true;};
+ const memo=el('textarea',null,{rows:'5',maxlength:'4000','aria-label':'상담 메모'});memo.value=record.memo||'';form.append(label('상담 메모',memo));
+ const status=el('p','',{role:'status'}),save=el('button','상담 정보 저장',{type:'submit',class:'primary'}),close=el('button','닫기',{type:'button'});close.onclick=()=>dialog.close();form.append(status,save,close);save.disabled=!ready;
+ form.onsubmit=async e=>{e.preventDefault();save.disabled=true;try{const startsAt=scheduled.checked?new Date(dateInput.value+'T'+timeInput.value+':00+09:00').toISOString():null;const endsAt=startsAt?new Date(Date.parse(startsAt)+Number(duration.value)*60000).toISOString():null;const data=await request('/api/admin-inquiries',{method:'PATCH',body:JSON.stringify({id:record.id,status:stage.value,revision:record.revision,memo:memo.value,startsAt,endsAt})});Object.assign(record,data.record);dialog.close();render();}catch(error){status.textContent=error.message;save.disabled=false;}};
+ dialog.addEventListener('close',()=>dialog.remove());document.body.append(dialog);dialog.showModal();}
+function label(text,input){const n=el('label',text);n.append(input);return n;}
+async function initialize(){try{const auth=await request('/api/admin-auth');if(auth.authenticated)return load();}catch{}
+ const form=el('form',null,{class:'login'}),password=el('input',null,{type:'password',autocomplete:'current-password',required:'','aria-label':'관리자 비밀번호'}),status=el('p','',{role:'status'}),submit=el('button','로그인',{type:'submit'});form.append(el('h1','상담관리 로그인'),label('관리자 비밀번호',password),submit,status);body.replaceChildren(form);form.onsubmit=async e=>{e.preventDefault();submit.disabled=true;try{await request('/api/admin-auth',{method:'POST',body:JSON.stringify({password:password.value})});await load();}catch(error){status.textContent=error.message;}finally{submit.disabled=false;}};}
+initialize();

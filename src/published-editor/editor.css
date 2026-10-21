@@ -98,3 +98,5 @@ body.kjt-editing:not(.kjt-guides) .kjt-editable-component:hover>.kjt-component-e
 .kjt-context-panel .kjt-panel-feedback.is-error{background:#fbece7;color:#9d3524}
 .kjt-context-panel .kjt-editor-actions{z-index:20}
 @media(max-width:900px){.kjt-context-panel{--kjt-panel-padding:18px}}
+
+.kjt-editor-toolbar .kjt-admin-modes{position:static;display:flex;gap:4px;margin:0 12px 0 0;padding:3px;border:1px solid #ffffff30;border-radius:9px;font-size:14px}.kjt-editor-toolbar .kjt-admin-modes a{padding:8px 12px;border-radius:6px;text-decoration:none;color:#ead09c}.kjt-editor-toolbar .kjt-admin-modes a[aria-current=page]{background:#d2b777;color:#192c2b;font-weight:700}

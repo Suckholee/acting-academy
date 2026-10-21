@@ -1,0 +1,9 @@
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const {validate,normalizeStage}=require('../src/admissions/model.cjs');
+const {createHandler}=require('../api/admin-inquiries');
+const body={id:'b079d152-62a0-4396-a32a-12960bc2fb65',status:'대면 상담 진행',revision:0,memo:'상담 메모',startsAt:'2026-10-22T01:00:00Z',endsAt:'2026-10-22T02:00:00Z'};
+const res=()=>({code:200,setHeader(){},status(n){this.code=n;return this;},json(data){this.data=data;return this;}});
+test('onsite consultation requires a valid bounded appointment',()=>{assert.equal(validate(body),null);assert(validate({...body,startsAt:null,endsAt:null}));assert(validate({...body,endsAt:body.startsAt}));assert(validate({...body,endsAt:'2026-10-23T01:00:00Z'}));assert.equal(normalizeStage('신규'),'신청');});
+test('conflicts never return a saved record',async()=>{const r=res();await createHandler({requireAdmin:async()=>true,database:{request:async()=>{throw Error('overlap');}}})({method:'PATCH',body},r);assert.equal(r.code,409);assert(!r.data.record);});
+test('unauthenticated requests do not access inquiry data',async()=>{const r=res();await createHandler({requireAdmin:async(req,res)=>{res.status(401).json({error:'login'});return false;},database:{request:()=>assert.fail()}})({method:'GET'},r);assert.equal(r.code,401);});
+test('stage, appointment and expected revision are saved in one transaction',async()=>{const r=res();await createHandler({requireAdmin:async()=>true,database:{request:async(url,options)=>{assert.equal(url,'/rest/v1/rpc/save_academy_inquiry_workflow');const p=JSON.parse(options.body);assert.equal(p.p_revision,0);assert.equal(p.p_stage,'대면 상담 진행');return {stage:p.p_stage,starts_at:p.p_starts_at,ends_at:p.p_ends_at,revision:1,counselor:'임도윤 실장'};}}})({method:'PATCH',body},r);assert.equal(r.code,200);assert.equal(r.data.record.revision,1);});
