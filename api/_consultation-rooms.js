@@ -1,4 +1,5 @@
 const crypto = require('node:crypto');
+const {PEN_WIDTHS,MARKER_WIDTHS}=require('../src/consultation/pen-tools.cjs');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const database = require('./_cms-store');
@@ -17,10 +18,10 @@ function strokes(value){
  if(!Array.isArray(value)||value.length>400)throw Error('validation');
  let points=0;
  return value.map(stroke=>{
-  if(!stroke||!/^#[a-fA-F0-9]{6}$/.test(stroke.color)||![2,3,5,8].includes(stroke.width)||!Array.isArray(stroke.points)||!stroke.points.length||stroke.points.length>2500)throw Error('validation');
+  if(!stroke||!/^#[a-fA-F0-9]{6}$/.test(stroke.color)||(stroke.tool!==undefined&&!['pen','highlighter'].includes(stroke.tool))||!(stroke.tool==='highlighter'?MARKER_WIDTHS:PEN_WIDTHS).includes(stroke.width)||!Array.isArray(stroke.points)||!stroke.points.length||stroke.points.length>2500)throw Error('validation');
   points+=stroke.points.length;if(points>30000)throw Error('validation');
   const normalized=stroke.points.map(p=>{if(!Array.isArray(p)||p.length!==2||p.some(n=>!Number.isFinite(n)||n<0||n>1))throw Error('validation');return p;});
-  return {color:stroke.color,width:stroke.width,points:normalized};
+  return {color:stroke.color,width:stroke.width,points:normalized,...(stroke.tool==='highlighter'?{tool:'highlighter'}:{})};
  });
 }
 function createHandler({directory,store=production}){

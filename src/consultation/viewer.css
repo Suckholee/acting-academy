@@ -36,3 +36,8 @@ body.viewer-open{height:100vh;height:100dvh;display:flex;flex-direction:column;o
 .journal-state{min-height:26px;color:#dec38c;font-size:14px;line-height:1.7}.journal-report{border:1px solid #566052;border-radius:10px;padding:16px;margin:16px 0}.journal-report>summary{font-size:18px;cursor:pointer;padding:5px}.journal-report .room-field textarea{min-height:130px}
 .handwritten-journal .journal-actions{bottom:-22px;flex-wrap:wrap;gap:8px;z-index:3;padding:12px 0}.handwritten-journal .journal-actions button{font-size:13px}
 @media(max-width:650px){.handwritten-journal{padding:14px}.journal-pen-tools{top:-14px}.handwritten-journal .journal-actions{bottom:-14px;justify-content:stretch}.handwritten-journal .journal-actions .primary{flex:1}.handwritten-journal .journal-actions button{padding:8px}}
+
+.pen-options,.journal-pen-tools{flex-wrap:wrap}
+.pen-options [data-pen-preset],.journal-pen-tools [data-pen-preset]{border:1px solid #566052;border-bottom:5px solid var(--swatch);min-height:44px;padding:8px 11px;font-size:12px}
+.pen-options select,.journal-pen-tools select{max-width:100%;min-height:44px}
+.ink-layer{display:block;padding:0;border:0}

@@ -1,11 +1,12 @@
 const {attachInk}=require('./ink.cjs');
+const {createPenTools,strokeOpacity}=require('./pen-tools.cjs');
 const pendingAudio=new Map();
 const FIELDS=[['goals','수강 목표·현재 경험'],['summary','상담 핵심 내용'],['recommendation','추천 과정·수강 계획'],['followup','후속 연락·다음 약속'],['memo','추가 확인 사항']];
 function renderInk(strokes,background){
  return new Promise(async(resolve,reject)=>{try{
   const canvas=document.createElement('canvas');canvas.width=768;canvas.height=1024;const ctx=canvas.getContext('2d');ctx.fillStyle='#fbf8ef';ctx.fillRect(0,0,768,1024);
   if(background){const image=new Image();image.src=background;await image.decode();ctx.drawImage(image,0,0,768,1024);}
-  for(const stroke of strokes){ctx.beginPath();ctx.strokeStyle=stroke.color;ctx.lineWidth=stroke.width;ctx.lineCap='round';ctx.lineJoin='round';stroke.points.forEach((p,i)=>i?ctx.lineTo(p[0]*768,p[1]*1024):ctx.moveTo(p[0]*768,p[1]*1024));ctx.stroke();}
+  for(const stroke of strokes){ctx.beginPath();ctx.globalAlpha=strokeOpacity(stroke);ctx.strokeStyle=stroke.color;ctx.lineWidth=stroke.width;ctx.lineCap='round';ctx.lineJoin='round';stroke.points.forEach((p,i)=>i?ctx.lineTo(p[0]*768,p[1]*1024):ctx.moveTo(p[0]*768,p[1]*1024));ctx.stroke();}
   resolve(canvas.toDataURL('image/jpeg',.8));
  }catch(error){reject(error);}});
 }
@@ -14,12 +15,9 @@ function openJournal({room,dialog,el,button,field,queue,saveAll,updateRoomBadge,
  const intro=el('p','상담 중에는 펜으로 적거나 녹음하세요. 끝난 뒤 정리를 누르면 상담 보고서 초안이 만들어집니다.',{class:'journal-intro'}),state=el('p','',{role:'status',class:'journal-state'});
  const tools=el('nav',null,{class:'journal-pen-tools','aria-label':'상담 메모 필기 도구'}),sheet=el('div',null,{class:'journal-paper','aria-label':'손글씨 상담 메모'});
  sheet.append(el('span','상담 메모',{class:'journal-paper-title'}));
- let penMode='pen',penColor='#273b32',penWidth=3,recorder=null,stream=null,timer=null,seconds=0,working=false,uploading=false,draft=false;
- const noteInk=attachInk(sheet,{enabled:()=>!working&&!uploading,mode:()=>penMode,color:()=>penColor,width:()=>penWidth,onChange:strokes=>{room.annotations._journal=strokes;queue('journal_ink',{action:'journal_ink',strokes});}});noteInk.set(room.annotations?._journal||[]);
- const pen=button('펜',()=>{penMode='pen';pen.setAttribute('aria-pressed','true');eraser.setAttribute('aria-pressed','false');},{'aria-pressed':'true'}),eraser=button('지우개',()=>{penMode='eraser';pen.setAttribute('aria-pressed','false');eraser.setAttribute('aria-pressed','true');},{'aria-pressed':'false'});
- tools.append(pen,eraser,button('되돌리기',()=>noteInk.undo()));
- for(const[color,title]of[['#273b32','검정'],['#C34C3F','빨강'],['#356CB1','파랑']]){const swatch=button(title,()=>{penColor=color;for(const b of tools.querySelectorAll('[data-color]'))b.setAttribute('aria-pressed',String(b.dataset.color===color));},{'data-color':color,'aria-pressed':String(color===penColor)});swatch.style.setProperty('--swatch',color);tools.append(swatch);}
- const sizes=el('select',null,{'aria-label':'필기 굵기'});for(const value of [2,3,5,8])sizes.append(el('option',value+' px',{value:String(value)}));sizes.value='3';sizes.onchange=()=>penWidth=Number(sizes.value);tools.append(sizes);
+ let recorder=null,stream=null,timer=null,seconds=0,working=false,uploading=false,draft=false;
+ const penTools=createPenTools({container:tools,el,button,onUndo:()=>noteInk.undo()});
+ const noteInk=attachInk(sheet,{enabled:()=>!working&&!uploading,mode:penTools.mode,color:penTools.color,width:penTools.width,tool:penTools.tool,onChange:strokes=>{room.annotations._journal=strokes;queue('journal_ink',{action:'journal_ink',strokes});}});noteInk.set(room.annotations?._journal||[]);
  const audioSection=el('section',null,{class:'journal-audio'}),audioHeading=el('h3','녹음'),audioList=el('div',null,{class:'journal-recordings'}),consentLabel=el('label',null,{class:'journal-consent'}),recordConsent=el('input',null,{type:'checkbox'});consentLabel.append(recordConsent,document.createTextNode('상담 참여자에게 녹음과 AI 정리 이용을 안내하고 동의를 받았습니다.'));
  const record=button('● 녹음 시작',async()=>{
   if(recorder?.state==='recording'){recorder.stop();return;}

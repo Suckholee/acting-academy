@@ -38,3 +38,31 @@ test('long swipes keep the visible offset within one page and continue the turn 
  target.send('pointerdown',900,200);time=400;target.send('pointermove',0,200);target.send('pointerup',0,200);
  assert.equal(drags.at(-1),-600);assert.deepEqual(turns,[[1,-600]]);
 });
+
+test('ink coordinates invert the SVG screen transform after scrolling, resizing, zooming and rotation',()=>{
+ const {inkPoint}=require('../src/consultation/ink.cjs');
+ for(const matrix of [
+  {a:.4,b:0,c:0,d:.4,e:17,f:103},
+  {a:1.25,b:0,c:0,d:1.25,e:92,f:-615},
+  {a:.55,b:0,c:0,d:.7,e:31,f:-190},
+  {a:0,b:.75,c:-.75,d:0,e:1000,f:15},
+  {a:.8,b:.1,c:.2,d:.9,e:17,f:200}
+ ])for(const [x,y]of [[.01,.01],[.5,.5],[.99,.99]]){
+  const p={clientX:matrix.a*x*768+matrix.c*y*1024+matrix.e,clientY:matrix.b*x*768+matrix.d*y*1024+matrix.f};
+  const actual=inkPoint({getScreenCTM:()=>matrix},null,p);assert.ok(Math.abs(actual[0]-x)<1e-10);assert.ok(Math.abs(actual[1]-y)<1e-10);
+ }
+ const actual=inkPoint({getBoundingClientRect:()=>({left:24,top:-100,width:300,height:500})},{getBoundingClientRect:()=>({left:0,top:0,width:400,height:600})},{clientX:174,clientY:150});assert.deepEqual(actual,[.5,.5]);
+});
+test('highlighter opacity and width survive restore; release coordinates finish the line without a move event',()=>{
+ const {parseHTML}=require('linkedom'),{attachInk}=require('../src/consultation/ink.cjs');
+ const {document,window}=parseHTML('<html><body><div id="surface"></div></body></html>'),previous=global.document;global.document=document;
+ try{
+  const surface=document.querySelector('#surface');surface.setPointerCapture=()=>{};surface.getBoundingClientRect=()=>({left:20,top:-80,width:384,height:512});
+  const ink=attachInk(surface,{enabled:()=>true,tool:()=> 'highlighter',color:()=> '#FFE04A',width:()=>24});
+  const send=(type,x,y,id=1,pointerType='pen')=>{const e=new window.Event(type,{bubbles:true,cancelable:true});Object.assign(e,{clientX:x,clientY:y,pointerId:id,pointerType,isPrimary:true,button:0});surface.dispatchEvent(e);};
+  send('pointerdown',116,48);send('pointerup',308,304);
+  const saved=ink.get();assert.deepEqual(saved[0].points.at(0),[.25,.25]);assert.deepEqual(saved[0].points.at(-1),[.75,.75]);assert.equal(saved[0].tool,'highlighter');
+  ink.set(saved);const line=surface.querySelector('polyline');assert.equal(line.getAttribute('stroke-opacity'),'0.3');assert.equal(line.getAttribute('stroke-width'),'24');assert.equal(surface.querySelector('svg').getAttribute('preserveAspectRatio'),'none');
+  send('pointerdown',50,50,2,'touch');send('pointerdown',116,48,3,'pen');send('pointermove',308,304,3,'pen');send('pointerup',308,304,3,'pen');assert.equal(ink.get().length,2);assert.deepEqual(ink.get()[1].points.at(0),[.25,.25]);
+ }finally{if(previous===undefined)delete global.document;else global.document=previous;}
+});
