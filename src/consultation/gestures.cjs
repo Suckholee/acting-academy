@@ -10,7 +10,7 @@ function attachSwipe(target,{canStart=()=>true,canGo=()=>true,onDrag=()=>{},onSn
   if(!gesture||gesture.id!==event.pointerId)return;
   const dx=event.clientX-gesture.x,dy=event.clientY-gesture.y;
   if(!gesture.axis){if(Math.abs(dx)<12&&Math.abs(dy)<12)return;if(Math.abs(dx)<=Math.abs(dy)*1.3){gesture=null;return;}gesture.axis='x';target.setPointerCapture?.(event.pointerId);}
-  gesture.dx=dx;if(event.cancelable)event.preventDefault();gesture.visual=canGo(dx<0?1:-1)?dx:dx*.2;onDrag(gesture.visual);
+  gesture.dx=dx;if(event.cancelable)event.preventDefault();gesture.visual=canGo(dx<0?1:-1)?Math.max(-width(),Math.min(width(),dx)):dx*.2;onDrag(gesture.visual);
  };
  const up=event=>{
   pointers.delete(event.pointerId);if(!gesture||gesture.id!==event.pointerId)return;
@@ -18,7 +18,7 @@ function attachSwipe(target,{canStart=()=>true,canGo=()=>true,onDrag=()=>{},onSn
   if(active.axis!=='x')return;
   suppressUntil=now()+400;
   const distance=Math.abs(active.dx),speed=distance/Math.max(1,now()-active.time),direction=active.dx<0?1:-1;
-  if(canGo(direction)&&(distance>=Math.min(120,Math.max(56,width()*.18))||(distance>28&&speed>.55)))onTurn(direction,active.dx);else onSnap(active.visual??active.dx);
+  if(canGo(direction)&&(distance>=Math.min(120,Math.max(56,width()*.18))||(distance>28&&speed>.55)))onTurn(direction,active.visual??active.dx);else onSnap(active.visual??active.dx);
  };
  const lost=event=>{pointers.delete(event.pointerId);cancel();};
  const click=event=>{if(now()<suppressUntil){event.preventDefault();event.stopImmediatePropagation();}};

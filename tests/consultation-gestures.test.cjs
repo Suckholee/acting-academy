@@ -32,3 +32,9 @@ test('pen ink uses page coordinates across tablet sizes, survives restore, ignor
   mode='eraser';send('pointerdown',10+width*.4,20+width*4/3*.4);send('pointerup',10+width*.4,20+width*4/3*.4);assert.equal(ink.get().length,0);ink.undo();assert.deepEqual(ink.get(),saved);
  }finally{if(previous===undefined)delete global.document;else global.document=previous;}
 });
+test('long swipes keep the visible offset within one page and continue the turn from that offset',()=>{
+ const target=new Target(),drags=[],turns=[];let time=0;
+ attachSwipe(target,{now:()=>time,onDrag:dx=>drags.push(dx),onTurn:(direction,dx)=>turns.push([direction,dx])});
+ target.send('pointerdown',900,200);time=400;target.send('pointermove',0,200);target.send('pointerup',0,200);
+ assert.equal(drags.at(-1),-600);assert.deepEqual(turns,[[1,-600]]);
+});
