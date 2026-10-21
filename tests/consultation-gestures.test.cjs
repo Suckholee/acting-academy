@@ -27,7 +27,7 @@ test('pen ink uses page coordinates across tablet sizes, survives restore, ignor
   send('pointerdown',106,148);send('pointerdown',30,30,2,'touch');send('pointermove',202,276);send('pointerup',202,276);send('pointerup',30,30,2,'touch');
   assert.equal(changes.length,1);assert.deepEqual(changes[0][0].points.at(0),[.25,.25]);assert.deepEqual(changes[0][0].points.at(-1),[.5,.5]);
   const saved=ink.get();width=768;ink.set(saved);assert.match(surface.querySelector('polyline').getAttribute('points'),/192,256/);
-  send('pointerdown',500,500);send('pointermove',600,600);send('pointercancel',600,600);assert.deepEqual(ink.get(),saved);
+  send('pointerdown',500,500);send('pointermove',600,600);send('pointercancel',600,600);assert.equal(ink.get().length,2);ink.undo();assert.deepEqual(ink.get(),saved);
   send('pointerdown',500,500);send('pointermove',600,600);send('pointerup',600,600);assert.equal(ink.get().length,2);ink.undo();assert.deepEqual(ink.get(),saved);
   mode='eraser';send('pointerdown',10+width*.4,20+width*4/3*.4);send('pointerup',10+width*.4,20+width*4/3*.4);assert.equal(ink.get().length,0);ink.undo();assert.deepEqual(ink.get(),saved);
  }finally{if(previous===undefined)delete global.document;else global.document=previous;}
@@ -63,6 +63,24 @@ test('highlighter opacity and width survive restore; release coordinates finish 
   send('pointerdown',116,48);send('pointerup',308,304);
   const saved=ink.get();assert.deepEqual(saved[0].points.at(0),[.25,.25]);assert.deepEqual(saved[0].points.at(-1),[.75,.75]);assert.equal(saved[0].tool,'highlighter');
   ink.set(saved);const line=surface.querySelector('polyline');assert.equal(line.getAttribute('stroke-opacity'),'0.3');assert.equal(line.getAttribute('stroke-width'),'24');assert.equal(surface.querySelector('svg').getAttribute('preserveAspectRatio'),'none');
-  send('pointerdown',50,50,2,'touch');send('pointerdown',116,48,3,'pen');send('pointermove',308,304,3,'pen');send('pointerup',308,304,3,'pen');assert.equal(ink.get().length,2);assert.deepEqual(ink.get()[1].points.at(0),[.25,.25]);
+  send('pointerdown',50,50,2,'touch');send('pointerdown',116,48,3,'pen');send('pointermove',308,304,3,'pen');send('pointerup',308,304,3,'pen');assert.equal(ink.get().length,3);assert.deepEqual(ink.get()[2].points.at(0),[.25,.25]);
+ }finally{if(previous===undefined)delete global.document;else global.document=previous;}
+});
+
+test('interrupted touch strokes remain visible, notify saving once, and allow the next stroke',()=>{
+ const {parseHTML}=require('linkedom'),{attachInk}=require('../src/consultation/ink.cjs');
+ const {document,window}=parseHTML('<html><body><div id="surface"></div></body></html>'),previous=global.document;global.document=document;
+ try{
+  const surface=document.querySelector('#surface');surface.setPointerCapture=()=>{};surface.hasPointerCapture=()=>true;surface.getBoundingClientRect=()=>({left:0,top:0,width:768,height:1024});
+  const changes=[];const ink=attachInk(surface,{enabled:()=>true,onChange:strokes=>changes.push(strokes)});
+  const send=(type,x,y,id=1,primary=true)=>{const e=new window.Event(type,{bubbles:true,cancelable:true});Object.assign(e,{clientX:x,clientY:y,pointerId:id,pointerType:'touch',isPrimary:primary,button:0});surface.dispatchEvent(e);};
+  for(const interruption of ['pointercancel','lostpointercapture']){
+   const count=ink.get().length,saves=changes.length;send('pointerdown',100,200);send('pointermove',300,400);send(interruption,300,400);send('pointerup',300,400);
+   assert.equal(ink.get().length,count+1);assert.equal(surface.querySelectorAll('polyline').length,count+1);assert.equal(changes.length,saves+1);assert.deepEqual(changes.at(-1).at(-1).points.at(-1),[300/768,400/1024]);
+  }
+  send('pointerdown',100,200);send('pointermove',300,400);send('pointerdown',500,500,2,false);assert.equal(ink.get().length,3);assert.equal(changes.length,3);send('pointerup',300,400);send('pointerup',500,500,2,false);
+  send('pointerdown',120,240);send('pointermove',360,480);ink.cancel();assert.equal(ink.get().length,4);assert.equal(changes.length,4);send('pointerup',360,480);assert.equal(changes.length,4);
+  surface.hasPointerCapture=()=>false;surface.setPointerCapture=()=>{throw Error('capture unavailable');};send('pointerdown',50,50);send('pointermove',100,100);send('pointerleave',100,100);assert.equal(ink.get().length,5);assert.equal(changes.length,5);
+  ink.undo();assert.equal(ink.get().length,4);
  }finally{if(previous===undefined)delete global.document;else global.document=previous;}
 });

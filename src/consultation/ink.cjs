@@ -22,16 +22,18 @@ function attachInk(surface,{enabled=()=>false,mode=()=> 'pen',color=()=> '#20202
  function finish(cancel=false){if(!active)return;if(cancel){paths=before;draw();}else if(JSON.stringify(paths)!==JSON.stringify(before)){history.push(before);if(history.length>25)history.shift();onChange(copy(paths));}active=null;before=null;}
  surface.addEventListener('pointerdown',e=>{
   if(active?.type==='pen'&&e.pointerType==='touch')return;
-  if(e.pointerType==='pen'&&active?.type==='touch'){finish(true);touches.clear();}
-  touches.add(e.pointerId);if(touches.size>1){finish(true);return;}
+  if(e.pointerType==='pen'&&active?.type==='touch'){finish();touches.clear();}
+  touches.add(e.pointerId);if(touches.size>1){finish();return;}
   if(!enabled()||(e.button>0&&e.button!==5)||e.isPrimary===false)return;
-  e.preventDefault();e.stopPropagation();before=copy(paths);active={id:e.pointerId,type:e.pointerType,eraser:mode()==='eraser'||e.button===5};surface.setPointerCapture(e.pointerId);
+  e.preventDefault();e.stopPropagation();before=copy(paths);active={id:e.pointerId,type:e.pointerType,eraser:mode()==='eraser'||e.button===5};try{surface.setPointerCapture(e.pointerId);}catch{}
   if(active.eraser)erase(point(e));else{if(paths.length>=400){active=null;before=null;return;}const stroke={color:color(),width:width(),points:[point(e),point(e)],...(tool()==='highlighter'?{tool:'highlighter'}:{})};paths.push(stroke);active.line=lineFor(stroke);updateLine(active.line,stroke);svg.append(active.line);}
  });
  surface.addEventListener('pointermove',e=>{if(!active||e.pointerId!==active.id)return;e.preventDefault();e.stopPropagation();if(active.eraser)erase(point(e));else append(e);});
  surface.addEventListener('pointerup',e=>{touches.delete(e.pointerId);if(active?.id===e.pointerId){e.preventDefault();e.stopPropagation();if(!active.eraser)append(e);finish();}});
- surface.addEventListener('pointercancel',e=>{touches.delete(e.pointerId);if(active?.id===e.pointerId)finish(true);});
- surface.addEventListener('lostpointercapture',e=>{touches.delete(e.pointerId);if(active?.id===e.pointerId)finish(true);});
- return {set(value){finish(true);paths=copy(value||[]);history=[];draw();},get(){return copy(paths);},undo(){if(active||!history.length)return;paths=history.pop();draw();onChange(copy(paths));},clear(){if(!paths.length)return;history.push(copy(paths));paths=[];draw();onChange([]);},cancel(){finish(true);}};
+ // Browser interruptions end the stroke; they must not roll back the visible ink.
+ surface.addEventListener('pointercancel',e=>{touches.delete(e.pointerId);if(active?.id===e.pointerId)finish();});
+ surface.addEventListener('lostpointercapture',e=>{touches.delete(e.pointerId);if(active?.id===e.pointerId)finish();});
+ surface.addEventListener('pointerleave',e=>{if(active?.id===e.pointerId&&!surface.hasPointerCapture?.(e.pointerId)){touches.delete(e.pointerId);finish();}});
+ return {set(value){finish(true);paths=copy(value||[]);history=[];draw();},get(){return copy(paths);},undo(){if(active||!history.length)return;paths=history.pop();draw();onChange(copy(paths));},clear(){if(!paths.length)return;history.push(copy(paths));paths=[];draw();onChange([]);},cancel(){finish();}};
 }
 module.exports={attachInk,distanceToSegment,inkPoint};
