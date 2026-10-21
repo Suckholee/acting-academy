@@ -95,6 +95,7 @@ function queueJourney() {
 if (journey) {
   journeyButtons.forEach((b, i) => b.addEventListener('click', () => {
     selectJourney(i);
+    if (matchMedia('(max-width:720px)').matches) return;
     const r = journey.getBoundingClientRect();
     const travel = Math.max(1, journey.offsetHeight - innerHeight);
     window.scrollTo({
