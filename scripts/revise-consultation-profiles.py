@@ -1,4 +1,4 @@
-"""Revise instructor profiles and the audition page; retain navigation and other pages."""
+"""Revise instructor, audition and partner-benefit pages while retaining navigation."""
 import argparse
 import io
 import json
@@ -88,11 +88,39 @@ text(70,901,'일정·참여 조건은 별도 안내합니다.',13,'#CAD0C1')
 line(42,957,684);text(42,981,'KIM JUNG TAE ACTING ACADEMY',9,MUT,'E')
 for title,x in [('처음',452),('과정',516),('수강료',580)]:text(x,978,title,14,MUT)
 text(679,979,'06 / 09',11,MUT,'E');c.showPage()
+# Recorded feedback: all studio examples must be Im Do Yoon's actual studio photos.
+c.setFillColor(HexColor('#F7F4ED'));c.rect(0,0,W,H,fill=1,stroke=0)
+text(42,29,'김정태 배우아카데미',16);text(555,34,'CONSULTATION GUIDE',10,MUT,'E');line(42,67,684)
+text(42,103,'PROFILE STUDIO & MEMBER BENEFITS',10.5,GOLD,'E')
+text(42,141,'프로필의 완성도까지,',34,INK,'KB')
+text(42,188,'함께 준비합니다.',34,INK,'KB')
+for number,x in enumerate([42,276,510],1):
+    source=ROOT/f'private-assets/consultation/source-photos/im-do-yoon-studio-20261021-{number}.jpg'
+    image=Image.open(source).convert('RGB')
+    image=ImageOps.fit(image,(648,906),centering=(.5,.25))
+    c.drawImage(ImageReader(image),x,H-245-302,216,302)
+text(42,560,'픽셀그램 스튜디오 촬영 예시 · 임도윤 실장',11,MUT)
+c.setFillColor(HexColor('#222823'));c.roundRect(42,H-725,684,135,7,fill=1,stroke=0)
+text(64,605,'01 / PROFILE STUDIO',10.5,'#D2B980','E')
+text(64,631,'픽셀그램 스튜디오',23,'#F7F4ED','KB')
+text(64,669,'3컨셉 20만 원',28,'#F7F4ED','KB');text(467,677,'50% 할인가',21,'#E4C487','KB')
+text(64,708,'촬영 구성·예약 일정은 제휴처 문의',11,'#CAD0C1')
+c.setFillColor(HexColor('#EAE6DB'));c.roundRect(42,H-875,684,135,7,fill=1,stroke=0)
+text(64,752,'02 / HAIR & MAKEUP',10.5,GOLD,'E');text(64,774,'끌로에 본점',22,INK,'KB')
+text(64,807,'프로필 헤어·메이크업 60% 할인가',17,GOLD)
+text(64,835,'여성 110,000원',19);text(397,835,'남성 88,000원',19)
+text(64,862,'오전 7시 이전 22,000원 추가 · 헤어 시술 40% 할인가',11.5,MUT)
+text(42,887,'학원 02-2666-4528',17)
+text(42,915,'상담 담당 임도윤 010-9942-4528',16)
+text(42,941,'제휴 혜택은 제공된 양식 기준입니다. 예약 전 적용 대상·금액·조건을 확인해 주세요.',9,MUT)
+line(42,957,684);text(42,981,'KIM JUNG TAE ACTING ACADEMY',9,MUT,'E')
+for title,x in [('처음',452),('과정',516),('수강료',580)]:text(x,978,title,14,MUT)
+text(679,979,'09 / 09',11,MUT,'E');c.showPage()
 c.save();stream.seek(0)
 original=PdfReader(args.source);replacement=PdfReader(stream)
 assert len(original.pages)==9 and all(tuple(p.mediabox)==(0,0,768,1024) for p in original.pages)
 writer=PdfWriter();writer.clone_document_from_reader(original)
-for number,page in zip([profile['page'] for profile in profiles]+[6],replacement.pages):
+for number,page in zip([profile['page'] for profile in profiles]+[6,9],replacement.pages):
     target=writer.pages[number-1]
     for key in ['/Contents','/Resources']:target[NameObject(key)]=page.raw_get(key).clone(writer)
 writer.add_metadata({'/Title':'김정태 배우아카데미 | 경력·출연작 중심 상담 가이드','/Author':'김정태 배우아카데미'})
@@ -109,4 +137,7 @@ for profile in profiles:
 assert len(check.pages[5].images)==0, 'The program page must contain no photos'
 assert '4개월마다' in check.pages[5].extract_text()
 assert len(check.pages[5].get('/Annots',[]))==len(original.pages[5].get('/Annots',[]))
+assert len(check.pages[8].images)==3, 'The studio page must show three supplied portraits'
+assert '임도윤 실장' in check.pages[8].extract_text()
+assert len(check.pages[8].get('/Annots',[]))==len(original.pages[8].get('/Annots',[]))
 print(args.output)
