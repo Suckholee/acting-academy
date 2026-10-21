@@ -41,3 +41,5 @@ body.viewer-open{height:100vh;height:100dvh;display:flex;flex-direction:column;o
 .pen-options [data-pen-preset],.journal-pen-tools [data-pen-preset]{border:1px solid #566052;border-bottom:5px solid var(--swatch);min-height:44px;padding:8px 11px;font-size:12px}
 .pen-options select,.journal-pen-tools select{max-width:100%;min-height:44px}
 .ink-layer{display:block;padding:0;border:0}
+
+.viewer-tools{flex-wrap:wrap}.viewer-tools select{max-width:min(320px,calc(100vw - 130px))}

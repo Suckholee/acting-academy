@@ -52,7 +52,17 @@ function createHandler({directory,store=production}){
    if(current.revision!==data.revision)return res.status(409).json({error:'다른 창에서 이 상담이 수정되었습니다. 작성 내용을 복사해 둔 뒤 다시 열어주세요.'});
    let fields;
    try{
-    if(data.action==='journal_ink'){
+    if(data.action==='guide'){
+     if(!VERSION.test(data.version))throw Error('validation');
+     const target=JSON.parse(await fs.readFile(path.join(directory,'versions',data.version,'manifest.json'),'utf8'));
+     if(target.version!==data.version||current.page_ids.some(page=>page>target.pages.length))throw Error('validation');
+     const numeric=entries=>Object.fromEntries(Object.entries(entries||{}).filter(([key])=>/^[1-9]\d?$/.test(key)));
+     const previous={...(current.annotations?._guides||{})},restored=numeric(previous[data.version]);
+     if(data.version!==current.guide_version)previous[current.guide_version]=numeric(current.annotations);
+     delete previous[data.version];
+     const common=Object.fromEntries(Object.entries(current.annotations||{}).filter(([key])=>!/^[1-9]\d?$/.test(key)));
+     fields={guide_version:data.version,annotations:data.version===current.guide_version?current.annotations:{...common,...restored,_guides:previous}};
+    }else if(data.action==='journal_ink'){
      fields={annotations:{...current.annotations,_journal:strokes(data.strokes)}};
     }else if(data.action==='ink'){
      if(!current.page_ids.includes(data.page))throw Error('validation');
