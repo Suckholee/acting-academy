@@ -76,15 +76,17 @@ courses=[('카메라·무대 연기 기초','김형민 강사'),('카메라·무
 for index,(title,subtitle) in enumerate(courses):
     x=42+(index%2)*350;y=250+(index//2)*98
     text(x,y,title,19,INK,'KB');text(x,y+33,subtitle,15,MUT);line(x,y+72,334)
-# The lower half replaces the former small advantage note with a high-contrast centerpiece.
-c.setFillColor(HexColor('#222823'));c.roundRect(42,H-930,684,360,10,fill=1,stroke=0)
-text(70,595,'THE KJT ADVANTAGE',11,'#D2B980','E')
-text(70,634,'4개월마다,',42,'#F7F4ED','KB')
-text(70,692,'자체 오디션.',46,'#E4C487','KB')
-text(70,771,'현직 배우·액팅코치의 수업',22,'#F7F4ED','KB')
-text(70,811,'자체 제작 작품 참여',22,'#F7F4ED','KB')
-text(70,851,'협력 에이전시·감독 오디션 및 캐스팅 연계',20,'#F7F4ED')
-text(70,901,'일정·참여 조건은 별도 안내합니다.',13,'#CAD0C1')
+# Keep the recurring audition prominent while separating the three requested opportunities.
+c.setFillColor(HexColor('#222823'));c.roundRect(42,H-930,684,382,10,fill=1,stroke=0)
+text(70,568,'THE KJT ADVANTAGE',11,'#D2B980','E')
+text(70,600,'4개월마다,',36,'#F7F4ED','KB')
+text(70,648,'자체 오디션.',40,'#E4C487','KB')
+text(70,711,'현직 배우·액팅코치의 수업 · 자체 제작 작품 참여',18,'#F7F4ED')
+text(70,755,'협력 에이전시 작품 오디션 진행',20,'#F7F4ED','KB')
+text(70,783,'- 피카소유니온 외 다수',16,'#E4C487')
+text(70,819,'감독 오디션 후 캐스팅 진행',20,'#F7F4ED','KB')
+text(70,860,'김정태 배우 특강 외 다수 특강 진행',20,'#F7F4ED','KB')
+text(70,903,'일정·참여 조건은 별도 안내합니다.',12,'#CAD0C1')
 line(42,957,684);text(42,981,'KIM JUNG TAE ACTING ACADEMY',9,MUT,'E')
 for title,x in [('처음',452),('과정',516),('수강료',580)]:text(x,978,title,14,MUT)
 text(679,979,'06 / 09',11,MUT,'E');c.showPage()
@@ -136,6 +138,7 @@ for profile in profiles:
             for title in group['items']:assert ''.join(title.split()) in ''.join(page.extract_text().split()),title
 assert len(check.pages[5].images)==0, 'The program page must contain no photos'
 assert '4개월마다' in check.pages[5].extract_text()
+for required in ['협력 에이전시 작품 오디션 진행','피카소유니온 외 다수','감독 오디션 후 캐스팅 진행','김정태 배우 특강 외 다수 특강 진행']:assert required in check.pages[5].extract_text(),required
 assert len(check.pages[5].get('/Annots',[]))==len(original.pages[5].get('/Annots',[]))
 assert len(check.pages[8].images)==3, 'The studio page must show three supplied portraits'
 assert '임도윤 실장' in check.pages[8].extract_text()
