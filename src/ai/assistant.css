@@ -2,3 +2,14 @@
 
 /* Isolate the assistant from the published pages header and section rules. */
 .academy-ai .ai-header{display:block;position:relative;inset:auto;width:auto;max-width:none;height:auto;min-height:0;margin:0;transform:none;box-shadow:none;border:0;z-index:auto}.academy-ai .ai-result{display:block;position:static;width:auto;margin:20px 0 0;padding:18px 0 0;background:transparent}.ai-launcher{bottom:104px}@media(max-width:600px){.ai-launcher{bottom:100px}}
+
+.academy-ai .ai-welcome,.academy-ai .ai-application{padding:20px 24px;border-bottom:1px solid #e6ddce;margin:0}
+.academy-ai .ai-welcome p,.academy-ai .ai-application p{font-size:14px;line-height:1.7}
+.ai-quick{display:flex;flex-wrap:wrap;gap:8px}
+.ai-quick button{border:1px solid #d9cfbd;background:#fff;border-radius:20px;padding:10px 12px;font-size:13px;min-height:44px}
+.academy-ai .ai-apply-button{display:block;width:100%;border:0;border-radius:10px;background:#ad8342;color:#fff;padding:14px;margin-top:16px;font-weight:700}
+.academy-ai .ai-application label{display:block;font-size:14px;margin:14px 0}
+.academy-ai .ai-application input:not([type=checkbox]),.academy-ai .ai-application select{display:block;width:100%;max-width:100%;min-width:0;margin-top:6px;padding:12px;border:1px solid #d9cfbd;border-radius:10px;background:white;color:#24231f;font:16px/1.5 sans-serif}
+.academy-ai .ai-application h3{margin:0;font-size:20px}
+.academy-ai .ai-application .ai-footnote{font-size:11px}
+@media(max-width:600px){.academy-ai.ai-chat{left:8px;right:8px;top:8px;bottom:auto;margin:0;width:calc(100vw - 16px);max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}.academy-ai .ai-welcome,.academy-ai .ai-application{padding:18px}}

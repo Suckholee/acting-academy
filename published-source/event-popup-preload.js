@@ -1,5 +1,5 @@
 (() => {
-  if (new URLSearchParams(location.search).has('admin')) return;
+  if (new URLSearchParams(location.search).has('admin') || new URLSearchParams(location.search).get('chat') === '1') return;
   try {
     const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
     if (localStorage.getItem('kjt-respect-for-acting-20261024-hidden') === today) return;

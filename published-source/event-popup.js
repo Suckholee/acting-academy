@@ -2,7 +2,7 @@
   const key = 'kjt-respect-for-acting-20261024-hidden';
   const today = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   try { if (localStorage.getItem(key) === today()) return; } catch {}
-  if (new URLSearchParams(location.search).has('admin')) return;
+  if (new URLSearchParams(location.search).has('admin') || new URLSearchParams(location.search).get('chat') === '1') return;
   const base = '/assets/events/respect-for-acting-20261024/';
   const posters = [
     { file: 'poster.webp', label: '특강 포스터', alt: 'RESPECT FOR ACTING 김정태 원장 특강. 10월 24일 오후 1시, 마곡역 4번 출구 로뎀타워 306호. 문의 02-2666-4528.' },
