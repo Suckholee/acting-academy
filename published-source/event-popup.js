@@ -11,7 +11,7 @@
   const dialog = document.createElement('dialog');
   dialog.className = 'academy-event-popup';
   dialog.setAttribute('aria-label', '김정태 원장 특별강연 안내');
-  dialog.innerHTML = `<header class="event-popup-header"><span>김정태 원장 특별강연</span><button type="button" data-close aria-label="팝업 닫기">✕</button></header><nav class="event-popup-tabs" aria-label="특강 이미지 선택">${posters.map((p, i) => `<button type="button" data-poster="${i}" aria-pressed="${i === 0}">${p.label}</button>`).join('')}</nav><div class="event-popup-image"><img width="941" height="1672" src="${base + posters[0].file}" alt="${posters[0].alt}"></div><footer class="event-popup-footer"><button type="button" data-hide>오늘 하루 보지 않기</button><button type="button" data-close>닫기</button></footer>`;
+  dialog.innerHTML = `<div class="event-popup-header"><span>김정태 원장 특별강연</span><button type="button" data-close aria-label="팝업 닫기">✕</button></div><div class="event-popup-tabs" aria-label="특강 이미지 선택">${posters.map((p, i) => `<button type="button" data-poster="${i}" aria-pressed="${i === 0}">${p.label}</button>`).join('')}</div><div class="event-popup-image"><img width="941" height="1672" src="${base + posters[0].file}" alt="${posters[0].alt}"></div><div class="event-popup-footer"><button type="button" data-hide>오늘 하루 보지 않기</button><button type="button" data-close>닫기</button></div>`;
   document.body.append(dialog);
   const priorFocus = document.activeElement;
   const oldOverflow = document.body.style.overflow;
