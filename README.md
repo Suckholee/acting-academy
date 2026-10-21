@@ -66,3 +66,7 @@ Apply `supabase/migrations/20261005_material_collection.sql` to a new Supabase p
 ## AI 상담 및 관리자 작업실
 
 홈페이지의 AI 상담과 `/admin/ai` 작업실을 제공합니다. 로컬 예시 시연 및 실제 AI 연결 조건은 [AI 연결 안내](docs/ai-assistant-setup.md)를 확인하세요.
+
+## 첫 화면 특강 팝업
+
+`published-source/event-popup.js`와 `event-popup.css`에서 첫 화면의 이미지 팝업을 관리합니다. 원본 이미지 두 장은 `published-source/assets/events/respect-for-acting-20261024/`의 `poster.png`, `announcement.png`입니다. 다운로드 폴더에서 이동했으며 빌드 시 배포 폴더에 함께 포함됩니다. 이미지 선택 버튼으로 전환하고 닫기·Esc·바깥 배경 클릭으로 닫을 수 있습니다. ‘오늘 하루 보지 않기’는 브라우저에 한국 시간 기준 날짜를 저장하여 자정까지 숨깁니다. 관리자 편집 주소(`?admin=1`)에서는 자동 표시하지 않습니다.
