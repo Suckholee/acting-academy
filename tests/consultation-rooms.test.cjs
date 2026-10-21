@@ -34,6 +34,7 @@ test('student rooms persist independent assigned guides, ink and journal; stale 
   assert.deepEqual((await call('GET',null,b.id)).data.record.annotations,{});
   const restarted=createStore(file),saved=await restarted.get(a.id);assert.deepEqual(saved.annotations['1'],strokes);assert.equal(saved.journal.summary,'기초반 상담. 다음 주 재연락.');assert.equal(saved.guide_version,manifest.version);
   const listing=await call('GET');assert.equal(listing.data.records.length,2);assert.equal('journal' in listing.data.records[0],false);assert.equal('annotations' in listing.data.records[0],false);
+  const noteSave=await call('PATCH',{revision:3,action:'journal_ink',strokes},a.id);assert.equal(noteSave.code,200);assert.deepEqual(noteSave.data.record.annotations._journal,strokes);assert.deepEqual(noteSave.data.record.annotations['1'],strokes);assert.equal(noteSave.data.record.journal.summary,'기초반 상담. 다음 주 재연락.');
   const privateVersion=response();await handler({method:'GET',url:'/api/admin-consultation?v='+manifest.version+'&page=1',headers:{host:'localhost',cookie}},privateVersion);assert.equal(privateVersion.headers['Content-Type'],'image/jpeg');
   await local.clear({headers:{cookie}},response());assert.equal((await call('GET',null,a.id)).code,401);
  }finally{for(const[i,key]of ['ADMIN_PASSWORD','ADMIN_SESSION_SECRET'].entries())env[i]===undefined?delete process.env[key]:process.env[key]=env[i];await fs.rm(folder,{recursive:true,force:true});}

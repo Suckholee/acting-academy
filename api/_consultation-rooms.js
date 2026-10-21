@@ -51,7 +51,9 @@ function createHandler({directory,store=production}){
    if(current.revision!==data.revision)return res.status(409).json({error:'다른 창에서 이 상담이 수정되었습니다. 작성 내용을 복사해 둔 뒤 다시 열어주세요.'});
    let fields;
    try{
-    if(data.action==='ink'){
+    if(data.action==='journal_ink'){
+     fields={annotations:{...current.annotations,_journal:strokes(data.strokes)}};
+    }else if(data.action==='ink'){
      if(!current.page_ids.includes(data.page))throw Error('validation');
      fields={annotations:{...current.annotations,[String(data.page)]:strokes(data.strokes)}};
     }else if(data.action==='journal'){
