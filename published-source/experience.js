@@ -53,6 +53,35 @@ const journey = document.querySelector('.journey');
 const journeyButtons = [...document.querySelectorAll('[data-journey]')];
 const journeyPanels = [...document.querySelectorAll('.journey-panel')];
 let journeyCurrent = -1, journeyFrame = false;
+let journeyRequested = 0, journeyTransitioning = false;
+let journeyTabScrolling = false, journeyTabTimer;
+const journeyImagesReady = journeyPanels.map(panel => {
+  const image = panel.querySelector('img');
+  if (!image) return Promise.resolve();
+  // Hidden lazy images must be ready before their entrance animation starts.
+  image.loading = 'eager';
+  return image.decode().catch(() => {});
+});
+
+async function requestJourney(index) {
+  journeyRequested = index;
+  if (journeyTransitioning || index === journeyCurrent) return;
+  journeyTransitioning = true;
+  await journeyImagesReady[index];
+  // Scrolling while the image loads may have selected a different stage.
+  if (index !== journeyRequested) {
+    journeyTransitioning = false;
+    requestJourney(journeyRequested);
+    return;
+  }
+  selectJourney(index);
+  const staticMode = matchMedia('(max-width:720px)').matches || experienceReduced.matches || document.body.classList.contains('motion-paused');
+  // Include the image's 1.8-second zoom, not just the panel's fade.
+  setTimeout(() => {
+    journeyTransitioning = false;
+    requestJourney(journeyRequested);
+  }, staticMode ? 0 : 1800);
+}
 
 function selectJourney(index) {
   if (index === journeyCurrent) return;
@@ -77,7 +106,7 @@ function paintJourney() {
   if (!staticMode && r.top < innerHeight && r.bottom > 0) {
     const travel = Math.max(1, journey.offsetHeight - innerHeight);
     const t = Math.max(0, Math.min(1, -r.top / travel));
-    selectJourney(Math.min(2, Math.floor(t * 3)));
+    if (!journeyTabScrolling) requestJourney(Math.min(journeyPanels.length - 1, Math.floor(t * journeyPanels.length)));
     const lineEl = document.querySelector('.journey-line i');
     if (lineEl) lineEl.style.transform = `scaleX(${t})`;
   }
@@ -94,8 +123,11 @@ function queueJourney() {
 
 if (journey) {
   journeyButtons.forEach((b, i) => b.addEventListener('click', () => {
-    selectJourney(i);
-    if (matchMedia('(max-width:720px)').matches) return;
+    requestJourney(i);
+    if (matchMedia('(max-width:720px)').matches || experienceReduced.matches || document.body.classList.contains('motion-paused')) return;
+    journeyTabScrolling = true;
+    clearTimeout(journeyTabTimer);
+    journeyTabTimer = setTimeout(() => { journeyTabScrolling = false; }, 1200);
     const r = journey.getBoundingClientRect();
     const travel = Math.max(1, journey.offsetHeight - innerHeight);
     window.scrollTo({
@@ -105,7 +137,7 @@ if (journey) {
   }));
   addEventListener('scroll', queueJourney, { passive: true });
   addEventListener('resize', queueJourney);
-  selectJourney(0);
+  requestJourney(0);
   queueJourney();
 }
 

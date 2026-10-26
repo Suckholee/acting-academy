@@ -454,3 +454,7 @@
 
 /* Preserve the original headroom throughout Pyeon Bo Seung's profile gallery. */
 .pyeon-atmosphere .profile-photo-slide{object-position:50% 0%}
+
+/* Instructor-supplied introduction, below each profile name. */
+.profile-page .instructor-introduction{margin:16px 0 0;padding:0 0 0 14px;border-left:2px solid var(--gold);max-width:36em;color:#edcf8e;font-size:18px;font-weight:500;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:800px){.profile-page .instructor-introduction{margin-top:10px;padding-left:10px;font-size:14px;line-height:1.65}}

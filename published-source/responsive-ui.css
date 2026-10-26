@@ -45,3 +45,7 @@
  .journey .journey-panel p{font-size:13px;line-height:1.8;margin:0}
  .journey .journey-line{display:none}
 }
+
+/* Footer policy navigation must stay in document flow on mobile. */
+footer .policy-footer-links{position:static;inset:auto;display:flex;width:auto;max-height:none;margin:0;padding:20px 0;gap:20px;flex-wrap:wrap;background:transparent;border:0;border-radius:0;box-shadow:none;color:inherit;font-size:13px}
+footer .policy-footer-links a{color:inherit}

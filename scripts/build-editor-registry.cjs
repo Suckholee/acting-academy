@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path');const {parseHTML}=require('linkedom');const {scan}=require('../src/published-editor/scan.cjs');const {sharedKey}=require('../src/published-editor/model.cjs');const {primaryPages,detailPages}=require('../src/published-editor/page-catalog.cjs');
 const {catalog}=require('../src/published-editor/collection-model.cjs');
-const roleClasses=['review-card','review-home-card','profile-hero','profile-section','course','course-page-hero','curriculum','course-overview','course-notes','video-orbit-card','video-slot-section','faculty-card','mentor-card','student-card','facility-card','tuition-info','partners-simple-item','partners-simple-category','hero','intro'];
+const roleClasses=['notice-card','review-card','review-home-card','profile-hero','profile-section','course','course-page-hero','curriculum','course-overview','course-notes','video-orbit-card','video-slot-section','faculty-card','mentor-card','student-card','facility-card','tuition-info','partners-simple-item','partners-simple-category','hero','intro'];
 function buildRegistry(source,curricula){
  const modules={};
  for(const [page]of [...primaryPages,...detailPages.flatMap(g=>g.pages)]){

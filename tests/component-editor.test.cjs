@@ -20,11 +20,15 @@ test('inquiry management authenticates reads/writes and validates record changes
   for(const method of ['GET','PATCH']){const res=response();await handler({method,body:{}},res);assert.equal(res.code,401);}
   auth.requireAdmin=async()=>true;
   const invalid=response();await handler({method:'PATCH',body:{id:'invalid',memo:'',status:'신규'}},invalid);assert.equal(invalid.code,400);
-  const record={id:'b079d152-62a0-4396-a32a-12960bc2fb65',status:'연락 중',memo:'연락 예정'};
-  store.request=async(route,options)=>{if(options){assert.equal(options.method,'PATCH');assert.deepEqual(JSON.parse(options.body),{status:record.status,memo:record.memo});}return [record];};
-  const list=response();await handler({method:'GET'},list);assert.deepEqual(list.data.records,[record]);
-  const patched=response();await handler({method:'PATCH',body:record},patched);assert.equal(patched.data.record.id,record.id);
-  store.request=async()=>[];const missing=response();await handler({method:'PATCH',body:record},missing);assert.equal(missing.code,404);
+  const record={id:'b079d152-62a0-4396-a32a-12960bc2fb65',status:'비대면 상담 진행',memo:'연락 예정',revision:0};
+  store.request=async(route,options)=>{
+   if(route.includes('academy_inquiry_workflow?'))return [];
+   if(options){assert.equal(options.method,'POST');assert.equal(route,'/rest/v1/rpc/save_academy_inquiry_workflow');const p=JSON.parse(options.body);assert.equal(p.p_stage,record.status);return {stage:p.p_stage,revision:1,counselor:p.p_counselor,starts_at:null,ends_at:null};}
+   return [record];
+  };
+  const list=response();await handler({method:'GET'},list);assert.equal(list.data.records[0].status,record.status);assert.equal(list.data.records[0].counselor,'임도윤 실장');
+  const patched=response();await handler({method:'PATCH',body:record},patched);assert.equal(patched.data.record.id,record.id);assert.equal(patched.data.record.revision,1);
+  store.request=async()=>[];const missing=response();await handler({method:'PATCH',body:{action:'profile',id:record.id,name:'테스트',phone:'01000000000',courses:['취미반'],purposes:['취미·입문']}},missing);assert.equal(missing.code,404);
   store.request=async()=>{throw Error('unavailable');};const failed=response();await handler({method:'GET'},failed);assert.equal(failed.code,503);
  }finally{auth.requireAdmin=beforeAuth;store.request=beforeRequest;}
 });

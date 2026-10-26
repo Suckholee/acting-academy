@@ -1,0 +1,342 @@
+{
+  "김정태 배우아카데미": {
+    "en": "KIM JUNG TAE ACTING ACADEMY",
+    "ja": "キム・ジョンテ演技アカデミー",
+    "zh": "金正泰演技学院"
+  },
+  "배우아카데미": {
+    "en": "ACTING ACADEMY",
+    "ja": "演技アカデミー",
+    "zh": "演技学院"
+  },
+  "아카데미 소개": {
+    "en": "About Academy",
+    "ja": "アカデミー紹介",
+    "zh": "学院介绍"
+  },
+  "교육과정": {
+    "en": "Programs",
+    "ja": "教育課程",
+    "zh": "培训课程"
+  },
+  "강사소개": {
+    "en": "Instructors",
+    "ja": "講師紹介",
+    "zh": "讲师介绍"
+  },
+  "수강생 작품 활동": {
+    "en": "Student Works",
+    "ja": "受講生活動",
+    "zh": "学员作品活动"
+  },
+  "수강후기": {
+    "en": "Reviews",
+    "ja": "受講生の声",
+    "zh": "学员评价"
+  },
+  "시설 안내": {
+    "en": "Facilities",
+    "ja": "施設案内",
+    "zh": "设施介绍"
+  },
+  "자주 묻는 질문": {
+    "en": "FAQ",
+    "ja": "よくある質問",
+    "zh": "常见问题"
+  },
+  "상담 신청": {
+    "en": "Consultation",
+    "ja": "相談申し込み",
+    "zh": "咨询申请"
+  },
+  "나의 첫 수업 상담하기": {
+    "en": "Book My First Class",
+    "ja": "最初のレッスンを相談する",
+    "zh": "咨询我的第一堂课"
+  },
+  "간편 수강료 · 교육 상담": {
+    "en": "Tuition & Program Inquiry",
+    "ja": "簡単受講料・教育相談",
+    "zh": "学费及课程便捷咨询"
+  },
+  "연기의 시작, 배우의 깊이.": {
+    "en": "Beginning of Acting, Depth of an Actor.",
+    "ja": "演技の始まり、俳優の深み。",
+    "zh": "表演的起点，演员的深度。"
+  },
+  "몸과 목소리의 기초부터 카메라 앞의 섬세한 표현까지. 대본을 읽고, 장면을 만들고, 나만의 연기를 발견합니다. 당신의 가능성, 김정태 배우아카데미에서 시작하세요.": {
+    "en": "From physical and vocal basics to delicate expressions in front of the camera. Reading scripts, building scenes, and discovering your own acting. Start your possibilities at Kim Jung Tae Acting Academy.",
+    "ja": "身体と声の基礎からカメラ前の繊細な表現まで。台本を読み、シーンを創り、自分だけの演技を発見します。あなたの可能性をキム・ジョンテ演技アカデミーで始めましょう。",
+    "zh": "从身体与声音的基础，到镜头前细腻的表达。阅读剧本、构建场景、发现属于你自己的表演。开启你的无限潜能，从金正泰演技学院开始。"
+  },
+  "교육과정 살펴보기": {
+    "en": "Explore Programs",
+    "ja": "教育課程を見る",
+    "zh": "查看课程设置"
+  },
+  "당신 안의 배우를 발견하는 시간.": {
+    "en": "Time to discover the actor within you.",
+    "ja": "あなたの中の俳優を発見する時間。",
+    "zh": "发现你内心演员的时刻。"
+  },
+  "누군가를 흉내 내기보다, 나만의 감각으로 세상을 바라보는 일. 우리는 그곳에서 연기가 시작된다고 믿습니다.": {
+    "en": "Rather than imitating someone else, viewing the world through your own unique senses. We believe acting begins right there.",
+    "ja": "誰かの真似をするのではなく、自分だけの感覚で世界を見つめること。私たちはそこから演技が始まると信じています。",
+    "zh": "比起模仿他人，用自己的感知来观察世界。我们坚信，表演正始于此。"
+  },
+  "몸과 목소리의 기초부터 인물을 이해하는 깊이까지. 작은 시도와 구체적인 피드백으로 당신의 가능성을 넓혀갑니다.": {
+    "en": "From the fundamentals of body and voice to the depth of understanding character. Through small attempts and precise feedback, we expand your potential.",
+    "ja": "身体と声の基礎から人物を理解する深さまで。小さな試みと具体的なフィードバックで、あなたの可能性を広げます。",
+    "zh": "从身体与声音的基础，到对人物理解的深度。通过每一次尝试与细致的反馈，拓宽你的潜能。"
+  },
+  "기초부터 탄탄하게": {
+    "en": "Solid Fundamentals",
+    "ja": "基礎から着実に",
+    "zh": "扎实筑牢基础"
+  },
+  "직접 연기하며": {
+    "en": "Hands-on Acting",
+    "ja": "自ら演じながら",
+    "zh": "亲身实践表演"
+  },
+  "나의 속도에 맞게": {
+    "en": "At Your Own Pace",
+    "ja": "自分のペースに合わせて",
+    "zh": "契合个人节奏"
+  },
+  "나에게 맞는 클래스 찾기": {
+    "en": "Find Your Fit Class",
+    "ja": "自分に合ったクラスを探す",
+    "zh": "寻找适合我的课程"
+  },
+  "지금의 나에게 맞는, 다음 장면.": {
+    "en": "The next scene tailored to who you are today.",
+    "ja": "今の自分に合った、次のシーン。",
+    "zh": "契合现在的你，下一幕精彩。"
+  },
+  "전체 과정": {
+    "en": "All Programs",
+    "ja": "全課程",
+    "zh": "全部课程"
+  },
+  "처음 시작하는 연기": {
+    "en": "Beginner Acting",
+    "ja": "初めての演技",
+    "zh": "零基础表演入门"
+  },
+  "배우로 나아가기": {
+    "en": "Advancing as an Actor",
+    "ja": "俳優へのステップ",
+    "zh": "迈向专业演员"
+  },
+  "연기 베이직": {
+    "en": "Acting Basics",
+    "ja": "演技ベーシック",
+    "zh": "表演基础班"
+  },
+  "카메라 연기": {
+    "en": "On-Camera Acting",
+    "ja": "カメラ演技",
+    "zh": "镜头前表演班"
+  },
+  "입시 · 오디션": {
+    "en": "Audition & Entrance Exam",
+    "ja": "入試・オーディション",
+    "zh": "升学与试镜进阶班"
+  },
+  "과정 자세히 보기": {
+    "en": "Course Details",
+    "ja": "詳細を見る",
+    "zh": "查看课程详情"
+  },
+  "한 걸음씩. 마침내, 나의 장면.": {
+    "en": "Step by step. At last, my own scene.",
+    "ja": "一歩ずつ。ついに、私だけのシーン。",
+    "zh": "一步一个脚印。终于，迎来属于我的高光时刻。"
+  },
+  "서로 다른 얼굴, 각자의 빛나는 장면.": {
+    "en": "Distinct faces, each shining in their own scene.",
+    "ja": "それぞれ異なる表情、一人ひとりの輝くシーン。",
+    "zh": "不同的面孔，各自闪耀的高光场景。"
+  },
+  "대표 강사": {
+    "en": "Head Instructor",
+    "ja": "代表講師",
+    "zh": "代表讲师"
+  },
+  "주임강사": {
+    "en": "Chief Instructor",
+    "ja": "主任講師",
+    "zh": "主任讲师"
+  },
+  "상담 및 강사": {
+    "en": "Counselor & Instructor",
+    "ja": "相談および講師",
+    "zh": "咨询指导讲师"
+  },
+  "전임강사": {
+    "en": "Full-time Instructor",
+    "ja": "専任講師",
+    "zh": "专职讲师"
+  },
+  "수강생 평점 (5.0 만점)": {
+    "en": "Student Rating (Out of 5.0)",
+    "ja": "受講生評価（5.0点満点）",
+    "zh": "学员评分（满分 5.0）"
+  },
+  "수강 만족도 & 지인 추천율": {
+    "en": "Satisfaction & Recommendation Rate",
+    "ja": "満足度＆知人推薦率",
+    "zh": "课程满意度与熟人推荐率"
+  },
+  "누적 캐스팅 & 작품 진출": {
+    "en": "Casting & Production Debuts",
+    "ja": "キャスティング＆作品進出実績",
+    "zh": "累计选角及影视作品参演"
+  },
+  "1:1 현장 밀착 모니터링 코칭": {
+    "en": "1:1 Intensive On-Set Coaching",
+    "ja": "1:1 現場密着モニタリング指導",
+    "zh": "1对1现场紧密监控指导"
+  },
+  "몰입할 수 있는 공간, 가능성이 자라는 시간.": {
+    "en": "Space to immerse, time for potential to flourish.",
+    "ja": "没頭できる空間、可能性が育つ時間。",
+    "zh": "沉浸专注的空间，孕育潜能的时间。"
+  },
+  "마곡역 가까이, 로뎀타워 3층.": {
+    "en": "Near Magok Station, 3rd Floor, Rothem Tower.",
+    "ja": "麻谷駅近く、ロデムタワー3階。",
+    "zh": "邻近麻谷站，Rothem大厦3层。"
+  },
+  "월 교습비": {
+    "en": "Monthly Tuition",
+    "ja": "月謝",
+    "zh": "每月学费"
+  },
+  "35만 원": {
+    "en": "350,000 KRW",
+    "ja": "35万ウォン",
+    "zh": "35万韩元"
+  },
+  "주당 수업 횟수": {
+    "en": "Weekly Classes",
+    "ja": "週あたりの授業回数",
+    "zh": "每周上课频次"
+  },
+  "주 1회": {
+    "en": "Once a week",
+    "ja": "週1回",
+    "zh": "每周1次"
+  },
+  "회당 수업 시간": {
+    "en": "Class Duration",
+    "ja": "1回あたりの時間",
+    "zh": "每次课程时长"
+  },
+  "3시간": {
+    "en": "3 hours",
+    "ja": "3時間",
+    "zh": "3小时"
+  },
+  "반별 정원": {
+    "en": "Class Capacity",
+    "ja": "クラス定員",
+    "zh": "每班人数上限"
+  },
+  "최대 8명": {
+    "en": "Max 8 students",
+    "ja": "最大8名",
+    "zh": "最多8人"
+  },
+  "이제, 당신의 차례입니다.": {
+    "en": "Now, it's your turn.",
+    "ja": "さあ、あなたの番です。",
+    "zh": "现在，轮到你了。"
+  },
+  "관리자 모드": {
+    "en": "Admin Mode",
+    "ja": "管理者モード",
+    "zh": "管理员模式"
+  },
+  "관리자 로그인": {
+    "en": "Admin Login",
+    "ja": "管理者ログイン",
+    "zh": "管理员登录"
+  },
+  "비밀번호를 입력하세요": {
+    "en": "Enter Password",
+    "ja": "パスワードを入力してください",
+    "zh": "请输入管理员密码"
+  },
+  "로그인": {
+    "en": "Login",
+    "ja": "ログイン",
+    "zh": "登录"
+  },
+  "닫기": {
+    "en": "Close",
+    "ja": "閉じる",
+    "zh": "关闭"
+  },
+  "저장": {
+    "en": "Save",
+    "ja": "保存",
+    "zh": "保存"
+  },
+  "취소": {
+    "en": "Cancel",
+    "ja": "キャンセル",
+    "zh": "取消"
+  },
+  "40만 원": {
+    "en": "400,000 KRW",
+    "ja": "40万ウォン",
+    "zh": "40万韩元"
+  },
+  "상담 신청 ↗": {
+    "en": "Request consultation ↗",
+    "ja": "相談申込 ↗",
+    "zh": "预约咨询 ↗"
+  },
+  "카메라·무대 연기 기초": {
+    "en": "Camera & stage acting foundations",
+    "ja": "カメラ・舞台演技基礎",
+    "zh": "镜头与舞台表演基础"
+  },
+  "카메라·무대 연기 심화": {
+    "en": "Advanced camera & stage acting",
+    "ja": "カメラ・舞台演技応用",
+    "zh": "镜头与舞台表演进阶"
+  },
+  "프리미엄": {
+    "en": "Premium",
+    "ja": "プレミアム",
+    "zh": "高级课程"
+  },
+  "오디션 트레이닝": {
+    "en": "Audition training",
+    "ja": "オーディショントレーニング",
+    "zh": "试镜训练"
+  },
+  "시니어 모델 트레이닝": {
+    "en": "Senior model training",
+    "ja": "シニアモデルトレーニング",
+    "zh": "银龄模特训练"
+  },
+  "취미반": {
+    "en": "Hobby classes",
+    "ja": "趣味クラス",
+    "zh": "兴趣班"
+  },
+  "회원가입": {
+    "en": "Sign up",
+    "ja": "会員登録",
+    "zh": "注册"
+  },
+  "내 계정": {
+    "en": "My account",
+    "ja": "マイアカウント",
+    "zh": "我的账户"
+  }
+}

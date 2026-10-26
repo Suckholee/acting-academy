@@ -8,13 +8,15 @@ const catalog=[
  {page:'/works',kind:'works',title:'수강생 작품',selector:'.student-card'},
  {page:'/facilities',kind:'facilities',title:'시설 사진',selector:'.facility-card'},
  {page:'/partners',kind:'partners',title:'파트너 기관',selector:'.partners-simple-item'},
+ {page:'/notices',kind:'notices',title:'공지',selector:'.notice-card'},
  {page:'/',kind:'videos',title:'홍보 영상',selector:'.video-orbit-card'}
 ];
 const collectionPath=id=>'/collections/'+id;
 const indexKey=sharedKey('collection','index');
 const recordKey=id=>sharedKey('collection-item',id);
+function validNoticeDate(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return false;const d=new Date(value+'T00:00:00Z');return Number.isFinite(d.getTime())&&d.toISOString().slice(0,10)===value;}
 function validRecord(record,module){
- return record&&Object.keys(record).every(k=>['id','template','visible','values','category','detail'].includes(k))&&/^item-[a-z0-9-]{1,80}$/.test(record.id)&&record.template===module.id&&typeof record.visible==='boolean'&&typeof record.category==='string'&&record.category.length<=80&&typeof record.detail==='string'&&(!record.detail||/^\/(?:trainers|courses|works)\/[a-z0-9-]+$/.test(record.detail))&&record.values&&typeof record.values==='object'&&!Array.isArray(record.values)&&Object.keys(record.values).length===module.fields.length&&module.fields.every(f=>typeof record.values[f.id]==='string'&&record.values[f.id].length<=f.maxLength&&(f.type==='text'||f.type==='image'&&validImage(record.values[f.id])||f.type==='video'&&validVideo(record.values[f.id])))&&(!record.visible||module.fields.filter(f=>/^(name|headline|summary|h[1-4])-/.test(f.id)).slice(0,1).every(f=>record.values[f.id].trim().length>0))&&JSON.stringify(record).length<=12000;
+ return record&&Object.keys(record).every(k=>['id','template','visible','values','category','detail'].includes(k))&&/^item-[a-z0-9-]{1,80}$/.test(record.id)&&record.template===module.id&&typeof record.visible==='boolean'&&typeof record.category==='string'&&record.category.length<=80&&typeof record.detail==='string'&&(!record.detail||/^\/(?:trainers|courses|works)\/[a-z0-9-]+$/.test(record.detail))&&record.values&&typeof record.values==='object'&&!Array.isArray(record.values)&&Object.keys(record.values).length===module.fields.length&&module.fields.every(f=>typeof record.values[f.id]==='string'&&record.values[f.id].length<=f.maxLength&&(f.type==='text'||f.type==='image'&&validImage(record.values[f.id])||f.type==='video'&&validVideo(record.values[f.id])))&&(!record.visible||module.fields.filter(f=>/^(name|headline|summary|h[1-4])-/.test(f.id)).slice(0,1).every(f=>record.values[f.id].trim().length>0))&&JSON.stringify(record).length<=12000&&(module.collectionKind!=='notices'||!record.visible||(validNoticeDate(record.values['p-1'])&&record.values['p-2']?.trim().length>0));
 }
 function encode(id,records){
  if(records.length>100)throw Error('한 목록에 최대 100개까지 등록할 수 있습니다.');

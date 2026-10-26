@@ -3,3 +3,5 @@
 .leadership-nav{max-width:1110px;margin:0 auto 40px;padding:20px 35px;display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:#6e5924;border-top:1px solid #e7e4dd}.leadership-nav a{padding:8px 0;text-underline-offset:6px}.leadership-nav a:hover{text-decoration:underline}
 
 .leadership-photo.representative-photo img{height:auto;object-position:center;border-radius:20px}
+
+.leadership-photo.director-photo img{height:auto;object-position:center;border-radius:20px}

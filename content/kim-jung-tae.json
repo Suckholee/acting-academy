@@ -1,0 +1,142 @@
+{
+  "slug": "kim-jung-tae",
+  "name": "김정태",
+  "title": "원장",
+  "intro": "강렬한 인물부터 유쾌한 캐릭터까지, 스크린과 브라운관을 오가며 쌓아온 배우의 경험.",
+  "bio": "영화 《친구》, 《해바라기》, 《7번방의 선물》 등에서 각기 다른 인물을 연기하며 활동해온 배우입니다. 드라마 《미스 리플리》, 《오 마이 비너스》, 《소년시대》 등에서도 다양한 캐릭터를 선보였습니다.",
+  "debut": "1999년 영화 《이재수의 난》",
+  "award": "2011 MBC 드라마대상 PD상 · 《미스 리플리》, 《지고는 못 살아》",
+  "photos": [
+    {
+      "file": "/assets/kim-jung-tae-profile-2025.jpg",
+      "className": "kim-current-photo",
+      "label": "2025 공개 프로필",
+      "credit": "피에이엔터테인먼트 제공 · 엑스포츠뉴스",
+      "source": "https://v.daum.net/v/20251121100346142",
+      "original": "https://t1.daumcdn.net/news/202511/21/xportsnews/20251121100347436igtv.jpg"
+    },
+    {
+      "file": "/assets/kim-jung-tae-profile-2020.jpg",
+      "className": "kim-archive-photo",
+      "label": "2020 공개 프로필 모음",
+      "credit": "그랑앙세 엔터테인먼트 제공 · MK스포츠",
+      "source": "https://v.daum.net/v/20200421100904780",
+      "original": "https://t1.daumcdn.net/news/202004/21/mksports/20200421100904962jmza.jpg"
+    },
+    {
+      "file": "/assets/kim-jung-tae-interview-2016.jpg",
+      "className": "kim-interview-photo",
+      "label": "2016 배우 인터뷰",
+      "credit": "스포츠경향 · 이석우 기자",
+      "source": "https://sports.khan.co.kr/article/201601181650313",
+      "original": "https://images.khan.co.kr/article/r/1200xX/2016/01/18/2016011802000819200199231.jpg"
+    }
+  ],
+  "films": [
+    [
+      "친구",
+      "도루코"
+    ],
+    [
+      "똥개",
+      "진묵"
+    ],
+    [
+      "해바라기",
+      "김양기"
+    ],
+    [
+      "방가? 방가!",
+      "용철"
+    ],
+    [
+      "체포왕",
+      "송형사"
+    ],
+    [
+      "간기남",
+      "서형사"
+    ],
+    [
+      "박수건달",
+      "차태주"
+    ],
+    [
+      "7번방의 선물",
+      "강만범"
+    ],
+    [
+      "잡아야 산다",
+      "도정택"
+    ],
+    [
+      "공기살인",
+      "한현종"
+    ],
+    [
+      "목스박",
+      "인성"
+    ]
+  ],
+  "dramas": [
+    [
+      "미스 리플리",
+      "히라야마"
+    ],
+    [
+      "지고는 못 살아",
+      "고기찬"
+    ],
+    [
+      "오 마이 비너스",
+      "최남철"
+    ],
+    [
+      "도둑놈, 도둑님",
+      "강성일"
+    ],
+    [
+      "시간",
+      "금태성"
+    ],
+    [
+      "쇼윈도: 여왕의 집",
+      "이준상"
+    ],
+    [
+      "스폰서",
+      "데이빗 박"
+    ],
+    [
+      "소년시대",
+      "박상교"
+    ]
+  ],
+  "sources": [
+    {
+      "label": "영화·드라마 출연작 · 씨네21",
+      "url": "https://host.cine21.com/db/person/info/?href=filmography&person_id=19078"
+    },
+    {
+      "label": "영화 출연작 · MOVIST",
+      "url": "https://www.movist.com/movist3d/movist.asp?id=69010"
+    },
+    {
+      "label": "2011 MBC 드라마대상 수상자 · MBC",
+      "url": "https://www.imbc.com/broad/tv/ent/event/2011mbc/winner/"
+    },
+    {
+      "label": "배우 인터뷰·배역 확인 · 스포츠경향",
+      "url": "https://sports.khan.co.kr/article/201601181650313"
+    },
+    {
+      "label": "데뷔 정보 · SH K-STAR",
+      "url": "https://100479.net/profile/?no=638"
+    },
+    {
+      "label": "미스 리플리 배역 · MBC",
+      "url": "https://enews.imbc.com/News/RetrieveNewsInfo/44041"
+    }
+  ],
+  "verifiedAt": "2026-10-08"
+}
