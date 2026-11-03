@@ -2,6 +2,7 @@
   const status=document.querySelector('#admin-event-status'),tbody=document.querySelector('#event-records'),search=document.querySelector('#search'),exportButton=document.querySelector('#export'),login=document.querySelector('#login');
   const refreshButton=document.querySelector('#refresh');
   let records=[],busy=false;
+  const drafts=new Map();
   function setBusy(value){busy=value;refreshButton.disabled=value;exportButton.disabled=value||!records.length;for(const button of tbody.querySelectorAll('button'))button.disabled=value;}
   const when=value=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',dateStyle:'medium',timeStyle:'short'}).format(new Date(value));
   function render(){
@@ -19,7 +20,17 @@
       for(const [label,value] of [['연기 경험',survey.experience||'미입력'],['특강 사전 질문',survey.question||'작성한 질문이 없습니다.']]){const p=document.createElement('p'),strong=document.createElement('strong'),answer=document.createElement('span');strong.textContent=label;answer.textContent=value;p.append(strong,answer);details.append(p);}
       surveyCell.append(details);tr.append(surveyCell);
       for(const text of [when(r.created_at),r.order<=40?'정원 내':'대기']){const td=document.createElement('td');td.textContent=text;tr.append(td);}
-      const actions=document.createElement('td'),remove=document.createElement('button');actions.className='record-actions';remove.type='button';remove.className='delete-record';remove.textContent='삭제';remove.setAttribute('aria-label',r.name+' 신청 삭제');remove.disabled=busy;remove.addEventListener('click',()=>deleteRecord(r));actions.append(remove);tr.append(actions);tbody.append(tr);
+      const actions=document.createElement('td'),remove=document.createElement('button');actions.className='record-actions';remove.type='button';remove.className='delete-record';remove.textContent='삭제';remove.setAttribute('aria-label',r.name+' 신청 삭제');remove.disabled=busy;remove.addEventListener('click',()=>deleteRecord(r));const notes=document.createElement('details'),heading=document.createElement('summary'),input=document.createElement('textarea'),save=document.createElement('button'),feedback=document.createElement('span');
+      heading.textContent=r.adminNote?'관리자 메모 있음':'관리자 메모';input.maxLength=2000;input.rows=4;input.value=drafts.has(r.id)?drafts.get(r.id):(r.adminNote||'');input.setAttribute('aria-label',r.name+' 관리자 메모');input.placeholder='연락 여부, 참석 확인 등을 기록하세요';input.addEventListener('input',()=>drafts.set(r.id,input.value));save.type='button';save.textContent='메모 저장';save.disabled=busy;feedback.setAttribute('role','status');
+      save.addEventListener('click',async()=>{
+        if(busy)return;setBusy(true);feedback.textContent='저장 중…';
+        try{
+          const response=await fetch('/api/admin-event-applications',{method:'PATCH',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:r.id,note:input.value,previousNote:r.adminNote||''})}),data=await response.json();
+          if(!response.ok)throw Error(data.error||'메모를 저장하지 못했습니다.');
+          const record=records.find(item=>item.id===r.id);if(record)record.adminNote=data.adminNote;r.adminNote=data.adminNote;drafts.delete(r.id);input.value=data.adminNote;heading.textContent=data.adminNote?'관리자 메모 있음':'관리자 메모';feedback.textContent='저장했습니다.';
+        }catch(error){feedback.textContent=error.message;}finally{setBusy(false);}
+      });
+      notes.append(heading,input,save,feedback);actions.append(notes,remove);tr.append(actions);tbody.append(tr);
     }
     if(!filtered.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=10;td.textContent=records.length?'검색 결과가 없습니다.':'아직 접수된 신청이 없습니다.';tr.append(td);tbody.append(tr);}
     status.textContent=`총 ${records.length}명 접수 · 정원 내 ${Math.min(records.length,40)}명 · 대기 ${Math.max(0,records.length-40)}명`+(term?` · 검색 ${filtered.length}명`:'');

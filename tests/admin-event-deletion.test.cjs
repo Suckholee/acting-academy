@@ -41,7 +41,7 @@ test('a missing or different-event record and storage failure never report delet
  }
 });
 test('unsupported methods advertise only roster reading and deletion',async()=>{
- const res=response();await createHandler({requireAdmin:async()=>true,database:{request:()=>assert.fail()}})({method:'POST'},res);assert.equal(res.code,405);assert.equal(res.headers.Allow,'GET, DELETE');
+ const res=response();await createHandler({requireAdmin:async()=>true,database:{request:()=>assert.fail()}})({method:'POST'},res);assert.equal(res.code,405);assert.equal(res.headers.Allow,'GET, DELETE, PATCH');
 });
 
 function setup({count=2,confirm=()=>true,remove=async()=>({ok:true,json:async()=>({id})})}={}){
@@ -70,4 +70,19 @@ test('pending deletion prevents duplicate requests and failure retains the appli
 test('deleting the last record shows empty state and expired sessions return to login',async()=>{
  const empty=setup({count:1});await tick();empty.document.querySelector('.delete-record').click();await tick();assert.match(empty.document.querySelector('#event-records').textContent,/아직 접수된 신청이 없습니다/);assert.equal(empty.document.querySelector('#event-records td').colSpan,10);assert.equal(empty.document.querySelector('#export').disabled,true);
  const expired=setup({remove:async()=>({status:401,ok:false,json:async()=>({error:'expired'})})});await tick();expired.document.querySelector('.delete-record').click();await tick();assert.equal(expired.document.querySelector('#login').hidden,false);assert.equal(expired.document.querySelector('#event-records').children.length,0);assert.equal(expired.document.querySelector('#export').disabled,true);
+});
+
+test('notes preserve survey answers and restrict update to unchanged event record',async()=>{
+ const memo=JSON.stringify({eventId:'kim-jung-tae-20261107',question:'질문',adminNote:'기존'});let calls=0;const res=response();
+ await createHandler({requireAdmin:async()=>true,database:{request:async(route,options)=>{
+  const q=new URL(route,'https://test').searchParams;assert.equal(q.get('id'),'eq.'+id);assert.equal(q.get('courses'),'cs.'+JSON.stringify([EVENT]));
+  if(++calls===1)return [{id,memo}];
+  assert.equal(options.method,'PATCH');assert.equal(q.get('memo'),'eq.'+JSON.stringify(memo));assert.deepEqual(JSON.parse(JSON.parse(options.body).memo),{eventId:'kim-jung-tae-20261107',question:'질문',adminNote:'연락 완료'});return [{id}];
+ }}})({method:'PATCH',body:{id,note:'연락 완료',previousNote:'기존'}},res);
+ assert.equal(calls,2);assert.deepEqual(res.data,{id,adminNote:'연락 완료'});
+});
+test('stale notes cannot overwrite another administrator and oversized notes are rejected',async()=>{
+ const res=response();let writes=0;
+ await createHandler({requireAdmin:async()=>true,database:{request:async(route,options)=>{if(options)writes++;return [{id,memo:JSON.stringify({adminNote:'새 메모'})}];}}})({method:'PATCH',body:{id,note:'내 메모',previousNote:''}},res);assert.equal(res.code,409);assert.equal(writes,0);
+ const invalid=response();await createHandler({requireAdmin:async()=>true,database:{request:()=>assert.fail()}})({method:'PATCH',body:{id,note:'a'.repeat(2001),previousNote:''}},invalid);assert.equal(invalid.code,400);
 });

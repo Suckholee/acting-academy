@@ -3,3 +3,5 @@
 td details{min-width:240px;max-width:340px;white-space:normal}td summary{color:#116298;cursor:pointer}td details strong,td details span{display:block}td details span{white-space:pre-wrap;overflow-wrap:anywhere}td details p{margin:12px 0}
 
 .record-actions{position:sticky;right:0;background:#fff;box-shadow:-1px 0 #d5dde6;text-align:center}th.record-actions{background:#eaf0f6;z-index:1}tbody tr:nth-child(even) .record-actions{background:#f9fafc}.delete-record{color:#a32424;border-color:#d8b6b6;padding:8px 14px}.delete-record:hover:not(:disabled){background:#fff1f1}button:disabled{cursor:default}
+
+.record-actions details{min-width:220px;max-width:260px;text-align:left;margin-bottom:12px}.record-actions textarea{display:block;width:100%;margin:10px 0;padding:8px;border:1px solid #bcc8d7;border-radius:6px;font:inherit;white-space:pre-wrap;resize:vertical}.record-actions details>span{display:block;white-space:normal;font-size:13px;margin-top:6px}
