@@ -55,11 +55,11 @@ test('private preview and public article use the identical complete article layo
  assert.equal(a.querySelector('link[rel=stylesheet]').getAttribute('href'),'/editorial.css');
  assert.equal(a.querySelector('meta[name=robots]').getAttribute('content'),'noindex,nofollow');
 });
-test('journal listing, article and missing pages retain every homepage navigation destination',async()=>{
+test('journal pages retain homepage destinations while excluding the direct-link-only audition route',async()=>{
  const fs=require('node:fs');
  const home=parseHTML(fs.readFileSync('dist-published/index.html','utf8')).document;
- const expected=[...home.querySelectorAll('body>header nav a')].map(a=>[a.getAttribute('href'),a.textContent]);
- assert.equal(expected.length,10);
+ const expected=[...home.querySelectorAll('body>header nav a')].filter(a=>a.getAttribute('href')!=='/ai-audition').map(a=>[a.getAttribute('href'),a.textContent]);
+ assert.equal(expected.length,9);
  const repo=memoryRepository(),record=await repo.create({id:'10000000-0000-4000-8000-000000000009',draft:draft(),keywords:'첫 오디션',review_notes:[]});
  await repo.update(record.id,0,{published:{...record.draft,modifiedAt:'2026-11-02T00:00:00.000Z'},published_at:'2026-11-02T00:00:00.000Z'});
  for(const url of ['/journal','/journal/'+record.id,'/journal/10000000-0000-4000-8000-000000000099']){

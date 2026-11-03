@@ -7,7 +7,6 @@ const links=[
  ['/facilities','시설 안내'],
  ['/faq','자주 묻는 질문'],
  ['/journal','연기 노트'],
- ['/ai-audition','AI 오디션'],
  ['/notices','공지사항']
 ];
 function siteHeader(current='/journal'){

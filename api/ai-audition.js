@@ -7,7 +7,7 @@ const {dimensions,makeMask}=require('./_audition-mask');
 const {scriptText}=require('../src/audition/catalog.cjs');
 const {recommend}=require('./_audition-recommend');
 function createHandler({repo=repository(),access=queue,demo=false,fetcher=(...a)=>fetch(...a),limit=consume,configured=()=>Boolean(process.env.OPENAI_API_KEY&&process.env.ADMIN_SESSION_SECRET&&store.ready())}={}){return async(req,res)=>{
- res.setHeader('Cache-Control','private, no-store');res.setHeader('X-Content-Type-Options','nosniff');
+ res.setHeader('Cache-Control','private, no-store');res.setHeader('X-Robots-Tag','noindex, nofollow');res.setHeader('X-Content-Type-Options','nosniff');
  if(!['GET','POST'].includes(req.method)){res.setHeader('Allow','GET, POST');return res.status(405).json({error:'지원하지 않는 요청입니다.'});}
  const ready=demo||configured();
  if(req.method==='GET'){try{if(ready&&!demo)access.session(req,res);const c=await repo.load();return res.json({ready,demo,scripts:catalog(c.records),limits:LIMITS,queue:{concurrency:access.concurrency()}});}catch{return res.status(503).json({error:'장면 목록을 불러오지 못했습니다. 잠시 후 다시 확인해주세요.'});}}
