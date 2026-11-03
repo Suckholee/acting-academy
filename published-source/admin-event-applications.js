@@ -1,6 +1,8 @@
 (() => {
   const status=document.querySelector('#admin-event-status'),tbody=document.querySelector('#event-records'),search=document.querySelector('#search'),exportButton=document.querySelector('#export'),login=document.querySelector('#login');
-  let records=[];
+  const refreshButton=document.querySelector('#refresh');
+  let records=[],busy=false;
+  function setBusy(value){busy=value;refreshButton.disabled=value;exportButton.disabled=value||!records.length;for(const button of tbody.querySelectorAll('button'))button.disabled=value;}
   const when=value=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',dateStyle:'medium',timeStyle:'short'}).format(new Date(value));
   function render(){
     tbody.replaceChildren();
@@ -16,16 +18,29 @@
       const surveyCell=document.createElement('td'),details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='답변 보기';details.append(summary);
       for(const [label,value] of [['연기 경험',survey.experience||'미입력'],['특강 사전 질문',survey.question||'작성한 질문이 없습니다.']]){const p=document.createElement('p'),strong=document.createElement('strong'),answer=document.createElement('span');strong.textContent=label;answer.textContent=value;p.append(strong,answer);details.append(p);}
       surveyCell.append(details);tr.append(surveyCell);
-      for(const text of [when(r.created_at),r.order<=40?'정원 내':'대기']){const td=document.createElement('td');td.textContent=text;tr.append(td);}tbody.append(tr);
+      for(const text of [when(r.created_at),r.order<=40?'정원 내':'대기']){const td=document.createElement('td');td.textContent=text;tr.append(td);}
+      const actions=document.createElement('td'),remove=document.createElement('button');actions.className='record-actions';remove.type='button';remove.className='delete-record';remove.textContent='삭제';remove.setAttribute('aria-label',r.name+' 신청 삭제');remove.disabled=busy;remove.addEventListener('click',()=>deleteRecord(r));actions.append(remove);tr.append(actions);tbody.append(tr);
     }
-    if(!filtered.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=9;td.textContent=records.length?'검색 결과가 없습니다.':'아직 접수된 신청이 없습니다.';tr.append(td);tbody.append(tr);}
+    if(!filtered.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=10;td.textContent=records.length?'검색 결과가 없습니다.':'아직 접수된 신청이 없습니다.';tr.append(td);tbody.append(tr);}
     status.textContent=`총 ${records.length}명 접수 · 정원 내 ${Math.min(records.length,40)}명 · 대기 ${Math.max(0,records.length-40)}명`+(term?` · 검색 ${filtered.length}명`:'');
-    exportButton.disabled=!records.length;
+    exportButton.disabled=busy||!records.length;
+  }
+  async function deleteRecord(record){
+    if(busy||!window.confirm(`${record.name} (${record.phone}) 님의 특강 신청을 삭제하시겠습니까?\n삭제한 신청 정보와 사전조사 답변은 복구할 수 없습니다.`))return;
+    setBusy(true);status.textContent='신청자를 삭제하고 있습니다…';
+    try{
+      const r=await fetch('/api/admin-event-applications',{method:'DELETE',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:record.id})}),data=await r.json();
+      if(r.status===401){records=[];tbody.replaceChildren();login.hidden=false;throw Error('관리자 로그인이 필요합니다.');}
+      if(!r.ok)throw Error(data.error||'신청자를 삭제하지 못했습니다.');
+      records=records.filter(item=>item.id!==record.id);render();status.textContent='신청자를 삭제했습니다. '+status.textContent;
+    }catch(error){status.textContent=error.message;}
+    finally{setBusy(false);}
   }
   async function load(){
-    status.textContent='명단을 불러오고 있습니다…';exportButton.disabled=true;
+    if(busy)return;setBusy(true);status.textContent='명단을 불러오고 있습니다…';
     try{const r=await fetch('/api/admin-event-applications',{credentials:'same-origin',cache:'no-store'}),data=await r.json();if(r.status===401){records=[];tbody.replaceChildren();login.hidden=false;throw Error('관리자 로그인이 필요합니다.');}if(!r.ok)throw Error(data.error||'명단을 불러오지 못했습니다.');records=data.records;login.hidden=true;render();}
     catch(error){records=[];tbody.replaceChildren();status.textContent=error.message;}
+    finally{setBusy(false);}
   }
   search.addEventListener('input',render);
   document.querySelector('#refresh').addEventListener('click',load);
