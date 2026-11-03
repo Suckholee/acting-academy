@@ -50,3 +50,25 @@
 body.hero-intro-active .sticky-inquiry,body.hero-intro-active .ai-launcher,body.hero-intro-active .back-top{visibility:hidden!important;pointer-events:none!important}
 body.hero-intro-active .language-picker{top:110px!important;bottom:auto!important;right:24px!important}
 @media(max-width:600px){body.hero-intro-active .language-picker{top:84px!important;right:16px!important}}
+
+/* A settles first; its three endings reveal in reading order, once per visit. */
+.hero-motion-started .hero-shared-a{transform-origin:left center;animation:hero-a-arrive .85s cubic-bezier(.16,1,.3,1) both}
+.hero-motion-started .hero-word-end{animation:hero-word-reveal .95s cubic-bezier(.16,1,.3,1) both}
+.hero-motion-started .hero-word-act{animation-delay:.22s}
+.hero-motion-started .hero-word-audition{animation-delay:.48s}
+.hero-motion-started .hero-word-academy{animation-delay:.74s}
+.hero-motion-started .hero-word-arrow{animation:hero-arrow-arrive .7s 1s cubic-bezier(.16,1,.3,1) both}
+.hero-motion-started .hero-promise{animation:hero-promise-arrive .7s .95s ease-out both}
+.hero--act-audition .hero-primary{transition:background .2s ease,transform .2s ease}
+.hero--act-audition .hero-primary span{transition:transform .2s ease}
+.hero--act-audition .hero-primary:hover span{transform:translate(3px,-3px)}
+@keyframes hero-a-arrive{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes hero-word-reveal{from{opacity:0;clip-path:inset(-15% 100% -15% 0);transform:translateX(-16px)}to{opacity:1;clip-path:inset(-15% -10% -15% 0);transform:translateX(0)}}
+@keyframes hero-arrow-arrive{from{opacity:0;transform:translate(-10px,10px)}to{opacity:1;transform:translate(0,0)}}
+@keyframes hero-promise-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+body.motion-paused .hero-motion-started .hero-shared-a,body.motion-paused .hero-motion-started .hero-word-end,body.motion-paused .hero-motion-started .hero-word-arrow,body.motion-paused .hero-motion-started .hero-promise{animation:none}
+@media(prefers-reduced-motion:reduce){
+ .hero-motion-started .hero-shared-a,.hero-motion-started .hero-word-end,.hero-motion-started .hero-word-arrow,.hero-motion-started .hero-promise{animation:none}
+ .hero--act-audition .hero-primary,.hero--act-audition .hero-primary span{transition:none}
+ .hero--act-audition .hero-primary:hover span{transform:none}
+}
