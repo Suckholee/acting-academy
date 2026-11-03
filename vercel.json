@@ -120,7 +120,7 @@
       "maxDuration": 120
     },
     "api/ai-audition.js": {
-      "maxDuration": 120
+      "maxDuration": 240
     }
   },
   "rewrites": [
