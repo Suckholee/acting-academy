@@ -5,6 +5,59 @@
   "installCommand": "npm ci",
   "headers": [
     {
+      "source": "/admin/editorial",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/admin/editorial.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/editorial-admin.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ]
+    },
+    {
+      "source": "/editorial.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/assets/videos/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
       "source": "/materials",
       "headers": [
         {
@@ -29,6 +82,28 @@
           "value": "noindex, nofollow, noarchive"
         }
       ]
+    },
+    {
+      "source": "/ai-audition",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/admin/audition",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "functions": {
@@ -37,6 +112,29 @@
     },
     "api/admin-consultation-notes.js": {
       "maxDuration": 120
+    },
+    "api/admin-editorial.js": {
+      "maxDuration": 60
+    },
+    "api/admin-editorial-image.js": {
+      "maxDuration": 120
+    },
+    "api/ai-audition.js": {
+      "maxDuration": 120
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/journal-sitemap.xml",
+      "destination": "/api/journal?sitemap=1"
+    },
+    {
+      "source": "/journal",
+      "destination": "/api/journal"
+    },
+    {
+      "source": "/journal/:id",
+      "destination": "/api/journal?id=:id"
+    }
+  ]
 }

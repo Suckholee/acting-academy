@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. 사이트 CMS 콘텐츠: 공개 읽기만 허용.
+    match /academy_cms/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // 2. 상담 신청 내역: 이전 브라우저 연동의 모든 접근을 차단.
+    match /academy_inquiries/{inquiryId} {
+      // Legacy browser integration is retired. Use authenticated server APIs.
+      allow read, write: if false;
+    }
+  }
+}

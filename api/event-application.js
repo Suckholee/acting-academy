@@ -4,6 +4,7 @@ const auth = require('./_admin');
 const database = require('./_cms-store');
 const EVENT = '11/7 김정태 무료특강';
 const TAG = '무료특강 신청';
+const {normalizeSource}=require('../src/analytics/attribution.cjs');
 const {validateSurvey} = require('../src/events/model.cjs');
 function validate(body) {
   if (!body || typeof body.name !== 'string' || body.name.trim().length < 2 || body.name.trim().length > 40) return '이름을 2~40자로 입력해주세요.';
@@ -34,6 +35,7 @@ function createHandler({store = database, limit, now = () => Date.now()} = {}) {
       const existing = await store.request('/rest/v1/academy_inquiries?select=id&phone=eq.' + phone + '&' + match + '&limit=1');
       if (existing?.length) return res.status(200).json({message: '해당 연락처로 신청이 접수되어 있습니다. 참석 확정은 접수순으로 개별 안내드립니다.'});
       const record = {id: crypto.randomUUID(), name: body.name.trim(), phone, purposes: [TAG], courses: [EVENT], consent: true, status: '신규', memo: JSON.stringify({eventId:'kim-jung-tae-20261107',gender:body.gender,ageGroup:body.ageGroup,interests:body.interests,experience:body.experience,question:(body.question||'').trim()})};
+      record.attribution_source=normalizeSource(body.attributionSource);
       const rows = await store.request('/rest/v1/academy_inquiries', {method: 'POST', headers: {Prefer: 'return=representation'}, body: JSON.stringify(record)});
       if (!rows?.[0]?.id) throw Error('not_confirmed');
       return res.status(201).json({message: '무료특강 신청이 접수되었습니다. 참석 확정은 접수순으로 개별 안내드립니다.'});

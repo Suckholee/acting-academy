@@ -1,0 +1,16 @@
+# Deploy sources and required server assets; omit local builds and reference files.
+.git/
+.vercel/
+.openai/
+.github/
+node_modules/
+.env*
+dist/
+dist-react/
+dist-published/
+output/
+source-assets/
+supabase/.temp/
+**/.DS_Store
+/강사 사진/
+/강의실사진/

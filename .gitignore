@@ -9,3 +9,9 @@ dist-published/
 output/migration/
 
 output/consultation-demo/
+/output/
+/tmp/
+/dist/
+/dist-react/
+/supabase/.temp/
+/.openai/

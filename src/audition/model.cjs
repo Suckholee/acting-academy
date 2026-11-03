@@ -1,0 +1,14 @@
+const {imageURL,clean}=require('../editorial/model.cjs');
+const ID=/^[a-z0-9][a-z0-9-]{2,70}$/;
+function entry(v){
+ if(!v||!ID.test(v.id)||!['permission','owned','public-domain','brief-quote'].includes(v.rights)||v.reviewed!==true)throw Error('validation');
+ if(v.rights==='brief-quote'&&!require('./catalog.cjs').builtins.some(s=>s.id===v.id&&s.script===v.script))throw Error('validation');
+ const source=clean(v.source,1500,1),url=new URL(source);if(url.protocol!=='https:'||url.username||url.password)throw Error('validation');
+ const image=imageURL(v.image||'');
+ const target=image?selection(v.target):null;
+ let imageSource='';if(v.imageSource){imageSource=clean(v.imageSource,1500,1);const u=new URL(imageSource);if(u.protocol!=='https:'||u.username||u.password)throw Error('validation');}
+ if(!Array.isArray(v.beats)||v.beats.length!==3)throw Error('validation');
+ return {id:v.id,title:clean(v.title,80,1),work:clean(v.work,100,1),author:clean(v.author,120,1),context:clean(v.context,1200,1),script:clean(v.script,6000,1),beats:v.beats.map(b=>clean(b,600,1)),image,target,targetLabel:clean(v.targetLabel||'',80),imageSource,imageCredit:clean(v.imageCredit||'',200),source,notice:clean(v.notice,500,1),rights:v.rights,rightsNote:clean(v.rightsNote,400,1),reviewed:true,builtin:false};
+}
+function selection(v){if(!v||!['x','y','w','h'].every(k=>Number.isFinite(v[k]))||v.x<0||v.y<0||v.w<.03||v.h<.03||v.w>.8||v.h>.8||v.x+v.w>1.001||v.y+v.h>1.001)throw Error('selection');return {x:v.x,y:v.y,w:v.w,h:v.h};}
+module.exports={ID,entry,selection};

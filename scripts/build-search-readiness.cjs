@@ -27,7 +27,7 @@ function buildSearchReadiness(directory) {
         html = html.replace(/<meta\b(?=[^>]*\bname=["']description["'])[^>]*>/gi, `<meta name="description" content="${description}">`)
           .replace(/<meta\b(?=[^>]*\bproperty=["']og:description["'])[^>]*>/gi, `<meta property="og:description" content="${description}">`);
       }
-      if (route === '/trainers') html = html.replace('김정태 원장와 편보승·김형민·임도윤 강사의 프로필을 만나보세요.', '김형민·임도윤·편보승 강사의 프로필을 만나보세요.');
+      if (route === '/trainers') html = html.replace('김정태 원장와', '김정태 원장과');
       if (/<meta\b[^>]*\bcontent=["'][^"']*noindex/i.test(html)) excluded.add(route);
       if (html !== original) { fs.writeFileSync(file, html); changed.add(route); }
     }

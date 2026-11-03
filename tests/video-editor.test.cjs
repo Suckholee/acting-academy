@@ -26,3 +26,12 @@ test('local video upload checks file bytes and supports byte-range playback',asy
  response=res();demo.serve({headers:{range:'bytes=9999-'}},response,url);assert.equal(response.statusCode,416);
  }finally{auth.requireAdmin=old;}
 });
+
+test('configured video survives an editor reset while empty slots stay empty',()=>{
+ const {parseHTML}=require('linkedom');const {scan}=require('../src/published-editor/scan.cjs');const {renderVideo}=require('../src/published-editor/video-player.cjs');
+ const {document}=parseHTML('<body><section id="instructor-video" class="video-slot-section"><div class="video-slot-frame" data-video-source="/assets/main.mp4"><img src="/assets/poster.jpg" hidden><video class="kjt-video-player" src="/assets/main.mp4"></video><div class="video-slot-overlay" hidden>영상 준비 중</div></div></section><section class="video-slot-section"><div class="video-slot-frame"></div></section></body>');
+ const {groups,originals}=scan(document,'/');const field=groups[0].fields.find(f=>f.type==='video');const original=originals.get(field.key);
+ assert.equal(groups[1].fields.find(f=>f.type==='video').value,'');
+ const before=global.document;global.document=document;
+ try{renderVideo(field.node,'');assert.equal(field.node.querySelector('video'),null);renderVideo(field.node,original.value);assert.equal(field.node.querySelectorAll('video').length,1);assert.equal(field.node.querySelector('video').src,'/assets/main.mp4');assert.equal(field.node.querySelector('img').hidden,true);assert.equal(field.node.querySelector('.video-slot-overlay').hidden,true);}finally{if(before===undefined)delete global.document;else global.document=before;}
+});

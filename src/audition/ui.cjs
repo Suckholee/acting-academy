@@ -1,0 +1,6 @@
+function node(tag,text,attrs={}){const e=document.createElement(tag);if(text!==undefined&&text!==null)e.textContent=text;for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);return e;}
+function button(text,fn,cls=''){const b=node('button',text,{type:'button',class:cls});b.addEventListener('click',fn);return b;}
+function field(parent,label,type='text',value='',attrs={}){const l=node('label',label,{class:'audition-field'}),e=node(type==='textarea'?'textarea':'input',null,type==='textarea'?attrs:{type,...attrs});e.value=value;l.append(e);parent.append(l);return e;}
+function download(blob,name){const url=URL.createObjectURL(blob),a=node('a',null,{href:url,download:name});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);}
+async function request(url,data,method=data?'POST':'GET',signal){let r;try{r=await fetch(url,{method,headers:data?{'Content-Type':'application/json'}:{},body:data?JSON.stringify(data):undefined,signal});}catch(error){if(error.name==='AbortError')throw error;const failure=Error('인터넷 연결이 끊겨 응답을 받지 못했습니다. 연결을 확인한 뒤 같은 사진으로 다시 눌러주세요.');failure.code='network';throw failure;}let value;try{value=await r.json();}catch{throw Error('연결을 완료하지 못했습니다. 잠시 후 다시 시도해주세요.');}if(!r.ok)throw Error(value.error||'다시 시도해주세요.');return value;}
+module.exports={node,button,field,download,request};

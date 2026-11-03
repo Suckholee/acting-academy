@@ -174,3 +174,7 @@ footer:not(.faculty-footer) p,footer:not(.faculty-footer)>span{color:#62626b}
 
 /* Keep the director visible in the portrait crop of the AI hero. */
 @media(max-width:720px){.hero-img[src*="kim-jung-tae-camera-hero-ai-20261020"]{object-position:77% center}}
+
+/* Fit the full film between fixed bars, even on a short laptop screen. */
+#instructor-video .video-slot-frame{width:min(100%,calc((100svh - var(--site-header-height,96px) - 124px - env(safe-area-inset-bottom,0px)) * 16 / 9));margin-inline:auto;scroll-margin:16px 0}
+body.kjt-video-watching>:is(header,.sticky-inquiry,.ai-launcher,.language-picker,.back-top){visibility:hidden!important;pointer-events:none!important}

@@ -36,7 +36,7 @@ for(const [index,element] of candidates.entries()){
  for(const frame of element.querySelectorAll('.video-slot-frame')){
   if(frame.closest(GROUP_SELECTOR)!==element)continue;
   const key=sharedKey(page,elementPath(frame)+':video');const sharedId=frame.closest('#instructor-video')?sharedKey('video-instructor','source'):null;
-  const field={key,sharedId,type:'video',node:frame,value:'',label:'재생할 영상'};fields.push(field);originals.set(key,{...field});
+  const field={key,sharedId,type:'video',node:frame,value:frame.dataset.videoSource||'',label:'재생할 영상'};fields.push(field);originals.set(key,{...field});
  }
  if(!fields.length)continue;
  const title=element.querySelector('h1,h2,h3,summary')?.textContent.trim()||element.getAttribute('aria-label')|| (element.classList.contains('tuition-info')?'수강료 및 수업 안내':element.classList.contains('head-source-section')?'프로필 자료·출처':'홈페이지 영역');
