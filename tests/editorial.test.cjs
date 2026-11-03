@@ -93,3 +93,20 @@ test('AI generation receives source references but cannot invent additional sour
  const r=await call(admin,{action:'generate',keywords:'첫 오디션',sources:refs,consent:true},'POST');assert.equal(r.code,200);assert.deepEqual(r.data.draft.sources,refs);assert.deepEqual(JSON.parse(payload.input).sources,refs);assert.ok(payload.text.format.schema.required.includes('question'));assert.ok(payload.text.format.schema.required.includes('faq'));assert.equal((await repo.list(true)).length,0);
  }finally{for(const n of names)if(old[n]===undefined)delete process.env[n];else process.env[n]=old[n];}
 });
+
+test('journal sharing has a fixed adult cover while article sharing uses its own image',()=>{
+ const {shell,articleDocument}=require('../src/editorial/article.cjs'),{parseHTML}=require('linkedom');
+ const listing=parseHTML(shell('연기 노트','','')).document;
+ assert.equal(listing.querySelector('[property="og:image"]').content,'https://www.kactstar.com/assets/journal/acting-note-cover-20261103.png');
+ assert.equal(listing.querySelector('[property="og:type"]').content,'website');
+ const article=parseHTML(articleDocument({...draft(),id:'00000000-0000-4000-8000-000000000000'})).document;
+ assert.equal(article.querySelector('[property="og:image"]').content,'https://www.kactstar.com'+draft().cards[0].image);
+});
+test('general audition notes precede senior notes without hiding either audience',async()=>{
+ const rows=['시니어 첫 오디션','연락이 없는 오디션','의상 준비'].map((title,i)=>({id:String(i),published:{...draft(),title},published_at:'2026-11-03'}));
+ const handler=publicHandler({repo:{list:async()=>rows}});
+ const json=await call(handler,null,'GET','/journal?format=json');
+ assert.deepEqual(json.data.articles.map(a=>a.title),['연락이 없는 오디션','의상 준비','시니어 첫 오디션']);
+ const html=await call(handler,null,'GET','/journal');
+ assert.ok(html.html.indexOf('연락이 없는 오디션')<html.html.indexOf('시니어 첫 오디션'));
+});

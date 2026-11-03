@@ -24,7 +24,7 @@ function createHandler({repo=repository()}={}){return async(req,res)=>{
   }
   const offset=Number(url.searchParams.get('offset')||0),limit=url.searchParams.get('format')==='json'?3:20;
   if(!Number.isInteger(offset)||offset<0||offset>10000)return res.status(400).end('Invalid offset');
-  const rows=await repo.list(false,offset,limit+1),articles=rows.slice(0,limit).map(item);
+  const rows=await repo.list(false,offset,limit+1),articles=rows.slice(0,limit).map(item).sort((a,b)=>Number(/시니어/.test(a.title))-Number(/시니어/.test(b.title)));
   if(url.searchParams.get('format')==='json')return res.json({articles});
   res.setHeader('Content-Type','text/html; charset=utf-8');return res.end(shell('연기 노트','연기·촬영·오디션을 준비하는 사람들을 위한 김정태 배우아카데미의 연기 노트.',`<section class="journal-intro"><p class="journal-label">ACTOR'S NOTE</p><h1>오디션을 준비하며<br>궁금했던 질문들.</h1><p>첫 지원부터 자유연기, 셀프테이프까지. 준비하며 마주치는 고민에 하나씩 답합니다.</p></section><div class="journal-grid">${articles.map(listing).join('')}</div>${articles.length?'':'<p class="journal-empty">첫 번째 연기 노트를 준비하고 있습니다.</p>'}<nav class="journal-pagination" aria-label="글 목록 페이지">${offset?`<a href="/journal?offset=${Math.max(0,offset-limit)}">← 이전 글</a>`:''}${rows.length>limit?`<a href="/journal?offset=${offset+limit}">다음 글 →</a>`:''}</nav>`));
  }catch{res.setHeader('Content-Type','text/html; charset=utf-8');return res.status(503).end(shell('잠시 후 다시 확인해주세요.','','<h1>글을 불러오지 못했습니다.</h1><p>잠시 후 다시 확인해주세요.</p><a href="/">홈페이지로</a>','/journal',503));}
