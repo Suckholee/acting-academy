@@ -4,7 +4,7 @@
 .hero--act-audition .hero-shade{background:linear-gradient(90deg,#101114 0%,#101114e0 23%,#10111430 66%,#10111415),linear-gradient(0deg,#101114 0%,#101114d9 18%,transparent 68%)}
 .hero--act-audition .hero-content{position:relative;display:flex;flex-direction:column;justify-content:center;max-width:1560px;min-height:inherit;margin:0 auto;padding:150px 5vw 44px}
 .hero--act-audition h1.hero-wordmark{display:grid;grid-template-columns:auto 1fr;grid-template-rows:1fr 1fr 1fr;column-gap:.035em;align-items:center;width:100%;margin:0;font-family:Manrope,Arial,sans-serif;font-weight:800;font-size:clamp(70px,11.1vw,162px);line-height:.88;letter-spacing:-.065em;white-space:nowrap}
-.hero-wordmark .hero-shared-a{grid-column:1;grid-row:1 / 4;display:block;font-size:3.36em;line-height:.83;letter-spacing:-.095em;padding-right:.035em;color:#d8bb7f;background:linear-gradient(135deg,#f0dfb9 5%,#d8bb7f 50%,#b38b4e 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-wordmark .hero-shared-a{grid-column:1;grid-row:1 / 4;display:block;font-size:3.36em;line-height:.83;letter-spacing:-.095em;padding-right:.11em;margin-right:-.075em;color:#d8bb7f;background:linear-gradient(135deg,#f0dfb9 5%,#d8bb7f 50%,#b38b4e 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-wordmark .hero-word-end{display:flex;align-items:center;min-width:0}
 .hero-wordmark .hero-word-act{grid-column:2;grid-row:1;align-self:start;padding-top:.035em}
 .hero-wordmark .hero-word-audition{grid-column:2;grid-row:2;align-self:center}
@@ -36,7 +36,7 @@
  .hero--act-audition .hero-img{top:72px;height:66%;width:100%;object-position:68% top;opacity:1}
  .hero--act-audition .hero-shade{background:linear-gradient(0deg,#101114 0%,#101114 16%,#101114b0 48%,#10111410 85%),linear-gradient(90deg,#10111477,transparent)}
  .hero--act-audition h1.hero-wordmark{font-size:12.6vw;letter-spacing:-.07em;row-gap:.08em}
- .hero-wordmark .hero-shared-a{font-size:3.55em;letter-spacing:-.105em;padding-right:.045em}
+ .hero-wordmark .hero-shared-a{font-size:3.55em;letter-spacing:-.105em;padding-right:.12em;margin-right:-.075em}
  .hero--act-audition .hero-bottom{display:block;margin-top:34px;padding-top:24px}
  .hero--act-audition .hero-promise{font-size:27px;line-height:1.4}
  .hero--act-audition .hero-actions{margin-top:27px;gap:8px}
