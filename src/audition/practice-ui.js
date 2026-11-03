@@ -1,0 +1,6 @@
+import {node,button} from './ui.cjs';
+import {dialogue} from './dialogue.cjs';
+export function practiceView(s,{active='A',onRole=()=>{}}={}){const d=dialogue(s.script),host=node('div',null,{class:'audition-practice'});host.append(node('p',d.type+(d.duration?' · '+d.duration:''),{class:'audition-practice-meta'}));if(!d.roles.length){host.append(node('p',s.script,{class:'audition-lines'}));return host;}
+ const nav=node('div',null,{class:'audition-practice-roles','aria-label':'대본에서 연습할 역할'}),lines=node('div',null,{class:'audition-dialogue'});function highlight(id){for(const b of nav.querySelectorAll('button'))b.setAttribute('aria-pressed',String(b.dataset.role===id));for(const row of lines.querySelectorAll('[data-speaker]'))row.classList.toggle('is-mine',row.dataset.speaker===id);}
+ for(const role of d.roles){const b=button(role.id+' · '+role.label,()=>{active=role.id;highlight(active);onRole(active);});b.dataset.role=role.id;nav.append(b);}host.append(nav);
+ for(const row of d.rows){if(!row.speaker){lines.append(node('p',row.text,{class:'audition-stage-direction'}));continue;}const line=node('div',null,{class:'audition-dialogue-line','data-speaker':row.speaker});line.append(node('strong',row.speaker+' · '+row.label),node('p',row.text));lines.append(line);}host.append(lines);highlight(active);return host;}

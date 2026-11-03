@@ -1,0 +1,4 @@
+// Keep the original scene outside the explicitly supplied roles. The generated
+// image contributes only the selected face rectangles; the result is lossless PNG.
+async function composeFaces(original,generated,boxes){const base=new Image(),edit=new Image();base.src=original;edit.src=generated;await Promise.all([base.decode(),edit.decode()]);const c=document.createElement('canvas');c.width=base.naturalWidth;c.height=base.naturalHeight;const ctx=c.getContext('2d');ctx.drawImage(base,0,0,c.width,c.height);for(const b of boxes){const x=Math.floor(b.x*c.width),y=Math.floor(b.y*c.height),w=Math.ceil(b.w*c.width),h=Math.ceil(b.h*c.height);ctx.drawImage(edit,b.x*edit.naturalWidth,b.y*edit.naturalHeight,b.w*edit.naturalWidth,b.h*edit.naturalHeight,x,y,w,h);}return c.toDataURL('image/png');}
+module.exports={composeFaces};

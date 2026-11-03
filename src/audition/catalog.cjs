@@ -1,4 +1,6 @@
 const scenes=require('./scenes.cjs');
+const practices=require('./practice.cjs');
+const {dialogue}=require('./dialogue.cjs');
 const reference='https://blog.naver.com/warmspeech3/222022193751';
 // Brief quotations only. The practice notes are original, not excerpts from a film script.
 const seeds=[
@@ -13,6 +15,6 @@ const seeds=[
  ["ode-to-my-father","국제시장","오래 참아온 마음","아버지, 내 약속 잘 지켰지예.","오랫동안 지켜온 약속을 돌아보며 아버지에게 말을 거는 연습입니다. 울음을 먼저 만들기보다 전하고 싶었던 말을 조용히 꺼내봅니다.",["아버지가 눈앞에 있다고 상상하며 바라봅니다.","지켜온 약속 하나를 구체적으로 떠올립니다.","담담하게 한 줄을 말하고 호흡을 이어갑니다."],"https://www.yna.co.kr/view/AKR20141231070800005"],
  ["roaring-currents","명량","두려움 앞에서 내리는 결단","신에게는 아직 열두 척의 배가 남아 있사옵니다.","불리한 상황에서도 포기하지 않겠다는 뜻을 전하는 순간입니다. 힘을 과시하기보다 현재 가진 것을 정확하게 확인하는 마음으로 접근해봅니다.",["주변의 불안한 분위기를 느끼며 숨을 고릅니다.","남아 있는 가능성을 마음속으로 확인합니다.","낮고 분명한 목소리로 뜻을 전합니다."],"https://v.daum.net/v/20160527095305193"]
 ];
-const builtins=seeds.map(([id,work,title,script,context,beats,source=reference])=>({id:'sample-'+id,title,work,author:'영화 대사 짧은 인용',script,context,beats,...scenes['sample-'+id],source,notice:'명대사 한 줄을 인용한 연습 자료입니다. 작품의 대표 장면 사진과 별도 작성한 연습 안내를 함께 제공합니다. 인용 대사의 정확한 순간을 재현한 자료는 아닙니다.',rights:'brief-quote',rightsNote:'짧은 대사 인용과 연기 연습 설명',builtin:true}));
-function scriptText(s){return `${s.work} — ${s.title}\n\n${s.context}\n\n[대사]\n${s.script}\n\n[연습 안내]\n${s.beats.map((b,i)=>`${i+1}. ${b}`).join('\n')}\n\n${s.notice}\n출처: ${s.source}\n김정태 배우아카데미 · AI 오디션\n`;}
+const builtins=seeds.map(([id,work,title,quote,, ,source=reference])=>({id:'sample-'+id,title,work,quote,author:'AI 오디션 · 창작 연습 대본',...practices[id],...scenes['sample-'+id],source,notice:'영화의 대표 장면 사진과 별도로 작성한 창작 연습 대본입니다. 영화 원문이나 사진 속 실제 대사가 아닙니다.',rights:'owned',rightsNote:'창작 연습 대본 공개 제공. 장면 사진은 별도 출처 표기.',builtin:true}));
+function scriptText(s,role){const d=dialogue(s.script);return `${s.work} — ${s.title}\n${s.author}\n${d.type} · ${d.duration}${role?'\n연습할 역할: '+role:''}\n\n${s.context}\n\n[연습 대본]\n${s.script}\n\n[연습 안내]\n${s.beats.map((b,i)=>`${i+1}. ${b}`).join('\n')}\n\n${s.notice}\n참고 작품 출처: ${s.source}\n김정태 배우아카데미 · AI 오디션\n`;}
 module.exports={builtins,scriptText};

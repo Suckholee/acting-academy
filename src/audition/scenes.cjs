@@ -12,3 +12,15 @@ module.exports={
  "sample-ode-to-my-father":{"image":"/assets/audition-scenes/ode-to-my-father.jpg","target":{"x":0.355,"y":0.105,"w":0.12,"h":0.28},"targetLabel":"덕수","imageCredit":"CJ ENM · 국제시장 작품 사진","imageSource":"https://www.cjenm.com/ko/featured-contents/%EA%B5%AD%EC%A0%9C%EC%8B%9C%EC%9E%A5/"},
  "sample-roaring-currents":{"image":"/assets/audition-scenes/roaring-currents.jpg","target":{"x":0.52,"y":0.37,"w":0.32,"h":0.46},"targetLabel":"이순신","imageCredit":"CJ ENM · 명량 작품 사진","imageSource":"https://www.cjenm.com/ko/featured-contents/%EB%AA%85%EB%9F%89/"}
 };
+
+// Additional visible people; omitted references retain their original faces.
+const extra={
+ 'sample-veteran':[{id:'B',label:'가운데 인물',target:{x:.445,y:.055,w:.115,h:.235}},{id:'C',label:'오른쪽 세 번째 인물',target:{x:.652,y:.13,w:.11,h:.22}}],
+ 'sample-spring':[{id:'B',label:'오른쪽 인물',target:{x:.48,y:.15,w:.092,h:.20}}],
+ 'sample-oldboy':[{id:'B',label:'오른쪽 인물',target:{x:.71,y:.39,w:.145,h:.25}}],
+ 'sample-lady-vengeance':[{id:'B',label:'오른쪽 인물',target:{x:.80,y:.14,w:.13,h:.30}}],
+ 'sample-extreme-job':[{id:'B',label:'뒤쪽 인물',target:{x:.325,y:.24,w:.095,h:.28}}],
+ 'sample-parasite':[{id:'B',label:'왼쪽 인물',target:{x:.365,y:.28,w:.045,h:.12}}],
+ 'sample-sunny':[{id:'B',label:'오른쪽 앞 인물',target:{x:.60,y:.35,w:.15,h:.25}}]
+};
+for(const [id,scene]of Object.entries(module.exports))scene.cast=[{id:'A',label:scene.targetLabel,target:scene.target},...(extra[id]||[])];
