@@ -1,2 +1,3 @@
 function dialogue(script){const rows=String(script||'').split('\n').filter(s=>s.trim()).map(s=>{const m=s.match(/^([ABC])\(([^)]+)\):\s*(.+)$/);return m?{speaker:m[1],label:m[2],text:m[3]}:{speaker:null,text:s.replace(/^\[|\]$/g,'')};});const roles=[...new Map(rows.filter(r=>r.speaker).map(r=>[r.speaker,{id:r.speaker,label:r.label}])).values()].sort((a,b)=>a.id.localeCompare(b.id));return {rows,roles,type:roles.length===1?'독백':roles.length===2?'1:1 대화':roles.length>=3?'3인 장면':'대사',duration:roles.length?'약 1~2분 · 속도와 호흡에 따라 달라집니다.':''};}
-module.exports={dialogue};
+function materialType(s){return s.rights==='brief-quote'?'원문 대본 미등록':dialogue(s.script).type;}
+module.exports={dialogue,materialType};
