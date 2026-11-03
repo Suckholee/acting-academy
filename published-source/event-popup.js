@@ -31,6 +31,32 @@ function openAnnouncement() {
   // Use the visible viewport as well as CSS sizing (mobile zoom and browser bars).
   const viewport = window.visualViewport;
   let currentPoster = posters[0];
+  const posterFrame = dialog.querySelector('.event-poster-frame');
+  posterFrame.tabIndex = 0;
+  posterFrame.setAttribute('role', 'button');
+  posterFrame.setAttribute('aria-label', '포스터 확대해서 보기');
+  posterFrame.title = '누르면 확대해서 볼 수 있습니다';
+  let imageViewer;
+  const enlargePoster = () => {
+    if (imageViewer) return;
+    const viewer = document.createElement('dialog');
+    imageViewer = viewer;
+    viewer.className = 'event-image-viewer';
+    viewer.setAttribute('aria-label', currentPoster.title + ' 확대 보기');
+    viewer.innerHTML = '<div class="event-image-toolbar"><span>스크롤하여 자세히 보세요</span><button type="button" aria-label="확대 보기 닫기">닫기 ✕</button></div><div class="event-image-scroll"><img></div>';
+    const image = viewer.querySelector('img');
+    image.src = currentPoster.src;
+    image.alt = currentPoster.alt;
+    image.style.width = Math.max(1080, currentPoster.width) + 'px';
+    document.body.append(viewer);
+    viewer.querySelector('button').addEventListener('click', () => viewer.close());
+    viewer.addEventListener('close', () => { viewer.remove(); imageViewer = null; posterFrame.focus(); });
+    viewer.showModal();
+  };
+  posterFrame.addEventListener('click', enlargePoster);
+  posterFrame.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); enlargePoster(); }
+  });
   const fitPoster = () => {
     const area = dialog.querySelector('.event-popup-image');
     const frame = dialog.querySelector('.event-poster-frame');
@@ -84,7 +110,7 @@ function openAnnouncement() {
     dialog.querySelector('.event-popup-image').scrollTop = 0;
   }));
   dialog.addEventListener('click', event => { if (event.target === dialog) { const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });
-  dialog.addEventListener('close', () => { window.removeEventListener('resize', fitViewport); viewport?.removeEventListener('resize', fitViewport); viewport?.removeEventListener('scroll', fitViewport); document.body.style.overflow = oldOverflow; priorFocus?.focus(); dialog.remove(); if (location.hash === '#announcement') history.replaceState(null, '', location.pathname + location.search); });
+  dialog.addEventListener('close', () => { imageViewer?.close(); window.removeEventListener('resize', fitViewport); viewport?.removeEventListener('resize', fitViewport); viewport?.removeEventListener('scroll', fitViewport); document.body.style.overflow = oldOverflow; priorFocus?.focus(); dialog.remove(); if (location.hash === '#announcement') history.replaceState(null, '', location.pathname + location.search); });
   dialog.showModal();
   fitPoster();
   document.body.style.overflow = 'hidden';
