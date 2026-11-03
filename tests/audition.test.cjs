@@ -8,7 +8,7 @@ async function call(h,body,method='POST',headers={}){const r=response();await h(
 const jpeg='data:image/jpeg;base64,'+Buffer.from([255,216,255,224,0,16]).toString('base64'),png='data:image/png;base64,'+Buffer.from([137,80,78,71,13,10,26,10]).toString('base64');
 const input={scriptId:builtins[0].id,portrait:jpeg,scene:jpeg,mask:png,box:{x:.2,y:.2,w:.2,h:.3},consent:true,sceneConsent:true};
 test('anonymous visitors can read scripts without exposing storage credentials or unpublished admin state',async()=>{
- const r=await call(createHandler({repo:memoryRepository(),configured:()=>true}),null,'GET');assert.equal(r.code,200);assert.equal(r.data.ready,true);assert.equal(r.data.scripts.length,4);assert.equal(Object.hasOwn(r.data,'revision'),false);assert.match(scriptText(r.data.scripts[0]),/연습 안내/);assert.match(scriptText(r.data.scripts[0]),/출처:/);
+ const r=await call(createHandler({repo:memoryRepository(),configured:()=>true}),null,'GET');assert.equal(r.code,200);assert.equal(r.data.ready,true);assert.equal(r.data.scripts.length,10);assert.equal(Object.hasOwn(r.data,'revision'),false);assert.match(scriptText(r.data.scripts[0]),/연습 안내/);assert.match(scriptText(r.data.scripts[0]),/출처:/);
 });
 test('invalid photos, rectangle, missing consent and foreign origins never contact the image provider',async()=>{
  let calls=0;const h=createHandler({repo:memoryRepository(),configured:()=>true,fetcher:async()=>{calls++;},limit:async()=>{calls++;}});

@@ -4,6 +4,7 @@ const {repository,catalog}=require('./_audition');
 const {readImage}=require('../src/published-editor/image-model.cjs');
 const {selection}=require('../src/audition/model.cjs');
 const {scriptText}=require('../src/audition/catalog.cjs');
+const {recommend}=require('./_audition-recommend');
 function createHandler({repo=repository(),access=queue,demo=false,fetcher=(...a)=>fetch(...a),limit=consume,configured=()=>Boolean(process.env.OPENAI_API_KEY&&process.env.ADMIN_SESSION_SECRET&&store.ready())}={}){return async(req,res)=>{
  res.setHeader('Cache-Control','private, no-store');res.setHeader('X-Content-Type-Options','nosniff');
  if(!['GET','POST'].includes(req.method)){res.setHeader('Allow','GET, POST');return res.status(405).json({error:'지원하지 않는 요청입니다.'});}
@@ -17,7 +18,9 @@ function createHandler({repo=repository(),access=queue,demo=false,fetcher=(...a)
   const visitor=demo?'demo':access.session(req,res);
   if(data.action==='cancel'){if(!demo)await access.cancel({visitor,ticket:data.ticket,permit:data.permit});return res.json({cancelled:true});}
   if(data.consent!==true||data.sceneConsent!==true)return res.status(400).json({error:'사진 전송 동의를 확인해주세요.'});
-  const scripts=catalog((await repo.load()).records),script=scripts.find(s=>s.id===data.scriptId);
+  const scripts=catalog((await repo.load()).records);
+  if(data.action==='recommend')return res.json(await recommend({data,scripts,visitor,req,limit,fetcher,demo}));
+  const script=scripts.find(s=>s.id===data.scriptId);
   if(!script)return res.status(400).json({error:'목록에서 연습할 대사를 다시 선택해주세요.'});
   const requestId=data.requestId||crypto.randomUUID();
   if(data.action==='prepare')return res.json(demo?{state:'ready',permit:'demo',ticket:'demo'}:await access.prepare({visitor,scriptId:script.id,requestId,ticket:data.ticket}));
@@ -35,7 +38,7 @@ function createHandler({repo=repository(),access=queue,demo=false,fetcher=(...a)
   if(!response.ok){let code;try{code=(await response.json()).error?.code;}catch{}if(response.status===429)throw Object.assign(Error('사진 생성 서버가 혼잡합니다. 잠시 후 다시 시도해주세요.'),{status:503,code:'provider_busy',retryAfter:Math.max(3,Math.min(60,Number(response.headers?.get('Retry-After'))||5))});if(code==='content_policy_violation')throw Object.assign(Error('이 사진으로는 합성을 진행할 수 없습니다. 다른 사진을 선택해주세요.'),{status:422});throw Error('provider');}
   const b64=(await response.json()).data?.[0]?.b64_json;if(typeof b64!=='string'||b64.length>3500000||!readImage('data:image/jpeg;base64,'+b64,2500000))throw Error('image');
   await access.complete(charge);result={image:'data:image/jpeg;base64,'+b64,script,scriptText:scriptText(script)};
- }catch(error){status=error.status||503;retryAfter=error.retryAfter;result={error:error.status?error.message:'합성을 완료하지 못했습니다. 사진과 대사는 그대로 있으니 잠시 후 다시 시도해주세요.'};if(error.code)result.code=error.code;if(retryAfter)result.retryAfter=retryAfter;}
+ }catch(error){status=error.status||503;retryAfter=error.retryAfter;result={error:error.status?error.message:(data.action==='recommend'?'추천을 불러오지 못했습니다. 아래에서 직접 작품을 선택하거나 잠시 후 다시 추천받아보세요.':'합성을 완료하지 못했습니다. 사진과 대사는 그대로 있으니 잠시 후 다시 시도해주세요.')};if(error.code)result.code=error.code;if(retryAfter)result.retryAfter=retryAfter;}
  finally{if(lease)await access.finish(lease);}
  if(retryAfter)res.setHeader('Retry-After',String(retryAfter));return res.status(status).json(result);
 };}
