@@ -34,8 +34,15 @@ function receipt(token,callId,now=Date.now()){
  const [body,sig]=token.split('.');const expected=crypto.createHmac('sha256',secret()).update('casting:'+body).digest('hex');
  if(!sig || !auth.equal(sig,expected))throw fail(400,'프로필 첨부 정보를 확인해주세요.');
  let data;try{data=JSON.parse(Buffer.from(body,'base64url'));}catch{throw fail(400,'프로필 첨부 정보를 확인해주세요.');}
- if(data.callId!==callId||data.expires<=now||!m.validFile(data)||!new RegExp('^'+callId+'/[a-f0-9-]+\\.[a-z0-9]+$').test(data.path))throw fail(400,'프로필 첨부가 만료되었습니다. 다시 첨부해주세요.');return data;
+ if(data.callId!==callId||data.expires<=now||!(data.kind==='photo'?m.validPhoto(data):m.validFile(data))||!new RegExp('^'+callId+'/[a-f0-9-]+\\.[a-z0-9]+$').test(data.path))throw fail(400,'프로필 첨부가 만료되었습니다. 다시 첨부해주세요.');return data;
 }
-async function rateLimit(req){const ip=process.env.VERCEL?req.headers['x-vercel-forwarded-for']?.split(',')[0]?.trim():req.socket?.remoteAddress;if(!isIP(ip||''))throw fail(503,'접수를 잠시 후 다시 시도해주세요.');const key=crypto.createHmac('sha256',secret()).update('casting:'+ip).digest('hex');const retry=await store.request('/rest/v1/rpc/consume_casting_attempt',{method:'POST',body:JSON.stringify({p_bucket:key})});if(!Number.isInteger(retry)||retry<0)throw fail(503,'접수를 잠시 후 다시 시도해주세요.');if(retry)throw fail(429,'요청이 많습니다. 잠시 후 다시 시도해주세요.');}
+async function verifiedFile(token,callId,storage,kind='document',now=Date.now()){
+ const f=receipt(token,callId,now);if((f.kind||'document')!==kind)throw fail(400,'첨부 자료의 종류를 확인해주세요.');const {data,error}=await storage().info(f.path);if(error&&![400,404].includes(Number(error.statusCode||error.status)))throw Object.assign(fail(503,'첨부 자료를 확인하고 있습니다. 잠시 후 다시 시도해주세요.'),{retryAfter:2});if(error||!data||Number(data.metadata?.size??data.size)!==f.size||(data.content_type||data.contentType||data.metadata?.mimetype)!==f.type)throw fail(400,'첨부 자료 업로드를 확인해주세요.');return {path:f.path,name:f.name,size:f.size,type:f.type};
+}
+async function verifiedPhotos(items,callId,storage,now=Date.now()){
+ if(items===undefined)return [];if(!Array.isArray(items)||items.length>3||new Set(items.map(v=>v?.slot)).size!==items.length)throw fail(400,'사진은 종류별로 1장씩 등록해주세요.');const result=[];for(const item of items){if(!m.PHOTO_SLOTS.includes(item?.slot))throw fail(400,'사진 종류를 확인해주세요.');result.push({...await verifiedFile(item.receipt,callId,storage,'photo',now),slot:item.slot});}return result;
+}
+function profilePaths(profile){return [profile.path,...(profile.photos||[]).map(p=>p.path)].filter(Boolean);}
+async function rateLimit(req,context={}){const ip=process.env.VERCEL?req.headers['x-vercel-forwarded-for']?.split(',')[0]?.trim():req.socket?.remoteAddress;if(!isIP(ip||''))throw fail(503,'접수를 잠시 후 다시 시도해주세요.');const key=crypto.createHmac('sha256',secret()).update(context.flow?'casting-flow:'+context.flow:'casting:'+ip).digest('hex');const retry=await store.request('/rest/v1/rpc/consume_casting_attempt',{method:'POST',body:JSON.stringify({p_bucket:key})});if(!Number.isInteger(retry)||retry<0)throw fail(503,'접수를 잠시 후 다시 시도해주세요.');if(retry)throw Object.assign(fail(429,'요청이 많습니다. 잠시 후 다시 시도해주세요.'),{retryAfter:retry});}
 function body(req){let value;try{value=auth.body(req);}catch{throw fail(400,'입력 내용을 확인해주세요.');}if(!value||typeof value!=='object'||Array.isArray(value))throw fail(400,'입력 내용을 확인해주세요.');if(Buffer.byteLength(JSON.stringify(value))>40000)throw fail(413,'입력 내용이 너무 깁니다.');return value;}
-module.exports={repository,bucket,signReceipt,receipt,rateLimit,body,fail,editKey,canEdit};
+module.exports={verifiedFile,verifiedPhotos,profilePaths,repository,bucket,signReceipt,receipt,rateLimit,body,fail,editKey,canEdit};

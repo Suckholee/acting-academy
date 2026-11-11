@@ -1,0 +1,4 @@
+const crypto=require('node:crypto'),{maintain}=require('../scripts/casting-maintenance.cjs'),{audit}=require('./_casting-audit');
+function authorized(value,secret){if(typeof secret!=='string'||secret.length<32||typeof value!=='string')return false;const a=Buffer.from(value),b=Buffer.from('Bearer '+secret);return a.length===b.length&&crypto.timingSafeEqual(a,b);}
+module.exports=async(req,res)=>{res.setHeader('Cache-Control','no-store');if(req.method!=='GET')return res.status(405).end();if(!authorized(req.headers.authorization,process.env.CRON_SECRET))return res.status(401).json({error:'Unauthorized'});try{const result=await maintain({apply:true,automaticOnly:true});await audit('scheduled-retention',null,result,undefined,'server');return res.json(result);}catch{await audit('scheduled-retention-failed',null,{},undefined,'server');return res.status(503).json({error:'Cleanup failed'});}};
+module.exports.authorized=authorized;

@@ -1,0 +1,492 @@
+{
+  "date": "2026-11-11",
+  "result": "PASS after temporary overload recovery fix",
+  "environment": "Isolated Vercel preview and real Supabase Micro/Sydney database and private storage; same compute tier/region as production",
+  "initialFailure": {
+    "initialBurst": {
+      "name": "1000 simultaneous applicant starts",
+      "planned": 1000,
+      "concurrency": 1000,
+      "attempted": 1000,
+      "success": 76,
+      "failures": 924,
+      "stored": 123,
+      "stoppedEarly": true,
+      "wallMs": 38939,
+      "documentBytes": 65536,
+      "photosEvery": 0,
+      "endToEnd": {
+        "count": 76,
+        "p50Ms": 15625,
+        "p95Ms": 16268,
+        "p99Ms": 16366,
+        "maxMs": 16422
+      },
+      "stages": {
+        "documentTicket": {
+          "count": 1000,
+          "p50Ms": 10511,
+          "p95Ms": 30038,
+          "p99Ms": 30039,
+          "maxMs": 30039
+        },
+        "documentUpload": {
+          "count": 456,
+          "p50Ms": 7296,
+          "p95Ms": 30004,
+          "p99Ms": 30005,
+          "maxMs": 30014
+        },
+        "submit": {
+          "count": 153,
+          "p50Ms": 4018,
+          "p95Ms": 30006,
+          "p99Ms": 30012,
+          "maxMs": 30017
+        }
+      },
+      "errors": [
+        {
+          "i": 5016,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5019,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5035,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5039,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5045,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5047,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5056,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5058,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5060,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5061,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5069,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5073,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5075,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5076,
+          "error": "fetch failed"
+        },
+        {
+          "i": 5079,
+          "error": "fetch failed"
+        }
+      ]
+    },
+    "repeatBurst": {
+      "name": "1000 simultaneous starts repeated with detailed network errors",
+      "planned": 1000,
+      "concurrency": 1000,
+      "attempted": 1000,
+      "success": 727,
+      "failures": 273,
+      "stored": 727,
+      "stoppedEarly": true,
+      "wallMs": 20789,
+      "documentBytes": 65536,
+      "photosEvery": 0,
+      "endToEnd": {
+        "count": 727,
+        "p50Ms": 18077,
+        "p95Ms": 19328,
+        "p99Ms": 19858,
+        "maxMs": 20286
+      },
+      "stages": {
+        "documentTicket": {
+          "count": 1000,
+          "p50Ms": 7415,
+          "p95Ms": 9640,
+          "p99Ms": 10351,
+          "maxMs": 11319
+        },
+        "documentUpload": {
+          "count": 880,
+          "p50Ms": 7012,
+          "p95Ms": 9767,
+          "p99Ms": 10231,
+          "maxMs": 10672
+        },
+        "submit": {
+          "count": 765,
+          "p50Ms": 3297,
+          "p95Ms": 5737,
+          "p99Ms": 6359,
+          "maxMs": 7370
+        }
+      },
+      "errors": [
+        {
+          "i": 10452,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10269,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10433,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10476,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10366,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10312,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10381,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10488,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10486,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10205,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10484,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10328,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10435,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10432,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        },
+        {
+          "i": 10411,
+          "error": "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요."
+        }
+      ],
+      "errorCounts": {
+        "API 503 저장을 확인하지 못했습니다. 잠시 후 다시 시도해주세요.": 120,
+        "storage PUT 429": 115,
+        "API 400 첨부 자료 업로드를 확인해주세요.": 38
+      }
+    }
+  },
+  "verified": {
+    "continuous5000": {
+      "name": "5000 applicants / 100 simultaneous flows",
+      "planned": 5000,
+      "concurrency": 100,
+      "attempted": 5000,
+      "success": 5000,
+      "failures": 0,
+      "stored": 5000,
+      "stoppedEarly": false,
+      "wallMs": 181000,
+      "documentBytes": 65536,
+      "photosEvery": 10,
+      "endToEnd": {
+        "count": 5000,
+        "p50Ms": 2825,
+        "p95Ms": 7851,
+        "p99Ms": 9812,
+        "maxMs": 13927
+      },
+      "stages": {
+        "documentTicket": {
+          "count": 5000,
+          "p50Ms": 987,
+          "p95Ms": 1695,
+          "p99Ms": 2936,
+          "maxMs": 3931
+        },
+        "documentUpload": {
+          "count": 5000,
+          "p50Ms": 361,
+          "p95Ms": 979,
+          "p99Ms": 1571,
+          "maxMs": 3248
+        },
+        "photoTicket": {
+          "count": 1500,
+          "p50Ms": 980,
+          "p95Ms": 1494,
+          "p99Ms": 1872,
+          "maxMs": 2728
+        },
+        "submit": {
+          "count": 5000,
+          "p50Ms": 1232,
+          "p95Ms": 2221,
+          "p99Ms": 2811,
+          "maxMs": 4844
+        },
+        "photoUpload": {
+          "count": 1500,
+          "p50Ms": 296,
+          "p95Ms": 666,
+          "p99Ms": 1319,
+          "maxMs": 3030
+        }
+      },
+      "errors": []
+    },
+    "simultaneous1000": {
+      "name": "1000 simultaneous applicant starts with production client recovery",
+      "planned": 1000,
+      "concurrency": 1000,
+      "attempted": 1000,
+      "success": 1000,
+      "failures": 0,
+      "stored": 1000,
+      "stoppedEarly": false,
+      "wallMs": 35322,
+      "documentBytes": 65536,
+      "photosEvery": 0,
+      "endToEnd": {
+        "count": 1000,
+        "p50Ms": 25421,
+        "p95Ms": 27656,
+        "p99Ms": 28033,
+        "maxMs": 34839
+      },
+      "stages": {
+        "documentTicket": {
+          "count": 1000,
+          "p50Ms": 12235,
+          "p95Ms": 20433,
+          "p99Ms": 24254,
+          "maxMs": 32964
+        },
+        "documentUpload": {
+          "count": 1000,
+          "p50Ms": 9009,
+          "p95Ms": 13609,
+          "p99Ms": 17055,
+          "maxMs": 18849
+        },
+        "submit": {
+          "count": 1000,
+          "p50Ms": 3391,
+          "p95Ms": 6681,
+          "p99Ms": 9511,
+          "maxMs": 12931
+        }
+      },
+      "errors": []
+    },
+    "retriesDuring1000": {
+      "api": 696,
+      "upload": 162,
+      "statuses": {
+        "429": 162,
+        "503": 696
+      }
+    },
+    "largeFiles": {
+      "name": "10 applicants with maximum 10MB portfolios",
+      "planned": 10,
+      "concurrency": 10,
+      "attempted": 10,
+      "success": 10,
+      "failures": 0,
+      "stored": 10,
+      "stoppedEarly": false,
+      "wallMs": 14516,
+      "documentBytes": 10485760,
+      "photosEvery": 1,
+      "endToEnd": {
+        "count": 10,
+        "p50Ms": 11881,
+        "p95Ms": 13633,
+        "p99Ms": 13633,
+        "maxMs": 14342
+      },
+      "stages": {
+        "documentTicket": {
+          "count": 10,
+          "p50Ms": 1549,
+          "p95Ms": 1910,
+          "p99Ms": 1910,
+          "maxMs": 1913
+        },
+        "documentUpload": {
+          "count": 10,
+          "p50Ms": 2699,
+          "p95Ms": 3629,
+          "p99Ms": 3629,
+          "maxMs": 3924
+        },
+        "photoTicket": {
+          "count": 30,
+          "p50Ms": 987,
+          "p95Ms": 1443,
+          "p99Ms": 1613,
+          "maxMs": 1792
+        },
+        "photoUpload": {
+          "count": 30,
+          "p50Ms": 496,
+          "p95Ms": 652,
+          "p99Ms": 916,
+          "maxMs": 1022
+        },
+        "submit": {
+          "count": 10,
+          "p50Ms": 2446,
+          "p95Ms": 3348,
+          "p99Ms": 3348,
+          "maxMs": 3426
+        }
+      },
+      "errors": []
+    },
+    "admin": {
+      "checks": [
+        {
+          "name": "Real admin login",
+          "passed": true
+        },
+        {
+          "name": "Admin total matches measured stored count",
+          "passed": true,
+          "ms": 911
+        },
+        {
+          "name": "Admin last page has exact remaining applicants",
+          "passed": true,
+          "ms": 1297
+        },
+        {
+          "name": "Admin search works",
+          "passed": true,
+          "ms": 1001
+        },
+        {
+          "name": "Admin signed private portfolio download",
+          "passed": true,
+          "bytes": 65536,
+          "ms": 1270
+        }
+      ],
+      "startedAt": "2026-11-11T09:12:22.358Z",
+      "total": 6860,
+      "result": "PASS"
+    },
+    "integrity": [
+      {
+        "name": "All stored applications have both selected roles",
+        "passed": true,
+        "total": 6860
+      },
+      {
+        "name": "All applicant pages accessible with no omissions or duplicates",
+        "passed": true,
+        "pages": 69,
+        "latency": {
+          "count": 69,
+          "p50Ms": 221,
+          "p95Ms": 536,
+          "p99Ms": 569,
+          "maxMs": 622
+        }
+      },
+      {
+        "name": "Stored portfolio samples equal uploaded bytes",
+        "passed": true,
+        "verified": 10
+      }
+    ],
+    "unitAndRegressionTests": 52,
+    "productionSmoke": {
+      "environment": "https://www.kactstar.com",
+      "scope": "one synthetic applicant, 20 concurrent retries, real document+3 photo uploads; not 1000 unique applicants",
+      "checks": [
+        "실제 비공개 저장소 문서·사진 3장 업로드",
+        "20개 동시 제출 모두 같은 접수번호 반환",
+        "관리자에 정확히 1건·두 배역·사진 3장 저장",
+        "실제 관리자 포트폴리오 다운로드 원본 일치",
+        "이번 재시도 검증의 가상 지원서와 4개 첨부파일 정리"
+      ],
+      "latency": {
+        "concurrency": 20,
+        "p95Ms": 5275,
+        "maxMs": 5612
+      },
+      "result": "PASS"
+    }
+  },
+  "changes": [
+    "Allow independent submissions to share the call lock while preserving same-file idempotency",
+    "Separate validated file-flow retry allowance from initial IP allowance",
+    "Bounded exponential backoff with jitter for temporary API/storage failures; preserve signed receipt and user input",
+    "Treat transient file metadata lookup errors as retryable; retain size/type validation"
+  ],
+  "limits": [
+    "5000-case test: 100 concurrent flows, 64KiB portfolios; 500 of these also had 3 tiny valid PNG photos",
+    "1000-case test: 1000 starts, 64KiB portfolios, no photos; final success includes 858 automatic retries, not 100% first-attempt success",
+    "Large file test: 10 concurrent 10MiB portfolios; not 1000 simultaneous maximum-size portfolios",
+    "Preview-only authenticated adapter models distinct visitor IPs; single load-generating computer, not 1000 browser devices",
+    "New-upload abuse protection still permits at most 30 initial uploads per shared public IP per 15 minutes",
+    "No unlimited-traffic guarantee; advertiser traffic should be increased gradually while watching failed submissions"
+  ],
+  "cleanup": {
+    "temporarySupabaseBranch": "deleted; confirmed in dashboard",
+    "temporaryPreviewDeployments": "both deleted; confirmed by Vercel CLI",
+    "productionSyntheticSmokeData": "deleted immediately after verification"
+  },
+  "budget": {
+    "approvedUSD": 2,
+    "branchMicroHourlyUSD": 0.01344,
+    "observedBranchLifetimeMinutesApprox": 28,
+    "estimatedBranchComputeUSDUnder": 0.02,
+    "finalBilledTotal": "not yet available; includes platform usage"
+  }
+}

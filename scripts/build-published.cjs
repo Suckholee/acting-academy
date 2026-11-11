@@ -47,4 +47,5 @@ function addAdminSummary(dir){for(const entry of fs.readdirSync(dir,{withFileTyp
 require('./build-editorial.cjs').buildEditorial(out);
 require('./build-audition.cjs').buildAudition(out);
 require('./build-casting.cjs').buildCasting(out);
+require('./build-admin.cjs').buildAdmin(out);
 console.log('Published design + component editor: dist-published');

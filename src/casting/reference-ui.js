@@ -1,0 +1,36 @@
+import {el,button} from '../operations/ui.js';
+const {siteHeader}=require('../editorial/navigation.cjs');
+const icons={home:'⌂',calls:'▤',people:'♧',schedule:'◷',message:'✉',report:'▥',saved:'☆',settings:'⚙'};
+export function screen(name,call=null){
+ document.body.dataset.castingScreen=name;document.body.classList.remove('reference-menu-open');
+ if(document.querySelector('#casting-root').dataset.admin!=='true'){
+  document.body.classList.add('casting-public');document.querySelector('.casting-nav')?.remove();document.querySelector('.reference-sidebar')?.remove();document.querySelector('.reference-top')?.remove();
+  if(!document.querySelector('.journal-site-header'))document.body.insertAdjacentHTML('afterbegin',siteHeader('/auditions'));
+  let subnav=document.querySelector('.casting-public-subnav');if(!subnav){subnav=el('nav',null,{class:'casting-public-subnav','aria-label':'오디션 메뉴'});document.querySelector('.journal-site-header').after(subnav);}
+  subnav.replaceChildren(el('span','공개 오디션'+(name==='detail'?' / 공고 상세':name==='apply'?' / 지원서':'')));
+  const saved=new URLSearchParams(location.search).has('saved');for(const [label,href,active]of [['전체 공고','/auditions',name==='browse'&&!saved],['스크랩','/auditions?saved=1',name==='browse'&&saved]])subnav.append(el('a',label,{href,...(active?{'aria-current':'page'}:{})}));
+  return;
+ }
+
+ document.querySelector('.casting-nav')?.remove();
+ if(call&&['applicants','schedule','messages','report','settings','security','roles'].includes(name)){const params=new URLSearchParams(location.search);params.set('callId',call.id);params.set('view',name);params.delete('section');history.replaceState(null,'',location.pathname+'?'+params);document.dispatchEvent(new Event('academy-admin-navigation'));}
+
+}
+export function dialog(title,{drawer=false,onClose}={}){
+ const d=el('dialog',null,{class:'reference-dialog'+(drawer?' reference-drawer':''),'aria-label':title});
+ const head=el('header');head.append(el('h2',title));button(head,'×',()=>d.close()).setAttribute('aria-label','닫기');const body=el('div',null,{class:'casting-shell reference-dialog-body'});d.append(head,body);document.body.append(d);d.addEventListener('close',()=>{d.remove();onClose?.();},{once:true});d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});d.showModal();return {dialog:d,body,close:()=>d.close()};
+}
+export function confirmAction(title,message){return new Promise(resolve=>{let result=false;const modal=dialog(title,{onClose:()=>resolve(result)});modal.body.append(el('p',message));const actions=el('div',null,{class:'actions'});button(actions,'취소',modal.close);button(actions,'확인',()=>{result=true;modal.close();}).className='primary';modal.body.append(actions);});}
+export function bookmarks(){try{return JSON.parse(localStorage.getItem('casting-saved')||'[]').filter(v=>typeof v==='string').slice(0,200);}catch{return [];}}
+export function bookmark(host,id){const b=button(host,'☆',()=>{const ids=bookmarks(),set=new Set(ids);set.has(id)?set.delete(id):set.add(id);try{localStorage.setItem('casting-saved',JSON.stringify([...set]));paint();}catch{b.textContent='저장 불가';}});b.className='bookmark';b.setAttribute('aria-label','공고 스크랩');function paint(){const saved=bookmarks().includes(id);b.textContent=saved?'★':'☆';b.setAttribute('aria-pressed',String(saved));}paint();return b;}
+export function wizard(form,blocks,call,{preview=false,self=false,roleAnswers={}}={}){
+ const names=['배역 선택','지원서 작성','프로필 · 영상','제출 확인'],bar=el('nav',null,{class:'application-steps','aria-label':'지원 단계'}),body=el('div',null,{class:'application-step-body'}),bottom=el('div',null,{class:'application-step-footer'}),chosen=el('div',null,{class:'selected-roles'}),status=el('p','',{role:'status'}),previous=button(bottom,'이전 단계',()=>go(index-1)),next=button(bottom,'다음 단계',()=>{if(!validate())return;go(index+1);});next.className='primary';const submit=form.querySelector('button[type=submit]');let index=0;
+ const stepButtons=names.map((label,i)=>{const b=button(bar,`${i+1}  ${label}`,()=>{if(i<index||validate())go(i);});return b;});
+ for(const b of blocks)body.append(b);bottom.prepend(chosen);bottom.append(submit);form.prepend(bar,body);form.append(status,bottom);form.classList.add('stepped-application');form.noValidate=true;
+ const roleDrafts={...roleAnswers};const selection=el('aside',null,{class:'role-selection-summary'}),roleInfo=el('section',null,{class:'role-selection-information'}),roleField=blocks[0].querySelector('fieldset'),roleLayout=el('div',null,{class:'role-selection-layout'});blocks[0].append(roleLayout);roleLayout.append(roleField,roleInfo,selection);
+ function selected(){for(const field of roleInfo.querySelectorAll('[data-role-answer]'))roleDrafts[field.dataset.roleAnswer]=field.value;const roles=[...form.querySelectorAll('input[name=roles]:checked')].map(v=>v.value);chosen.replaceChildren(el('strong','선택된 배역 '+roles.length+'개'));selection.replaceChildren(el('h3','선택된 배역 ('+roles.length+')'));roleInfo.replaceChildren(el('h3','선택한 배역의 정보를 확인해주세요.'));for(const role of roles){chosen.append(el('span',role));const row=el('div',null,{class:'selected-role-card'});row.append(el('strong',role));button(row,'×',()=>{const box=[...form.querySelectorAll('input[name=roles]')].find(v=>v.value===role);box.checked=false;selected();});selection.append(row);const info=el('article',null,{class:'role-information-card'});info.append(el('h4',role),el('p',call.document.roleDetails?.[role]?.description||'공고의 모집 배역입니다. 작품 소개와 지원 조건을 확인해주세요.'));const detail=call.document.roleDetails?.[role];if(detail?.sidesUrl){const a=el('a','지정 대본 열기 ↗',{href:detail.sidesUrl,target:'_blank',rel:'noopener noreferrer'});info.append(a);}if(detail?.question){const label=el('label',detail.question+' *',{class:'ops-field'}),answer=el('textarea',null,{rows:4,maxlength:500,required:'true','data-role-answer':role});answer.value=roleDrafts[role]||'';label.append(answer);info.append(label);}roleInfo.append(info);}if(!roles.length)roleInfo.append(el('p','왼쪽에서 지원할 배역을 선택하면 이곳에서 확인할 수 있습니다.'));selection.append(el('p','복수 배역을 선택할 수 있습니다. 선택한 배역은 최종 제출 시 함께 접수됩니다.'));}
+ function validate(){for(const input of blocks[index].querySelectorAll('input,select,textarea')){if(!input.checkValidity()){input.reportValidity();return false;}}if(index===0&&!form.querySelector('input[name=roles]:checked')){status.textContent='지원할 배역을 1개 이상 선택해주세요.';return false;}status.textContent='';return true;}
+ function go(i){index=Math.max(0,Math.min(i,blocks.length-1));document.body.dataset.applicationStep=String(index);blocks.forEach((b,n)=>b.hidden=n!==index);stepButtons.forEach((b,n)=>b.setAttribute('aria-current',n===index?'step':'false'));previous.hidden=index===0;next.hidden=index===blocks.length-1;submit.hidden=index!==blocks.length-1;selected();if(form.offsetParent)window.scrollTo({top:0,behavior:'instant'});}
+ form.addEventListener('change',selected);form.addEventListener('submit',e=>{for(let i=0;i<blocks.length;i++){const invalid=[...blocks[i].querySelectorAll('input,select,textarea')].find(v=>!v.checkValidity());if(invalid){e.preventDefault();e.stopImmediatePropagation();go(i);invalid.reportValidity();return;}}},true);go(0);
+ return {go};
+}
