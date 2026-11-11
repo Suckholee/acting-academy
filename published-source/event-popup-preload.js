@@ -9,7 +9,7 @@
   } catch {}
   const link = document.createElement('link');
   link.rel = 'preload'; link.as = 'image'; link.type = 'image/png';
-  link.href = '/assets/audition-evil-method-poster-20261112.png';
+  link.href = '/assets/audition-evil-method-poster-20261112-v2.png';
   link.fetchPriority = 'high';
   document.head.append(link);
 })();
