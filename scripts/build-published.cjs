@@ -46,4 +46,5 @@ fs.copyFileSync(path.join(root,'src/analytics/admin-summary.css'),path.join(out,
 function addAdminSummary(dir){for(const entry of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,entry.name);if(entry.isDirectory()){addAdminSummary(file);continue;}if(!file.endsWith('.html'))continue;let html=fs.readFileSync(file,'utf8');html=html.replace('</head>','<link rel="stylesheet" href="/admin-visitor-summary.css"></head>');if(path.relative(out,file).startsWith('admin'+path.sep)&&path.relative(out,file)!==path.join('admin','visitor-sources.html'))html=html.replace('</body>','<script defer src="/admin-visitor-summary.js"></script></body>');fs.writeFileSync(file,html);}}addAdminSummary(out);
 require('./build-editorial.cjs').buildEditorial(out);
 require('./build-audition.cjs').buildAudition(out);
+require('./build-casting.cjs').buildCasting(out);
 console.log('Published design + component editor: dist-published');

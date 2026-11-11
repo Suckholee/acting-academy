@@ -1,0 +1,1342 @@
+{
+  "provided-startup-dalmi": {
+    "sceneTags": {
+      "situation": [
+        "갈등",
+        "선택"
+      ],
+      "emotion": [
+        "결의",
+        "슬픔"
+      ],
+      "relationship": [
+        "가족"
+      ],
+      "objective": [
+        "선언",
+        "설득"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "선택",
+      "결의",
+      "슬픔",
+      "가족",
+      "선언",
+      "설득"
+    ],
+    "keywords": [
+      "엄마",
+      "독백",
+      "진로",
+      "자존심"
+    ]
+  },
+  "provided-crush-and-blush": {
+    "sceneTags": {
+      "situation": [
+        "갈등",
+        "직장"
+      ],
+      "emotion": [
+        "조급함",
+        "당혹"
+      ],
+      "relationship": [
+        "동료"
+      ],
+      "objective": [
+        "질문",
+        "추궁"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "직장",
+      "조급함",
+      "당혹",
+      "동료",
+      "질문",
+      "추궁"
+    ],
+    "keywords": [
+      "전화",
+      "음성메시지",
+      "조연"
+    ]
+  },
+  "provided-my-wife-episode8": {
+    "sceneTags": {
+      "situation": [
+        "재회",
+        "일상"
+      ],
+      "emotion": [
+        "그리움",
+        "담담함"
+      ],
+      "relationship": [
+        "친구",
+        "연인"
+      ],
+      "objective": [
+        "질문",
+        "고백"
+      ]
+    },
+    "tags": [
+      "재회",
+      "일상",
+      "그리움",
+      "담담함",
+      "친구",
+      "연인",
+      "질문",
+      "고백"
+    ],
+    "keywords": [
+      "안부",
+      "미련",
+      "재혼"
+    ]
+  },
+  "licensed-valkaama-01": {
+    "sceneTags": {
+      "situation": [
+        "일상"
+      ],
+      "emotion": [
+        "걱정",
+        "기쁨"
+      ],
+      "relationship": [
+        "가족"
+      ],
+      "objective": [
+        "위로",
+        "보호"
+      ]
+    },
+    "tags": [
+      "일상",
+      "걱정",
+      "기쁨",
+      "가족",
+      "위로",
+      "보호"
+    ],
+    "keywords": [
+      "아이",
+      "공원",
+      "돌봄"
+    ]
+  },
+  "licensed-valkaama-02": {
+    "sceneTags": {
+      "situation": [
+        "협상",
+        "도전"
+      ],
+      "emotion": [
+        "기대",
+        "경계"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "제안",
+        "거절"
+      ]
+    },
+    "tags": [
+      "협상",
+      "도전",
+      "기대",
+      "경계",
+      "연인",
+      "제안",
+      "거절"
+    ],
+    "keywords": [
+      "시",
+      "출판",
+      "창작"
+    ]
+  },
+  "licensed-valkaama-06": {
+    "sceneTags": {
+      "situation": [
+        "이별"
+      ],
+      "emotion": [
+        "불안",
+        "슬픔"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "질문",
+        "붙잡기"
+      ]
+    },
+    "tags": [
+      "이별",
+      "불안",
+      "슬픔",
+      "연인",
+      "질문",
+      "붙잡기"
+    ],
+    "keywords": [
+      "편지",
+      "발견"
+    ]
+  },
+  "licensed-valkaama-07": {
+    "sceneTags": {
+      "situation": [
+        "이별",
+        "갈등"
+      ],
+      "emotion": [
+        "당혹",
+        "슬픔"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "통보",
+        "추궁"
+      ]
+    },
+    "tags": [
+      "이별",
+      "갈등",
+      "당혹",
+      "슬픔",
+      "연인",
+      "통보",
+      "추궁"
+    ],
+    "keywords": [
+      "식탁",
+      "떠남"
+    ]
+  },
+  "licensed-valkaama-10": {
+    "sceneTags": {
+      "situation": [
+        "갈등"
+      ],
+      "emotion": [
+        "분노",
+        "슬픔"
+      ],
+      "relationship": [
+        "가족"
+      ],
+      "objective": [
+        "추궁",
+        "반박"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "분노",
+      "슬픔",
+      "가족",
+      "추궁",
+      "반박"
+    ],
+    "keywords": [
+      "엄마",
+      "아들",
+      "아버지"
+    ]
+  },
+  "licensed-valkaama-11": {
+    "sceneTags": {
+      "situation": [
+        "이별"
+      ],
+      "emotion": [
+        "그리움",
+        "슬픔"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "붙잡기"
+      ]
+    },
+    "tags": [
+      "이별",
+      "그리움",
+      "슬픔",
+      "연인",
+      "붙잡기"
+    ],
+    "keywords": [
+      "작별",
+      "인사"
+    ]
+  },
+  "licensed-valkaama-15": {
+    "sceneTags": {
+      "situation": [
+        "만남",
+        "여행"
+      ],
+      "emotion": [
+        "호기심",
+        "담담함"
+      ],
+      "relationship": [
+        "낯선사람"
+      ],
+      "objective": [
+        "질문",
+        "안내"
+      ]
+    },
+    "tags": [
+      "만남",
+      "여행",
+      "호기심",
+      "담담함",
+      "낯선사람",
+      "질문",
+      "안내"
+    ],
+    "keywords": [
+      "벤치",
+      "공원",
+      "여행자"
+    ]
+  },
+  "licensed-valkaama-17": {
+    "sceneTags": {
+      "situation": [
+        "만남"
+      ],
+      "emotion": [
+        "걱정",
+        "기대"
+      ],
+      "relationship": [
+        "낯선사람"
+      ],
+      "objective": [
+        "부탁",
+        "안내"
+      ]
+    },
+    "tags": [
+      "만남",
+      "걱정",
+      "기대",
+      "낯선사람",
+      "부탁",
+      "안내"
+    ],
+    "keywords": [
+      "정원사",
+      "수색",
+      "조연"
+    ]
+  },
+  "licensed-valkaama-18": {
+    "sceneTags": {
+      "situation": [
+        "직장",
+        "협상"
+      ],
+      "emotion": [
+        "조급함",
+        "경계"
+      ],
+      "relationship": [
+        "낯선사람"
+      ],
+      "objective": [
+        "부탁",
+        "거절"
+      ]
+    },
+    "tags": [
+      "직장",
+      "협상",
+      "조급함",
+      "경계",
+      "낯선사람",
+      "부탁",
+      "거절"
+    ],
+    "keywords": [
+      "규정",
+      "행정",
+      "민원",
+      "원칙"
+    ]
+  },
+  "licensed-valkaama-19": {
+    "sceneTags": {
+      "situation": [
+        "회상",
+        "만남"
+      ],
+      "emotion": [
+        "호기심",
+        "걱정"
+      ],
+      "relationship": [
+        "낯선사람"
+      ],
+      "objective": [
+        "질문",
+        "안내"
+      ]
+    },
+    "tags": [
+      "회상",
+      "만남",
+      "호기심",
+      "걱정",
+      "낯선사람",
+      "질문",
+      "안내"
+    ],
+    "keywords": [
+      "정원사",
+      "수색",
+      "기억",
+      "조연"
+    ]
+  },
+  "licensed-valkaama-21": {
+    "sceneTags": {
+      "situation": [
+        "만남",
+        "위기"
+      ],
+      "emotion": [
+        "걱정",
+        "경계"
+      ],
+      "relationship": [
+        "낯선사람"
+      ],
+      "objective": [
+        "질문",
+        "부탁"
+      ]
+    },
+    "tags": [
+      "만남",
+      "위기",
+      "걱정",
+      "경계",
+      "낯선사람",
+      "질문",
+      "부탁"
+    ],
+    "keywords": [
+      "이웃",
+      "행방",
+      "문"
+    ]
+  },
+  "licensed-valkaama-22": {
+    "sceneTags": {
+      "situation": [
+        "위기",
+        "갈등"
+      ],
+      "emotion": [
+        "슬픔",
+        "분노"
+      ],
+      "relationship": [
+        "낯선사람"
+      ],
+      "objective": [
+        "통보",
+        "추궁"
+      ]
+    },
+    "tags": [
+      "위기",
+      "갈등",
+      "슬픔",
+      "분노",
+      "낯선사람",
+      "통보",
+      "추궁"
+    ],
+    "keywords": [
+      "비보",
+      "이웃",
+      "죽음"
+    ]
+  },
+  "licensed-valkaama-25": {
+    "sceneTags": {
+      "situation": [
+        "위기",
+        "갈등"
+      ],
+      "emotion": [
+        "조급함",
+        "걱정"
+      ],
+      "relationship": [
+        "가족",
+        "동료"
+      ],
+      "objective": [
+        "설득",
+        "거절"
+      ]
+    },
+    "tags": [
+      "위기",
+      "갈등",
+      "조급함",
+      "걱정",
+      "가족",
+      "동료",
+      "설득",
+      "거절"
+    ],
+    "keywords": [
+      "실종",
+      "수색",
+      "포기"
+    ]
+  },
+  "licensed-valkaama-29": {
+    "sceneTags": {
+      "situation": [
+        "갈등"
+      ],
+      "emotion": [
+        "분노",
+        "결의"
+      ],
+      "relationship": [
+        "가족"
+      ],
+      "objective": [
+        "반박",
+        "고백"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "분노",
+      "결의",
+      "가족",
+      "반박",
+      "고백"
+    ],
+    "keywords": [
+      "어머니",
+      "아들",
+      "비난"
+    ]
+  },
+  "licensed-valkaama-31": {
+    "sceneTags": {
+      "situation": [
+        "만남",
+        "여행"
+      ],
+      "emotion": [
+        "의심",
+        "기대"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "제안",
+        "설득"
+      ]
+    },
+    "tags": [
+      "만남",
+      "여행",
+      "의심",
+      "기대",
+      "친구",
+      "제안",
+      "설득"
+    ],
+    "keywords": [
+      "거짓말",
+      "동행"
+    ]
+  },
+  "licensed-valkaama-32": {
+    "sceneTags": {
+      "situation": [
+        "갈등",
+        "여행"
+      ],
+      "emotion": [
+        "분노",
+        "경계"
+      ],
+      "relationship": [
+        "낯선사람",
+        "친구"
+      ],
+      "objective": [
+        "수습",
+        "보호"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "여행",
+      "분노",
+      "경계",
+      "낯선사람",
+      "친구",
+      "수습",
+      "보호"
+    ],
+    "keywords": [
+      "역",
+      "시비",
+      "중재"
+    ]
+  },
+  "licensed-valkaama-33": {
+    "sceneTags": {
+      "situation": [
+        "여행",
+        "도전"
+      ],
+      "emotion": [
+        "호기심",
+        "의심"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "질문",
+        "고백"
+      ]
+    },
+    "tags": [
+      "여행",
+      "도전",
+      "호기심",
+      "의심",
+      "친구",
+      "질문",
+      "고백"
+    ],
+    "keywords": [
+      "기차",
+      "목적",
+      "꿈"
+    ]
+  },
+  "licensed-valkaama-36": {
+    "sceneTags": {
+      "situation": [
+        "여행",
+        "선택"
+      ],
+      "emotion": [
+        "기대",
+        "담담함"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "제안",
+        "질문"
+      ]
+    },
+    "tags": [
+      "여행",
+      "선택",
+      "기대",
+      "담담함",
+      "친구",
+      "제안",
+      "질문"
+    ],
+    "keywords": [
+      "역",
+      "일정",
+      "계획"
+    ]
+  },
+  "licensed-valkaama-38": {
+    "sceneTags": {
+      "situation": [
+        "도전",
+        "회상"
+      ],
+      "emotion": [
+        "기대",
+        "그리움"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "고백",
+        "격려"
+      ]
+    },
+    "tags": [
+      "도전",
+      "회상",
+      "기대",
+      "그리움",
+      "친구",
+      "고백",
+      "격려"
+    ],
+    "keywords": [
+      "새출발",
+      "우정",
+      "신뢰"
+    ]
+  },
+  "licensed-valkaama-40": {
+    "sceneTags": {
+      "situation": [
+        "갈등",
+        "여행"
+      ],
+      "emotion": [
+        "짜증",
+        "분노"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "수습",
+        "경고"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "여행",
+      "짜증",
+      "분노",
+      "친구",
+      "수습",
+      "경고"
+    ],
+    "keywords": [
+      "술",
+      "동행",
+      "언쟁"
+    ]
+  },
+  "licensed-valkaama-44": {
+    "sceneTags": {
+      "situation": [
+        "위기"
+      ],
+      "emotion": [
+        "불안",
+        "걱정"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "부탁",
+        "질문"
+      ]
+    },
+    "tags": [
+      "위기",
+      "불안",
+      "걱정",
+      "연인",
+      "부탁",
+      "질문"
+    ],
+    "keywords": [
+      "전화",
+      "밤",
+      "긴급"
+    ]
+  },
+  "licensed-valkaama-45": {
+    "sceneTags": {
+      "situation": [
+        "직장",
+        "협상"
+      ],
+      "emotion": [
+        "조급함",
+        "걱정"
+      ],
+      "relationship": [
+        "낯선사람"
+      ],
+      "objective": [
+        "부탁",
+        "안내"
+      ]
+    },
+    "tags": [
+      "직장",
+      "협상",
+      "조급함",
+      "걱정",
+      "낯선사람",
+      "부탁",
+      "안내"
+    ],
+    "keywords": [
+      "항공권",
+      "예약",
+      "상담원",
+      "조연"
+    ]
+  },
+  "licensed-valkaama-48": {
+    "sceneTags": {
+      "situation": [
+        "재회"
+      ],
+      "emotion": [
+        "슬픔",
+        "걱정"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "위로",
+        "고백"
+      ]
+    },
+    "tags": [
+      "재회",
+      "슬픔",
+      "걱정",
+      "연인",
+      "위로",
+      "고백"
+    ],
+    "keywords": [
+      "상처",
+      "무너짐"
+    ]
+  },
+  "licensed-valkaama-50": {
+    "sceneTags": {
+      "situation": [
+        "여행",
+        "갈등"
+      ],
+      "emotion": [
+        "의심",
+        "걱정"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "질문",
+        "설득"
+      ]
+    },
+    "tags": [
+      "여행",
+      "갈등",
+      "의심",
+      "걱정",
+      "연인",
+      "질문",
+      "설득"
+    ],
+    "keywords": [
+      "목적지",
+      "동행"
+    ]
+  },
+  "licensed-valkaama-52": {
+    "sceneTags": {
+      "situation": [
+        "여행",
+        "갈등"
+      ],
+      "emotion": [
+        "불안",
+        "짜증"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "설득",
+        "거절"
+      ]
+    },
+    "tags": [
+      "여행",
+      "갈등",
+      "불안",
+      "짜증",
+      "연인",
+      "설득",
+      "거절"
+    ],
+    "keywords": [
+      "오두막",
+      "숙박",
+      "의견차이"
+    ]
+  },
+  "licensed-valkaama-53": {
+    "sceneTags": {
+      "situation": [
+        "이별",
+        "회상"
+      ],
+      "emotion": [
+        "외로움",
+        "슬픔"
+      ],
+      "relationship": [
+        "자신",
+        "연인"
+      ],
+      "objective": [
+        "고백"
+      ]
+    },
+    "tags": [
+      "이별",
+      "회상",
+      "외로움",
+      "슬픔",
+      "자신",
+      "연인",
+      "고백"
+    ],
+    "keywords": [
+      "편지",
+      "독백",
+      "쪽지"
+    ]
+  },
+  "licensed-valkaama-54": {
+    "sceneTags": {
+      "situation": [
+        "갈등",
+        "협상"
+      ],
+      "emotion": [
+        "분노",
+        "결의"
+      ],
+      "relationship": [
+        "대립관계"
+      ],
+      "objective": [
+        "반박",
+        "설득"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "협상",
+      "분노",
+      "결의",
+      "대립관계",
+      "반박",
+      "설득"
+    ],
+    "keywords": [
+      "공동체",
+      "배타성",
+      "가치관"
+    ]
+  },
+  "licensed-valkaama-56": {
+    "sceneTags": {
+      "situation": [
+        "선택",
+        "이별"
+      ],
+      "emotion": [
+        "슬픔",
+        "그리움"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "질문",
+        "위로"
+      ]
+    },
+    "tags": [
+      "선택",
+      "이별",
+      "슬픔",
+      "그리움",
+      "친구",
+      "질문",
+      "위로"
+    ],
+    "keywords": [
+      "상실",
+      "귀환",
+      "여정"
+    ]
+  },
+  "licensed-tos-breakup": {
+    "sceneTags": {
+      "situation": [
+        "이별",
+        "갈등"
+      ],
+      "emotion": [
+        "슬픔",
+        "당혹"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "통보",
+        "거절"
+      ]
+    },
+    "tags": [
+      "이별",
+      "갈등",
+      "슬픔",
+      "당혹",
+      "연인",
+      "통보",
+      "거절"
+    ],
+    "keywords": [
+      "진로",
+      "꿈",
+      "우주"
+    ]
+  },
+  "licensed-tos-coaching": {
+    "sceneTags": {
+      "situation": [
+        "도전"
+      ],
+      "emotion": [
+        "걱정",
+        "기대"
+      ],
+      "relationship": [
+        "상하관계",
+        "동료"
+      ],
+      "objective": [
+        "격려",
+        "안내"
+      ]
+    },
+    "tags": [
+      "도전",
+      "걱정",
+      "기대",
+      "상하관계",
+      "동료",
+      "격려",
+      "안내"
+    ],
+    "keywords": [
+      "고백",
+      "조언",
+      "대장",
+      "조연"
+    ]
+  },
+  "licensed-tos-apology": {
+    "sceneTags": {
+      "situation": [
+        "재회",
+        "갈등"
+      ],
+      "emotion": [
+        "후회",
+        "슬픔"
+      ],
+      "relationship": [
+        "연인"
+      ],
+      "objective": [
+        "사과",
+        "고백"
+      ]
+    },
+    "tags": [
+      "재회",
+      "갈등",
+      "후회",
+      "슬픔",
+      "연인",
+      "사과",
+      "고백"
+    ],
+    "keywords": [
+      "상처",
+      "용서",
+      "과거"
+    ]
+  },
+  "licensed-ed-danger": {
+    "sceneTags": {
+      "situation": [
+        "위기",
+        "여행"
+      ],
+      "emotion": [
+        "불안",
+        "걱정"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "보호",
+        "위로"
+      ]
+    },
+    "tags": [
+      "위기",
+      "여행",
+      "불안",
+      "걱정",
+      "친구",
+      "보호",
+      "위로"
+    ],
+    "keywords": [
+      "구조",
+      "기계",
+      "위험"
+    ]
+  },
+  "licensed-ed-listen": {
+    "sceneTags": {
+      "situation": [
+        "갈등",
+        "여행"
+      ],
+      "emotion": [
+        "짜증",
+        "경계"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "설득",
+        "경고"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "여행",
+      "짜증",
+      "경계",
+      "친구",
+      "설득",
+      "경고"
+    ],
+    "keywords": [
+      "집중",
+      "듣기",
+      "모험"
+    ]
+  },
+  "licensed-ed-tired": {
+    "sceneTags": {
+      "situation": [
+        "갈등",
+        "여행"
+      ],
+      "emotion": [
+        "짜증",
+        "분노"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "추궁",
+        "고백"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "여행",
+      "짜증",
+      "분노",
+      "친구",
+      "추궁",
+      "고백"
+    ],
+    "keywords": [
+      "피로",
+      "통제",
+      "모험"
+    ]
+  },
+  "licensed-ed-eyes": {
+    "sceneTags": {
+      "situation": [
+        "도전",
+        "여행"
+      ],
+      "emotion": [
+        "호기심",
+        "기대"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "질문",
+        "안내"
+      ]
+    },
+    "tags": [
+      "도전",
+      "여행",
+      "호기심",
+      "기대",
+      "친구",
+      "질문",
+      "안내"
+    ],
+    "keywords": [
+      "신뢰",
+      "상상",
+      "눈"
+    ]
+  },
+  "licensed-ed-trust": {
+    "sceneTags": {
+      "situation": [
+        "갈등",
+        "여행"
+      ],
+      "emotion": [
+        "불안",
+        "분노"
+      ],
+      "relationship": [
+        "친구"
+      ],
+      "objective": [
+        "경고",
+        "보호"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "여행",
+      "불안",
+      "분노",
+      "친구",
+      "경고",
+      "보호"
+    ],
+    "keywords": [
+      "신뢰",
+      "길",
+      "제지"
+    ]
+  },
+  "licensed-ed-nothing": {
+    "sceneTags": {
+      "situation": [
+        "갈등"
+      ],
+      "emotion": [
+        "의심",
+        "결의"
+      ],
+      "relationship": [
+        "친구",
+        "대립관계"
+      ],
+      "objective": [
+        "반박",
+        "설득"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "의심",
+      "결의",
+      "친구",
+      "대립관계",
+      "반박",
+      "설득"
+    ],
+    "keywords": [
+      "믿음",
+      "세계",
+      "가치관"
+    ]
+  },
+  "licensed-ed-trap": {
+    "sceneTags": {
+      "situation": [
+        "갈등",
+        "위기"
+      ],
+      "emotion": [
+        "분노",
+        "경계"
+      ],
+      "relationship": [
+        "대립관계"
+      ],
+      "objective": [
+        "추궁",
+        "반박"
+      ]
+    },
+    "tags": [
+      "갈등",
+      "위기",
+      "분노",
+      "경계",
+      "대립관계",
+      "추궁",
+      "반박"
+    ],
+    "keywords": [
+      "도발",
+      "세계",
+      "함정"
+    ]
+  }
+}

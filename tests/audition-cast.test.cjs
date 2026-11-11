@@ -1,6 +1,6 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),zlib=require('node:zlib');
 const {createHandler}=require('../api/ai-audition'),{memoryRepository}=require('../api/_audition'),{createQueue}=require('../api/_audition-queue'),memoryStore=require('./audition-store.cjs');
-const {builtins,scriptText}=require('../src/audition/catalog.cjs'),{dialogue}=require('../src/audition/dialogue.cjs'),{entry}=require('../src/audition/model.cjs'),{dimensions}=require('../api/_audition-mask');
+const {builtins,scriptText}=require('../src/audition/catalog.cjs'),{dialogue}=require('../src/audition/dialogue.cjs'),{entry}=require('../src/audition/model.cjs'),{dimensions,makeMask}=require('../api/_audition-mask');
 const jpeg='data:image/jpeg;base64,'+Buffer.from([255,216,255,224,0,16]).toString('base64'),scene='data:image/jpeg;base64,'+fs.readFileSync('published-source/assets/audition-scenes/veteran.jpg').toString('base64');
 function setup(fetcher,limit){return createHandler({repo:memoryRepository(),configured:()=>true,fetcher,limit,access:createQueue({request:memoryStore().request,secret:()=> 'cast-test-secret'})});}
 async function call(h,faces){const r={code:200,setHeader(){},status(n){this.code=n;return this;},json(v){this.data=v;return this;}};await h({method:'POST',headers:{host:'academy.test',origin:'https://academy.test'},body:{scriptId:'sample-veteran',scene,faces,consent:true,sceneConsent:true}},r);return r;}
@@ -17,4 +17,17 @@ test('a single B reference edits only B and explicitly retains both other origin
 test('unknown, duplicate, empty, unconsented or excess roles cannot reach the provider or quota',async()=>{
  let calls=0;const h=setup(async()=>{calls++;},async()=>{calls++;});const a={roleId:'A',portrait:jpeg,consent:true};for(const faces of [[],[a,a],[{...a,roleId:'D'}],[{...a,consent:false}],[{...a,portrait:'https://evil.test/image.jpg'}],[a,{...a,roleId:'B'},{...a,roleId:'C'},{...a,roleId:'D'}]])assert.equal((await call(h,faces)).code,400);assert.equal(calls,0);
  assert.throws(()=>dimensions({mime:'image/jpeg',bytes:Buffer.from([255,216,255,224,0,16])}));assert.throws(()=>entry({...builtins[0],cast:[...builtins[0].cast,builtins[0].cast[0]],reviewed:true}));
+});
+
+test('context mask opens hair and neck, feathers edges and protects overlapping unassigned faces',()=>{
+ const box={x:.3,y:.3,w:.2,h:.3},neighbor={x:.52,y:.4,w:.1,h:.2};
+ const m=maskPixels(makeMask({w:1000,h:1000},[box],[neighbor]));
+ assert.equal(m.alpha(.4,.31),0);assert.equal(m.alpha(.4,.25),0);assert.equal(m.alpha(.4,.67),0);
+ assert.equal(m.alpha(.25,.4),255);assert.equal(m.alpha(.4,.75),255);
+ assert.ok(m.alpha(.4,.71)>0&&m.alpha(.4,.71)<255);
+ assert.equal(m.alpha(.52,.45),255);assert.equal(m.alpha(.55,.5),255);
+});
+test('expanded edge-of-frame masks remain valid and all selected roles can regenerate',()=>{
+ const m=maskPixels(makeMask({w:100,h:100},[{x:0,y:0,w:.3,h:.3},{x:.7,y:.7,w:.3,h:.3}]));
+ assert.equal(m.alpha(0,0),0);assert.equal(m.alpha(.99,.99),0);assert.equal(m.alpha(.5,.5),255);
 });

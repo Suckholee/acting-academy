@@ -27,3 +27,12 @@ test('private pages and legacy redirects retain indexing policies without websit
     assert.ok(result.includes(BRAND));
   }
 });
+
+test('home link previews use the warm academy poster while search identity and other pages keep their own metadata',()=>{
+ const {parseHTML}=require('linkedom'),fs=require('node:fs');
+ const input='<html><head><title>Old</title><meta name="description" content="서울 마곡의 실제 수업 안내"><meta property="og:image" content="https://example.com/old.png"><meta name="twitter:image" content="https://example.com/old.png"></head><body><h1>수업 안내</h1></body></html>';
+ const result=normalizeSearchBranding(input,true),{document:d}=parseHTML(result);const get=k=>d.querySelector(`meta[property="${k}"]`)?.getAttribute('content');
+ assert.equal(get('og:title'),'당신의 다음 장면을 함께합니다 · 김정태 배우아카데미');assert.equal(get('og:image'),'https://www.kactstar.com/assets/academy-home-share-v1.png');assert.equal(get('og:image:type'),'image/png');assert.equal(get('og:image:width'),'1734');assert.equal(get('og:image:height'),'907');assert.equal(get('og:url'),'https://www.kactstar.com/');assert.equal(d.querySelector('meta[name=description]').getAttribute('content'),'서울 마곡의 실제 수업 안내');assert.equal(d.querySelector('h1').textContent,'수업 안내');assert.equal(d.querySelectorAll('meta[property="og:image"]').length,1);assert.equal(normalizeSearchBranding(result,true),result);
+ const other=normalizeSearchBranding(input,false);assert.ok(other.includes('https://example.com/old.png'));assert.ok(!other.includes('academy-home-share-v1'));
+ const home=parseHTML(fs.readFileSync('dist-published/index.html','utf8')).document;assert.equal(home.querySelector('meta[property="og:image"]').getAttribute('content'),get('og:image'));assert.equal(home.querySelector('meta[name="twitter:card"]').getAttribute('content'),'summary_large_image');assert.ok(fs.statSync('dist-published/assets/academy-home-share-v1.png').size>1000);
+});

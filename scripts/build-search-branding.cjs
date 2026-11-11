@@ -3,6 +3,18 @@ const path = require('node:path');
 
 const BRAND = '김정태 배우아카데미';
 const ORIGIN = 'https://www.kactstar.com';
+const HOME_SHARE_TITLE = '당신의 다음 장면을 함께합니다 · 김정태 배우아카데미';
+const HOME_SHARE_DESCRIPTION = '처음 시작하는 연기부터 카메라·무대 연기까지. 나만의 목소리와 표정을 찾아가는 시간, 김정태 배우아카데미에서 함께하세요.';
+function homeSharing(html) {
+  const image = ORIGIN + '/assets/academy-home-share-v1.png';
+  const values = {'og:type':'website','og:site_name':BRAND,'og:locale':'ko_KR','og:title':HOME_SHARE_TITLE,'og:description':HOME_SHARE_DESCRIPTION,'og:url':ORIGIN+'/','og:image':image,'og:image:secure_url':image,'og:image:type':'image/png','og:image:width':'1734','og:image:height':'907','og:image:alt':'당신의 다음 장면을 함께합니다. 따뜻한 햇살 아래 대본을 함께 읽는 모습을 담은 김정태 배우아카데미 홍보 포스터.'};
+  html = html.replace(/<meta\b(?=[^>]*\bproperty=["']og:[^"']*["'])[^>]*>/gi,'')
+    .replace(/<meta\b(?=[^>]*\bname=["']twitter:[^"']*["'])[^>]*>/gi,'');
+  const tags=Object.entries(values).map(([key,value])=>`<meta property="${key}" content="${value}">`).join('')
+    + `<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${HOME_SHARE_TITLE}"><meta name="twitter:description" content="${HOME_SHARE_DESCRIPTION}"><meta name="twitter:image" content="${image}">`;
+  return html.replace('</head>',tags+'</head>');
+}
+
 
 function normalizeBrand(html) {
   return html.replace(/김정태\s*연기\s*아카데미/g, BRAND)
@@ -33,6 +45,7 @@ function normalizeSearchBranding(html, home = false) {
       ]
     };
     html = html.replace('</head>', `<script id="academy-search-identity" type="application/ld+json">${JSON.stringify(identity)}</script></head>`);
+    html = homeSharing(html);
   }
   return html;
 }

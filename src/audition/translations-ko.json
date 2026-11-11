@@ -1,0 +1,1309 @@
+{
+  "licensed-valkaama-01": {
+    "sourceScript": "A(Runa): Hey! Don't just sneak up behind me!\n\nB(Lasse): You were miles away. What's on your mind?\n\nA(Runa): Nothing, Lasse, nothing...\n\nA(Runa): Our little sweetie is quite tired already, isn't she?\n\nB(Lasse): No, I don't think so.\n\nC(Ibsy): I saw a squirrel! Come Lasse, come!\n\nB(Lasse): Well Ibsy, where is the nimble little animal? Has it gone?\n\nC(Ibsy): It was just there!\n\nB(Lasse): It's ok, we can wait a while. I'm sure it will come back again!\n\nA(Runa): I think I've got a better idea.\n\nA(Runa): How about a big piece of yummy chocolate cake?",
+    "turns": [
+      "야! 갑자기 뒤에서 몰래 다가오지 마!",
+      "딴 생각하고 있더라. 무슨 고민 있어?",
+      "아니야, 라세, 진짜 아무것도 아니야...",
+      "우리 애기 많이 피곤한 것 같지, 그치?",
+      "아니, 난 그렇게 안 보이는데.",
+      "다람쥐 봤어! 라세, 이리 와봐!",
+      "그래, 이브시. 그 잽싼 동물 어디 있니? 벌써 가버렸어?",
+      "거기 바로 있었단 말이야!",
+      "괜찮아, 우리 좀만 기다려 보자. 분명히 다시 나타날 거야!",
+      "내가 좀 더 좋은 생각이 있어.",
+      "맛있는 초콜릿 케이크 한 조각 어때?"
+    ]
+  },
+  "licensed-valkaama-02": {
+    "sourceScript": "A(Lasse): Can I send an email tonight? I mean, from your laptop?\n\nB(Runa): YOU have an e-mail account?\n\nA(Lasse): Of course not... I would like to use yours...\n\nB(Runa): O... Okay.\n\nB(Runa): Lasse?\n\nB(Runa): Lasse!\n\nA(Lasse): Yes, Runa?\n\nB(Runa): Why don't you want to show me your poems? You must have written hundreds of them during the past few weeks, since we met each other.\n\nA(Lasse): I already told you. I am writing for myself.\n\nB(Runa): Yes, but... I phoned one of my friends this morning. She knows someone who could help you publish your poems. You could make a little extra money...\n\nA(Lasse): No... I don't want that. What I am writing... I am writing for a different purpose.\n\nB(Runa): What kind of purpose? To scrape through life as a poor poet?\n\nA(Lasse): I am not one of those people who just writes to become famous and make big money.\n\nB(Runa): So why are you writing so much?\n\nA(Lasse): Writing and poetry are simply a part of me.\n\nB(Runa): ...as well as travelling. I know. You already mentioned that. You know, you're quite strange. Sometimes I get the impression that you are living in a different world. One which is far away from this planet.\n\nA(Lasse): I don't expect you to understand me. Not many people do...\n\nB(Runa): I'm sorry ... I didn't mean for you to take it personally...\n\nA(Lasse): Alright. No problem. Let's go. The day is too beautiful to spend it arguing. Every day is too beautiful to spend arguing! Come on Ibsy!",
+    "turns": [
+      "오늘 밤 이메일 좀 써도 될까? 네 노트북으로...",
+      "네가 이메일 계정이 있어?",
+      "당연히 없지... 네 걸 잠깐 쓰고 싶어서...",
+      "아... 알겠어.",
+      "라세?",
+      "라세!",
+      "응, 루나?",
+      "왜 내게 너의 시를 보여주기 싫은 거야? 우리가 만난 이후로 몇 주 동안 수백 편은 썼을 텐데.",
+      "이미 말했잖아. 나는 나 자신을 위해서 쓰는 거라고.",
+      "알아, 그런데... 오늘 아침에 내 친구한테 전화했어. 네 시를 출판 도와줄 수 있는 사람을 안다고 하더라. 돈도 조금 벌 수 있을 거고...",
+      "아니야... 난 그건 원하지 않아. 내가 쓰는 건... 다른 목적이 있어서야.",
+      "무슨 목적인데? 가난한 시인으로 살아가려고?",
+      "난 유명해지거나 돈 벌려고 글 쓰는 사람 아니야.",
+      "그럼 왜 그렇게 많이 써?",
+      "글쓰기랑 시는 그냥 내 일부야.",
+      "...여행도 그렇고. 나도 알아. 이미 그런 말도 했지. 넌 참 이상해. 가끔 보면 완전히 딴 세상에 사는 사람 같아. 이 세상과는 멀리 떨어진 곳에.",
+      "네가 날 이해해주길 기대하지 않아. 이해해주는 사람도 거의 없어...",
+      "미안... 그런 뜻으로 한 말 아니었어...",
+      "알았어. 괜찮아. 나가자. 이렇게 좋은 날씨에 싸우면서 보내기엔 아깝잖아. 아니, 매일매일이 그렇게 보내기엔 소중하지! 이브시, 어서 나오자!"
+    ]
+  },
+  "licensed-valkaama-06": {
+    "sourceScript": "A(Lasse): For a long time now I have been neglecting you... But don't be too sad, for there are no new adventures to report.\n\nA(Lasse): In fact the moment has come and in peace my decision matured. Finally I feel that the time of travelling is coming to an end.\n\nA(Lasse): Now we will return home. Together. And our eternal dream will come true. I so appreciate the way you have been waiting patiently.\n\nA(Lasse): We will meet again. At the usual place. By the time the sun blessedly smiles for the fourth time, our aspiration will be nursed.\n\nB(Runa): Homecoming...",
+    "turns": [
+      "오랫동안 널 소홀히 한 것 같아... 하지만 너무 슬퍼하지는 마, 새로운 모험은 없으니까.",
+      "사실 그 순간이 왔고, 평온하게 결정이 섰어. 이제 정말 여행의 끝이 다가온 것 같아.",
+      "이제 우린 함께 집으로 돌아갈 거야. 그리고 우리의 영원한 꿈이 이루어질 거야. 네가 인내심 있게 기다려줘서 고마워.",
+      "우린 다시 만날 거야. 늘 그곳에서. 태양이 네 번째로 포근하게 미소 지을 즈음이면, 우리의 바람도 다시 움틀 거야.",
+      "귀향..."
+    ]
+  },
+  "licensed-valkaama-07": {
+    "sourceScript": "A(Lasse): Good morning!\n\nB(Runa): Hey.\n\nA(Lasse): Can I turn off the radio?\n\nB(Runa): Strange ritual!\n\nA(Lasse): What do you mean by that?\n\nB(Runa): Every morning you ask me the same thing! Just turn it off. I am not even listening to it!\n\nA(Lasse): I just wanted to be polite.\n\nB(Runa): Yea...\n\nB(Runa): I know...\n\nA(Lasse): Didn't you sleep well?\n\nA(Lasse): Or... are you still angry because of yesterday?\n\nB(Runa): I don't know...\n\nA(Lasse): What is it? You are very quiet this morning... I've never seen this side of you.\n\nA(Lasse): What is it with you?\n\nB(Runa): You have no idea what you mean to my sister...\n\nA(Lasse): What are you driving at?\n\nA(Lasse): You found the letter...?\n\nB(Runa): No! I mean, what are you talking about?\n\nA(Lasse): I am talking about, that I am going to say farewell to the two of you quite soon...\n\nB(Runa): What does that mean ... 'quite soon'?\n\nA(Lasse): Within a few days.\n\nB(Runa): In... in a few days?\n\nB(Runa): Of course! That's no problem, is it! Go! ... Just leave! Go without warning. Just like you came into our lives!\n\nA(Lasse): Why this anger, Runa? Let us depart as friends. You and Ibsy will stay in my heart. Always.\n\nB(Runa): So that's it? You, you come into my life, take everything you need ... and leave regardless of the consequences?\n\nA(Lasse): Please don't be unfair. You were looking for someone to help take care of your sister. And I have been there for her. Now it's time for me to move on... You will find someone.\n\nB(Runa): How can you be so selfish?\n\nA(Lasse): I was hoping you would understand.\n\nA(Lasse): In this situation, I think it is for the best, if I move on as soon as possible. You should know better...",
+    "turns": [
+      "좋은 아침!",
+      "안녕.",
+      "라디오 꺼도 돼?",
+      "참 이상한 의식이네!",
+      "그게 무슨 뜻이야?",
+      "매일 아침 똑같이 물어보잖아! 그냥 꺼, 나 듣지도 않아!",
+      "그냥 예의상 물어본 거였어.",
+      "응...",
+      "알아...",
+      "잠 잘 못 잤어?",
+      "아니면... 아직도 어제 일 때문에 화났어?",
+      "모르겠어...",
+      "왜 그래? 오늘 아침 내내 너무 조용하잖아... 너한테서 이런 모습 처음 봐.",
+      "무슨 일 있는 거야?",
+      "네가 내 동생한테 얼마나 큰 의미인지 모르지...",
+      "무슨 말 하고 싶은 건데?",
+      "혹시 편지 본 거야...?",
+      "아니! 그러니까 무슨 얘기 하는 건데?",
+      "내가 곧 너희 둘과 작별하려고 한다는 얘기야...",
+      "'곧'이 뭐야? 정확히 언제?",
+      "며칠 안에.",
+      "며칠 안에...?",
+      "그래! 아무 문제 아니지, 그렇지! 가! 그냥 가버려! 아무 말도 없이. 네가 우리 삶에 들어온 것처럼!",
+      "왜 이렇게 화를 내, 루나? 우리 친구로 헤어지자. 너랑 이브시는 내 마음에 영원히 남을 거야.",
+      "그래서 그게 끝이야? 내 인생에 들어와서 필요하던 거 다 얻어가고... 어떤 결과가 오든 그냥 떠나는 거야?",
+      "부당하게 굴지 마. 네 동생 돌봐줄 사람 필요하다 했고, 난 곁에 있었어. 이제 내 갈 길로 가야 해... 넌 분명 다시 누군가 만날 거야.",
+      "어떻게 그렇게 이기적일 수 있니?",
+      "네가 이해해주길 바랐어.",
+      "이 상황에서는 내가 빨리 떠나는 게 맞는 것 같아. 너도 잘 알잖아..."
+    ]
+  },
+  "licensed-valkaama-10": {
+    "sourceScript": "A(Svenja): Magnus!!! ... MAAAGNUS!!!\n\nA(Svenja): He robbed me of my sleep, AGAIN! That son of a bitch!\n\nB(Magnus): Same shit, different night...\n\nA(Svenja): The bastard.\n\nB(Magnus): You've been dreaming of father again?!\n\nA(Svenja): YES! About that bastard again. He just won't let me live in peace!\n\nA(Svenja): Bastard! ... He's to blame for all this. Him! Never forget that!\n\nB(Magnus): Yeayea...\n\nA(Svenja): He got us into all this! He left us in the lurch! When you were still messing in your nappies! Always remember that!\n\nA(Svenja): Always remember that, always! Promise me!\n\nB(Magnus): No wonder you're dreaming about him after getting out his pictures - Like you always do when you're wasted. Throw them away and be done with them!\n\nA(Svenja): Don't YOU tell me what to do! ... The bastard simply abandoned me!\n\nA(Svenja): He destroyed everything...\n\nA(Svenja): He just disappeared! He took the best from me!\n\nA(Svenja): And you are still here!\n\nB(Magnus): I'm really not in the mood anymore for this kind of shit.\n\nA(Svenja): Don't you leave now!!! I'm not ready yet!\n\nB(Magnus): What else?\n\nA(Svenja): You know, before, when you weren't here, as usual of course... some of those crazy Jehovah-witness freaks knocked on our door.\n\nA(Svenja): What do you think I did?!?\n\nB(Magnus): No idea. You probably didn't offer them a beer.\n\nA(Svenja): Don't make fun of me!\n\nA(Svenja): ... I sent them to hell!!! They talk the same shit, like your father used to. I lost him to mind twisters like those fuckers! They destroy everything! They'll burn in hell.\n\nA(Svenja): And he will too!\n\nB(Magnus): That doesn't make any sense at all...\n\nA(Svenja): MAGNUS! MAAGNUS! STAY WITH ME!\n\nA(Svenja): Don't leave me alone. Don't leave me alone...",
+    "turns": [
+      "마그누스!!! ... 마아그누스!!!",
+      "또 내 잠을 빼앗아갔어, 또! 그 자식!",
+      "맨날 똑같지, 밤만 다를 뿐...",
+      "그 자식.",
+      "또 아버지 꿈 꿨어?!",
+      "그래! 또 그 자식 꿈 꿨어. 나 좀 평범하게 살게 그냥 내버려두질 않아!",
+      "자식 같으니! ... 이 모든 게 다 그 인간 때문이야. 그 사람! 절대 잊지 마!",
+      "어, 어...",
+      "그 인간 때문에 우리가 이렇게 된 거야! 네가 아직 기저귀 차던 때 우리를 버렸잖아! 꼭 기억해!",
+      "꼭 기억해, 항상! 약속해!",
+      "네가 또 취하니까 아버지 사진 꺼내놓고 꿈꾸는 거잖아 — 늘 네가 취하면 그러잖아. 그냥 사진 버리고 끝내!",
+      "내가 뭘 하든 너는 신경 꺼! ... 그 인간이 나를 그냥 버린 거야!",
+      "다 망쳐놨지…",
+      "그냥 사라져버렸어! 내 인생에서 제일 소중한 걸 다 가져가버렸다니까!",
+      "근데 넌 아직 여기 남아 있잖아!",
+      "이런 거 이제 진짜 지겹다.",
+      "지금 나가지 마!!! 난 아직 준비 안 됐어!",
+      "또 뭐?",
+      "있잖아, 네가 없었을 때, 늘 그렇듯이… 그 이상한 여호와의 증인들이 우리 집 벨 누르더라.",
+      "내가 뭐했을 거 같아?!",
+      "모르지. 맥주 한잔 권하지는 않았겠지.",
+      "나 가지고 놀지 마!",
+      "... 지옥으로 쫓아버렸지!!! 걔네도 아버지처럼 똑같은 헛소리만 늘어놓더라. 그런 미친 인간들 때문에 나 아버지를 잃었어! 다 망쳐버려! 다 지옥 가서 벌받을 거야.",
+      "아버지도 마찬가지야!",
+      "진짜 말도 안 돼...",
+      "마그누스! 마아그누스! 같이 있어줘!",
+      "날 혼자 두지 마. 혼자 두지 마..."
+    ]
+  },
+  "licensed-valkaama-11": {
+    "sourceScript": "A(Runa): So you are going to visit one of your girls?\n\nB(Lasse): What makes you think that?\n\nA(Runa): ... with all those women listed in your address book.\n\nB(Lasse): No. I'm only moving on.\n\nA(Runa): ... to another girl.\n\nB(Lasse): Please don't be unreasonable again.\n\nA(Runa): Am I not good enough for you?\n\nB(Lasse): It is not about that. You are wonderful. But I have to move on. I'll be in touch.\n\nA(Runa): Do you really want to let me and Ibsy down, just like that?\n\nB(Lasse): Let you down? I don't understand what you are talking about. You have everything you need.\n\nB(Lasse): Well ... and please give that to Ibsy from me.\n\nB(Lasse): This is Mr. Petri Smödhelm. So far he's been everywhere with me. He's almost become a part of me... But when Ibsy saw him, there was this glint in her eye. Petri will be in good hands with her.\n\nA(Runa): Ibsy doesn't need a doll, she needs you! You mean a lot to her!\n\nB(Lasse): Please understand. I cannot stay... I have to go.\n\nB(Lasse): Thank you for everything. From the bottom of my heart. I'll be in touch.\n\nA(Runa): ... I need you too!",
+    "turns": [
+      "그럼 지금 네 여자 중 한 명 만나러 가는 거야?",
+      "왜 그렇게 생각하지?",
+      "... 전화번호부에 여자들 잔뜩 적혀 있잖아.",
+      "아니야. 그냥 떠나려고 해.",
+      "... 다른 여자한테로.",
+      "제발 또 괜한 오해하지 마.",
+      "내가 너한테 부족해?",
+      "그런 게 아니야. 넌 정말 멋진 사람이야. 하지만 난 떠나야 해. 연락할게.",
+      "너 진짜 나랑 입시 그냥 두고 갈 거야?",
+      "두고 간다니? 뭔 말인지 모르겠어. 너 필요한 거 다 있잖아.",
+      "아, 그리고 이거 입시한테 꼭 전해줘.",
+      "이분이 페트리 스뫼드헬름 씨야. 지금까지 나랑 어디든 함께 다녔어. 거의 내 일부가 됐지… 그런데 입시가 그 인형 봤을 때 눈이 반짝이더라. 페트리는 입시 손에 있으면 잘 지낼 거야.",
+      "입시는 인형이 아니라 네가 필요해! 너는 입시한테 정말 소중한 사람이란 말이야!",
+      "이해해줘. 난 머무를 수 없어… 떠나야 해.",
+      "지금까지 고마웠어. 진심으로. 연락할게.",
+      "... 나도 네가 필요해!"
+    ]
+  },
+  "licensed-valkaama-15": {
+    "sourceScript": "A(Man): You are not from here, are you?\n\nB(Lasse): No, I am just visiting for a couple of days.\n\nA(Man): Oh. And whose guest are you?\n\nB(Lasse): Pastor Johannsson.\n\nA(Man): Are you a relative?\n\nB(Lasse): No, just a good friend. I got to know him in Gothenburg, before he took up his position here.\n\nA(Man): Beautiful dog, isn't he?\n\nB(Lasse): Yes. Truly a noble dog.\n\nA(Man): Well. He has cost me a fortune.\n\nB(Lasse): Life shouldn't be for sale.\n\nA(Man): I wouldn't have bought a dead dog, though. But who knows? In some countries they go straight to the pot.\n\nB(Lasse): They eat dogs in China...\n\nA(Man): Have you been there?\n\nB(Lasse): Yes.\n\nA(Man): And, was it tasty?\n\nB(Lasse): I couldn't tell you. I am a vegetarian.\n\nA(Man): China ... China... quite far away. Do you know someone there?\n\nB(Lasse): I've met many people and visited many places during my journeys.\n\nA(Man): So how long have you been travelling around?\n\nB(Lasse): About 5 years... But every now and then I return to Gothenburg.\n\nA(Man): Soo... You've probably experienced a lot.\n\nB(Lasse): Good things and bad things.\n\nA(Man): Maybe you can you show me some pictures of China?\n\nB(Lasse): I don't have any pictures...\n\nA(Man): You travelled that far and didn't even take any pictures?\n\nB(Lasse): Everything I experienced I wrote down. And I have it in my memory.\n\nA(Man): So you wrote a book?\n\nB(Lasse): No, letters... to my companion in Gothenburg. He cannot travel himself... that is why I let him share all my experiences.\n\nA(Man): Okay. And where are you heading next?\n\nB(Lasse): Home. I mean, first to Gothenburg... the day after tomorrow, to meet my companion...\n\nA(Man): Well... Good luck then, young man.\n\nB(Lasse): Farewell.\n\nA(Man): Good bye. And take some pictures on your next journeys.",
+    "turns": [
+      "여기 사람이 아니지?",
+      "아니요, 며칠 방문 중이에요.",
+      "아, 그럼 누구네 손님이야?",
+      "요한손 목사님이요.",
+      "친척이야?",
+      "아니요, 그냥 친한 친구예요. 그분이 여기 오기 전에 예테보리에서 알게 됐어요.",
+      "멋진 개지? 그렇지?",
+      "네. 정말 품위 있는 개에요.",
+      "근데 얘한테 돈 엄청 썼네.",
+      "인생은 돈으로 살 수 있는 게 아니죠.",
+      "죽은 개 샀으면 어쩔 뻔했냐. 아니 뭐, 누가 알아? 어떤 나라에선 그냥 바로 냄비에 들어가니까.",
+      "중국에서는 개고기를 먹더라고요...",
+      "거기 가본 적 있어?",
+      "네.",
+      "맛있던가?",
+      "모르겠어요. 전 채식주의자라서요.",
+      "중국... 중국... 꽤 멀지. 거기 아는 사람 있어?",
+      "여행하면서 많은 사람을 만났고, 여러 곳을 들렀어요.",
+      "그럼 얼마나 떠돌아다녔어?",
+      "5년쯤 됐어요... 그래도 가끔 예테보리에 돌아가요.",
+      "음... 그럼 진짜 별별 걸 다 겪었겠다.",
+      "좋은 일도 있고 안 좋은 일도 있었죠.",
+      "혹시 중국 사진 보여줄 수 있니?",
+      "사진은 없어요...",
+      "그렇게 먼 데 갔다 오면서 사진 한 장도 안 찍었다고?",
+      "겪었던 모든 것들을 글로 썼어요. 그리고 제 기억에도 남아 있고요.",
+      "책이라도 쓴 거야?",
+      "아니요, 편지요... 예테보리에 있는 친구한테요. 그 친구는 직접 여행 못 해서, 제가 모든 경험을 공유하는 거예요.",
+      "그래... 다음엔 어디로 갈 생각이야?",
+      "집이요. 아니, 먼저 예테보리로… 모레 친구 만나러 갈 거예요.",
+      "그래... 그럼 행운을 빌어, 젊은이.",
+      "안녕히 계세요.",
+      "잘 가. 다음에는 사진도 좀 찍어와."
+    ]
+  },
+  "licensed-valkaama-17": {
+    "sourceScript": "A(Björn): Hello, may I help you?\n\nB(Runa): Ehh, yes. I am looking for someone. Where can I find help?\n\nA(Björn): Well, in this case ye old Björn is going to accompany you to our receptionist. It scarcely happens that we are visited by such a beautiful young lady.\n\nB(Runa): Thank you, that's really nice of you.\n\nB(Runa): Tell me, it is so quiet in this place. Where are all the kids?\n\nA(Björn): It's lunch hour. They all went to have dinner.\n\nA(Björn): Superb, this silence, isn't it?\n\nA(Björn): Please see Linda Borg. It's the first door to the left. Good luck.\n\nB(Runa): Thanks.",
+    "turns": [
+      "안녕하세요, 무엇을 도와드릴까요?",
+      "저... 찾는 사람이 있어서요. 어디에서 도움받을 수 있을까요?",
+      "음, 그런 경우엔 이 늙은 비외른이 안내해드려야겠네요. 이렇게 아름다운 젊은 아가씨가 오는 건 정말 드문 일인데요.",
+      "정말 고마워요, 친절하시네요.",
+      "그런데 여긴 왜 이렇게 조용해요? 아이들은 다 어디 있나요?",
+      "지금 점심시간이에요. 다들 밥 먹으러 갔죠.",
+      "이 조용함, 참 좋죠?",
+      "린다 보르그를 찾아가세요. 왼쪽 첫 번째 문이에요. 행운을 빕니다.",
+      "감사합니다."
+    ]
+  },
+  "licensed-valkaama-25": {
+    "sourceScript": "A(Erik): Somehow it looks exactly like I expected.\n\nA(Erik): The computer must have been taken by the poli...\n\nB(Magnus): Where the hell does he know my name from???\n\nA(Erik): Who was that?\n\nC(Runa): I have no idea.\n\nA(Erik): Come on, we'd better go.\n\nC(Runa): Not before I've found something.\n\nA(Erik): What if that guy comes back? Or someone sees the light?\n\nC(Runa): 10 minutes, okay?\n\nA(Erik): What is so important?\n\nC(Runa): This doesn't make any sense at all.\n\nA(Erik): Found anything?\n\nA(Erik): Hey. Lil' princess. Don't be sad. Come on, get up.\n\nA(Erik): Come on.\n\nC(Runa): Nothing. Not even the smallest clue.\n\nA(Erik): What were you looki... (ng for?)\n\nA(Erik): Don't cry...\n\nA(Erik): A glass of wine and the whole world looks different again....",
+    "turns": [
+      "왠지 내가 생각했던 딱 그 모습이야.",
+      "컴퓨터는 경찰이 가져간 것 같아...",
+      "도대체 어떻게 내 이름을 알지???",
+      "저 사람이 누구야?",
+      "전혀 모르겠어.",
+      "가자, 우리 빨리 가는 게 좋겠어.",
+      "아직 뭐라도 찾기 전엔 못 가.",
+      "그 사람이 다시 오면 어떡해? 아니면 누가 불빛을 보면?",
+      "10분만, 알겠지?",
+      "뭐가 그렇게 중요한데?",
+      "이게 정말 말이 안 돼.",
+      "뭐라도 찾았어?",
+      "이리 와, 작은 공주야. 슬퍼하지 마. 일어나.",
+      "어서.",
+      "아무것도 없어. 단서라고 할 만한 것도 하나도 없어.",
+      "뭘 찾으려고 했던 거야...?",
+      "울지 마...",
+      "와인 한 잔 마시면 세상이 또 다르게 보일 거야..."
+    ]
+  },
+  "licensed-valkaama-29": {
+    "sourceScript": "A(Svenja): So where have you been prowling around again? Probably boozing all night?! Who do you think you are? You'll never become anything!\n\nB(Magnus): It's none of your business where I've been!\n\nA(Svenja): And how it's my business! I'm still your mother!\n\nB(Magnus): Whatever. Want some coffee?\n\nA(Svenja): Don't change the subject! You think I went through the torment of your birth just to see you throwing your life away?\n\nB(Magnus): So far it hasn't bothered you.\n\nA(Svenja): Don't talk to your mother like that! It can't go on like this!\n\nB(Magnus): Ohh, not again...\n\nA(Svenja): You lazy bastard, you're becoming too much like your father! It's about time you went out and earned some money and got me out of this hell!\n\nB(Magnus): Oh yea! Great plan! You've had it before! YOU'VE HAD IT A THOUSAND TIMES BEFORE! I don't give a shit about all this here! I don't give a shit about you. Leave me alone! Finish your breakfast beer and shut up!\n\nA(Svenja): I beg your pardon? Don't talk to me like that. After all I am your mother! I'm the only thing you've got!\n\nB(Magnus): No ... no, you WANT that you're the only thing I have! Since I was a child, you've tried to make me dependent by letting me feel guilty about everything! Since I was a child, you've tried to convince me that I'm a looser! And of course it's my fault that you have to live like this! OF COURSE!\n\nA(Svenja): Yes, it's your fault! You and your bloody father! You've both ruined my life!\n\nB(Magnus): Yea, yea!\n\nA(Svenja): Yes! You're to blame!\n\nB(Magnus): If you hadn't involved yourself with this asshole. If he hadn't fucked you, we would BOTH have one big problem less right now!\n\nA(Svenja): What did I do? I deserve better!\n\nB(Magnus): You're so pathetic. Sitting here, whining and boozing all the time.\n\nB(Magnus): No one is going to save you! ... I certainly won't! Forget it!",
+    "turns": [
+      "또 어디 돌아다니다 온 거야? 또 밤새 술이나 마셨던 거 아니야?! 네가 뭐라고 그렇게 굴어? 너는 절대 제대로 된 사람 못 될 거야!",
+      "내가 어디 있었든 네가 무슨 상관이야!",
+      "내가 왜 상관 안 하겠니! 난 아직 네 엄마야!",
+      "마음대로 해. 커피나 마실래?",
+      "말 돌리지 마! 내가 널 낳으면서 겪은 고통이 다 헛된 거라고 생각하니? 네 인생을 네 맘대로 망쳐도 된다는 거야?",
+      "지금까진 전혀 신경도 안 썼잖아.",
+      "엄마한테 그런 식으로 말하지 마! 이렇게는 더 이상 못 살아!",
+      "아휴, 또 시작이네...",
+      "게으른 놈! 네 아버지랑 점점 닮아간다! 이제 밖에 나가서 돈도 좀 벌고, 이 지옥 같은 집에서 나 좀 구해줘야 할 때 아니냐!",
+      "오, 대단한 계획이네! 예전에도 이런 얘기 백 번은 들었어! 아주 질렸다고! 나 이런 거 하나도 신경 안 써! 엄마도 신경 안 쓰고! 그냥 날 좀 내버려 둬! 아침 맥주나 마시고 조용히 해!",
+      "뭐라고? 나한테 그딴 식으로 말하지 마. 난 네 엄마야! 내가 네 곁에 유일하게 남은 사람이야!",
+      "아니야... 아니, 그건 엄마가 원해서 그런 거잖아! 엄마는 어릴 때부터 내가 죄책감 느끼게 만들어서 내게 의존하게 하려고 했잖아! 계속 내가 패배자라고 믿게 하려고 했고! 그리고 내가 이렇게 사는 것도 다 내 탓이라는 거잖아! 늘 그랬지!",
+      "그래, 다 너 탓이야! 너랑 그 지긋지긋한 네 아버지! 둘이서 내 인생을 망쳤어!",
+      "그래, 그래!",
+      "그래! 다 네가 잘못했지!",
+      "엄마가 그 망할 인간이랑 엮이지만 않았어도 됐을 거야. 그 인간이 엄마한테 손대지 않았으면, 우리 둘 다 이런 문제 하나도 없었겠지!",
+      "내가 뭘 잘못했는데? 난 더 나은 인생을 살아야 했다고!",
+      "정말 한심하다. 여기 앉아서 계속 징징거리면서 술이나 퍼마시고 있잖아.",
+      "아무도 엄마 구해주지 않아! ... 난 더더욱 아니야! 그냥 잊어버려!"
+    ]
+  },
+  "licensed-valkaama-31": {
+    "sourceScript": "A(Magnus): How much such a small change of perspective sometimes can give you...\n\nA(Magnus): Hello Lasse. How was your journey to Gothenburg?\n\nB(Lasse): I'm sorry, do we know each other?\n\nA(Magnus): I'm a close friend of Ari.\n\nB(Lasse): Ari? Where is Ari? We wanted to go together on a journey.\n\nA(Magnus): He is waiting for us there. He was so impatient that he already left a couple of days ago.\n\nB(Lasse): Hmmmm... That sounds strange... Did something happen?\n\nA(Magnus): Yea, he became quite pale... Ehh, I mean... He stayed at home a lot. And didn't have many visitors... you know. He finally wanted to get going.\n\nB(Lasse): Did he say anything?\n\nA(Magnus): Only that I should meet you and that you would show me the way.\n\nB(Lasse): He inaugurated you?\n\nA(Magnus): Yes.\n\nB(Lasse): In that case we can make our way together...\n\nA(Magnus): Good.\n\nB(Lasse): All right. Ari will have done the right thing. And really soon we will be reunited.\n\nA(Magnus): That's right. Shall we go?\n\nB(Lasse): Yes, our train leaves soon! Destiny is calling!\n\nA(Magnus): Is this really the first time I'm getting out of this fucking town?\n\nA(Magnus): Are you some kind of loner?\n\nB(Lasse): Loner? No. I am always among people. Sometimes here, sometimes there. Though, from time to time I also like wandering for a few days through secluded, pristine nature.\n\nB(Lasse): It seems Ari did not tell you much about me.\n\nA(Magnus): No, not really. He only went into raptures over your magical place all the time. Without being too precise. Somehow he always had fables and riddles.\n\nB(Lasse): Yes, that is true.\n\nB(Lasse): But why are you talking about him in the past?\n\nA(Magnus): Oh, I didn't even realize. You know, I had a short night.\n\nB(Lasse): How did you get to know each other?\n\nA(Magnus): In an Internet forum.\n\nB(Lasse): The net is his world.\n\nA(Magnus): And your travelogues. You're aware that he experiences the world half through you?\n\nB(Lasse): Yes I know. It arose from his terrible accident... I strive to convey my journeys to him in as much detail as possible.\n\nA(Magnus): He felt quite down about you not getting in touch with him for a long time...\n\nB(Lasse): I know. I've totally neglected him recently. In fact I wanted to be with him weeks ago. I won't forgive myself that...\n\nA(Magnus): Oh, I believe you for sure!\n\nB(Lasse): But as soon as I am with him, I am sure he will understand my behaviour.",
+    "turns": [
+      "작은 시각의 변화만으로 때때로 얼마나 많은 걸 얻을 수 있는지...",
+      "안녕, 라세. 고텐버그 여행은 어땠어?",
+      "실례지만, 우리 아는 사이인가요?",
+      "난 아리의 가까운 친구야.",
+      "아리? 아리는 어디 있어? 우리 같이 여행 가기로 했는데.",
+      "거기서 우리 기다리고 있어. 성격이 급해서 며칠 전에 이미 떠났어.",
+      "흠... 좀 이상한데... 무슨 일 있었어?",
+      "응, 얼굴이 많이 창백해졌어... 그러니까... 거의 집에만 있었고, 찾아오는 사람도 거의 없었지... 이제 정말 떠나고 싶어했어.",
+      "뭐라고 말했어?",
+      "나한테 널 꼭 만나라고, 네가 길을 안내해줄 거라고만 했어.",
+      "그럼 너도 허락을 받은 셈이네?",
+      "응.",
+      "그럼 우리 같이 가면 되겠네...",
+      "그래.",
+      "좋아. 아리가 제대로 결정했을 거야. 그리고 정말 곧 다시 만날 수 있을 거야.",
+      "맞아. 갈까?",
+      "응, 우리 기차 곧 떠나! 운명이 부른다!",
+      "내가 이 엿 같은 도시를 벗어나는 게 진짜 처음이야?",
+      "넌 좀 외로운 사람이야?",
+      "외톨이? 아니, 난 항상 사람들 사이에 있어. 여기저기 떠돌아다니지. 그래도 가끔은 며칠씩 사람 없는 청정한 자연 속을 걷는 게 좋아.",
+      "아리가 너에 대해 별로 얘기 안 했나 보구나.",
+      "응, 별로. 늘 네가 가진 그 마법 같은 장소 얘기만 했지. 정확한 건 안 알려주고. 늘 뭔가 우화나 수수께끼 같았어.",
+      "그래, 맞아.",
+      "근데 왜 아리를 과거형으로 얘기해?",
+      "아, 나도 모르게 그랬네. 밤새 잠을 거의 못 잤거든.",
+      "둘은 어떻게 알게 됐어?",
+      "인터넷 포럼에서.",
+      "그게 아리의 세계지.",
+      "그리고 네 여행기. 네가 아리에게 세상의 절반을 대신 보여주는 셈이라는 거 알고 있어?",
+      "응, 알아. 아리의 끔찍한 사고 때문에 그렇게 됐어... 난 최대한 내 여행을 자세히 전해주려고 해.",
+      "네가 오랫동안 연락 안 해서 아리가 많이 힘들어했어...",
+      "알아. 나도 완전 소홀히 했어. 사실 몇 주 전부터 옆에 있어주고 싶었는데... 그걸 용서 못 하겠어...",
+      "그래, 너 말 믿어!",
+      "그래도 같이 있게 되면 분명히 아리가 다 이해해줄 거야."
+    ]
+  },
+  "licensed-valkaama-32": {
+    "sourceScript": "A(Magnus): Why are you staring stupidly at me?\n\nA(Magnus): You parasite!\n\nB(Beggar): What?\n\nA(Magnus): Cadger!\n\nB(Beggar): Why cadger? I'm earning my living here!\n\nA(Magnus): Ah. Stop it!\n\nB(Beggar): Sod it. Just leave me alone!\n\nA(Magnus): Now you're already telling me what to do? Nobody tells me what to do! Least of all someone like YOU!\n\nB(Beggar): So you must be something better?\n\nA(Magnus): You can bet your life on it!\n\nC(Lasse): What's happening here?\n\nA(Magnus): Oh, nothing.\n\nC(Lasse): But you have been pestering him...\n\nB(Beggar): He...\n\nA(Magnus): ...just a little difference of opinion.\n\nA(Magnus): Thanks for the ticket.\n\nC(Lasse): And what was worth getting in such a rage about?\n\nA(Magnus): Just had to let off some steam. You should try it sometime. Somehow I get the feeling you need it.\n\nA(Magnus): Gällivare with a change at Stockholm..., platform B? Quite far away... Gällivare I mean.",
+    "turns": [
+      "왜 멍청하게 날 쳐다봐?",
+      "이 기생충 같은 놈아!",
+      "뭐?",
+      "거지 새끼!",
+      "왜 내가 거지야? 나 여기서 나름대로 먹고 사는 거야!",
+      "아, 그만해!",
+      "됐거든, 그냥 좀 내버려 둬!",
+      "이제 와서 나한테 이래라저래라야? 아무도 내게 명령 못 해! 특히 너 같은 놈은 더더욱!",
+      "그럼 자네는 뭐라도 되는 줄 아나?",
+      "내 삶을 걸면 알겠지!",
+      "여기 무슨 일인데?",
+      "아, 아무것도 아니야.",
+      "근데 네가 그 사람 귀찮게 한 것 같은데...",
+      "그가...",
+      "...그냥 의견이 좀 달랐던 것뿐이야.",
+      "표 고마워.",
+      "근데 뭐 때문에 그렇게까지 화를 냈던 거야?",
+      "그냥 열 좀 풀고 싶었어. 넌 한 번이라도 그래 본 적 있어? 왠지 너한테 꼭 그런 게 필요해 보여.",
+      "스톡홀름에서 갈아타고 게리바레..., B 승강장? 꽤 멀구나... 게리바레 말이야."
+    ]
+  },
+  "licensed-valkaama-18": {
+    "sourceScript": "A(Linda): Come in!\n\nB(Runa): Hello Mrs Borg. I have a small request which I would like to ask you. It will only take two minutes.\n\nA(Linda): Please... take a seat. How can I help you?\n\nB(Runa): Can I smoke here?\n\nA(Linda): The whole orphanage is a non smoking area.\n\nB(Runa): Of course. Stupid question.\n\nA(Linda): So?\n\nB(Runa): Yes... My name is Runa Eskleth. I came here from Halmstad, because I am looking for an old friend. We lost contact... and this orphanage is the only clue I have to find him again.\n\nA(Linda): A childhood acquaintance? So you also lived here? That surely was before my time.\n\nB(Runa): No ... no. I didn't live here. I got to know him just a couple of weeks ago.\n\nA(Linda): Mmmhhmm...\n\nB(Runa): I know this all sounds quite strange. But he doesn't have a fixed address and this orphanage REALLY is the only clue I have to find him again.\n\nA(Linda): Your request is out of the ordinary, Miss Eskleth. So what's the name of the young man you are looking for?\n\nB(Runa): Ljandi. Lasse Ljandi\n\nA(Linda): Yes, we have a file on a Lasse Ljandi.\n\nB(Runa): So what can you tell me???\n\nA(Linda): I am sorry. I am not allowed to give you details from our database. That would violate our data protection rules.\n\nB(Runa): But that's exactly why I am here!\n\nA(Linda): As I said. I am only allowed to give such information to the relevant authorities. You have to understand that.\n\nB(Runa): Can't you make an exception in my case, just this once?\n\nA(Linda): I really can't do that.\n\nB(Runa): Please... It really is important for me.\n\nA(Linda): I can assure you at least that there is no information concerning a possible current address in the file of Mr. Ljandi.\n\nB(Runa): Thanks anyway.\n\nA(Linda): Listen, Miss Eskleth. Maybe unofficial information will be more helpful to you. Björn Svaberg is the longest serving employee here. He is our gardener. Why don't you have a chat with him?\n\nB(Runa): Thank you very much!\n\nA(Linda): Good bye.",
+    "turns": [
+      "들어오세요!",
+      "안녕하세요, 보르그 부인. 부탁드릴 게 있어서 왔어요. 2분만 시간 내주시면 돼요.",
+      "앉으세요. 어떻게 도와드릴까요?",
+      "여기서 담배 피워도 될까요?",
+      "보육원 전체가 금연 구역입니다.",
+      "맞아요. 바보 같은 질문이었네요.",
+      "그래서요?",
+      "네... 제 이름은 루나 에스크레트예요. 저는 할름스타드에서 왔고, 오랜 친구를 찾고 있어서요. 연락이 끊겼는데, 그 친구를 찾을 수 있는 단서는 이 보육원뿐이에요.",
+      "어릴 적 친구인가요? 그럼 여기서도 지내셨어요? 아마 제 전에 있던 일일 거예요.",
+      "아니요… 아니에요. 저는 여기서 살지 않았어요. 몇 주 전에 그 친구를 알게 됐거든요.",
+      "음흠…",
+      "이상하게 들릴 거란 거 알아요. 근데 그 친구는 주소가 따로 없어서, 이 보육원이 정말 그를 찾을 수 있는 유일한 실마리예요.",
+      "요청이 평범하지 않네요, 에스크레트 양. 찾으시는 그 분 이름이 어떻게 되시죠?",
+      "리아디. 라세 리아디요.",
+      "네, 라세 리아디라는 사람의 기록이 있어요.",
+      "뭐라도 말씀해주실 수 있나요???",
+      "죄송해요. 저희 데이터베이스의 정보를 알려드릴 순 없어요. 개인정보 보호 규정에 어긋나거든요.",
+      "제가 그래서 여기 온 건데요!",
+      "말씀드린 대로, 관련 기관에만 그런 정보를 드릴 수 있어요. 이해해 주세요.",
+      "제 경우엔 예외를 적용해주실 순 없나요? 이번 한 번만이라도요?",
+      "정말 안 됩니다.",
+      "제발요… 저한테 정말 중요한 일이에요.",
+      "적어도 라세 리아디 씨의 기록에는 현재 거주지에 관한 정보는 전혀 없다는 건 확실히 말씀드릴 수 있습니다.",
+      "그래도 고마워요.",
+      "에스크레트 양, 들으세요. 비공식적인 정보가 오히려 도움이 될 수도 있어요. 뷰른 스바베리가 여기서 제일 오래 일한 직원인데, 지금은 정원사로 계세요. 그분과 한 번 이야기해 보시겠어요?",
+      "정말 감사합니다!",
+      "안녕히 가세요."
+    ]
+  },
+  "licensed-valkaama-19": {
+    "sourceScript": "A(Björn): Ah, the young Lady again. Was Mrs. Borg able to help you?\n\nB(Runa): Mr. Svaberg, my name is Runa Eskleth.\n\nA(Björn): Please, call me Björn.\n\nA(Björn): So... what can I do for you, Runa?\n\nB(Runa): I'm... I am looking for one of your former kids and...\n\nA(Björn): Well.\n\nA(Björn): Let's take a seat first.\n\nA(Björn): Who are we talking about?\n\nB(Runa): Lasse Ljandi... He was living here years ago.\n\nA(Björn): Lasse, hmmm, Lasse...\n\nB(Runa): Did you know him?\n\nA(Björn): Well, it's impossible to remember all the kids who have lived here...\n\nB(Runa): Yes, yes... but Lasse... do you remember him?\n\nA(Björn): Not so fast young Lady.\n\nB(Runa): Sor...\n\nA(Björn): No offence...\n\nA(Björn): Calm down a little bit. There's no hurry. Just let me finish speaking first.\n\nA(Björn): Well, Lasse I can remember. Very well indeed. I believe everyone who comes across Lasse remembers him.\n\nB(Runa): Oh yes... that may be so.\n\nB(Runa): Do you know where he might be?\n\nA(Björn): No, I haven't heard anything from him for 7 years ... or has it been 8? ... he fled from here.\n\nB(Runa): He escaped?\n\nA(Björn): Yes. Here one day, gone the next! No one knew why... He was happy here. And he was extraordinarily popular among everyone.\n\nA(Björn): A child brimming with joy... Our little prince, in a manner of speaking. But somehow I saw it coming...\n\nB(Runa): Saw what coming?\n\nA(Björn): That he couldn't stay here any longer. He had always lived in his own little dream world. But the older he got, the more ... Yes... I think he was about 16 years old, when he left us...\n\nB(Runa): The more... what?\n\nA(Björn): The cagier he got. At least towards the people here. There has been reached a point when no one could get through to him anymore. Even the former psychologist of our orphanage said that it seemed a bit eerie to him. And he surely was used to all kinds of problematic cases.\n\nB(Runa): Yea, but just because he didn't talk much. That's no case for a psychiatrist at all!\n\nA(Björn): This I cannot judge. I mean ... don't get me wrong. I liked Lasse.\n\nB(Runa): How did it actually happen that he came here?\n\nA(Björn): One day he was just standing in front of our door... Probably his parents dropped him here.\n\nB(Runa): But isn't this an orphanage?!\n\nA(Björn): Yes, that's right. But the management weren't able to locate any relatives.\n\nB(Runa): What else do you know? Do you have any idea where Lasse could be now, or who else I could talk to?\n\nA(Björn): No ... I'm afraid not. I really cannot tell you anything more.\n\nB(Runa): Nothing? Not even a clue?\n\nA(Björn): No... no...\n\nA(Björn): Yes, I know! Yes... There was another boy. I just cannot remember his name... Ari! Yes, that was his name... Ari Kjelva.\n\nA(Björn): As far as I can remember, he was the only one who had close contact with Lasse in the end.\n\nB(Runa): What has become of him?\n\nA(Björn): Hmmm, the usual career. He did some training and then left the orphanage.\n\nB(Runa): Yes, but does he still live in the area?\n\nA(Björn): I think he went to Gothenburg... But I can't be more precise...\n\nB(Runa): Okay. Thank you very much for your help Mr. Sva... Björn. Maybe I can find this Ari... Hopefully.\n\nA(Björn): Well, I wish you all the best and good luck, young Lady.\n\nA(Björn): Wait a moment! ... Tell me, What is Lasse like, I mean now?\n\nB(Runa): He's still living in his dream world... And he's writing a lot. Mostly poems. Good bye.\n\nA(Björn): Good bye!\n\nA(Björn): Well... Lasse... that's our Lasse.",
+    "turns": [
+      "오, 또 오셨네요, 아가씨. 보르그 부인이 도움을 주셨나요?",
+      "스바베르그 씨, 제 이름은 루나 에스크레트예요.",
+      "그냥 뷰른이라고 부르세요.",
+      "그래서… 루나, 뭘 도와드릴까요?",
+      "음… 예전에 여기 있던 아이를 찾고 있어요...",
+      "음.",
+      "먼저 앉으시죠.",
+      "누구를 찾는 건가요?",
+      "라세 리아디… 몇 년 전에 여기서 지냈던 아이예요.",
+      "라세, 흠, 라세...",
+      "그 아이 아세요?",
+      "여기서 살았던 모든 아이를 다 기억하긴 어렵죠...",
+      "네, 그렇겠죠… 그래도 라세, 혹시 기억나세요?",
+      "조금만 천천히 얘기해요, 아가씨.",
+      "죄송…",
+      "기분 나쁘게 들으시면 안 돼요...",
+      "조금 진정하세요. 급할 거 하나도 없어요. 우선 제 말 끝까지 들어 주세요.",
+      "라세는 기억나요. 정말 분명히요. 라세를 만난 사람은 누구든 그를 기억하게 되거든요.",
+      "아, 네… 그럴 수도 있겠네요.",
+      "혹시 어디 있는지 아세요?",
+      "아니요, 7년 동안 아무 소식도 못 들었어요… 8년이었나? 아무튼, 그가 도망쳤어요.",
+      "도망쳤다고요?",
+      "응. 어느 날 여기 있다가 다음날은 사라졌죠! 아무도 이유를 몰랐어요... 여기서는 행복하게 잘 지냈으니까요. 다들 무척 좋아했어요.",
+      "기쁨이 넘치던 아이였어요... 우리 작은 왕자 같았죠. 그래도 뭔가 예감은 들었어요...",
+      "어떤 예감이요?",
+      "여기 오래 못 있을 거란 느낌이었죠. 항상 자기만의 꿈 같은 세상에 살았거든요. 나이가 들수록... 맞아요, 아마 열여섯 살쯤 우리 곁을 떠났어요...",
+      "더… 뭐가요?",
+      "점점 더 폐쇄적으로 변했죠. 적어도 이곳 사람들에게는. 마지막엔 아무도 그에게 가까이 갈 수 없었어요. 예전에 여기 계셨던 심리학자도 좀 으스스하다고 했었죠. 정말 별의별 문제를 겪은 아이라도 많이 봤던 분인데도요.",
+      "그래도 말을 안 했다는 것만으로 정신과 환자라고 할 순 없잖아요!",
+      "그건 내가 판단할 수 있는 부분이 아니에요… 오해하지 마요, 나도 라세를 좋아했어요.",
+      "라세는 어떻게 이곳에 오게 된 건가요?",
+      "어느 날 문 앞에 그냥 서 있었죠… 아마 부모가 데려다 놓고 갔던 것 같아요.",
+      "여기 고아원 아닌가요?!",
+      "맞아요. 하지만 여기서 친척을 아무도 못 찾았어요.",
+      "라세에 대해 또 아는 게 있나요? 지금 어디 있을지도 아시거나, 혹시 얘기 나눌 만한 사람이 있을까요?",
+      "아니요… 아무 정보도 없어요. 더 드릴 수 있는 이야기는 없네요.",
+      "정말 아무것도요? 단서라도 없나요?",
+      "없어요… 정말요…",
+      "아, 맞다! 또 한 명 있었지. 이름이 잘 생각 안 났는데… 아리! 그래, 아리 켈바였어요.",
+      "내 기억이 맞다면, 마지막까지 라세랑 가장 가까웠던 친구였죠.",
+      "그 친구는 지금 어떻게 됐나요?",
+      "흠, 평범하게 사회생활 했어요. 훈련 좀 받고 보육원을 떠났죠.",
+      "아직 이 근처에 살고 있나요?",
+      "아마 예테보리로 간 걸로 알아요… 더 자세한 건 모르겠네요…",
+      "네. 도움 주셔서 정말 감사해요, 스바베르그 씨… 아리도 꼭 찾아낼 수 있으면 좋겠네요.",
+      "그래, 복이 있길 바랄게요, 아가씨.",
+      "잠깐만요! 혹시 라세가 요즘 어떤지, 알고 계시면 말해줄 수 있나요?",
+      "아직도 자기만의 꿈속에서 살아요… 시를 많이 써요. 대부분 시예요. 안녕히 계세요.",
+      "안녕히 가요!",
+      "음... 라세... 그게 바로 우리 라세지."
+    ]
+  },
+  "licensed-valkaama-21": {
+    "sourceScript": "A(Runa): Come on...\n\nB(Erik): Hello?\n\nA(Runa): Hello?! My name is Runa Eskleth. Could you please open the door? I've got a message for your neighbour Ari. Ari Kjelva.\n\nB(Erik): I'm afraid you're a little late for that.\n\nA(Runa): Why?\n\nB(Erik): How shall I explain? You'd better come straight upstairs... Second floor. It's a long story.",
+    "turns": [
+      "자, 가자...",
+      "네?",
+      "안녕하세요?! 저는 루나 에스크레트라고 해요. 문 좀 열어주실 수 있나요? 이웃분 아리, 아리 켈바한테 전할 메시지가 있어서요.",
+      "유감이지만 이미 늦으신 것 같아요.",
+      "왜요?",
+      "뭐라고 설명해야 할까요? 그냥 곧장 2층으로 올라오세요... 긴 얘기입니다."
+    ]
+  },
+  "licensed-valkaama-22": {
+    "sourceScript": "A(Erik): Hello!\n\nB(Runa): Hi. What's with Mr. Kjelva?\n\nA(Erik): He is ... ehh. Just come inside for a sec.\n\nA(Erik): You want some coffee? Or a beer?\n\nB(Runa): Thanks, coffee would be nice.\n\nA(Erik): Sit down. The living room is through there!\n\nA(Erik): Where are you from?\n\nB(Runa): Halmstadt!\n\nA(Erik): Do you want to visit Ari? Or... I haven't seen you around before...\n\nB(Runa): Yes!\n\nA(Erik): You're sitting down, that's good.\n\nB(Runa): Why?\n\nA(Erik): What's the best way to explain it?\n\nB(Runa): Explain what?\n\nA(Erik): The thing with the cripple is...\n\nB(Runa): With the what?\n\nA(Erik): Sorry. It just slipped out. But everyone here in this house calls him that.\n\nA(Erik): Well. You know. Because of the wheelchair.\n\nB(Runa): So he is disabled.\n\nA(Erik): I thought you knew him.\n\nB(Runa): No, not really.\n\nA(Erik): Good. In that case I don't have to be too sensitive. So... Well, he is dead.\n\nB(Runa): Dead? That can't be!\n\nA(Erik): Well, it can. Suicide.\n\nB(Runa): Damn!\n\nA(Erik): Little wonder. That wasn't a life anymore. He virtually never got out of the house and his only visitors were the supermarket delivery service... and the pizza guy. If I was in his position, I would have probably done it as well. Sooner or later....\n\nA(Erik): Well. Good thing about is, that I don't have to carry down his rubbish bags anymore. Cos he always used to put them in front of my door!\n\nB(Runa): I think you're disgusting!\n\nA(Erik): You want a cigarette?\n\nB(Runa): Thanks. Not now.\n\nA(Erik): What did you want from Kjelva?\n\nB(Runa): He has ... eh... some information I need.\n\nA(Erik): Really? What kind of information? The password for his Swiss bank account? Surely he wasn't a rich man.\n\nB(Runa): It's a private thing.\n\nA(Erik): I see.\n\nB(Runa): But there has to be some way into his flat?!\n\nA(Erik): Did you notice the seal above the keyhole? That was the old bill. Cos officially Kjelva's death isn't classed as suicide yet.\n\nB(Runa): But I must get inside.\n\nA(Erik): Hello? Are you listening to me? I don't think the old bill are going to like you poking around in there. Apart from that... it stinks inside.\n\nB(Runa): There has to be some way!!! Can you help me?\n\nA(Erik): I'll see what I can do for you Sweetheart. The doors here aren't that difficult to open.\n\nB(Runa): Thanks!\n\nA(Erik): Hey, easy, easy lil' princess. Let's wait till it's dark and all those pensioners stop creeping around the staircase...",
+    "turns": [
+      "안녕하세요!",
+      "안녕하세요. 켈바 씨는 어떻게 된 거죠?",
+      "그가... 음... 일단 들어오세요.",
+      "커피 드릴까요? 맥주도 있어요.",
+      "고마워요, 커피로 할게요.",
+      "앉으세요. 거실은 이쪽이에요!",
+      "어디서 오셨어요?",
+      "할름스타드에서요!",
+      "아리를 만나러 오셨나요? 아니면… 이 동네선 처음 보는 얼굴인데...",
+      "네!",
+      "앉으셔서 다행이네요.",
+      "왜요?",
+      "어떻게 설명하면 좋을까...",
+      "뭘 설명한다는 거예요?",
+      "그 장애인 얘긴데...",
+      "뭐라고요?",
+      "죄송해요. 저도 모르게 나왔네요. 근데 여기선 다들 그렇게 불러요.",
+      "그러니까… 휠체어를 타니까요.",
+      "장애가 있으시군요.",
+      "그 분 아시는 줄 알았는데요.",
+      "아뇨, 잘 몰라요.",
+      "잘 됐네요. 그럼 너무 조심할 필요는 없겠네요. ...저기, 그 분 돌아가셨어요.",
+      "죽었다고요? 그럴 리가 없어요!",
+      "그럴 수 있죠. 자살이에요.",
+      "젠장!",
+      "뭐 놀랄 일도 아니에요. 그게 무슨 삶이었겠어요. 거의 집 밖에도 안 나가고 오는 사람이라곤 마트 배송원과 피자 배달원뿐. 내가 그 입장이었어도 언젠가는 그렇게 했을 거예요.",
+      "좋은 점도 있죠. 이제 그 사람 쓰레기봉투 내려다 줄 필요 없으니까요. 항상 제 문 앞에 두고 갔거든요!",
+      "진짜 역겨워요, 당신.",
+      "담배 피울래요?",
+      "고마워요. 지금은 괜찮아요.",
+      "켈바한테는 뭘 원하셨는데요?",
+      "그분에게… 음... 제가 필요한 정보가 있었어요.",
+      "정말요? 무슨 정보길래요? 혹시 스위스 은행 계좌 비밀번호라도? 부자는 아니었던 걸로 아는데.",
+      "사적인 일이에요.",
+      "그렇군요.",
+      "하지만 어떻게든 그분 집에 들어갈 방법이 있어야 하잖아요?!",
+      "열쇠구멍 위에 봉인 스티커 본 적 있어요? 경찰에서 붙인 거예요. 공식적으로 아직 켈바의 죽음도 자살로 분류되지 않았거든요.",
+      "그래도 꼭 들어가야 해요.",
+      "저기요? 제 말 듣고 계시죠? 경찰이 거기서 뒤지는 거 싫어할걸요. 그것보다 안에서 냄새도 심하고요.",
+      "분명 방법이 있을 거예요!!! 도와주실 수 있나요?",
+      "뭐 할 수 있는지 봐줄게요, 아가씨. 이 집 문은 그리 어렵지 않아서요.",
+      "고마워요!",
+      "진정하세요, 공주님. 해질 때까지, 연금생활자들 계단에서 안 돌아다닐 때 기다립시다…"
+    ]
+  },
+  "licensed-valkaama-52": {
+    "sourceScript": "A(Lasse): We can stay here... That way we won't have to spend the night under the stars.\n\nB(Runa): What if someone is living in this cottage?\n\nA(Lasse): We will ask for shelter.\n\nA(Lasse): Looks quite appealing.\n\nB(Runa): Who's living here? In this solitude?\n\nA(Lasse): Surely a hunter or a fisherman.\n\nB(Runa): What about the incense and candles?\n\nA(Lasse): Maybe he wants to expel the evil ghosts of the wood?\n\nB(Runa): Of course.\n\nA(Lasse): No, I'm serious. Many people who live in close communion with nature are superstitious. I often experienced this during my journeys...\n\nB(Runa): And you really want to stay here?\n\nA(Lasse): As it looks like nobody has been here during the last few days.\n\nB(Runa): Yea, but what if the owner returns? I want to go back to the hotel...",
+    "turns": [
+      "여기서 머물 수도 있어... 그러면 우리 별 아래서 밤새지 않아도 되잖아.",
+      "근데 혹시 누가 이 오두막에 살고 있으면 어떡하지?",
+      "우리가 피할 곳을 부탁하면 되잖아.",
+      "꽤 마음에 들어 보여.",
+      "대체 여기 누가 사는 거야? 이렇게 외진 데서?",
+      "아마도 사냥꾼이나 어부겠지.",
+      "그럼 이 향이랑 촛불은 뭐야?",
+      "혹시 여기 사는 사람이 이 숲의 나쁜 영혼들을 쫓으려는 걸지도 모르지?",
+      "그럴 수도 있겠네.",
+      "아니야, 진짜야. 자연과 가까이 지내는 사람 중에는 미신 믿는 사람 많아. 나도 여행하면서 꽤 자주 겪었거든...",
+      "진짜 여기서 머물고 싶어?",
+      "최근 며칠간 아무도 다녀간 것 같지 않아요.",
+      "응, 근데 혹시 주인이 갑자기 돌아오면 어떡해? 난 그냥 호텔로 돌아가고 싶어..."
+    ]
+  },
+  "licensed-valkaama-53": {
+    "sourceScript": "A(Runa): I did not want to disturb your dreams and soon will be with you again. I will walk a short way back to make sure that we did not overlook any signs during yesterday's twilight.\n\nA(Runa): Ohh Lasse!",
+    "turns": [
+      "네 꿈을 방해하고 싶지 않았어. 곧 네 곁으로 다시 올게. 어제 해질녘에 우리가 뭘 놓친 게 없는지 잠깐만 다시 돌아가볼게.",
+      "라쎄..."
+    ]
+  },
+  "licensed-valkaama-54": {
+    "sourceScript": "A(Runa): Hello!\n\nB(Teemu): 2 guests after all...\n\nA(Runa): How do you know?... did you meet my...\n\nB(Teemu): I am good at tracking.\n\nA(Runa): Please excuse us for just coming into your house...\n\nB(Teemu): What is ours, is yours. Here in the midst of nature there is no such thing as personal possessions. Here in nature different laws apply...\n\nB(Teemu): Anyway... I am Teemu.\n\nA(Runa): So you are Lasse's father?\n\nB(Teemu): Is he here? Is my son here? My son finally followed my call? The time has come then...\n\nA(Runa): Yes, he is here. He is looking for the community. Where is the village? Is it close?\n\nB(Teemu): You are talking about the community? You are an initiate?\n\nA(Runa): Yes...\n\nB(Teemu): You cannot stay... You are certainly much too weak for the life here.\n\nA(Runa): What, what do you mean?\n\nB(Teemu): We live a hard life full of sacrifice here, to most people only the least of its profoundness and relevance are ever revealed...\n\nB(Teemu): A community of like-minded people... Poetry every day and hard struggle for survival.\n\nA(Runa): And why can't I be a part of it?\n\nB(Teemu): You couldn't cope with the life here... You are too weak to survive in nature!\n\nA(Runa): Ohh! And Ari? Ari was confined to a wheelchair! How was he supposed to survive here?\n\nB(Teemu): Ari? He never wrote to me about that! Even if... he must realise, that he would never be accepted by us.\n\nB(Teemu): He would be unworthy of the community!\n\nA(Runa): Oh my god... that's why!\n\nA(Runa): What kind of place is this? What kind of pseudo-elitist-racists are you?\n\nB(Teemu): Watch your words! I don't have to justify the community in the face of strangers... This is a place of perfection. A place of a spiritual, pure and elevated life.\n\nB(Teemu): I have to move on, they are waiting for me... Go from here! There is no place for you!\n\nA(Runa): But...\n\nB(Teemu): My son, yes... my son has come...\n\nB(Teemu): I can track him here...",
+    "turns": [
+      "안녕하세요!",
+      "결국 손님이 두 분이군요...",
+      "어떻게 아셨어요?... 제 동행을 만나셨어요?",
+      "나는 추적에 능해.",
+      "괜히 집에 들어와서 정말 죄송해요...",
+      "우리의 것은 곧 너희의 것. 여기 자연 한가운데엔 개인 소유란 게 없어. 여기선 자연의 다른 법칙이 지배하지...",
+      "아무튼... 난 테무야.",
+      "그럼, 라쎄 아버지세요?",
+      "여기 있나? 내 아들이 온 거야? 내 부름을 마침내 따라온 거네? 때가 온 거지...",
+      "네, 여기 있어요. 공동체를 찾으러 왔어요. 마을은 어디예요? 가까워요?",
+      "공동체를 말하는 거야? 너 입단자야?",
+      "네...",
+      "너는 머물 수 없어... 여기서 살기엔 네가 너무 약해.",
+      "네? 그게 무슨 뜻이에요?",
+      "우리는 희생으로 가득한 힘든 삶을 살아. 대부분은 그 깊이와 의미를 거의 알지 못하지...",
+      "같은 생각을 가진 사람들이 모인 공동체... 매일 시를 읊듯이 살아가지만, 한편으론 생존을 위한 치열한 싸움이야.",
+      "그럼 내가 왜 그 일부가 될 수 없어요?",
+      "넌 여기서의 삶을 견뎌낼 수 없어... 자연에선 살아남기엔 약하지!",
+      "정말요? 그럼 아리는요? 아리는 휠체어에 앉아 있었잖아요! 그럼 어떻게 여기서 살아남으라는 거예요?",
+      "아리? 그런 얘기는 한 적이 없어! 설령 그렇더라도, 그는 우리한테 절대 받아들여질 수 없다는 걸 알아야 해.",
+      "그는 이 공동체에 어울리지 못해!",
+      "세상에... 그래서 그랬던 거구나!",
+      "이게 대체 어떤 곳이죠? 당신들은 무슨 엘리트인 척하는 인종차별주의자들이에요?",
+      "말 조심해! 낯선 사람한테 굳이 공동체를 설명할 필요는 없어... 여긴 완벽한 곳이야. 영적이고 순수하며 고귀한 삶이 이뤄지는 곳이지.",
+      "난 이제 가봐야 해, 나를 기다리는 사람들이 있으니까... 이제 나가! 여긴 네 자리가 아냐!",
+      "하지만...",
+      "내 아들, 그래... 내 아들이 결국 왔구나...",
+      "여기서도 그 애를 추적할 수 있지..."
+    ]
+  },
+  "licensed-valkaama-56": {
+    "sourceScript": "A(Runa): So what now?\n\nB(Magnus): I don't know...\n\nB(Magnus): Valkaama... Nothing...\n\nA(Runa): We should leave.\n\nB(Magnus): And go where?\n\nA(Runa): Home.\n\nB(Magnus): Home...\n\nB(Magnus): Yea... you two go home.\n\nA(Runa): What's with you?\n\nB(Magnus): I... I don't want to return.\n\nA(Runa): Come on. Let's go.\n\nB(Magnus): Valkaama...\n\nB(Magnus): Valkaama...",
+    "turns": [
+      "그럼 이제 어떡하지?",
+      "모르겠어...",
+      "발카아마... 아무것도 아니네...",
+      "우린 떠나야 해.",
+      "그래서 어디로 가는데?",
+      "집으로.",
+      "집...",
+      "그래... 너희 둘은 집으로 가.",
+      "왜 그래?",
+      "나... 난 돌아가고 싶지 않아.",
+      "가자. 얼른 가.",
+      "발카아마...",
+      "발카아마..."
+    ]
+  },
+  "licensed-tos-breakup": {
+    "sourceScript": "A(Celia): You're a jerk, Thom.\n\nB(Thom): Look Celia, we have to follow our passions;\n\nB(Thom): ...you have your robotics, and I just want to be awesome in space.\n\nA(Celia): Why don't you just admit that you're freaked out by my robot hand?\n\nB(Thom): I'm not freaked out by- it's...\n\nB(Thom): ...alright! Fine!\n\nB(Thom): I'm freaked out! I have nightmares that I'm being chased...\n\nB(Thom): ...by these giant robotic claws of death...\n\nA(Celia): Whatever, Thom. We're done.",
+    "turns": [
+      "넌 정말 못됐어, 톰.",
+      "셀리아, 우리 각자 자신이 좋아하는 걸 따라가야 해.",
+      "...넌 네 로봇 공학이 있고, 난 그냥 우주에서 멋진 사람이 되고 싶어.",
+      "그냥 네가 내 로봇 손 때문에 겁먹었다고 솔직하게 말하지 그래?",
+      "난 겁먹은 게 아니야- 그게...",
+      "...알았어! 좋아!",
+      "나 겁먹었어! 커다란 로봇 집게에 쫓기는 악몽도 꿔...",
+      "...이 거대한 죽음의 로봇 집게들한테 말이야...",
+      "맘대로 해, 톰. 우리 이제 끝이야."
+    ]
+  },
+  "licensed-tos-coaching": {
+    "sourceScript": "A(Captain): Thom.\n\nA(Captain): There she is.\n\nA(Captain): Now.\n\nA(Captain): You love her.\n\nA(Captain): She is your passion!\n\nA(Captain): Be tender to her.\n\nA(Captain): Be honest! Eh- be tender.\n\nA(Captain): Remind her what love is.",
+    "turns": [
+      "톰.",
+      "저기 그녀가 있잖아.",
+      "이제야.",
+      "넌 그녀를 사랑하잖아.",
+      "그녀야말로 네 열정이야!",
+      "그녀한테 다정하게 대해.",
+      "솔직해져! 아니, 다정하게.",
+      "사랑이 뭔지 그녀한테 다시 느끼게 해 줘."
+    ]
+  },
+  "licensed-tos-apology": {
+    "sourceScript": "A(Celia): You broke my heart.\n\nB(Thom): I know.\n\nA(Celia): You forgot me on earth.\n\nB(Thom): I know.\n\nA(Celia): I should just crush you.\n\nB(Thom): I'm-\n\nB(Thom): I'm sorry.",
+    "turns": [
+      "넌 내 마음을 아프게 했어.",
+      "알아.",
+      "넌 날 지구에 두고 나를 잊었지.",
+      "알아.",
+      "널 그냥 박살내버릴까 봐.",
+      "나...",
+      "미안해."
+    ]
+  },
+  "licensed-ed-danger": {
+    "sourceScript": "A(Proog): At the left we can see...\n\nA(Proog): At the right we can see the...\n\nA(Proog): ...the head-snarlers\n\nA(Proog): Everything is safe. Perfectly safe.\n\nA(Proog): Emo?\n\nA(Proog): Watch out!\n\nA(Proog): Are you hurt?\n\nB(Emo): I don't think so. You?\n\nA(Proog): I'm Ok.\n\nA(Proog): Get up. Emo. it's not safe here.\n\nA(Proog): Let's go.\n\nB(Emo): What's next?\n\nA(Proog): You'll see!",
+    "turns": [
+      "왼쪽에는 우리가 볼 수 있는 게 있고...",
+      "오른쪽에는 우리가 볼 수 있는...",
+      "...머리잡는 놈들이 있어.",
+      "모두 안전해. 완전히 안전해.",
+      "에모?",
+      "조심해!",
+      "다친 데 있어?",
+      "아닌 것 같아. 넌?",
+      "난 괜찮아.",
+      "일어나, 에모. 여긴 안전하지 않아.",
+      "가자.",
+      "이제 뭐가 나와?",
+      "곧 알게 될 거야!"
+    ]
+  },
+  "licensed-valkaama-33": {
+    "sourceScript": "A(Lasse): What I am interested in, Magnus, is this.\n\nB(Magnus): Yes?\n\nA(Lasse): How did Ari set off for the Inarijärvi?\n\nB(Magnus): I, ehh, thought, you'd never ask. He... He went with a woman...\n\nB(Magnus): By car.\n\nA(Lasse): A woman?\n\nB(Magnus): Ehh, yes, they got to know each other in some on-line chat.\n\nA(Lasse): It seems in my absence more happened than I ever could have anticipated. I am glad for Ari, that he found someone he thinks is worthy. Apart from you of course.\n\nB(Magnus): Yea, they seemed to be quite happy.\n\nA(Lasse): Ari must have changed a lot... What I don't understand, is, that he inaugurated so many. Actually we wanted to go this way alone. Only the two of us. He was just waiting until I was prepared for it.\n\nB(Magnus): And now you are prepared?\n\nA(Lasse): Yes, my years of travel are over. I've seen the world, like I was instructed to. I've learnt enough about the people in it and I found myself. My decision is made. Like it was predestined. I want to settle down at the Inarijärvi, with my family and those whose spirits share the same values as me.\n\nB(Magnus): At the Inarijärvi... Northern Finland... Isn't that almost at the end of the world? What is so special about this place?\n\nA(Lasse): Ari really did not tell you? Even though he chose you...\n\nB(Magnus): No, like I said, he..., he only said that I ... am worthy...\n\nB(Magnus): ... and that... I am to go. I shall follow I mean. With... with you.\n\nA(Lasse): He really did not tell you any more?\n\nB(Magnus): No, only that you will explain everything to me.\n\nA(Lasse): ... Our destination is Valkaama... a poetic community. It is situated far away from the hectic rush of civilisation and all its sinister spin-offs... A world without distrust, envy and hatred, but full of pleasure, dance, full of love and security...\n\nA(Lasse): The inhabitants of this blessed village have their own culture... a culture, which is based on harmony among themselves and the vicinity of nature...",
+    "turns": [
+      "내가 궁금한 게 있어, 매그너스.",
+      "응?",
+      "아리가 어떻게 이나리얄비로 떠나게 됐지?",
+      "음, 사실 네가 그걸 물을 줄 몰랐어. 그는... 여자랑 같이 갔어.",
+      "차로 갔어.",
+      "여자랑?",
+      "응, 둘이 온라인 채팅에서 알게 됐대.",
+      "내가 없는 동안 내가 상상도 못한 일들이 더 있었나 보네. 아리가 자기한테 가치 있다고 생각한 사람을 만나서 다행이야. 물론 너는 예외로 하고.",
+      "응, 둘이 꽤 행복해 보이더라.",
+      "아리도 많이 변했겠네... 그런데 이해가 안 되는 게, 그렇게 많은 사람을 끌어들였다니. 원래는 우리 둘만 이렇게 오기로 했잖아. 내가 준비될 때까지 기다려줬던 거고.",
+      "그럼 이제 준비가 된 거야?",
+      "그래, 내 방랑도 이제 끝났어. 세상을 여행하면서 지시받은 대로 사람들도 충분히 경험했고, 나 자신도 찾았지. 결심은 했어. 마치 정해진 운명처럼. 이나리얄비에 정착해서 가족이랑, 그리고 내 가치관을 나누는 사람들이랑 살고 싶어.",
+      "이나리얄비... 핀란드 북쪽 끝이잖아... 거의 세상 끝 아닌가? 거기 뭐가 그렇게 특별해?",
+      "아리가 진짜 아무 말도 안 해줬어? 너를 고르기까지 했으면서...",
+      "아뇨, 아까 말했죠. 그는... 그냥 내가... 가치 있다고만 했어요...",
+      "... 그리고 내가, 가야 한다고... 따라가야 한다고 했어요... 너랑 같이.",
+      "정말 그 이상은 안 들었어?",
+      "아니, 네가 다 설명해 줄 거라고만 했어.",
+      "... 우리의 목적지는 발카마야... 시적인 공동체지. 문명의 소란과 그로 인한 모든 불행에서 멀리 떨어진 곳... 불신도, 시기도, 증오도 없는 세상, 오히려 즐거움과 춤, 사랑과 안전으로 가득한 곳이야...",
+      "이 축복받은 마을의 사람들은 자기들만의 문화를 가졌어... 서로의 조화와 자연과의 가까움을 바탕으로 한 문화지..."
+    ]
+  },
+  "licensed-valkaama-36": {
+    "sourceScript": "A(Magnus): What now?\n\nB(Lasse): Tomorrow we are travelling further towards the Inarijärvi. By bus.\n\nA(Magnus): So let's go shopping then.\n\nB(Lasse): A very good idea. There is still a long way to go.",
+    "turns": [
+      "이제 뭐하지?",
+      "내일은 이나리얄비 쪽으로 더 이동할 거야. 버스를 타고.",
+      "그럼 장 보러 가자.",
+      "정말 좋은 생각이야. 아직 갈 길이 멀거든."
+    ]
+  },
+  "licensed-valkaama-38": {
+    "sourceScript": "A(Lasse): Somehow everything is different from in my dreams.\n\nB(Magnus): Well I think it's wonderful. If I just consider... that only yesterday I was in crappy Gothenburg...\n\nB(Magnus): And now here...\n\nA(Lasse): When I was talking about the destination of our journey a short while ago, did you really share the same desire as me?\n\nB(Magnus): What are you getting at? Do you think it doesn't mean as much to me as it does to you?\n\nA(Lasse): Good heavens, no. After all you are a chosen one. You have been selected by Ari. And in his choice I put my faith.\n\nB(Magnus): You know Lasse... If everything is the way you said, it's probably the best thing which could happen to me... A real clean slate.\n\nA(Lasse): You are not satisfied with your past life?\n\nB(Magnus): I'd rather you didn't remind me of it. It seems to me as if just yesterday I was another person...\n\nA(Lasse): Don't you want to tell me more?\n\nB(Magnus): Better not... Everyone has his dark secrets.\n\nA(Lasse): This journey is also based on mutual trust.\n\nA(Lasse): Still I sense that our spirits are closer to each other than I previously thought... I just need time to figure you out.\n\nB(Magnus): Where exactly is our destination?\n\nA(Lasse): South-East of Inari. Along the shores of the Inarijärvi. There will be signs to show us the right way...\n\nB(Magnus): Let's go to the city again later on... At least once again I want do drink a cold, freshly-tapped beer...",
+    "turns": [
+      "뭔가 모든 게 내 꿈에서와는 다르게 느껴져.",
+      "난 정말 좋아. 어제만 해도 엉망진창 예테보리에 있었는데...",
+      "근데 지금 여기 있고...",
+      "아까 우리 여행 목적지 얘기할 때, 너도 나랑 같은 마음이었어?",
+      "무슨 얘길 하려는 건데? 내가 그걸 너만큼 소중하게 생각 안 한다고 생각해?",
+      "아니, 절대 그런 뜻 아니야. 어쨌든 넌 선택받은 사람이잖아. 아리가 널 고른 거고, 난 그 선택을 믿어.",
+      "라쎄, 있잖아... 네 말이 사실이라면, 아마도 이게 내게 일어날 수 있는 최고의 일이겠지... 정말 새로운 시작이야.",
+      "넌 그전 삶에 만족 못 했던 거야?",
+      "그 얘기는 가능하면 꺼내지 말아 줬으면 해. 왠지 어제까지만 해도 난 완전히 다른 사람이었던 것 같거든...",
+      "더 얘기해주고 싶진 않아?",
+      "그냥 말하지 않는 게 나을 것 같아... 누구나 감추고 싶은 어두운 비밀은 있으니까.",
+      "이 여행도 서로 신뢰에 기반한 거니까.",
+      "그래도 난 우리의 영혼이 내가 생각했던 것보다 더 가까워졌다는 게 느껴져... 널 좀 더 이해하려면 시간이 필요할 것 같아.",
+      "우리 목적지가 정확히 어디야?",
+      "이나리 남동쪽, 이나리얄비 호숫가야. 길을 안내해주는 표지판들이 있을 거야...",
+      "나중에 시내에 한 번 더 가자... 최소한 한 번만이라도 차갑고 갓 따라낸 맥주 마시고 싶거든..."
+    ]
+  },
+  "licensed-valkaama-40": {
+    "sourceScript": "A(Magnus): Swedish Jesus. That was a good one, wasn't it?\n\nB(Lasse): Even though I'm not a believer, I think it's sacrilegious what you are saying.\n\nA(Magnus): Hey, that was a compliment!\n\nB(Lasse): Please, forget it! You are drunk. We are going back to our tent. Just leave it\n\nB(Lasse): How could Ari give me such a person?\n\nA(Magnus): Hey, I heard that, man! You think I'm not good enough for you and your paradise?\n\nA(Magnus): Hey, I'm serious. You are my Jesus! ... My Redeemer! ... Ahh, you don't have a clue...",
+    "turns": [
+      "스웨덴 예수라니, 진짜 재밌었지, 안 그래?",
+      "난 신자는 아니지만, 그건 좀 신성모독인 것 같아.",
+      "야, 그건 칭찬이었어!",
+      "제발, 그만 좀 해! 너 취했잖아. 이제 우리 텐트로 돌아가자. 적당히 해.",
+      "아리가 어떻게 나한테 이런 사람을 보냈을까?",
+      "야, 나 다 들었어! 내가 네가 꿈꾸는 낙원에 어울리지 못한다는 거냐?",
+      "진심이야. 너는 내 예수야! ... 나의 구세주! ... 아, 넌 아무 것도 몰라..."
+    ]
+  },
+  "licensed-valkaama-44": {
+    "sourceScript": "A(Runa): At this time!\n\nA(Runa): Runa Eskleth.\n\nB(Lasse): Runa, it is me, Lasse\n\nA(Runa): Lasse!!! My God! Where are you?\n\nB(Lasse): Are you two ok?\n\nA(Runa): Yes. Of course. But where are you calling from?\n\nB(Lasse): I am in Gällivare.\n\nA(Runa): Gällivare?! What the hell are you doing in Gällivare???\n\nB(Lasse): Runa, things are getting out of hand... I almost don't have the strength anymore to continue the journey...\n\nA(Runa): I'll pick you up. No distance is too far for me!!!\n\nB(Lasse): Gällivare is only a stopover. I have to go on to the Inarijärvi.\n\nA(Runa): Where do you want to go?\n\nB(Lasse): To Inari. In Finland.\n\nA(Runa): So we'll meet there! I, I have to see you again! When will you be there?\n\nB(Lasse): Probably today in the evening... There is a church... I have to go... I cannot stay here any longer.\n\nA(Runa): Lasse??? What happened???\n\nA(Runa): Lasse! ... Damn it!",
+    "turns": [
+      "이 시간에!",
+      "루나 에스클레트입니다.",
+      "루나, 나야, 라쎄야.",
+      "라쎄!!! 세상에! 어디야?",
+      "너희 둘 다 괜찮아?",
+      "응, 물론이지. 근데 어디서 전화하는 거야?",
+      "나 지금 Gällivare에 있어.",
+      "Gällivare?! 도대체 왜 거기 있는 거야???",
+      "루나, 일이 점점 감당이 안 돼... 이제는 여행을 계속할 힘조차 거의 없어...",
+      "내가 데리러 갈게. 아무리 멀어도 상관없어!!!",
+      "Gällivare는 그냥 중간 경유지야. 난 Inarijärvi까지 더 가야 해.",
+      "어디로 가려고 하는 거야?",
+      "이타리로, 핀란드에.",
+      "그럼 거기서 만나! 나, 난 너 꼭 다시 만나야겠어! 언제쯤 도착해?",
+      "아마 오늘 저녁쯤... 거기에 교회가 있어... 나 가야 해... 여기 더 있을 수가 없어.",
+      "라쎄??? 무슨 일이야???",
+      "라쎄! ... 젠장!"
+    ]
+  },
+  "licensed-ed-listen": {
+    "sourceScript": "A(Proog): You're not paying attention!\n\nB(Emo): I just want to answer the... ...phone.\n\nA(Proog): Emo. look. I mean listen.\n\nA(Proog): You have to learn to listen.\n\nA(Proog): This is not some game.\n\nA(Proog): You. I mean we. we could easily die out here.\n\nA(Proog): Listen. listen to the sounds of the machine.\n\nA(Proog): Listen to your breathing.",
+    "turns": [
+      "너 지금 집중 안 하고 있잖아!",
+      "나 그냥... 전화 좀 받고 싶었어.",
+      "Emo, 잘 들어. 내 말 좀 들어봐.",
+      "경청하는 법을 배워야 해.",
+      "이건 장난이 아니야.",
+      "너도, 아니 우리 모두 여기서 쉽게 죽을 수도 있어.",
+      "잘 들어. 기계 소리에 귀 기울여봐.",
+      "네 숨소리도 들어봐."
+    ]
+  },
+  "licensed-ed-tired": {
+    "sourceScript": "A(Emo): Well. don't you ever get tired of this?\n\nB(Proog): Tired?!?\n\nB(Proog): Emo. the machine is like clockwork.\n\nB(Proog): One move out of place...\n\nB(Proog): ...and you're ground to a pulp.\n\nA(Emo): But isn't it -\n\nB(Proog): Pulp. Emo! Is that what you want. pulp?\n\nB(Proog): Emo. your goal in life...\n\nB(Proog): ...pulp?",
+    "turns": [
+      "너 이런 거 안 지치니?",
+      "지친다고?!?",
+      "Emo, 기계는 시계처럼 딱딱 맞아떨어져.",
+      "딱 한 번만이라도 실수하면...",
+      "...순식간에 산산조각 나는 거야.",
+      "근데 그게-",
+      "산산조각, Emo! 그게 네가 원하는 거야, 산산조각?",
+      "Emo, 네 인생의 목표가...",
+      "...산산조각이야?"
+    ]
+  },
+  "licensed-ed-eyes": {
+    "sourceScript": "A(Proog): Emo. close your eyes.\n\nB(Emo): Why?\n\nA(Proog): Now!\n\nB(Emo): Ok.\n\nA(Proog): Good.\n\nA(Proog): What do you see at your left side. Emo?\n\nB(Emo): Nothing.\n\nA(Proog): Really?\n\nB(Emo): No. nothing at all.\n\nA(Proog): And at your right. what do you see at your right side. Emo?\n\nB(Emo): The same Proog. exactly the same...\n\nB(Emo): ...nothing!\n\nA(Proog): Great.",
+    "turns": [
+      "Emo, 눈 감아봐.",
+      "왜?",
+      "빨리!",
+      "알겠어.",
+      "좋아.",
+      "Emo, 왼쪽에는 뭐가 보여?",
+      "아무것도 안 보여.",
+      "정말 아무것도?",
+      "응, 아무것도 없어.",
+      "그럼 오른쪽엔? Emo, 네 오른쪽엔 뭐가 보여?",
+      "똑같아, Proog. 완전히 똑같아...",
+      "...아무것도!",
+      "좋아."
+    ]
+  },
+  "licensed-ed-trust": {
+    "sourceScript": "A(Emo): Listen Proog! Do you hear that!\n\nA(Emo): Can we go here?\n\nB(Proog): There? It isn't safe. Emo.\n\nA(Emo): But...\n\nB(Proog): Trust me. it's not.\n\nA(Emo): Maybe I could...\n\nB(Proog): No.\n\nB(Proog): NO!\n\nB(Proog): Any further questions. Emo?\n\nA(Emo): No.",
+    "turns": [
+      "Proog, 들어봐! 그 소리 들려?",
+      "여기로 가도 돼?",
+      "거기? 위험해, Emo.",
+      "하지만...",
+      "나를 믿어, 진짜 위험해.",
+      "내가 한번...",
+      "안 돼.",
+      "안 된다니까!",
+      "더 물어볼 거 있니, Emo?",
+      "없어."
+    ]
+  },
+  "licensed-sita-03": {
+    "sourceScript": "A(Surphanaka): Ravana! Rama has slaughtered your Rakshasas in the forest. You must take revenge!\n\nB(Mareecha): Don't do it, Master. Rama is powerful.\n\nC(Ravana): Sister, do not bother me with your petty concerns.",
+    "turns": [
+      "라바나! 라마가 숲에서 당신의 라크샤사들을 학살했어요. 반드시 복수하셔야 해요!",
+      "그러지 마세요, 주인님. 라마는 정말 강한 자입니다.",
+      "수르파나카, 너의 하찮은 걱정거리로 나를 더 이상 귀찮게 하지 마라."
+    ]
+  },
+  "licensed-sita-04": {
+    "sourceScript": "A(Mareecha): Don't do it, Master!\n\nB(Ravana): I'll hear no arguments from you, Mareecha. You must help me at once. Transform yourself into a beautful golden deer to distract Rama. While Sita is unguarded, I'll grab her! Sita WILL be mine! hahahaha!",
+    "turns": [
+      "제발 하지 마세요, 주인님!",
+      "이제 그만, 마리차. 네 말은 듣지 않겠다. 당장 나를 도와라. 아름다운 황금 사슴으로 변신해서 라마의 시선을 끌어라. 시타가 혼자 남을 때 내가 그녀를 납치하겠다! 시타는 반드시 내 것이 될 것이다! 하하하하!"
+    ]
+  },
+  "licensed-sita-05": {
+    "sourceScript": "A(Sita): What a beautiful golden deer! Oh Rama, won't you capture it for me?\n\nB(Rama): I don't know, Sita. It could be a trick!\n\nA(Sita): Oh Rama, pleeeaaase?\n\nB(Rama): All right, Sita. You ask for so little and give me so much. But promise you won't leave the hut while I'm gone. The forest is dangerous.\n\nA(Sita): I promise! Oh Rama, I love you!\n\nB(Rama): I love you, Sita.",
+    "turns": [
+      "정말 아름다운 황금 사슴이야! 오, 라마, 저 사슴을 잡아 줄 수 있어?",
+      "잘 모르겠어, 시타. 이게 함정일 수도 있으니까.",
+      "오, 라마, 제발 부탁해~?",
+      "알겠어, 시타. 넌 항상 조그만 걸 바라고 나에겐 너무 많은 걸 주니까. 대신 내가 없는 동안 오두막을 절대 나가지 않겠다고 약속해. 이 숲은 정말 위험해.",
+      "약속할게! 오, 라마, 사랑해!",
+      "나도 사랑해, 시타."
+    ]
+  },
+  "licensed-sita-06": {
+    "sourceScript": "A(Hanuman): I will help you.\n\nB(Rama): Who are you?\n\nA(Hanuman): I am Hanuman, the Monkey Warrior! Son of the Wind!\n\nB(Rama): I am Rama, Prince of Ayodhya. Let us be allies.\n\nA(Hanuman): I shall be your servant forever.\n\nB(Rama): Now go, find Sita!",
+    "turns": [
+      "내가 도와드리겠습니다.",
+      "누구냐?",
+      "나는 하누만, 원숭이 전사요! 바람의 아들입니다!",
+      "나는 라마, 아요디아의 왕자다. 우리 동맹을 맺자.",
+      "영원히 당신을 섬기겠습니다.",
+      "자, 어서 가서 시타를 찾아라!"
+    ]
+  },
+  "licensed-ed-nothing": {
+    "sourceScript": "A(Proog): Emo?\n\nA(Proog): Emo. why...\n\nA(Proog): Emo...\n\nA(Proog): ...why can't you see the beauty of this place?\n\nA(Proog): The way it works.\n\nA(Proog): How perfect it is.\n\nB(Emo): No. Proog. I don't see.\n\nB(Emo): I don't see because there's nothing there.\n\nB(Emo): And why should I trust my life to something that isn't there?\n\nB(Emo): Well can you tell me that?\n\nB(Emo): Answer me!\n\nB(Emo): Proog...\n\nB(Emo): ...you're a sick man!\n\nB(Emo): Stay away from me!",
+    "turns": [
+      "에모?",
+      "에모, 왜...",
+      "에모...",
+      "...왜 이곳의 아름다움을 볼 수 없는 거지?",
+      "여기가 어떻게 돌아가는지.",
+      "얼마나 완벽한지.",
+      "아니야, 프로오그. 난 못 봐.",
+      "난 아무것도 없으니까 못 보는 거야.",
+      "그리고 나는 왜 없는 것에 내 목숨을 걸어야 하지?",
+      "그게 무슨 뜻인지 설명해줄 수 있어?",
+      "대답해봐!",
+      "프로오그...",
+      "...넌 진짜 미친 사람이야!",
+      "내게서 떨어져!"
+    ]
+  },
+  "licensed-ed-trap": {
+    "sourceScript": "A(Proog): No! Emo! It's a trap!\n\nB(Emo): Hah. it's a trap.\n\nB(Emo): At the left side you can see the hanging gardens of Babylon!\n\nB(Emo): How's that for a trap?\n\nA(Proog): No. Emo.\n\nB(Emo): At the right side you can see... ...well guess what...\n\nB(Emo): ...the colossus of Rhodes!\n\nA(Proog): No!\n\nB(Emo): The colossus of Rhodes and it is here just for you Proog.",
+    "turns": [
+      "안 돼! 에모! 이건 덫이야!",
+      "하, 덫이라고?",
+      "왼쪽을 봐, 바빌론의 공중정원이 보여!",
+      "그게 어떻게 덫이겠어?",
+      "아니야, 에모.",
+      "오른쪽을 봐... 자, 뭔지 맞혀봐...",
+      "...로도스의 거상이야!",
+      "아니!",
+      "로도스의 거상, 그리고 이건 바로 너를 위한 거야, 프로오그."
+    ]
+  },
+  "licensed-sita-01": {
+    "sourceScript": "A(Dasharatha): Rama my son, today I wished to crown you King of Ayodhya but my evil scheming wife Kaikeyi- -just reminded me of an ancient vow I made. To honor this vow, instead of crowning you king, I must banish you to the forest for 14 years! Goodbye, dear boy. You are noble and good. The embodiment of righteousness. A brave warrior prince. Joy of Heaven and Earth. The Ideal Man. May the Gods be with you. Don't let the door hit your ass on the way out.",
+    "turns": [
+      "라마야, 아들아, 오늘 나는 너를 아요디아의 왕으로 세우려고 했지만, 내 악한 계략을 꾸민 아내 카이케이가 오래전 내가 했던 맹세를 상기시켰구나. 이 맹세를 지키기 위해, 너를 왕으로 삼는 대신 14년 동안 숲으로 추방해야만 하겠다! 잘 가거라, 사랑하는 아들아. 너는 고귀하고 선하다. 의로움의 화신이자, 용감한 전사 왕자다. 하늘과 땅의 기쁨이자, 이상적인 인간이구나. 신들이 너와 함께하길 빈다. 나가다 문에 엉덩이 부딪히지 말거라."
+    ]
+  },
+  "licensed-sita-02": {
+    "sourceScript": "A(Rama): No, Sita. The forest is beset by Rakshasa demons. They harrass our Wise Men and desecrate their ritual fires. I must fight them...alone.\n\nB(Sita): But Rama, a woman's place is next to her Husband! I will accept any hardship. I cannot live without you.",
+    "turns": [
+      "안 돼, 시타야. 숲에는 락샤사 악마들이 들끓고 있어. 그 자들이 현자들을 괴롭히고, 그들의 제사 불을 더럽히지. 나는 그들과 싸워야 해... 혼자서.",
+      "하지만 라마, 여자의 자리는 남편 곁이야! 어떤 고난도 감수할게. 당신 없이는 살 수 없어."
+    ]
+  },
+  "licensed-sita-07": {
+    "sourceScript": "A(Nina): Hello?\n\nB(Dave): It's me.\n\nA(Nina): Dave! Where are you?\n\nB(Dave): Trivandrum, silly. At home.\n\nA(Nina): You have a home phone?\n\nB(Dave): Of course.\n\nA(Nina): You've been gone a month and you never emailed me your phone number.\n\nB(Dave): I didn't? Well, I have some good news. They've extended my contract another year!\n\nA(Nina): What? Another year? You said you'd be back in 6 months.\n\nB(Dave): But I like it here.\n\nA(Nina): What about me? What about Lexi? What about our apartment? What about US?\n\nB(Dave): Don't cry, Nina. I love you. You could come here...",
+    "turns": [
+      "여보세요?",
+      "나야.",
+      "데이브! 지금 어디야?",
+      "트리반드럼이지, 바보야. 집에 있어.",
+      "집 전화 있었어?",
+      "당연하지.",
+      "한 달이나 있었으면서 전화번호를 한 번도 이메일로 안 보냈잖아.",
+      "안 보냈었나? 음, 좋은 소식이 있어. 내 계약이 1년 더 연장됐어!",
+      "뭐라고? 1년 더? 6개월이면 돌아온다며.",
+      "근데 여기 너무 좋아.",
+      "그럼 나는? 렉시는? 우리 집은? 우리는 어떡해?",
+      "울지 마, 니나. 사랑해. 너도 여기 올 수 있잖아..."
+    ]
+  },
+  "licensed-sita-08": {
+    "sourceScript": "A(Ravana): I love you Sita. You must be my wife.\n\nB(Sita): Never. I love only Rama. I am the chaste and virtuous wife of another man. I belong to Rama as the rays belong to the Sun. Give me back to Rama, or you shall soon hear his mighty bow that resounds like Indra's thunderbolt!",
+    "turns": [
+      "난 널 사랑해, 시타. 넌 내 아내가 되어야 해.",
+      "절대 그럴 수 없어. 나는 오직 라마만 사랑해. 나는 다른 남자의 정숙하고 덕 있는 아내야. 나는 라마의 것이야, 태양의 광선이 태양의 것이듯이. 날 라마에게 돌려보내, 아니면 곧 인드라의 천둥같은 소리로 울려 퍼지는 그의 강한 활소리를 듣게 될 거야!"
+    ]
+  },
+  "licensed-sita-09": {
+    "sourceScript": "A(Rama): Hanuman! Assemble the Monkey Warriors. We shall cross the sea to Lanka and rescue Sita.\n\nB(Hanuman): Yes, my Lord. We march at once!",
+    "turns": [
+      "하누만! 원숭이 전사들을 집결시켜라. 바다를 건너 랑카로 가서 시타를 구할 것이다.",
+      "예, 주군이시여. 지금 바로 출정하겠습니다!"
+    ]
+  },
+  "licensed-sita-10": {
+    "sourceScript": "A(Rama): You have lived in another man's house so you are unfit to be my wife.\n\nB(Sita): What?\n\nA(Rama): I have done my duty in rescuing you from the enemy and avenging the insult to myself. I have terrible suspicions about your character and conduct. Ravana was aware of your beauty. He cannot have kept you in his house for so long without touching you. The very sight of you is painful. You are free to go wherever you want. I have no more use for you, Sita.",
+    "turns": [
+      "너는 다른 남자의 집에서 살았으니 내 아내가 될 자격이 없다.",
+      "뭐라고?",
+      "나는 너를 적에게서 구하고 내 명예를 되찾는 의무를 다했다. 하지만 네 성품과 행실에 대해 끔찍한 의심이 든다. 라바나는 네 아름다움을 알고 있었다. 그가 널 이토록 오래 집에 두면서 손도 대지 않았을 리가 없다. 네 모습을 보는 것조차 괴롭다. 네가 원하는 곳으로 가도 된다. 이제 더는 네가 필요하지 않다, 시타."
+    ]
+  },
+  "licensed-sprite-1": {
+    "sourceScript": "A(Ellie): C’mon, team! We mustn’t dilly-dally when there’s so much nature to see! I was thinking we should call our class project “Fungis in a Forest!” Get it? Because we’re a group of fun guys. And also fungis, which— Shush! That’s a yellow wagtail. And she’s in distress! There, there, my little Motacilla flava. Oh! Look at her go! Wow!",
+    "turns": [
+      "자, 팀! 이렇게 볼 자연이 많은데 빈둥거리면 안 되지! 우리 반 프로젝트 이름을 '숲속의 펀가이들(Fungis in a Forest)!'로 하자고 생각했어! 알겠어? 우린 재미있는 친구들이고(fun guys), 또 버섯(fungis)이기도 하니까— 쉿! 저건 노랑턱솔새야. 그리고 저렇게 다급해 보여! 그래, 그래, 내 작은 모타킬라 플라바야. 오! 날아가는 것 좀 봐! 와!"
+    ]
+  },
+  "licensed-sprite-2": {
+    "sourceScript": "A(Victoria): Can’t believe we got stuck with the tree hugger. If I have to hear the Latin name for one more animal, I swear I’m gonna kill her.\n\nB(Rex): Relax, Sugar Buns. While she does all the work we’ll have all the fun.",
+    "turns": [
+      "우리가 나무 끌어안는 애랑 같은 조가 됐다니 믿기지 않아. 동물 이름을 한 번만 더 라틴어로 들으면 진짜 걔 죽여버릴 거야.",
+      "진정해, 슈가번. 걔가 다 일하는 동안 우린 마음껏 놀면 되잖아."
+    ]
+  },
+  "licensed-sprite-3": {
+    "sourceScript": "A(Rex): Oi, fungus freak! Make yourself useful and fix the tent.\n\nB(Ellie): Oh, a bit of friendly campsite ribbing. Fun.",
+    "turns": [
+      "야, 버섯 덕후! 쓸모 좀 있게 텐트나 고쳐.",
+      "아, 캠프에서 좀 친근하게 놀리네. 재밌다."
+    ]
+  },
+  "licensed-sprite-4": {
+    "sourceScript": "A(Elder Sprite): Greetings. Welcome, friends. I’ll be right down. Could I interest you in some peppermint tea?\n\nB(Ellie): What are you guys?\n\nA(Elder Sprite): We are sprites. We sprite balance to the forest. We take care of the animals, plants, birds, moss…",
+    "turns": [
+      "안녕하세요. 환영합니다, 친구들. 금방 내려갈게요. 페퍼민트 차라도 한 잔 하시겠어요?",
+      "당신들은 누구세요?",
+      "우리는 스프라이트예요. 우리는 숲의 균형을 지켜요. 동물들, 식물들, 새들, 이끼들까지 돌보고 있답니다..."
+    ]
+  },
+  "licensed-sita-11": {
+    "sourceScript": "A(Nina): Hey, they want me to attend this meeting so much they're gonna fly me all the way to New York. 5 days, all expenses paid!\n\nB(Dave): That's great. It'll be fun for you.\n\nA(Nina): See you next week.",
+    "turns": [
+      "있잖아, 그쪽에서 내가 꼭 이 회의에 참석했으면 해서 뉴욕까지 비행기로 보내준대. 5일 동안, 모든 경비 다 내준대!",
+      "좋겠다. 재밌게 잘 다녀와.",
+      "다음 주에 봐."
+    ]
+  },
+  "licensed-sita-12": {
+    "sourceScript": "A(Rama): Uh, say, Sita, would you like to take a trip?\n\nB(Sita): But we just got here.\n\nA(Rama): Yeah great, get packing. Brother Laxman, my wife's dubious reputation casts doubt upon my own. You must drive Sita to the forest and abandon her there. I cannot have her in my kingdom.",
+    "turns": [
+      "저기, 씨타, 여행 좀 다녀올래?",
+      "하지만 우리 방금 도착했잖아요.",
+      "그래, 좋아. 짐 챙겨. 락스만, 내 아내의 좋지 않은 소문이 내 명예까지 더럽히고 있다. 네가 씨타를 숲에 데려가서 두고 오거라. 내 왕국에 그녀를 둘 수는 없다."
+    ]
+  },
+  "licensed-sita-13": {
+    "sourceScript": "A(Rama): Sita! Well, yes, of course, Sita... All Sita has to do is prove her purity again. Another trial by fire, perhaps? Or we could try trial by water. You know, see if she sinks or floats. If she sinks, she's pure. If she floats - No, wait, if she floats she's pure, if she sinks...",
+    "turns": [
+      "씨타! 아, 그래, 물론이지, 씨타... 씨타가 해야 할 거라곤 자신의 순결함을 다시 한 번 증명하는 것뿐이야. 또 불시험을 보면 되겠지? 아니면 물시험도 괜찮을 것 같은데. 알지, 가라앉는지 뜨는지 보는 거야. 가라앉으면 순결한 거고, 뜨면— 아니, 잠깐, 뜨면 순결한 거고, 가라앉으면..."
+    ]
+  },
+  "licensed-sita-14": {
+    "sourceScript": "A(Sita): I shall prove my purity to you. If I have always been true to Rama, if I have never thought of another man, if I am completely pure in body and soul, then, may Mother Earth take me back into her womb!",
+    "turns": [
+      "제가 제 순수함을 증명하겠습니다. 만약 제가 늘 라마님께 충실했고, 다른 남자를 한 번도 생각한 적 없으며, 몸과 마음 모두 완전히 순수하다면, 어머니 대지께서 저를 다시 품어주시기를 바랍니다!"
+    ]
+  },
+  "licensed-sprite-5": {
+    "sourceScript": "A(Rex): Hey, uh, little mushroom geezer, you cool with us camping here for the night?\n\nB(Elder Sprite): Absolutely. A friend of the forest is a friend of the sprites.",
+    "turns": [
+      "저기, 저, 작은 버섯 영감님, 우리 여기서 하룻밤만 머물러도 괜찮을까요?",
+      "물론이지. 숲의 친구는 요정들의 친구니까."
+    ]
+  },
+  "licensed-sprite-6": {
+    "sourceScript": "A(Elder Sprite): Nuh-uh-uh. Those punks treated the world as their own personal rubbish bin. And you set them free! Now you’ll join them!",
+    "turns": [
+      "안 돼, 안 돼, 안 돼. 저 놈들은 세상을 자기들 쓰레기통처럼 썼어. 그런데 네가 그놈들을 풀어줬지! 이제 너도 그들과 함께하게 될 거다!"
+    ]
+  },
+  "licensed-cosmos-1": {
+    "sourceScript": "A(Victor): You are so much more than just a sheep, aren't you?\n\nB(Franck): Oh yeah? How would you know?\n\nA(Victor): Look at you. You're an adventurer, Franck. Just like me, you're... a lone wolf. Tell me, does one choose to be alone? No, one doesn't. One doesn’t even choose to be a wolf. Or does one?\n\nB(Franck): Well, mister... err... Hector.\n\nA(Victor): Victor. Victor.\n\nB(Franck): I don’t know what you’re on about but I'm just a sheep minding its own business. And I suggest you do the same.",
+    "turns": [
+      "넌 그냥 양 그 이상이잖아, 그렇지?",
+      "그래? 그걸 네가 어떻게 알아?",
+      "좀 봐, 너는 모험가야, 프랭크. 나처럼, 넌... 외로운 늑대야. 말해봐, 혼자가 되는 걸 스스로 선택하는 걸까? 아니, 선택 안 하지. 늑대가 되는 것도 누가 선택해서 되는 게 아니잖아. 아니면... 그런 건가?",
+      "글쎄요, 선생님... 어... 헥터 씨.",
+      "빅터야. 빅터.",
+      "무슨 소리 하는지 모르겠지만, 난 그냥 내 일만 하고 싶은 양일 뿐이야. 그러니까 당신도 자기 일이나 신경 쓰는 게 어때."
+    ]
+  },
+  "licensed-cosmos-2": {
+    "sourceScript": "A(Victor): No. No no no, Franck. Wait wait wait. No. This is not... the way. Just give me one minute of your precious time.\n\nB(Franck): Precious time? Hehehe.\n\nA(Victor): Yeah just give me one minute. You would have one more minute, wouldn't you? Okay half. Half a minute.",
+    "turns": [
+      "아니. 아니 아니야, 프랭크. 잠깐만, 잠깐만. 아니야. 이건... 이럴 게 아니야. 네 소중한 시간 딱 1분만 내줘.",
+      "소중한 시간? 크크.",
+      "그래, 그냥 1분만 줘. 네게 1분쯤 더 있지 않겠어? 좋아, 그럼 30초. 30초만."
+    ]
+  },
+  "licensed-sintel-3": {
+    "sourceScript": "A(Sintel): I HAVE FAILED.\n\nB(Shaman): YOU'VE ONLY FAILED TO SEE... THESE ARE DRAGON LANDS, SINTEL. YOU ARE CLOSER THAN YOU KNOW.",
+    "turns": [
+      "나는 실패했어.",
+      "네가 보지 못한 것뿐이야... 여긴 용의 땅이란다, 신텔. 네가 생각하는 것보다 더 가까이 와 있어."
+    ]
+  },
+  "licensed-boy-1": {
+    "sourceScript": "A(Casey): Holy shit you sucked those fuckers down!\n\nB(Daniel): Hell yeah, looking for some inspiration.\n\nA(Casey): From cheap beer?\n\nB(Daniel): From the inner part of my psyche.\n\nA(Casey): What do you write about anyways?\n\nB(Daniel): Tonight, Sci-fi garbage",
+    "turns": [
+      "와, 너 그놈들 진짜 순식간에 들이켰네!",
+      "그렇지, 영감 좀 얻으려고.",
+      "그 싼 맥주에서?",
+      "내 내면 깊숙한 곳에서 말이야.",
+      "넌 도대체 뭘 쓰고 있는데?",
+      "오늘 밤은, SF 쓰레기야."
+    ]
+  },
+  "licensed-boy-2": {
+    "sourceScript": "A(Daniel): The end of yet another day in dreary Eugene. 10 beers, bad TV, no ideas. With Casey asleep I'll have only the phosphorus glow of my monitor, the click of the keyboard, and the voiceless online chatter to keep me company",
+    "turns": [
+      "또다시 우울한 유진에서 끝나는 하루. 맥주 열 병, 형편없는 TV, 아이디어는 전혀 없어. 케이시는 자고 있고, 이제 내 곁에는 형광빛 모니터와 키보드 소리, 그리고 목소리 없는 온라인 채팅뿐이야."
+    ]
+  },
+  "licensed-boy-3": {
+    "sourceScript": "A(Daniel): Welcome to Gadget City. Sir, may I show you our projection TV's. This TV is the best. You should get this one. Absolutely.",
+    "turns": [
+      "가젯 시티에 오신 걸 환영합니다. 손님, 저희 프로젝션 TV를 한번 보시겠어요? 이 TV가 최고입니다. 이걸로 하시죠. 정말입니다."
+    ]
+  },
+  "licensed-cosmos-3": {
+    "sourceScript": "A(Victor): I knew it. I knew it. You will not regret this. The adventures you will have. All the lives you've ever wanted. All you’ve been missing. Here. This is... the best product we have... in store. Variable spin speed, excellent tumble performance... ...in one... handy... device. Squeaky clean.",
+    "turns": [
+      "내가 알았다니까. 내가 알 줄 알았어. 절대 후회하지 않을 거야. 네가 겪게 될 모험들. 네가 한 번쯤 꿈꿨던 모든 삶들. 네가 그동안 놓쳐온 모든 것들. 자, 여기. 이게... 우리가 가진 최고의 상품이야... 매장에 있는 것 중에. 가변 회전 속도, 훌륭한 텀블(회전) 성능이... ...이 한... 편리한... 기계 안에 다 들어있어. 완전히 새것처럼 깨끗해질 거야."
+    ]
+  },
+  "licensed-cosmos-4": {
+    "sourceScript": "A(Franck): Wait wait wait wait wait wait. How does this thing work? I mean, how do I make it work?\n\nB(Victor): No you don't. I just turned it on for you.\n\nA(Franck): When can I go? Where can I go?\n\nB(Victor): We will pick you up. Don't worry, just stay here. In this exact place. Don't move. Just wait.\n\nA(Franck): That's it?",
+    "turns": [
+      "잠깐만, 잠깐만, 잠깐만, 잠깐만, 잠깐만, 잠깐만. 이게 어떻게 작동하는 건데? 아니, 어떻게 해야 작동시키는 건데?",
+      "아니, 그럴 필요 없어. 내가 이미 너를 위해 켜뒀어.",
+      "언제 갈 수 있어? 어디로 갈 수 있는데?",
+      "우리가 널 데리러 올 거야. 걱정하지 말고, 여기 이 자리에 있어. 절대 움직이지 마. 그냥 기다려.",
+      "이게 전부야?"
+    ]
+  },
+  "licensed-sintel-1": {
+    "sourceScript": "A(Shaman): THIS BLADE HAS A DARK PAST. IT HAS SHED MUCH INNOCENT BLOOD. YOU'RE A FOOL FOR TRAVELING ALONE, SO COMPLETELY UNPREPARED. YOU'RE LUCKY YOUR BLOOD'S STILL FLOWING.\n\nB(Sintel): THANK YOU.",
+    "turns": [
+      "이 검은 어두운 과거를 가지고 있다. 무고한 피를 많이 흘렸지. 너처럼 혼자, 아무 준비도 없이 여행하는 건 어리석은 짓이야. 네 피가 아직 네 몸에 흐르고 있다는 게 다행이군.",
+      "감사합니다."
+    ]
+  },
+  "licensed-sintel-2": {
+    "sourceScript": "A(Shaman): SO... WHAT BRINGS YOU TO THE LAND OF THE GATEKEEPERS?\n\nB(Sintel): UM... I'M SEARCHING FOR SOMEONE.\n\nA(Shaman): SOMEONE VERY DEAR? A KINDRED SPIRIT?\n\nB(Sintel): A DRAGON.\n\nA(Shaman): A DANGEROUS QUEST FOR A LONE HUNTER.\n\nB(Sintel): I'VE BEEN ALONE FOR AS LONG AS I CAN REMEMBER.",
+    "turns": [
+      "그래서... 게이트키퍼의 땅엔 왜 온 거지?",
+      "음... 누군가를 찾고 있어요.",
+      "아주 소중한 사람이야? 마음이 통하는 존재?",
+      "용이에요.",
+      "홀로 사냥하는 이에게는 위험한 여정이지.",
+      "내 기억 속엔 난 항상 혼자였어요."
+    ]
+  },
+  "licensed-cosmonaut-01": {
+    "sourceScript": "A(Stas): So here I am, I hope this is working right, if it isn't it must be broken, which is your fault, Andrei, thank you. I've decided to record as much as I possibly can for a post-flight analysis. As you know, something must have damaged the Kolibri's communications antenna. as all attempts to contact you guys have proven futile.",
+    "turns": [
+      "여기까지 왔다. 이게 제대로 작동하기만을 바란다. 만약 안 되면 고장인 거고, 그건 네 잘못이야, 안드레이. 고마워. 나는 비행 후 분석을 위해 최대한 많이 기록하기로 했어. 알다시피 콜리브리의 통신 안테나가 뭔가에 손상된 것 같아. 너희랑 연락을 시도했던 모든 게 헛수고였으니까."
+    ]
+  },
+  "licensed-cosmonaut-02": {
+    "sourceScript": "A(Stas): I'm currently on my third orbit of the Moon. There she is, out there. Isn't she beautiful? It's hard to sum up how staggering it is without sounding clichd or corny. So, here I am... Quarter of a million kilometers away from home, all alone, and the sense of isolation is... Well, it's pretty overwhelming.",
+    "turns": [
+      "지금 달을 세 번째로 돌고 있어. 저기, 보이지? 정말 아름답지 않니? 진부하게 들리지 않고 이 경이로움을 표현할 방법이 잘 떠오르지 않아. 그래서, 여기 내가 있어... 집에서 25만 킬로미터나 떨어져, 완전히 혼자고, 이 고립감은... 솔직히, 꽤나 압도적이야."
+    ]
+  },
+  "licensed-cosmonaut-03": {
+    "sourceScript": "A(Stas): The good news is I made this piece of shit work. It wasn't poetry in motion or textbook, but it did take off from the Moon. So here I am... In deep space... Solar panels are history... and unless I can find a gas station on the way back I'm pretty fucked.",
+    "turns": [
+      "좋은 소식은, 이 고물 같은 걸 어떻게든 작동시켰다는 거야. 멋지거나 교과서적인 모습은 아니었지만, 달에서 이륙하긴 했어. 그래서 지금... 심우주 한복판에 있지... 태양 전지는 이미 끝났고... 돌아가는 길에 주유소라도 있지 않은 이상, 난 진짜 망한 거야."
+    ]
+  },
+  "licensed-cosmonaut-04": {
+    "sourceScript": "A(Stas): Do you hear me? I'll give you my coordinates. They are 40342004. Chaika, a storm is coming, it's very close. Tell the rescue mission to find me as soon as possible. Over! My muscles are weak from all the time I've spent in zero gravity.",
+    "turns": [
+      "내 목소리 들려? 내 좌표 알려줄게. 40342004야. 차이카, 폭풍이 오고 있어. 아주 가까워. 구조팀에 최대한 빨리 나를 찾으라고 전해줘. 오버! 무중력에 너무 오래 있어서 근육이 약해졌어."
+    ]
+  },
+  "licensed-cosmonaut-05": {
+    "sourceScript": "A(Stas): Today is June 15th... 1976. My name is Stas Arsenievich. I'm a soviet cosmonaut. I write this diary to leave a record of my arrival. There's no one here. It's like the whole human race has been killed in a nuclear explosion or melted or... Everything else is still here. Every leaf waterfall bird,... Everything looks exactly like Earth... Except it isn't.",
+    "turns": [
+      "오늘은 1976년 6월 15일이다. 내 이름은 스타스 아르세니예비치. 나는 소련 우주비행사다. 내 도착을 기록으로 남기기 위해 이 일기를 쓴다. 여긴 아무도 없다. 마치 온 인류가 핵폭발에 모두 죽었거나 녹아버린 것 같다... 하지만 다른 것들은 전부 그대로다. 나뭇잎도, 폭포도, 새도... 모든 것이 지구와 똑같이 보인다... 하지만 지구가 아니다."
+    ]
+  },
+  "licensed-cosmonaut-06": {
+    "sourceScript": "A(내레이션 · 연습 화자): A memory is similar to a virus. It's unique, it can remain asleep for years and when it comes to life it spreads, it divides, it multiplies and it can eat you alive.",
+    "turns": [
+      "기억은 바이러스와 비슷하다. 기억은 유일무이하고, 몇 년 동안 잠들어 있을 수 있다가, 한 번 깨어나면 퍼지고, 나뉘고, 증식해서 결국 널 산 채로 집어삼킬 수 있어."
+    ]
+  },
+  "licensed-cosmonaut-07": {
+    "sourceScript": "A(Stas): Today I drank water from a stream. I also ate the meat leftovers by the bonfire but they tasted of ash and I had to spit them out. I heard a scream in the distance and I ran towards it. Beats bouncing inside my chest very fast. I screamed with all my heart. I laugh, my eyes filled with tears. But there was no one there.",
+    "turns": [
+      "오늘은 시냇물 물을 마셨다. 모닥불 옆에 남아 있던 고기도 먹어봤지만, 재 냄새가 나서 뱉어버렸다. 멀리서 비명이 들리는 걸 듣고 달려갔다. 가슴이 엄청 세차게 뛰었다. 온 힘을 다해 소리쳤다. 웃음이 나면서도, 눈물이 고였다. 하지만 거기엔 아무도 없었다."
+    ]
+  },
+  "licensed-cosmonaut-08": {
+    "sourceScript": "A(연습 화자 1): Do you know why I started to work here?\n\nB(연습 화자 2): You never told me.\n\nA(연습 화자 1): When I was seventeen I spent the summer with my parents in the country and I met this boy. He was a pilot. It was... It was the best summer. It was perfect. And then at the end of it, he just vanished. I keep thinking... that he'll be on the next bus full of new recruits. Or the next one.\n\nB(연습 화자 2): So you're not here because you love your job?\n\nA(연습 화자 1): I hate space. It's such a... such a bizarre place... There's so much to see down here.",
+    "turns": [
+      "내가 왜 여기서 일하게 됐는지 알아?",
+      "네가 그 얘긴 해준 적 없잖아.",
+      "내가 열일곱 살 때 시골에서 부모님이랑 여름을 보냈는데, 거기서 어떤 남자애를 만났어. 그 애는 조종사였지. 그 여름은... 정말 최고였어. 완벽했어. 그런데 여름이 끝날 무렵, 그 애가 흔적도 없이 사라져버렸어. 나는 자꾸만 생각해... 그 애가 다음에 신병들 태운 버스를 타고 나타날 것 같다고. 아니면 그 다음 버스라도.",
+      "그러면 너, 일 좋아서 여기 있는 건 아니구나?",
+      "나 우주 정말 싫어. 여긴 너무... 너무 기괴해. 여기 아래에서 볼 게 얼마나 많은데."
+    ]
+  },
+  "licensed-cosmonaut-13": {
+    "sourceScript": "A(내레이션 · 연습 화자): As I fell off I thought of a welcome. Secretly, I also imagined national dances and beautiful women. I thought about the hurrays and the solemn celebrations. But they weren't there. I remember a naked fists fight with a boy. He liked a girl. I liked her too. We never mentioned the subject again. Even though we continued being friends.",
+    "turns": [
+      "떨어지면서 환영받는 상상을 했어. 속으로는 국가 무용이랑 아름다운 여자들도 떠올렸지. 환호와 근엄한 축하 행사도 생각났어. 하지만 그런 건 없었어. 맨주먹으로 한 소년과 싸웠던 일이 문득 떠올랐어. 그 애가 어떤 여자애를 좋아했거든. 나도 그 애를 좋아했고. 그 일은 다시는 서로 입에 올리지 않았어. 그래도 계속 친구로 지냈지."
+    ]
+  },
+  "licensed-cosmonaut-14": {
+    "sourceScript": "A(연습 화자 1): Ah, it's good to see you. Feels like it's been ages.\n\nB(연습 화자 2): - It's been two weeks. With the launch preparations I haven't got a spare minute.\n\nA(연습 화자 1): I forgot you're so important these days. How is it working at the OKB- 52?\n\nB(연습 화자 2): It's amazing. I can't believe I'm working with Chelomei. You?\n\nA(연습 화자 1): I'm ok, can't complain.",
+    "turns": [
+      "아, 정말 반갑다. 진짜 오랜만인 것 같아.",
+      "– 2주밖에 안 됐어. 발사 준비 때문에 한순간도 쉴 틈이 없었거든.",
+      "요즘 네가 그렇게 바쁜 걸 까먹었다. OKB-52에서 일하는 건 어때?",
+      "정말 대단해. 첼로메이랑 같이 일한다는 게 아직도 믿기지 않아. 넌?",
+      "나도 괜찮아, 딱히 불평할 건 없어."
+    ]
+  },
+  "licensed-cosmonaut-15": {
+    "sourceScript": "A(Stas): Yesterday I sensed a strange presence. There was no one there but I still felt it. You know I don't believe in ghosts but still... For a few seconds, I ceased to hear. An absolute silence. I screamed petrified and hit with my fist the ash that covered it all. I have forgotten your name.",
+    "turns": [
+      "어제 이상한 존재를 느꼈어. 아무도 없었는데도 분명히 뭔가 있다고 느껴졌지. 내가 유령 같은 건 안 믿는 거 알잖아, 그래도… 몇 초 동안 아무 소리도 안 들리더라. 완벽한 침묵이었어. 겁에 질려서 소리를 질렀고, 덮고 있던 재를 주먹으로 쳤지. 너 이름을 잊어버렸어."
+    ]
+  },
+  "licensed-cosmonaut-16": {
+    "sourceScript": "A(Andrei): Hi, it's, it's me. Do you know where Stas is? Look, are you sitting down? You're not going to believe what I'm going to tell you. The Americans are coming to Star City to train with us. There's going to be a joint mission between Apollo and Soyuz. Yes. It's gonna be the first docking of two countries in space. And they've asked me to take charge of our end of the mission. I didn't know what to say. Ok. Ok, I'll see you later.",
+    "turns": [
+      "여보세요, 나야. 스타스 어디 있는지 알아? 저기, 지금 앉아 있는 거지? 내가 하는 말 너 안 믿을 걸. 미국 애들이 우리랑 같이 훈련하러 스타 시티에 온대. 아폴로랑 소유즈가 합동 임무를 한대. 맞아. 두 나라 우주선이 우주에서 처음으로 도킹하는 거야. 그리고 그 임무에서 우리 쪽 책임을 나더러 맡으라고 하더라. 뭐라 해야 할지 모르겠더라. 알았어. 이따 보자."
+    ]
+  },
+  "licensed-cosmonaut-09": {
+    "sourceScript": "A(연습 화자 1): If you were a time traveler, but you could only travel in one direction, which one would you chose? Forward or back?\n\nB(연습 화자 2): A few years ago, I would have said back, for sure. Now I'm not so certain. I'm scared to death, you know?",
+    "turns": [
+      "네가 만약 시간 여행자인데 한 방향으로만 갈 수 있다면, 어느 쪽을 고르겠어? 앞으로, 아니면 뒤로?",
+      "몇 년 전만 해도 난 무조건 과거로 간다고 했을 거야. 근데 지금은 잘 모르겠어. 솔직히 무서워 죽겠어, 알지?"
+    ]
+  },
+  "licensed-cosmonaut-10": {
+    "sourceScript": "A(내레이션 · 연습 화자): I don't recall having dreams before. There was a small crystalline pond There was a small crystalline pond blue, red, and silver colors. And all was bathed by the sun in such an intense way Everything was normal except there was a lack of atmosphere. The tree, the pool... everything floated adrift in space. I was impressed to see the stars so clearly.",
+    "turns": [
+      "난 예전에 꿈을 꾼 적이 없는 것 같아. 작은 수정처럼 맑은 연못이 있었는데, 파랑, 빨강, 은색 빛깔이었어. 그리고 그 모든 게 태양 아래서 정말 강렬하게 빛나고 있었지. 모든 게 평범했지만 대기가 없었어. 나무도, 연못도… 모든 게 우주에 떠서 표류하고 있었어. 별들이 그렇게 또렷하게 보이는 게 정말 인상적이었어."
+    ]
+  },
+  "licensed-cosmonaut-11": {
+    "sourceScript": "A(연습 화자 1): I don't want to bother you with the reasons. I don't want to talk about it But I do want you to finally meet Chelomei. He's put together an impressive team. His designs are light years ahead of the ones that Koroliov was working on and the ones that Mishin is working on now. N1 is a dead project, but you know, my friend, everything is politics, hum? Maybe one day you can change that. I've told him, that he can trust you. He can depend on you. That you're his man in Star City, am I right? am I right?\n\nB(Andrei): Of course. Thank you.",
+    "turns": [
+      "이유는 굳이 얘기하고 싶지 않아. 그 얘기는 안 할게. 하지만 네가 반드시 첼로메이를 만나길 바라. 그가 정말 대단한 팀을 이끌고 있어. 그의 설계는 코롤료프가 하던 것보다 훨씬 앞서 있고, 미신이 지금 작업하는 것보다도 훨씬 진보적이야. N1은 끝난 프로젝트지만, 알잖아, 내 친구, 결국 모든 게 정치라는 거. 언젠가는 네가 그걸 바꿀 수도 있을 거야. 내가 첼로메이에게 말했어, 네가 믿을 만한 사람이라고, 의지할 수 있다고, 스타시티에 있는 그의 사람이 네라고. 맞지? 그렇지?",
+      "네, 맞아요. 감사합니다."
+    ]
+  },
+  "licensed-cosmonaut-12": {
+    "sourceScript": "A(Andrei): They told me today I'm gonna see again.\n\nB(Stas): Hey, that's great news! What did I tell you? You know, we were doing free-fall today. it's incredible feeling having your body suspended on the air. You're gonna love it.\n\nA(Andrei): No, I'm not going to love it. I'm not going to love it because I'm not gonna do it. They're not gonna let me fly anymore Stas. I'm not gonna be a cosmonaut and I'm not going to space ever.\n\nB(Stas): You don't know that. I'm sorry but... look at it this way... sometimes you know, maybe you have to lose your wings to fly a little bit higher.\n\nA(Andrei): Fuck... You really think you can say that to me right now I'm not going to space ever, alright? It's not gonna fucking happen. There is gonna be everything I spent my fucking life planning for fucked. Gagarin, Titov, Leonov, not fucking Vasiliev. They're not gonna know my name!\n\nB(Stas): - Is that what this is about, right? Is this what this is about for you? - About being someone?\n\nA(Andrei): I could have been somebody Stas, but I am a fucking failure.\n\nB(Stas): Hey, hey, listen to me... this life is about living, not about posterity, not about history books. It's about doing the best thing you can.\n\nA(Andrei): Fuck off.\n\nB(Stas): - Right now, you're being pathetic.",
+    "turns": [
+      "오늘 다시 앞을 볼 수 있게 될 거라고 하더라.",
+      "야, 그거 진짜 좋은 소식이네! 내가 뭐랬어? 오늘 우리 무중력 훈련했었잖아. 몸이 공중에 떠 있는 그 느낌, 정말 놀라워. 넌 분명히 좋아할 거야.",
+      "아니, 난 좋아하지 않을 거야. 왜냐면 난 못 할 거니까. 이제 더 이상 나한테 비행을 허락하지 않을 거야, 스타스. 난 더 이상 우주비행사가 아니고, 절대 우주에 갈 일도 없어.",
+      "아직 모르는 일이잖아. 미안한데… 이렇게 생각해 봐… 때로는 더 높이 날기 위해 날개를 잃어야 할 때도 있잖아.",
+      "젠장… 지금 나한테 그런 말을 해도 된다고 생각해? 난 이제 절대 우주에 못 가, 알겠어? 절대 그런 일은 없다고. 평생 계획하고 준비해 온 게 다 엿됐어. 가가린, 티토프, 레오노프 이름은 남겠지만, 빌어먹을 바실리예프는 아니겠지. 내 이름은 아무도 모를 거야!",
+      "— 그게 네겐 다 그런 거지? — 그냥 유명해지는 게 중요한 거야?",
+      "나도 누군가가 될 수 있었어, 스타스. 그런데 난 존나 실패자라고.",
+      "이봐, 이봐, 내 말 들어... 인생은 살아가는 거야, 후세가 아니고, 역사책에 남는 게 아니야. 그냥 네가 할 수 있는 최선을 다하는 거라고.",
+      "꺼져.",
+      "— 지금 너 정말 한심하다."
+    ]
+  },
+  "licensed-cosmonaut-17": {
+    "sourceScript": "A(연습 화자 1): Andrei, Brehznev has asked me to develop the UR- 700 programme.\n\nB(Andrei): Excuse me, sir?\n\nA(연습 화자 1): The Moon Programme I designed. The one they cancelled.\n\nB(Andrei): Yes, yes, of course. It's just that...\n\nA(연습 화자 1): I know, the N1 is a big fat iron bird that's never gonna fly. We have a chance here of doing things right for once.\n\nB(Andrei): An open mission?\n\nA(연습 화자 1): - Don't be naive. It'll only be disclosed if we step foot on the Moon.\n\nB(Andrei): Wow... I don't know what to say...\n\nA(연습 화자 1): I want you to take charge of the mission.\n\nB(Andrei): Sir?\n\nA(연습 화자 1): - I won't take a no for an answer. We'll talk soon. Bye my dear Andrei.",
+    "turns": [
+      "안드레이, 브레즈네프가 나에게 UR-700 프로그램을 개발해 달라고 부탁했어.",
+      "실례합니다, 선생님?",
+      "내가 설계했던 달 탐사 프로그램 말이야. 그거 취소됐지.",
+      "네, 네, 물론이죠. 그냥...",
+      "알지, N1은 절대 날지 못할 고철 덩어리야. 이번엔 제대로 할 수 있는 기회가 온 거야.",
+      "비공개 임무인가요?",
+      "- 순진하게 굴지 마. 우리가 달에 발을 딛기 전까지는 절대 발표되지 않아.",
+      "와... 무슨 말을 해야 할지 모르겠습니다...",
+      "이 임무를 네가 맡아줬으면 해.",
+      "정말입니까?",
+      "- 거절은 안 받아. 곧 다시 얘기하자. 잘 가, 내 사랑 안드레이."
+    ]
+  },
+  "licensed-cosmonaut-18": {
+    "sourceScript": "A(연습 화자 1): A technician from over there at NASA was telling me a joke the other day. Made me promise I wouldn't get angry. If only he knew the half of it... So Brezhnev is in the Kremlin and he's showing his mom around the place, as you do. He shows her rooms with beautiful ornaments, luxurious banqueting halls... Oh, and the garage, which of course is crammed full of limousines. And he says to her: \"Don't you think your son has done pretty well by himself mama? Are you proud?\". And his mother replies: \"Not so much proud, darling, as worried. \"What if the Bolsheviks return?\".",
+    "turns": [
+      "얼마 전에 NASA 쪽 기술자가 나한테 농담 하나 들려줬어. 내가 화내지 않겠다고 약속하라고 하더라고. 그 사람이 상황의 반의반만 알아도 좋을 텐데... 아무튼, 브레즈네프가 크렘린에서 엄마를 데리고 궁전을 구경시켰대. 화려한 장식의 방들, 호화로운 연회장들을 보여주고... 아, 그리고 차고에는 리무진이 가득하지. 그때 그가 엄마한테 묻는 거야. \"엄마, 아들이 꽤 성공한 것 같지? 자랑스럽지 않아?\" 그러자 엄마가 이렇게 답했대. \"얘야, 자랑스럽다기보단 걱정스럽구나. 혹시 볼셰비키가 다시 오면 어쩌니?\""
+    ]
+  },
+  "licensed-cosmonaut-19": {
+    "sourceScript": "A(Stas): I would say the situation is almost comical... except it isn't. You wanna know the truth? I bet if you find these tapes you won't like to hear this, but... I wish I had stayed on the moon. At least I was happy there.",
+    "turns": [
+      "이 상황이 거의 웃길 정도라고 말하고 싶지만... 사실 그렇지 않아. 진실을 알고 싶어? 네가 이 테이프를 찾으면 듣고 싶지 않을 수도 있겠지만... 난 차라리 달에 남았으면 좋았을 거라고 생각해. 적어도 거기선 행복했으니까."
+    ]
+  },
+  "licensed-cosmonaut-20": {
+    "sourceScript": "A(연습 화자 1): I dreamt we landed on the moon and won the space race.\n\nB(연습 화자 2): The space race is just american propaganda. It's a name they gave to something that we started and that we're gonna finish.\n\nA(연습 화자 1): You're starting to sound like one of them.",
+    "turns": [
+      "나는 우리가 달에 착륙해서 우주 경쟁에서 승리하는 꿈을 꿨어.",
+      "우주 경쟁은 그냥 미국식 선전이야. 우리가 시작했고, 우리가 끝낼 일을 자기들 멋대로 이름 붙인 거라고.",
+      "너 슬슬 미국 녀석들 같아지는구나?"
+    ]
+  },
+  "licensed-cosmonaut-25": {
+    "sourceScript": "A(Andrei): Since... Since he died she's just... She's different. It's like she's... thin. And I don't mean her body or... She's not quite there. She just... She doesn't even drink water. Oh, god... She doesn't eat, she doesn't sleep, she doesn't... No. No. I don't wanna work. I don't wanna... I can't focus, and I don't wanna... Don't want to go to that place. I had this... I had this crazy... crazy dream. I was talking to Stas and... I asked him: \"Was it worth it Stas? \"Was it worth losing her to leave a footprint on the moon?\". He said: \"No. \" \"No, it wasn't. \" \"But for just one... \"fraction of second... \"I felt alive. \"",
+    "turns": [
+      "그가... 그가 죽은 뒤로 그녀가 그냥... 달라졌어. 마치... 뭔가 달라. 뭔가... 얇아진 느낌이야. 몸 얘기는 아니고... 뭔가, 정신이 제대로 있는 게 아니야. 그냥... 물도 안 마셔. 아, 젠장... 밥도 안 먹고, 잠도 안 자고, 아무 것도 안 해. 아니야. 아니야. 일하고 싶지 않아. 하고 싶지 않아... 집중도 안 되고, 가고 싶지도 않아... 그곳에 가는 것도 싫고. 내가... 내가 엄청... 엄청 이상한 꿈을 꿨어. 스타스랑 얘기하고 있었는데... 내가 물어봤어, \"그럴 가치가 있었어, 스타스?\" \"달에 발자국 남기려고 그녀를 잃는 게?\" 그가 말했어. \"아니.\" \"아니, 그럴 가치 없었어.\" \"근데 단 한... 아주 잠깐 동안… 살아있는 기분이 들었어.\""
+    ]
+  },
+  "licensed-cosmonaut-21": {
+    "sourceScript": "A(Andrei): I'm sending Stas to the moon.\n\nB(Yulia): Do you know what you're doing?\n\nA(Andrei): They asked me who was the best man.\n\nB(Yulia): So you said it was Stas?\n\nA(Andrei): I'm giving him what he wants, Yulia.",
+    "turns": [
+      "스따스를 달에 보내기로 했어.",
+      "네가 지금 무슨 일 하는지 정말 알고 있는 거야?",
+      "누가 제일 적임자인지 나한테 묻더라고.",
+      "그래서 네가 스따스라고 한 거야?",
+      "율리아, 그가 원하던 걸 주는 거야."
+    ]
+  },
+  "licensed-cosmonaut-22": {
+    "sourceScript": "A(연습 화자 1): I've seen you wearing this sometimes. Who gave it to you?\n\nB(연습 화자 2): No one.\n\nA(연습 화자 1): I've used it as the mission's logo. You don't mind, do you?\n\nB(연습 화자 2): No. No, of course you can use it.",
+    "turns": [
+      "가끔 네가 이거 차고 있는 거 봤어. 누가 준 거야?",
+      "아무도 안 줬어.",
+      "이걸 임무의 상징으로 썼어. 괜찮지?",
+      "응, 당연히 써도 돼."
+    ]
+  },
+  "licensed-cosmonaut-23": {
+    "sourceScript": "A(Stas): So... I've made Earth's orbit. It's gonna be mighty tricky to get down there though. I don't... I don't have enough... energy to force the re-entry. Andrei... I love you pal. I remember your eyes clearly... your nose... your hair... And stupid things like... the number of freckles you have.",
+    "turns": [
+      "그러니까... 지구 궤도에는 도달했어. 근데 여기서 내려가는 건 정말 쉽지 않을 거야. 나는... 재진입할 만큼 에너지가 충분하지 않아. 안드레이... 친구야, 사랑해. 네 눈, 네 코, 네 머리카락... 그리고 바보같이 네 주근깨 개수까지 똑똑히 기억나."
+    ]
+  },
+  "licensed-cosmonaut-24": {
+    "sourceScript": "A(Yulia): The relics of a lost future? Our future? I can't allow myself to think like that. You understand, right? Plus, I feel you closer everyday. This... civilization, this country... They might be all a bunch of collapsed ruins. I don't care. It's you and me I care about, cosmonaut. I want you back.",
+    "turns": [
+      "잃어버린 미래의 유물? 우리의 미래? 난 그렇게 생각하고 싶지 않아. 알지? 그리고 점점 더 네가 가까이에 느껴져. 이... 문명도, 이 나라도... 전부 무너져내린 폐허가 되더라도 상관없어. 난 너랑 나만 중요해, 우주비행사. 네가 돌아오길 바라."
+    ]
+  },
+  "licensed-boy-5": {
+    "sourceScript": "A(Daniel): Sarah's going to be back in town this month.\n\nB(Casey): Yeah? You two still talk?\n\nA(Daniel): Yeah, we managed to stay friends.\n\nB(Casey): Are you still in love with her?\n\nA(Daniel): No.\n\nB(Casey): That's good at least.",
+    "turns": [
+      "사라가 이번 달에 다시 이 동네로 온대.",
+      "그래? 너희 아직도 연락해?",
+      "응, 그냥 친구로 지내고 있어.",
+      "아직도 그녀 좋아해?",
+      "아니.",
+      "그나마 다행이네."
+    ]
+  },
+  "licensed-boy-6": {
+    "sourceScript": "A(Sarah): Why are you still here? You graduated two years ago. Shouldn't you be moving on?\n\nB(Daniel): I don't know. I guess I'm just waiting for some inspiration. To come out and be like... Here I am world Daniel Weston. I'm waiting to write my masterpiece.\n\nA(Sarah): Don't wait too long. So how was your weekend? Did you go out?",
+    "turns": [
+      "왜 아직 여기 있어? 너 벌써 졸업한 지 2년 됐잖아. 이제 좀 다른 길로 가야 하는 거 아냐?",
+      "글쎄. 그냥 뭔가 영감이 올 때까지 기다리고 있는 것 같아. 뭔가 이렇게… ‘여기 있다, 세상아, 다니엘 웨스턴이다’ 이런 느낌으로. 내 인생의 걸작을 쓰려고 기다리고 있어.",
+      "너무 오래 기다리지 마. 근데 주말은 어땠어? 어디 좀 나갔어?"
+    ]
+  },
+  "licensed-boy-7": {
+    "sourceScript": "A(Casey): Just get up?\n\nB(Daniel): Um.. Yeah.\n\nA(Casey): Time for some pre-party beer action.\n\nB(Daniel): Oh yeah?\n\nA(Casey): It's Friday night, it's going to be rockin,' lets go. Come on twinkletoes -- come on",
+    "turns": [
+      "방금 일어났냐?",
+      "어.. 응.",
+      "파티 전에 맥주 한잔 해야지.",
+      "오, 진짜?",
+      "금요일 밤인데 오늘 불태워야지, 가자. 빨리 와, 춤꾼이여~ 어서 가자!"
+    ]
+  },
+  "licensed-valkaama-45": {
+    "sourceScript": "A(Runa): Inari... Inari...\n\nA(Runa): Come on, come on!\n\nA(Runa): 1973 km... 30 hours by car?\n\nA(Runa): 600 km, 10 hours... So he'll be there tonight sure enough...\n\nA(Runa): Damn it. Damn it. What shall I do?\n\nB(Kristina): Swedish Tourists International Bookings. My name is Kristina Carlsson. How may I help you?\n\nA(Runa): Hello, my name is Runa Eskleth. I need a flight from Halmstad to Inari in Northern Finland.\n\nB(Kristina): One moment, please.\n\nB(Kristina): When would you like to fly to Ivalo?\n\nA(Runa): Inari, not Ivalo.\n\nB(Kristina): Hmm. I only have Ivalo listed in my system. Please hold the line.\n\nA(Runa): Hello?!\n\nB(Kristina): Mrs. Eskleth?\n\nA(Runa): Yes?\n\nB(Kristina): Ivalo is situated within the administrative district of Inari. The village of Inari itself is about 50 km further north.\n\nA(Runa): O... Okay. I need the next flight!\n\nB(Kristina): One moment please.\n\nB(Kristina): You are calling just too late for the 6 o'clock flight...\n\nB(Kristina): The next bookable flight goes at 6:50 from Halmstad. You would be in Ivalo at 18:40.\n\nA(Runa): So late?\n\nB(Kristina): There are no direct flights from Halmstad to Ivalo. The next connection is Skyways flight 430 to Stockholm, SAS 66 76 to Helsinki and Finnair 559 to Ivalo. Together these flights cost 978 Euros plus an administration fee of 10 Euros. Would you like to book?\n\nA(Runa): Yes!\n\nB(Kristina): Do you have a customer ID?\n\nA(Runa): 7-9-1-3-6-9.\n\nB(Kristina): Please tell me the last 4 digits of your credit card.\n\nA(Runa): 4-4-3-7.\n\nB(Kristina): Last Check-In is one hour before take-off. Your tickets will be ready at the Skyways counter in Halmstad. Thank you very much for your booking.\n\nA(Runa): Good bye.\n\nA(Runa): Anna? Can you take my sister for a while again?\n\nA(Runa): Yes! Right now! No, it's an emergency. I'll bring her round straight away. Thanks.\n\nA(Runa): Oh my god, what am I doing?",
+    "turns": [
+      "이나리... 이나리...",
+      "제발, 제발!",
+      "1973킬로미터... 차로 30시간이나 걸려?",
+      "600킬로미터, 10시간... 그럼 오늘 밤엔 확실히 도착하겠네...",
+      "젠장. 젠장. 나 어떡하지?",
+      "스웨덴 관광 국제 예약 센터입니다. 저는 크리스티나 칼손입니다. 무엇을 도와드릴까요?",
+      "안녕하세요, 저는 루나 에스클레트입니다. 핼름스타드에서 핀란드 북부 이나리까지 가는 항공편이 필요해요.",
+      "잠시만 기다려 주세요.",
+      "이바로로 언제 여행 원하세요?",
+      "이나리요, 이바로가 아니라.",
+      "음... 제 시스템에는 이바로만 등록되어 있네요. 잠시만 기다려 주세요.",
+      "여보세요?!",
+      "에스클레트 씨 맞으신가요?",
+      "네?",
+      "이바로는 이나리 행정구역 안에 있습니다. 이나리 마을 자체는 거기서 약 50킬로미터 더 북쪽에 있어요.",
+      "아... 알겠어요. 제일 빠른 비행편으로 예약해주세요!",
+      "잠시만 기다려 주세요.",
+      "6시 비행은 이미 놓치셨어요...",
+      "다음 예약 가능한 비행편은 핼름스타드에서 6시 50분 출발이고, 이바로엔 18시 40분 도착입니다.",
+      "그렇게 늦어요?",
+      "핼름스타드에서 이바로 직항은 없습니다. 다음 연결편은 스카이웨이즈 430편 스톡홀름행, SAS 6676편 헬싱키행, 그리고 핀에어 559편 이바로행입니다. 항공권 총액은 978유로에 행정수수료 10유로가 추가됩니다. 예약하시겠습니까?",
+      "네!",
+      "고객 ID 있으신가요?",
+      "7-9-1-3-6-9입니다.",
+      "신용카드 마지막 네 자리 번호를 말씀해 주세요.",
+      "4-4-3-7.",
+      "최종 체크인은 출발 1시간 전까지 하셔야 합니다. 티켓은 핼름스타드 스카이웨이즈 카운터에서 받으실 수 있습니다. 예약해 주셔서 감사합니다.",
+      "안녕히 계세요.",
+      "안나? 잠깐 내 동생 좀 봐줄 수 있어?",
+      "응! 지금 바로! 아니, 급한 일이야. 바로 데려갈게. 고마워.",
+      "세상에, 내가 무슨 짓을 하고 있는 거지?"
+    ]
+  },
+  "licensed-valkaama-48": {
+    "sourceScript": "A(Runa): Lasse!\n\nB(Lasse): Runa... How did you get here...?\n\nA(Runa): What happened? For Christ's sake. I am so happy to see you again!\n\nB(Lasse): My whole world has fallen apart...\n\nA(Runa): Just calm down first. What happened?\n\nB(Lasse): It is impossible to tell you everything in brief...\n\nA(Runa): At least have a try... Come on, let's sit down first...\n\nB(Lasse): Ari is dead.\n\nA(Runa): Yes, I know...\n\nB(Lasse): How do you...\n\nA(Runa): It's... It's been in the newspaper. I... 've been to Vänersborg. I was searching for you. I've also been to the orphanage.\n\nB(Lasse): Orphanage Smödhelm?\n\nA(Runa): Yes... Where you were abandoned by your parents.\n\nB(Lasse): No, that is not how it was... I was supposed to stay there until my father had established his community here... later on he sent me to see the world... so I would appreciate his creation more...\n\nA(Runa): Your father? ... what community? I don't understand anything. And what's with your mother? Where is she?\n\nA(Runa): Let's look for a hotel and tomorrow return to...\n\nB(Lasse): I cannot go back! So close to Valkaama. I have to return home to my father...\n\nA(Runa): Okay. It's okay. Why don't you tell me more about...?\n\nB(Lasse): About what?\n\nA(Runa): The community, your father, Ari. Just everything...\n\nB(Lasse): I do not know where to start...\n\nA(Runa): Just... anywhere.\n\nB(Lasse): I had a companion on my journey...",
+    "turns": [
+      "라쎄!",
+      "루나... 어떻게 여기까지 온 거야...?",
+      "무슨 일이야? 도대체... 다시 만나서 정말 너무 좋아!",
+      "내 세상이 완전히 무너졌어...",
+      "일단 진정해. 무슨 일이 있었던 거야?",
+      "간단하게는 다 말할 수 없어...",
+      "그래도 한번 이야기해봐... 어디 앉자...",
+      "아리가 죽었어.",
+      "응, 알고 있어...",
+      "어떻게 알아...",
+      "신문에 났어. 나... 베네르스보리도 갔었어. 너를 찾으려고. 그리고 고아원도 갔었어.",
+      "스뫼델름 고아원 말하는 거지?",
+      "응... 네가 부모님에게 버려졌던 곳.",
+      "아니야, 그게 아니야... 아버지가 여기 공동체를 세우실 때까지만 거기 있어야 했어... 그리고 나중엔 세상을 경험하라고 나를 떠나보내신 거야... 아버지의 창조물을 더 잘 이해하라고...",
+      "네 아버지? ... 어떤 공동체? 하나도 이해가 안 돼. 그리고 네 어머니는? 어디 계셔?",
+      "우리 호텔이나 잠깐 찾고 내일 돌아가자...",
+      "난 돌아갈 수 없어! 발카아마 바로 근처인데. 아버지께 돌아가야 해...",
+      "알았어. 괜찮아. 그럼... 조금 더 얘기해줄래?",
+      "뭐에 대해서?",
+      "공동체, 네 아버지, 아리... 다 말해줘...",
+      "어디서부터 시작해야 할지 모르겠어...",
+      "그냥... 아무 데서나 시작해봐.",
+      "여정 중에 동행자가 있었어..."
+    ]
+  },
+  "licensed-valkaama-50": {
+    "sourceScript": "A(Runa): Lasse, wait! I need a break!\n\nA(Runa): We've already been walking for hours and hours along the shores of this lake. Are you sure you know where it is?\n\nB(Lasse): Father said, along the western shore and I will recognize the signs.\n\nA(Runa): When was the last time you talked to him?\n\nB(Lasse): Talked? That was years ago. We write letters.\n\nA(Runa): I don't understand. You don't have any fixed address... Where does he send them?\n\nB(Lasse): To Ari. I visited him once in a while during my years of travel.\n\nB(Lasse): Ohh Ari... May he rest in peace...\n\nA(Runa): But you've never been here?\n\nB(Lasse): Please be patient...\n\nA(Runa): Lasse?\n\nB(Lasse): Yes? Runa?\n\nA(Runa): And you are sure that you want to live here in this community?\n\nB(Lasse): Of course! ... And you and Ibsy... you two can also be part of this idyllic and perfect world.",
+    "turns": [
+      "라쎄, 잠깐만! 나 좀 쉬어야겠어!",
+      "우리 지금 이 호숫가를 몇 시간째 걷고 있어. 네가 진짜 위치를 확실히 아는 거 맞아?",
+      "아버지가 서쪽 호숫가를 따라가면 표시들을 알 수 있을 거라고 하셨어.",
+      "마지막으로 언제 아버지랑 연락했어?",
+      "얘기한 건 몇 년 전이야. 우리는 편지를 주고받아.",
+      "잘 모르겠어. 너 정해진 주소도 없잖아... 편지는 어떻게 받아?",
+      "아리에게. 여행 중에 가끔씩 그를 찾아갔어.",
+      "아… 아리... 부디 평안하시길...",
+      "근데 여긴 와 본 적 없지?",
+      "조금만 참아줘...",
+      "라쎄?",
+      "응? 루나?",
+      "넌 정말 이 공동체에서 살고 싶은 거 맞아?",
+      "물론이지! ... 그리고 너랑 입시도... 너희 둘도 이 이상적이고 완벽한 세상의 일부가 될 수 있어."
+    ]
+  },
+  "licensed-boy-4": {
+    "sourceScript": "A(Daniel): What are you going to do when this breaks? I think you should really go with our extended warranty. Yes you definitely should. Are you sure? Nope, I'm sorry I can't just ring this up for you until I fully present the warranty. I really think you need it. Sir, come back. Please I fucking hate selling extended warranties.",
+    "turns": [
+      "이거 고장 나면 어떻게 하시려고요? 진짜 저희 연장 보증 들어두시는 게 좋아요. 네, 정말 꼭 하셔야 해요. 진짜 괜찮으세요? 안 돼요, 죄송하지만 보증을 완전히 설명드리기 전에는 결제 못 해드려요. 진짜 필요하실 거예요. 손님, 다시 와 주세요. 제발요, 연장 보증 파는 거 진짜 존나 싫어요."
+    ]
+  }
+}

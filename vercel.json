@@ -104,6 +104,36 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/admin/casting",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
+      "source": "/audition-edit",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
     }
   ],
   "functions": {
@@ -121,9 +151,24 @@
     },
     "api/ai-audition.js": {
       "maxDuration": 240
+    },
+    "api/admin-casting-summary.js": {
+      "maxDuration": 120
     }
   },
   "rewrites": [
+    {
+      "source": "/auditions-sitemap.xml",
+      "destination": "/api/casting-page?sitemap=1"
+    },
+    {
+      "source": "/auditions",
+      "destination": "/api/casting-page"
+    },
+    {
+      "source": "/auditions/:id",
+      "destination": "/api/casting-page?id=:id"
+    },
     {
       "source": "/journal-sitemap.xml",
       "destination": "/api/journal?sitemap=1"
@@ -135,6 +180,13 @@
     {
       "source": "/journal/:id",
       "destination": "/api/journal?id=:id"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/auditions.html",
+      "destination": "/auditions",
+      "permanent": true
     }
   ]
 }
