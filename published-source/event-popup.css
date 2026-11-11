@@ -1,5 +1,5 @@
 dialog.academy-event-popup{box-sizing:border-box;min-width:0;min-height:0;transform:none;animation:none;zoom:1;font-size:14px;line-height:1.4;-webkit-text-size-adjust:100%;text-size-adjust:100%;position:fixed;inset:0;margin:auto;width:min(760px,calc(100vw - 24px));max-width:760px;height:calc(100vh - 24px);height:calc(100dvh - 24px);max-height:920px;padding:0;border:1px solid #b99b68;border-radius:14px;background:#14120f;color:#fff;box-shadow:0 24px 100px #0009;overflow:hidden;font-family:inherit}
-dialog.academy-event-popup[open]{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:48px 44px minmax(0,1fr) 58px 48px;gap:0}
+dialog.academy-event-popup[open]{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:48px 44px auto minmax(0,1fr) 58px 48px;gap:0}
 .academy-event-popup::backdrop{background:rgb(0 0 0 / 76%);backdrop-filter:blur(5px)}
 .academy-event-popup button{box-sizing:border-box;position:static;transform:none;margin:0;font:inherit;line-height:1.3;cursor:pointer;color:inherit;border:0;border-radius:0;background:transparent;min-height:44px;padding:10px 16px}
 .academy-event-popup button:focus-visible{outline:2px solid #edcc91;outline-offset:-3px}
@@ -31,3 +31,6 @@ dialog.event-image-viewer[open]{display:flex;flex-direction:column}
 .event-image-viewer .event-image-toolbar button{position:static;min-height:44px;padding:8px 16px;border:1px solid #b99b68;border-radius:6px;background:#14120f;color:#fff;font:inherit;cursor:pointer}
 .event-image-viewer .event-image-scroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}
 .event-image-viewer .event-image-scroll img{display:block;max-width:none;max-height:none;height:auto;margin:0 auto;border-radius:0}
+
+.academy-event-popup .event-popup-schedule{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;padding:10px 12px;text-align:center;color:#edcc91;font-size:14px;line-height:1.5;border-top:1px solid #ffffff20}
+.academy-event-popup .event-popup-schedule small{flex-basis:100%;font-size:12px;color:#ddd;overflow-wrap:anywhere}
