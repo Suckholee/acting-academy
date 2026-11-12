@@ -1,5 +1,6 @@
 import {getMemberClient} from './session.js';
 const {safeReturn,passwordError,phoneError}=require('./model.cjs');
+const {mountDashboard}=require('./dashboard.cjs');
 const root=document.querySelector('#member-app');if(!root)throw Error('Member root missing');
 const page=root.dataset.page;let config,client,current,profile;
 const recovery=new URLSearchParams(location.search).get('recovery')==='1';
@@ -55,18 +56,18 @@ function signup(){rememberReturn();if(!config.demo&&!config.registrationOpen){ro
 }
 function reset(){root.append(node('h1','비밀번호 재설정'),node('p','이메일로 가입한 계정의 비밀번호를 다시 설정합니다.'));const form=node('form'),email=field(form,'이메일','email',{required:'',autocomplete:'email'});submit(form,'재설정 메일 요청',async msg=>{if(config.demo){const data=await demo('recover',{email:email.value});msg.textContent=data.message;}else{await client.auth.resetPasswordForEmail(email.value.trim(),{redirectTo:location.origin+'/account?recovery=1'});msg.textContent='일치하는 계정이 있다면 안내 메일을 보내드립니다. 스팸함과 이메일 주소를 확인해주세요.';}});root.append(form);navlinks(root,[['로그인으로 돌아가기','/login']]);}
 async function logout(){for(const key of Object.keys(sessionStorage))if(key.startsWith('kjt-member-draft-'))sessionStorage.removeItem(key);if(config.demo)await demo('logout');else{const {error}=await client.auth.signOut();if(error)throw Error('로그아웃을 완료하지 못했습니다. 다시 시도해주세요.');}}
-async function accountAuditions(parent){
+async function accountAuditions(parent,onChange=()=>{}){
  const section=node('section',null,{class:'account-section account-auditions','aria-labelledby':'account-auditions-title'});
  section.append(node('h2','내 오디션 신청 내역',{id:'account-auditions-title'}),node('p','신청한 배역과 접수 정보를 확인하세요. 심사 일정과 결과는 담당자가 별도로 안내합니다.',{class:'account-section-description'}));
  const list=node('div',null,{class:'account-application-list'}),message=status(section);section.append(list);parent.append(section);
- let offset=0;
+ let offset=0,applications=[];
  const more=action(section,'신청 내역 더 보기',()=>load(false));more.hidden=true;
  async function call(data,method='GET',page=0){const {data:session}=await client.auth.getSession();return api('/api/member-casting'+(method==='GET'?'?offset='+page:''),data,method,session.session?.access_token);}
  const date=value=>new Date(value).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
  async function load(reset){
-  more.disabled=true;message.textContent='신청 내역을 불러오고 있습니다…';
+  more.disabled=true;message.textContent='신청 내역을 불러오고 있습니다…';onChange({applications,loading:true});
   try{
-   const result=await call(null,'GET',reset?0:offset);if(reset)list.replaceChildren();
+   const result=await call(null,'GET',reset?0:offset);if(reset){list.replaceChildren();applications=[];}applications.push(...result.applications);
    if(!result.applications.length&&!list.children.length)list.append(node('p','아직 신청한 오디션이 없습니다. 모집 중인 오디션을 확인해보세요.',{class:'account-empty'}));
    for(const a of result.applications){
     const item=node('article',null,{class:'account-application'});item.append(node('span',a.status,{class:'member-badge'}),node('h3',a.title));
@@ -74,8 +75,8 @@ async function accountAuditions(parent){
     if(a.closesAt)item.append(node('p',(a.canEdit?'수정 가능 기한: ':'접수 마감: ')+date(a.closesAt),{class:'account-section-description'}));
     const links=[];if(a.viewUrl)links.push([a.canEdit?'지원서 확인 · 수정':'제출한 지원서 보기',a.viewUrl]);if(a.callUrl)links.push(['공고 보기',a.callUrl]);navlinks(item,links);list.append(item);
    }
-   offset=result.nextOffset;more.hidden=offset===null;message.textContent='';
-  }catch(e){message.textContent=e.message;more.hidden=false;more.textContent='다시 불러오기';}
+   offset=result.nextOffset;more.hidden=offset===null;message.textContent='';onChange({applications,hasMore:offset!==null});
+  }catch(e){message.textContent=e.message;more.hidden=false;more.textContent='다시 불러오기';onChange({applications,error:e.message});}
   finally{more.disabled=false;}
  }
  navlinks(section,[['모집 중인 오디션 보기','/auditions']]);
@@ -104,6 +105,7 @@ function accountSetting(title,description,open=false){
  return {section,content};
 }
 async function accountPage(loadedResult){
+ let dashboard;
  root.append(node('p','MEMBER ACCOUNT',{class:'account-eyebrow'}),node('h1','내 계정'),node('p','회원 정보와 로그인 방법을 관리하세요.',{class:'account-intro'}));
  try{
   const result=loadedResult||await account();profile=result.profile;
@@ -135,7 +137,7 @@ async function accountPage(loadedResult){
   submit(form,needsConsent?'가입 완료하기':'변경사항 저장',async msg=>{
    if(needsConsent&&!agree.checked)throw Error('이용 동의를 확인해주세요.');
    if(!config.demo&&needsConsent&&(!config.policiesReady||!config.registrationOpen))throw Error('회원가입 개시 후 가입을 마무리할 수 있습니다.');
-   await account('PATCH',{name:name.value,phone:phone.value,consent:needsConsent&&agree.checked});
+   const saved=await account('PATCH',{name:name.value,phone:phone.value,consent:needsConsent&&agree.checked});dashboard?.updateProfile(saved.profile||{name:name.value,phone:phone.value});
    sessionStorage.removeItem(draftKey);
    if(onboarding){
     if(pendingReturn.startsWith('/auditions/')){sessionStorage.removeItem('kjt-member-return');location.assign(pendingReturn);return;}
@@ -155,7 +157,7 @@ async function accountPage(loadedResult){
   });
   profileSection.append(form);root.append(profileSection);
   if(onboarding){root.classList.add('account-onboarding');navlinks(root,[['홈페이지로 돌아가기','/']]);return;}
-  const auditionArea=node('div');root.insertBefore(auditionArea,profileSection);accountAuditions(auditionArea);
+  const auditionArea=node('div');root.insertBefore(auditionArea,profileSection);
   root.append(node('h2','로그인 및 보안',{class:'account-group-title'}),node('p','필요한 항목을 열어 설정하세요. 추가 로그인 방법은 선택 사항입니다.',{class:'account-section-description'}));
   const identities=config.demo?current.providers.map(provider=>({provider,id:provider})):((await client.auth.getUserIdentities()).data?.identities||[]);
   const identityPanel=accountSetting('로그인 방법',identities.map(i=>providerName(i.provider)).join(' · ')+' 연결됨');
@@ -187,6 +189,8 @@ async function accountPage(loadedResult){
   const controls=node('div',null,{class:'account-controls'});navlinks(controls,[['홈페이지로 돌아가기','/']]);action(controls,'로그아웃',async()=>{await logout();location.assign('/login');});root.append(controls);
   const withdraw=node('details',null,{class:'member-help account-withdraw'});withdraw.append(node('summary','회원 탈퇴 요청'),node('p','로그아웃과 달리 회원 이용을 종료하는 요청입니다. 즉시 삭제되지 않으며 운영자가 보관 대상과 처리 여부를 확인합니다.'));
   const wf=node('form'),confirmText=field(wf,'확인 문구 탈퇴 요청','text',{required:''});submit(wf,'탈퇴 요청 접수',async()=>{await account('POST',{confirm:confirmText.value,action:'withdraw'});await logout();location.assign('/login');});withdraw.append(wf);root.append(withdraw);
+  dashboard=mountDashboard({root,profile,verified:result.verified,overview,profileSection,auditionArea,identityPanel,passwordPanel,withdraw,recovery,welcome:new URLSearchParams(location.search).get('welcome')==='1'});
+  accountAuditions(auditionArea,state=>dashboard.updateApplications(state));
   if(!config.demo)client.auth.onAuthStateChange(event=>{if(event==='SIGNED_OUT'){root.prepend(node('p','세션이 만료되었습니다. 다시 로그인한 후 저장해주세요.',{role:'alert',class:'member-note'}));}});
  }catch(error){root.append(node('p',error.message,{role:'alert'}));navlinks(root,[['로그인하기','/login?next=/account']]);}
 }
