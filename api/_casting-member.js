@@ -8,4 +8,9 @@ async function requireCastingMember(req){
  if(!profile.consented_at||member.validateProfile(profile)||phoneError(profile.phone))throw Object.assign(Error('내 계정에서 이름·연락처와 필수 동의를 확인해 가입을 완료해주세요.'),{status:403});
  return user;
 }
-module.exports={requireCastingMember};
+async function castingApplicant(req){
+ // A supplied token must be validated; never downgrade an invalid session to a guest.
+ if(!req.headers?.authorization)return null;
+ return requireCastingMember(req);
+}
+module.exports={requireCastingMember,castingApplicant};

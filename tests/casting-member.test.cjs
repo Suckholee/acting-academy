@@ -16,7 +16,7 @@ test('casting membership requires verified active account and completed required
   member.profile=async()=>({name:'배우 회원',phone:'01000000000',status:'active',consented_at:'2026-11-12'});assert.equal((await requireCastingMember({})).id,owner);
  }finally{[member.user,member.profile]=old;}
 });
-test('guest document/photo upload and submission cannot reach storage or save; public calls remain readable',async()=>{
+test('rejected member authentication cannot reach storage or save; public calls remain readable',async()=>{
  let touched=false;const handler=createHandler({repo:{call:async()=>call,submit:async()=>{touched=true;}},storage:()=>{touched=true;},limit:async()=>{},requireMember:async()=>{throw Object.assign(Error('login'),{status:401});}});
  for(const action of ['upload','uploadPhoto','submit']){const r=res();await handler(req({action,answers}),r);assert.equal(r.code,401);}
  const r=res();await handler({...req({}),method:'GET',url:'/api/casting?id='+id},r);assert.equal(r.code,200);assert.equal(r.data.call.id,id);assert.equal(touched,false);
@@ -32,4 +32,21 @@ test('submission transport sends the current member token',async()=>{
  let authorization;const transport=require('../src/casting/transport.cjs');
  await transport.request({action:'submit',receipt:'signed'},{getToken:async()=>'current-member-token',fetcher:async(url,options)=>{authorization=options.headers.Authorization;return {ok:true,json:async()=>({id})};}});
  assert.equal(authorization,'Bearer current-member-token');
+});
+
+test('anonymous applicants may submit without a member account but must provide email',async()=>{
+ process.env.ADMIN_SESSION_SECRET='casting-member-test-secret-at-least-32-characters';let saved;
+ const handler=createHandler({repo:{call:async()=>call,submit:async(c,a,p)=>{saved={answers:a,profile:p};return {id};}},storage:()=>({createSignedUploadUrl:async()=>({data:{signedUrl:'https://example.test/upload'}}),info:async()=>({data:{size:5,contentType:'application/pdf'}})}),limit:async()=>{}});
+ const upload=res();await handler(req({action:'upload',revision:1,answers,file:{name:'guest.pdf',size:5,type:'application/pdf'}}),upload);assert.equal(upload.code,200);assert.equal(core.receipt(upload.data.receipt,id).memberId,undefined);
+ const missingEmail=res();await handler(req({action:'submit',revision:1,answers:{...answers,email:''},receipt:upload.data.receipt}),missingEmail);assert.equal(missingEmail.code,400);assert.equal(saved,undefined);
+ const accepted=res();await handler(req({action:'submit',revision:1,answers,receipt:upload.data.receipt}),accepted);assert.equal(accepted.code,201);assert.equal(saved.profile.memberId,undefined);assert.equal(saved.profile.submittedAs,'guest');assert(core.canEdit(accepted.data.id,accepted.data.editKey));assert.equal(model.applicantType(saved.profile),'비회원 지원');assert.equal(model.applicantType({...saved.profile,memberId:owner}),'비회원 지원 · 계정 연결');
+});
+test('anonymous submission cannot reuse a member upload receipt',async()=>{
+ process.env.ADMIN_SESSION_SECRET='casting-member-test-secret-at-least-32-characters';let touched=false;
+ const h=createHandler({repo:{call:async()=>call,submit:async()=>{touched=true;}},storage:()=>{touched=true;},limit:async()=>{}});
+ const receipt=core.signReceipt({memberId:owner,callId:id,kind:'document',path:id+'/'+id+'.pdf',name:'member.pdf',type:'application/pdf',size:5,expires:Date.now()+60000});const r=res();await h(req({action:'submit',revision:1,answers,receipt}),r);assert.equal(r.code,403);assert.equal(touched,false);
+});
+test('optional applicant authentication rejects supplied invalid or unverified credentials',async()=>{
+ const {castingApplicant}=require('../api/_casting-member');const old=member.user;
+ try{member.user=async()=>{throw Error('must not query auth for guest');};assert.equal(await castingApplicant({headers:{}}),null);member.user=async()=>null;await assert.rejects(castingApplicant({headers:{authorization:'Bearer invalid'}}),e=>e.status===401);member.user=async()=>({id:owner});await assert.rejects(castingApplicant({headers:{authorization:'Bearer unverified'}}),e=>e.status===401);}finally{member.user=old;}
 });

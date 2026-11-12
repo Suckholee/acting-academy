@@ -63,4 +63,5 @@ function validateApplication(a, c, now = Date.now()) {
 }
 function cleanApplication(a) { const keys = ['roleAnswers','name','birthYear','gender','phone','email','region','roles','otherRoles','agency','experience','skills','introUrl','actingUrl','dates','filmingAvailability','notes','adult','consent','aiConsent','consultationConsent']; const result=Object.fromEntries(keys.map(k => [k,typeof a[k] === 'string' ? a[k].trim() : a[k]]));result.aiConsent=a.aiConsent===true;result.consultationConsent=a.consultationConsent===true;result.phone=result.phone.replace(/[ -]/g,'');return result; }
 function actingVideoLength(c){return c?.actingVideoSeconds===60?'1분 이내':'2분 이내';}
-module.exports = {actingVideoLength,PHOTO_TYPES,PHOTO_SLOTS,validPhoto,MAX_FILE,TYPES,STATUSES,SEED,uuid,validateCampaign,cleanCampaign,phase,validFile,fileType,safeUrl,validateApplication,cleanApplication};
+function applicantType(profile={}){return profile.submittedAs==='guest'?(profile.memberId?'비회원 지원 · 계정 연결':'비회원 지원'):(profile.memberId?'회원 지원':'비회원 지원');}
+module.exports = {applicantType,actingVideoLength,PHOTO_TYPES,PHOTO_SLOTS,validPhoto,MAX_FILE,TYPES,STATUSES,SEED,uuid,validateCampaign,cleanCampaign,phase,validFile,fileType,safeUrl,validateApplication,cleanApplication};
