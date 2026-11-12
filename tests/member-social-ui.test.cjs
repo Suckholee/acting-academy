@@ -22,7 +22,9 @@ test('Google and Kakao start the matching provider flow and return to the academ
   assert.equal(calls.at(-1).options.redirectTo,'https://www.kactstar.com/account');
   assert.equal(calls.at(-1).options.scopes,undefined);
  }
- assert.deepEqual([...document.querySelectorAll('.member-methods button')].map(b=>b.textContent),['이메일 가입','아이디 가입']);
+ assert.equal(document.querySelectorAll('.member-methods').length,0);
+ assert.equal(document.querySelectorAll('input[type="email"]').length,1);
+ assert.doesNotMatch(document.body.textContent,/아이디 가입|아이디 로그인|새 아이디/);
 });
 test('unconnected social providers are visibly unavailable without blocking configured providers',async()=>{
  const {document}=await screen('login',['google']);
@@ -30,6 +32,8 @@ test('unconnected social providers are visibly unavailable without blocking conf
  const kakao=document.querySelector('.member-kakao');
  assert.equal(kakao.disabled,true);assert.match(kakao.textContent,/준비 중/);assert.match(kakao.title,/카카오/);
  assert.ok(document.querySelector('input[type="email"]'));
+ assert.equal(document.querySelectorAll('.member-methods').length,0);
+ assert.doesNotMatch(document.body.textContent,/아이디/);
 });
 test('closed registration does not expose a signup form or live social signup buttons',async()=>{
  const {document}=await screen('signup',['google','kakao'],false);
