@@ -23,7 +23,7 @@ function submit(form,label,callback){const b=node('button',label,{type:'submit',
 function navlinks(parent,links){const p=node('p',null,{class:'member-links'});for(const [text,href]of links)p.append(node('a',text,{href}));parent.append(p);}
 function rememberReturn(){const value=safeReturn(new URLSearchParams(location.search).get('next'));sessionStorage.setItem('kjt-member-return',value);return value;}
 function finish(){location.assign(safeReturn(sessionStorage.getItem('kjt-member-return')));}
-function social(parent,link=false){const message=status(parent);for(const provider of ['google','kakao']){const button=action(parent,providerName(provider)+(link?' 계정 연결':'로 계속하기'),async()=>{button.disabled=true;try{
+function social(parent,link=false,connected=[]){const message=status(parent);for(const provider of ['google','kakao']){if(link&&connected.includes(provider))continue;const button=action(parent,providerName(provider)+(link?' 계정 연결':'로 계속하기'),async()=>{button.disabled=true;try{
  if(!config.providers.includes(provider))throw Error(providerName(provider)+' 로그인을 준비하고 있습니다. 이메일로 계속해주세요.');
  if(config.demo){await demo(link?'link':'oauth',{provider});if(link)location.reload();else finish();return;}
  const fn=link?'linkIdentity':'signInWithOAuth';const {error}=await client.auth[fn]({provider,options:{redirectTo:location.origin+'/account'}});if(error)throw Error('인증을 시작하지 못했습니다. 다시 시도하거나 다른 방법을 선택해주세요.');
@@ -34,12 +34,118 @@ function login(){rememberReturn();root.append(node('h1','로그인'),node('p','�
 function signup(){rememberReturn();if(!config.demo&&!config.registrationOpen){root.append(node('h1','회원가입 준비 중'),node('p','인증 서비스 연결과 최종 점검을 마친 뒤 회원가입을 시작합니다.'));navlinks(root,[['이용약관',config.termsUrl||'/terms'],['개인정보 처리방침',config.privacyUrl||'/privacy'],['홈페이지로 돌아가기','/']]);return;}root.append(node('h1','회원가입'),node('p','사용 가능한 간편로그인 또는 이메일 인증으로 가입합니다. 일반 가입에는 Gmail 외의 이메일도 사용할 수 있습니다. 휴대전화 번호는 필수이며 문자 명의 인증은 제공하지 않습니다.'));social(root);const tabs=node('div',null,{class:'member-methods',role:'group','aria-label':'가입 방식'}),area=node('div');root.append(tabs,area);let active='email';function draw(){area.replaceChildren();for(const b of tabs.children)b.setAttribute('aria-pressed',String(b.dataset.method===active));const form=node('form');const name=field(form,'이름','text',{autocomplete:'name',required:'',minlength:'2',maxlength:'40'}),username=active==='username'?field(form,'아이디','text',{autocomplete:'username',required:'',minlength:'4',maxlength:'20',pattern:'[A-Za-z][A-Za-z0-9_]{3,19}'}):null,email=field(form,'인증 이메일','email',{autocomplete:'email',required:'',maxlength:'254'}),phone=field(form,'휴대전화 번호','tel',{autocomplete:'tel',required:'',maxlength:'15'}),password=field(form,'비밀번호','password',{autocomplete:'new-password',required:'',minlength:'12',maxlength:'128'}),confirm=field(form,'비밀번호 확인','password',{autocomplete:'new-password',required:'',minlength:'12',maxlength:'128'});if(username)form.append(node('p','아이디는 영문으로 시작하는 4~20자의 영문·숫자·밑줄입니다. 이메일 인증 후 확정되며 중복되면 다른 아이디를 선택해야 합니다.',{class:'member-note'}));const agree=consent(form);submit(form,'인증 메일 받기',async()=>{const error=passwordError(password.value)||phoneError(phone.value)||(username&&usernameError(username.value));if(error)throw Error(error);if(password.value!==confirm.value)throw Error('비밀번호 확인이 일치하지 않습니다.');if(!agree.checked)throw Error('동의 내용을 확인해주세요.');if(!config.demo&&(!config.registrationOpen||!config.policiesReady))throw Error('회원가입은 아직 시작하지 않았습니다.');const address=email.value.trim(),requestedUsername=username?normalizeUsername(username.value):'';const data={mode:active,name:name.value.trim(),email:address,phone:phone.value,password:password.value,username:requestedUsername,consent:true};if(config.demo)await demo('signup',data);else await api('/api/member-auth',{action:'signup',...data});password.value=confirm.value='';verifyEmail(address,root,requestedUsername);});area.append(form);}for(const [value,label]of [['email','이메일 가입'],['username','아이디 가입']]){const b=action(tabs,label,()=>{active=value;draw();});b.dataset.method=value;}draw();navlinks(root,[['이미 계정이 있나요? 로그인','/login']]);}
 function reset(){root.append(node('h1','비밀번호 재설정'),node('p','이메일로 가입한 계정의 비밀번호를 다시 설정합니다.'));const form=node('form'),email=field(form,'이메일','email',{required:'',autocomplete:'email'});submit(form,'재설정 메일 요청',async msg=>{if(config.demo){const data=await demo('recover',{email:email.value});msg.textContent=data.message;}else{await client.auth.resetPasswordForEmail(email.value.trim(),{redirectTo:location.origin+'/account?recovery=1'});msg.textContent='일치하는 계정이 있다면 안내 메일을 보내드립니다. 스팸함과 이메일 주소를 확인해주세요.';}});root.append(form);navlinks(root,[['로그인으로 돌아가기','/login']]);}
 async function logout(){for(const key of Object.keys(sessionStorage))if(key.startsWith('kjt-member-draft-'))sessionStorage.removeItem(key);if(config.demo)await demo('logout');else{const {error}=await client.auth.signOut();if(error)throw Error('로그아웃을 완료하지 못했습니다. 다시 시도해주세요.');}}
-async function accountPage(){root.append(node('h1','내 계정'));try{const result=await account();profile=result.profile;if(!profile)throw Error('로그인이 필요합니다.');if(profile.status!=='active'){root.append(node('p',profile.status==='withdrawal_requested'?'탈퇴 요청이 접수되었습니다. 운영자가 처리하면 별도로 안내드립니다.':'현재 이용이 중지된 계정입니다.'));action(root,'로그아웃',async()=>{await logout();location.assign('/login');});return;}root.append(node('p','회원 ID '+profile.user_id,{class:'member-note'}),node('p',profile.email),node('p',result.verified?'이메일 인증 완료':'이메일 인증 상태를 확인해주세요.',{class:'member-badge'}));const form=node('form');const name=field(form,'이름','text',{required:'',minlength:'2',maxlength:'40',autocomplete:'name'}),phone=field(form,'휴대전화 번호','tel',{autocomplete:'tel',required:''});name.value=profile.name;phone.value=profile.phone;const draftKey='kjt-member-draft-'+profile.user_id;try{const draft=JSON.parse(sessionStorage.getItem(draftKey)||'null');if(draft){name.value=draft.name;phone.value=draft.phone;}}catch{}form.oninput=()=>sessionStorage.setItem(draftKey,JSON.stringify({name:name.value,phone:phone.value}));if(!profile.consented_at)root.append(node('p','첫 방문입니다. 이름과 이용 동의를 확인해 가입을 마무리해주세요.'));const agree=profile.consented_at?null:consent(form);submit(form,'내 정보 저장',async msg=>{if(agree&&!agree.checked)throw Error('이용 동의를 확인해주세요.');if(!config.demo&&agree&&(!config.policiesReady||!config.registrationOpen))throw Error('회원가입 개시 후 가입을 마무리할 수 있습니다.');await account('PATCH',{name:name.value,phone:phone.value,consent:agree?.checked||false});sessionStorage.removeItem(draftKey);msg.textContent='내 정보를 저장했습니다.';});root.append(form);
- root.append(node('h2','로그인 아이디'));if(result.username){root.append(node('p',result.username));}else{const uf=node('form'),username=field(uf,'새 아이디','text',{required:'',minlength:'4',maxlength:'20',autocomplete:'username'});submit(uf,'아이디 등록',async()=>{const error=usernameError(username.value);if(error)throw Error(error);await claimUsername(normalizeUsername(username.value));location.reload();});root.append(uf,node('p','이메일 인증을 마친 계정에만 아이디를 등록합니다. 다른 회원의 아이디는 사용할 수 없습니다.',{class:'member-note'}));}
- root.append(node('h2','로그인 수단'));const identities=config.demo?current.providers.map(provider=>({provider,id:provider})):((await client.auth.getUserIdentities()).data?.identities||[]);for(const identity of identities){const row=node('div',null,{class:'member-identity'});row.append(node('span',providerName(identity.provider)+' 연결됨'));if(identity.provider!=='email'&&identities.length>1){action(row,'연결 해제',async()=>{if(!confirm('이 로그인 수단의 연결을 해제할까요? 다른 로그인 수단은 유지됩니다.'))return;try{if(config.demo)await demo('unlink',{provider:identity.provider});else{const {error}=await client.auth.unlinkIdentity(identity);if(error)throw error;}location.reload();}catch{alert('연결 해제에 실패했습니다. 다른 로그인 수단과 최근 로그인 상태를 확인해주세요.');}});}root.append(row);}root.append(node('p','여러 로그인 수단을 연결하면 같은 회원 ID로 로그인됩니다. 연결할 계정도 제공자에서 인증해야 합니다. 이미 다른 회원에 연결된 수단은 자동으로 합치지 않습니다. 연결 해제는 외부 계정 삭제와 별개입니다.',{class:'member-note'}));social(root,true);
- const hasEmail=identities.some(i=>i.provider==='email');const passForm=node('form');passForm.append(node('h2',recovery?'새 비밀번호 설정':hasEmail?'비밀번호 변경':'이메일 로그인 추가'));const old=recovery||!hasEmail?null:field(passForm,'현재 비밀번호','password',{autocomplete:'current-password',required:''});const next=field(passForm,'새 비밀번호','password',{autocomplete:'new-password',required:'',minlength:'12',maxlength:'128'});const check=field(passForm,'새 비밀번호 확인','password',{autocomplete:'new-password',required:''});submit(passForm,'비밀번호 저장',async msg=>{const error=passwordError(next.value);if(error)throw Error(error);if(next.value!==check.value)throw Error('비밀번호 확인이 일치하지 않습니다.');if(config.demo)await demo('password',{password:next.value,currentPassword:old?.value});else{const {error}=await client.auth.updateUser({password:next.value,...(old?{current_password:old.value}:{})});if(error)throw Error('비밀번호를 변경하지 못했습니다. 현재 비밀번호 또는 복구 링크의 유효성을 확인해주세요.');}if(old)old.value='';next.value=check.value='';msg.textContent='비밀번호를 변경했습니다.';});root.append(passForm);root.append(node('h2','계정 이용'));action(root,'로그아웃',async()=>{await logout();location.assign('/login');});const withdraw=node('details',null,{class:'member-help'});withdraw.append(node('summary','회원 탈퇴 요청'),node('p','로그아웃과 달리 회원 이용을 종료하는 요청입니다. 즉시 삭제되지 않으며 운영자가 보관 대상과 처리 여부를 확인합니다.'));const wf=node('form'),confirmText=field(wf,'확인 문구 탈퇴 요청','text',{required:''});submit(wf,'탈퇴 요청 접수',async()=>{await account('POST',{confirm:confirmText.value,action:'withdraw'});await logout();location.assign('/login');});withdraw.append(wf);root.append(withdraw);
- if(!config.demo)client.auth.onAuthStateChange(event=>{if(event==='SIGNED_OUT'){const banner=node('p','세션이 만료되었습니다. 다시 로그인한 후 저장해주세요.',{role:'alert',class:'member-note'});root.prepend(banner);}});
- }catch(error){root.append(node('p',error.message,{role:'alert'}));navlinks(root,[['로그인하기','/login?next=/account']]);}}
+function accountSetting(title,description,open=false){
+ const section=node('details',null,{class:'account-setting'});
+ if(open)section.open=true;
+ const summary=node('summary'),copy=node('span',null,{class:'account-setting-copy'});
+ copy.append(node('strong',title),node('span',description));
+ summary.append(copy,node('span','설정',{class:'account-setting-toggle','aria-hidden':'true'}));
+ const content=node('div',null,{class:'account-setting-content'});section.append(summary,content);root.append(section);
+ let moving=false;
+ summary.addEventListener('click',async event=>{
+  if(!content.animate||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  event.preventDefault();if(moving)return;moving=true;
+  const opening=!section.open;section.open=true;
+  const height=content.getBoundingClientRect().height;
+  const frames=[{height:'0px',opacity:0},{height:height+'px',opacity:1}];
+  const animation=content.animate(opening?frames:frames.reverse(),{duration:200,easing:'ease-in-out'});
+  try{await animation.finished;}catch{}section.open=opening;moving=false;
+ });
+ return {section,content};
+}
+async function accountPage(loadedResult){
+ root.append(node('p','MEMBER ACCOUNT',{class:'account-eyebrow'}),node('h1','내 계정'),node('p','회원 정보와 로그인 방법을 관리하세요.',{class:'account-intro'}));
+ try{
+  const result=loadedResult||await account();profile=result.profile;
+  if(!profile)throw Error('로그인이 필요합니다.');
+  if(profile.status!=='active'){
+   root.append(node('p',profile.status==='withdrawal_requested'?'탈퇴 요청이 접수되었습니다. 운영자가 처리하면 별도로 안내드립니다.':'현재 이용이 중지된 계정입니다.'));
+   action(root,'로그아웃',async()=>{await logout();location.assign('/login');});return;
+  }
+  const headerNav=document.querySelector('.member-header nav');
+  if(headerNav)headerNav.replaceChildren(node('a','홈페이지',{href:'/'}),node('a','내 계정',{href:'/account','aria-current':'page'}));
+  const onboarding=!profile.consented_at&&!recovery;
+  if(onboarding){root.querySelector('h1').textContent='가입 마무리';root.querySelector('.account-intro').textContent='필수 정보와 이용 동의만 확인하면 가입이 완료됩니다.';}
+  if(!onboarding&&new URLSearchParams(location.search).get('welcome')==='1')root.append(node('p','가입이 완료되었습니다. 아카데미에 오신 것을 환영합니다.',{class:'account-welcome',role:'status'}));
+  const overview=node('div',null,{class:'account-overview'});
+  overview.append(node('span',profile.email,{class:'account-email'}),node('span',result.verified?'이메일 인증 완료':'이메일 인증 필요',{class:'member-badge'}));root.append(overview);
+  const profileSection=node('section',null,{class:'account-section','aria-labelledby':'account-profile-title'});
+  const profileTitle=node('h2',profile.consented_at?'기본 정보':'회원 정보',{id:'account-profile-title'});
+  const profileIntro=node('p',profile.consented_at?'이름과 연락처를 최신 정보로 유지해주세요.':'이름·연락처와 필수 이용 동의를 확인하면 가입이 완료됩니다.',{class:'account-section-description'});
+  profileSection.append(profileTitle,profileIntro);
+  const form=node('form',null,{class:'account-profile-form'}),fields=node('div',null,{class:'account-fields'});form.append(fields);
+  const name=field(fields,'이름','text',{required:'',minlength:'2',maxlength:'40',autocomplete:'name'}),phone=field(fields,'휴대전화 번호','tel',{autocomplete:'tel',required:''});
+  name.value=profile.name||'';phone.value=profile.phone||'';
+  const draftKey='kjt-member-draft-'+profile.user_id;
+  try{const draft=JSON.parse(sessionStorage.getItem(draftKey)||'null');if(draft){name.value=draft.name;phone.value=draft.phone;}}catch{}
+  form.oninput=()=>sessionStorage.setItem(draftKey,JSON.stringify({name:name.value,phone:phone.value}));
+  const consentArea=node('div',null,{class:'account-consents'});
+  const agree=profile.consented_at?null:consent(consentArea);if(agree)form.append(consentArea);
+  let needsConsent=!!agree;
+  submit(form,needsConsent?'가입 완료하기':'변경사항 저장',async msg=>{
+   if(needsConsent&&!agree.checked)throw Error('이용 동의를 확인해주세요.');
+   if(!config.demo&&needsConsent&&(!config.policiesReady||!config.registrationOpen))throw Error('회원가입 개시 후 가입을 마무리할 수 있습니다.');
+   await account('PATCH',{name:name.value,phone:phone.value,consent:needsConsent&&agree.checked});
+   sessionStorage.removeItem(draftKey);
+   if(onboarding){
+    const updated=await account();
+    const reduceMotion=typeof window!=='undefined'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fade=root.animate&&!reduceMotion?root.animate([{opacity:1},{opacity:0}],{duration:120,fill:'forwards'}):null;
+    if(fade)await fade.finished;
+    history.replaceState(null,'','/account?welcome=1');
+    root.replaceChildren();root.classList.remove('account-onboarding');await accountPage(updated);
+    if(fade)fade.cancel();
+    if(root.animate&&!reduceMotion)root.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:200,easing:'ease-out'});
+    root.querySelector('h1').setAttribute('tabindex','-1');root.querySelector('h1').focus({preventScroll:true});
+    root.scrollIntoView?.({behavior:reduceMotion?'auto':'smooth',block:'start'});return;
+   }
+   msg.textContent=needsConsent?'가입이 완료되었습니다. 홈페이지를 이용해보세요.':'변경사항을 저장했습니다.';
+   needsConsent=false;consentArea.remove();profileTitle.textContent='기본 정보';profileIntro.textContent='이름과 연락처를 최신 정보로 유지해주세요.';form.querySelector('[type="submit"]').textContent='변경사항 저장';
+  });
+  profileSection.append(form);root.append(profileSection);
+  if(onboarding){root.classList.add('account-onboarding');navlinks(root,[['홈페이지로 돌아가기','/']]);return;}
+  root.append(node('h2','로그인 및 보안',{class:'account-group-title'}),node('p','필요한 항목을 열어 설정하세요. 추가 로그인 방법은 선택 사항입니다.',{class:'account-section-description'}));
+  const usernamePanel=accountSetting('로그인 아이디',result.username||'아이디로도 로그인하고 싶을 때 등록하세요.',new URLSearchParams(location.search).get('username')==='needed');
+  if(result.username)usernamePanel.content.append(node('p',result.username));
+  else{
+   const uf=node('form'),username=field(uf,'새 아이디','text',{required:'',minlength:'4',maxlength:'20',autocomplete:'username'});
+   uf.append(node('p','영문·숫자·밑줄 4~20자로 입력해주세요.',{class:'account-section-description'}));
+   submit(uf,'아이디 등록',async()=>{const error=usernameError(username.value);if(error)throw Error(error);await claimUsername(normalizeUsername(username.value));location.reload();});
+   usernamePanel.content.append(uf,node('p','이메일 인증을 마친 계정에 등록할 수 있습니다. 다른 회원이 사용하는 아이디는 등록할 수 없습니다.',{class:'member-note'}));
+  }
+  const identities=config.demo?current.providers.map(provider=>({provider,id:provider})):((await client.auth.getUserIdentities()).data?.identities||[]);
+  const identityPanel=accountSetting('로그인 방법',identities.map(i=>providerName(i.provider)).join(' · ')+' 연결됨');
+  for(const identity of identities){
+   const row=node('div',null,{class:'member-identity'});row.append(node('span',providerName(identity.provider)+' 연결됨'));
+   if(identity.provider!=='email'&&identities.length>1)action(row,'연결 해제',async()=>{
+    if(!confirm('이 로그인 수단의 연결을 해제할까요? 다른 로그인 수단은 유지됩니다.'))return;
+    try{if(config.demo)await demo('unlink',{provider:identity.provider});else{const {error}=await client.auth.unlinkIdentity(identity);if(error)throw error;}location.reload();}
+    catch{alert('연결 해제에 실패했습니다. 다른 로그인 수단과 최근 로그인 상태를 확인해주세요.');}
+   });
+   identityPanel.content.append(row);
+  }
+  identityPanel.content.append(node('p','다른 로그인 방법을 연결해도 같은 계정을 이용합니다. 다른 회원이 사용하는 계정은 연결할 수 없습니다. 연결을 해제해도 Google·카카오 계정 자체는 삭제되지 않습니다.',{class:'member-note'}));
+  social(identityPanel.content,true,identities.map(i=>i.provider));
+  const hasEmail=identities.some(i=>i.provider==='email');
+  const passwordTitle=recovery?'새 비밀번호 설정':hasEmail?'비밀번호 변경':'이메일 로그인 추가';
+  const passwordPanel=accountSetting(passwordTitle,recovery?'새 비밀번호를 설정해 계정을 다시 이용하세요.':hasEmail?'계정 비밀번호를 변경할 수 있습니다.':'비밀번호를 설정하면 이메일로도 로그인할 수 있습니다.',recovery);
+  if(recovery)root.insertBefore(passwordPanel.section,profileSection);
+  const passForm=node('form');
+  const old=recovery||!hasEmail?null:field(passForm,'현재 비밀번호','password',{autocomplete:'current-password',required:''});
+  const next=field(passForm,'새 비밀번호','password',{autocomplete:'new-password',required:'',minlength:'12',maxlength:'128'}),check=field(passForm,'새 비밀번호 확인','password',{autocomplete:'new-password',required:'',minlength:'12',maxlength:'128'});
+  passForm.append(node('p','비밀번호는 12자 이상으로 설정해주세요.',{class:'account-section-description'}));
+  submit(passForm,'비밀번호 저장',async msg=>{
+   const error=passwordError(next.value);if(error)throw Error(error);if(next.value!==check.value)throw Error('비밀번호 확인이 일치하지 않습니다.');
+   if(config.demo)await demo('password',{password:next.value,currentPassword:old?.value});
+   else{const {error}=await client.auth.updateUser({password:next.value,...(old?{current_password:old.value}:{})});if(error)throw Error('비밀번호를 변경하지 못했습니다. 현재 비밀번호 또는 복구 링크의 유효성을 확인해주세요.');}
+   if(old)old.value='';next.value=check.value='';msg.textContent='비밀번호를 변경했습니다.';
+  });passwordPanel.content.append(passForm);
+  const controls=node('div',null,{class:'account-controls'});navlinks(controls,[['홈페이지로 돌아가기','/']]);action(controls,'로그아웃',async()=>{await logout();location.assign('/login');});root.append(controls);
+  const withdraw=node('details',null,{class:'member-help account-withdraw'});withdraw.append(node('summary','회원 탈퇴 요청'),node('p','로그아웃과 달리 회원 이용을 종료하는 요청입니다. 즉시 삭제되지 않으며 운영자가 보관 대상과 처리 여부를 확인합니다.'));
+  const wf=node('form'),confirmText=field(wf,'확인 문구 탈퇴 요청','text',{required:''});submit(wf,'탈퇴 요청 접수',async()=>{await account('POST',{confirm:confirmText.value,action:'withdraw'});await logout();location.assign('/login');});withdraw.append(wf);root.append(withdraw);
+  if(!config.demo)client.auth.onAuthStateChange(event=>{if(event==='SIGNED_OUT'){root.prepend(node('p','세션이 만료되었습니다. 다시 로그인한 후 저장해주세요.',{role:'alert',class:'member-note'}));}});
+ }catch(error){root.append(node('p',error.message,{role:'alert'}));navlinks(root,[['로그인하기','/login?next=/account']]);}
+}
 async function adminPage(){root.append(node('h1','회원 관리'),node('p','이름·이메일·연락처로 검색하고 회원 이용 상태를 관리합니다. 일반 회원가입으로 관리자 권한이 부여되지 않습니다.'));const auth=await api('/api/admin-auth',null,'GET');if(!auth.authenticated){const form=node('form'),password=field(form,'관리자 비밀번호','password',{required:'',autocomplete:'current-password'});submit(form,'관리자로 로그인',async()=>{await api('/api/admin-auth',{password:password.value});location.reload();});root.append(form);return;}navlinks(root,[['상담방·일지 열기','/admin/consultation'],['홈페이지 관리','/?admin=1']]);action(root,'관리자 로그아웃',async()=>{await api('/api/admin-auth',{},'DELETE');location.reload();});const form=node('form',null,{class:'member-search'}),search=field(form,'회원 검색','search',{placeholder:'이름, 이메일, 연락처',maxlength:'80'});root.append(form);const result=node('div');root.append(result);let offset=0;async function load(){result.replaceChildren();try{const data=await api('/api/admin-members?q='+encodeURIComponent(search.value)+'&offset='+offset,null,'GET');const members=data.members||[];result.append(node('p',`${offset+1}번째부터 ${members.length}명 표시`));for(const member of members){const card=node('article',null,{class:'member-record'});card.append(node('h2',member.name||'가입 정보 입력 전'),node('p',member.email),node('p',member.phone||'연락처 미입력'),node('p','가입일 '+new Date(member.created_at).toLocaleDateString('ko-KR')));const label=node('label','이용 상태'),select=node('select');for(const [v,t]of [['active','이용 가능'],['inactive','이용 중지'],['withdrawal_requested','탈퇴 요청']]){const opt=node('option',t,{value:v});select.append(opt);}select.value=member.status;label.append(select);card.append(label);const msg=status(card);action(card,'회원 상태 저장',async()=>{try{await api('/api/admin-members',{id:member.user_id,status:select.value},'PATCH');msg.textContent='회원 상태를 저장했습니다.';}catch(e){msg.textContent=e.message;}});result.append(card);}if(!members.length)result.append(node('p','검색 결과가 없습니다.'));const pager=node('div',null,{class:'member-links'});if(offset>0)action(pager,'이전 50명',()=>{offset-=50;load();});if(members.length===50)action(pager,'다음 50명',()=>{offset+=50;load();});result.append(pager);}catch(error){result.append(node('p',error.message,{role:'alert'}));}}submit(form,'검색',async()=>{offset=0;await load();});await load();}
 (async()=>{root.replaceChildren(node('p','화면을 준비하고 있습니다…'));try{config=await api('/api/member-config',null,'GET');root.replaceChildren();if(config.demo){root.append(node('p','로컬 데모 — 소셜 인증·메일 발송은 실제 연동되지 않습니다.',{class:'member-note'}));current=(await api('/api/member-demo',null,'GET')).user;}else if(config.ready){client=createClient(config.url,config.key,{auth:{flowType:'pkce',detectSessionInUrl:true,persistSession:true,autoRefreshToken:true}});await client.auth.getSession();}else if(page!=='admin'){root.append(node('h1','회원 서비스를 준비하고 있습니다'),node('p','인증 서비스 연결 후 회원가입·로그인을 사용할 수 있습니다.'));return;}
  const params=new URLSearchParams(location.search);if(params.get('error')||location.hash.includes('error=')){root.append(node('p','인증이 취소되었거나 링크가 만료되었습니다. 로그인 화면에서 다시 시작해주세요.',{role:'alert'}));history.replaceState(null,'',location.pathname);}
