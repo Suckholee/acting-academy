@@ -1,41 +1,43 @@
-회원가입 개통 준비 — 2026-11-12
+회원가입 개통 — 2026-11-12
 
-승인된 목표
-- Google(Gmail 계정) 간편가입, 카카오 간편가입, 이메일/아이디 일반 가입 제공.
-- 신규 외부 인증 앱의 소유자는 회사 공용계정 kactstar@gmail.com. 개인 계정으로 생성하지 않는다.
-- 사용자 요청에 따라 구현·검수 후 main 푸시, 운영 배포, 직원 단톡방 공유.
+소유권과 공개 범위
+- Google 로그인 앱 소유자: 회사 계정 kactstar@gmail.com, 프로젝트 kactstar-academy.
+- Google 간편가입과 이메일·아이디 일반 가입을 제공한다.
+- 카카오는 회사 계정이 아직 없어 사용자가 직접 가입한 뒤 연결한다. 버튼은 준비 중으로 유지한다.
 
-완료한 준비
-- 로그인·가입·계정 연결 화면에 Google과 카카오를 함께 표시하도록 수정.
-- 연결하지 않은 제공자는 '준비 중' 표시와 비활성 상태 유지.
-- 일반 가입은 Gmail 외의 이메일도 사용할 수 있다는 설명 추가.
-- 인증 공급자별 연결, 미설정 상태, 가입 보류에 대한 화면 회귀 검사 추가.
-- 회사 Google 계정 로그인 완료. 개인 계정에서 앱/프로젝트 생성하지 않음.
-- Supabase 가입 인증 메일을 한국어 인증 코드 방식으로 변경. 실제 발송은 아직 미검증.
+외부 설정 완료
+- 사용자 승인 후 Google Cloud/API 약관 동의 및 회사 OAuth 앱 생성.
+- Google 앱 이름·회사 지원 메일·홈페이지·약관·개인정보 URL 저장, 프로덕션 상태 전환.
+- 사용자가 발급한 Google 클라이언트 ID/비밀키를 Supabase Google 제공자에 등록.
+- 사용자가 회사 Google 계정 2단계 인증을 켜고 '아카데미 인증메일' 앱 비밀번호를 직접 발급.
+- Gmail SMTP 저장 완료: smtp.gmail.com, SSL 465, 회사 이메일 발신자, 표시 이름 김정태 배우아카데미.
+- Supabase 신규 가입·본인 인증을 거친 계정 연결 허용. 이메일 확인은 필수 유지. 익명 가입은 허용하지 않음.
+- Site URL https://www.kactstar.com
+- 허용 복귀 주소 https://www.kactstar.com/account 및 https://www.kactstar.com/account?recovery=1
+- Google 인증 콜백 https://hhixiceovxkuxhoolwjm.supabase.co/auth/v1/callback
+- Google 로그인은 이메일·기본 프로필·openid만 사용하며 Gmail 메일함 권한은 요청하지 않는다.
 
-개통 전 남은 외부 설정
-1. 회사 Google 계정의 Google Cloud 최초 약관 동의: 사용자 확인 요청 중.
-2. 회사 Google 프로젝트 및 OAuth 앱/클라이언트 생성, 회사 이름·도메인·정책 URL 등록.
-   홈페이지 https://www.kactstar.com
-   약관 https://www.kactstar.com/terms
-   개인정보 처리방침 https://www.kactstar.com/privacy
-   허용 원본 https://www.kactstar.com
-   인증 콜백 https://hhixiceovxkuxhoolwjm.supabase.co/auth/v1/callback
-   이메일·기본 프로필·openid 범위만 사용. Gmail 메일함 권한은 요청하지 않음.
-3. 회사 카카오계정 존재/로그인 확인: 사용자 확인 요청 중. Gmail 비밀번호를 카카오에 재사용하지 않음.
-4. 회사 카카오 앱, 카카오 로그인, 콜백, 필요한 이메일 동의 설정. 이메일 제공 가능 여부 확인.
-   현재 회원 데이터 모델은 인증된 이메일을 필요로 함. 이메일이 없는 계정의 임의 가짜 이메일 생성 금지.
-5. 운영용 SMTP: 현재 미설정. Supabase 기본 발송은 프로젝트 팀의 승인된 이메일로만 제한되므로 일반 회원 개통에 사용할 수 없음.
-6. 운영 메일 전달·인증·재발송·비밀번호 복구와 Google/Kakao 왕복 로그인을 실제 계정으로 확인.
-7. 준비 완료 후 Supabase 신규 가입 허용 및 Vercel MEMBER_REGISTRATION_OPEN=true,
-   MEMBER_OAUTH_PROVIDERS=google,kakao 적용 후 재배포. 홈페이지 약관·개인정보 안내의 가입 준비 중 상태 문구도 함께 갱신.
+검증
+- 회사 Gmail의 시험 주소로 실제 가입 인증메일 수신 완료.
+- 받은 인증코드 확인, 아이디 등록, 이메일 로그인, 아이디 로그인 모두 성공.
+- 일반 가입 시험 계정은 운영 테스트용이며 일반 회원 권한만 가진다.
+- 정적 빌드와 회원 관련 검사 20개 통과.
+- 운영 배포 후 Google 왕복 로그인과 공개 가입 화면을 추가 검증한다. 결과는 작업 산출물의 진행현황에 기록한다.
 
-운영 상태
-- 현재 공개 가입은 닫힌 상태. 실제 가입 가능으로 보고하지 않는다.
-- '회원가입 후 오디션 지원'은 단톡방에서 요청됨. 실제 회원가입 개통 전에는 기존 접수를 막는 필수 로그인 제한을 적용하지 않는다.
-- 자격증명은 저장소·보고서·카카오 메시지에 기록하지 않는다.
+운영 환경
+- MEMBER_REGISTRATION_OPEN=true
+- MEMBER_OAUTH_PROVIDERS=google
+- 카카오를 준비하기 전에는 providers에 kakao를 추가하지 않는다.
+- 초기 인증메일 발송 제한은 시간당 30건이다. Gmail 발송 제한과 스팸 판정을 모니터링하고 발송량 증가 시 전용 발송 서비스로 전환한다.
+- 자격증명은 소스·보고서·카카오 메시지에 기록하지 않는다. 발급한 비밀값은 인증 서비스 설정에서 관리한다.
 
-추가 단톡방 내용
-- 02:21 최종 수정 포스터 원본 다운로드. 접수 마감은 11/23 오후 6시로 명시됨.
-- 포스터 시작일은 여전히 11/13이나 사용자 직접 지시(오늘부터 접수)에 따라 실제 접수 시작은 11/12 유지.
-- 02:21~02:22 20대 배역 추가 제안: 배역명·성별·설명이 확정되지 않아 임의 배역을 만들지 않음.
+회원 안내
+- 개인정보 안내에 Supabase 호주 시드니 저장 지역, 운영·지원의 싱가포르/미국 처리, Vercel 미국 서버, Google 로그인·인증메일 처리를 반영.
+- 회원가입만으로 수강·결제·오디션 선발이 확정되지 않는다.
+- 홈페이지 상담 신청과 오디션 지원의 동의는 회원가입 동의와 별도로 유지한다.
+
+관련 자료
+https://supabase.com/legal/privacy-resources/data-residency-and-transfers-faq
+https://vercel.com/legal/privacy-notice
+https://policies.google.com/privacy?hl=ko
+https://support.google.com/accounts/answer/185833?hl=ko

@@ -10,7 +10,7 @@ test('published policy links never implicitly enable registration',()=>{
  process.env.MEMBER_TERMS_URL='https://outside.example/terms';value=config();assert.equal(value.policiesReady,false);assert.equal(value.registrationOpen,false);
  }finally{for(const key of keys)if(saved[key]===undefined)delete process.env[key];else process.env[key]=saved[key];}
 });
-test('public policy pages and registration hold links ship with the build',()=>{
- for(const name of ['terms','privacy']){const html=fs.readFileSync('dist-published/'+name+'.html','utf8');assert.match(html,/2026년 10월 26일/);assert.ok(html.includes('href="/terms"'));assert.ok(html.includes('href="/privacy"'));assert.ok(html.includes('현재 신규 회원가입은 준비 중'));assert.ok(html.includes('https://www.kactstar.com/'+name));assert.doesNotMatch(html,/아직 시행하거나 공개하지 않습니다|공개 전 확정 사항/);}
+test('public policy pages describe available signup methods and retain closed-state links',()=>{
+ for(const name of ['terms','privacy']){const html=fs.readFileSync('dist-published/'+name+'.html','utf8');assert.match(html,/2026년 10월 26일/);assert.ok(html.includes('href="/terms"'));assert.ok(html.includes('href="/privacy"'));assert.ok(html.includes('2026년 11월 12일'));assert.doesNotMatch(html,/현재 신규 회원가입은 준비 중|회원가입은 현재 개시 전/);assert.ok(html.includes('https://www.kactstar.com/'+name));assert.doesNotMatch(html,/아직 시행하거나 공개하지 않습니다|공개 전 확정 사항/);}
  const signup=fs.readFileSync('src/members/app.js','utf8');assert.match(signup,/function signup\(\)\{rememberReturn\(\);if\(!config.demo&&!config.registrationOpen\)/);assert.match(fs.readFileSync('dist-published/signup.html','utf8'),/href="\/privacy"/);
 });
