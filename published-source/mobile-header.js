@@ -2,6 +2,13 @@
  const header=document.querySelector('body>header');
  const nav=header?.querySelector('nav');
  if(!header||!nav)return;
+ const accountLinks=document.createElement('div');
+ accountLinks.className='header-account-links';
+ accountLinks.setAttribute('role','group');accountLinks.setAttribute('aria-label','회원 메뉴');
+ for(const [href,label] of [['/login','로그인'],['/signup','회원가입']]){
+  const link=document.createElement('a');link.href=href;link.textContent=label;accountLinks.append(link);
+ }
+ header.classList.add('has-account-links');header.prepend(accountLinks);
  const consultation=document.createElement('a');
  consultation.href='/apply';consultation.textContent='상담 신청 ↗';consultation.className='mobile-menu-consult';nav.append(consultation);
  const button=document.createElement('button');
