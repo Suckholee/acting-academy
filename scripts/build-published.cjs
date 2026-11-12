@@ -49,3 +49,5 @@ require('./build-audition.cjs').buildAudition(out);
 require('./build-casting.cjs').buildCasting(out);
 require('./build-admin.cjs').buildAdmin(out);
 console.log('Published design + component editor: dist-published');
+
+require('./build-member-header.cjs').buildMemberHeader(out);

@@ -93,3 +93,16 @@ body{background:#f7f7f5;color:#252528;line-height:1.6}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 /* Language selection stays outside forms and expanding settings. */
 body:has(#member-app) .language-picker{position:static;width:max-content;max-width:calc(100% - 32px);margin:0 auto 24px;box-shadow:none;padding:6px 10px;font-size:12px}
+
+.account-auditions{margin-top:20px}
+.account-auditions{margin:0 0 24px}
+.account-application{border-top:1px solid #e8e8e3;padding:20px 0}
+.account-application:last-child{padding-bottom:4px}
+.account-application h3{font-size:17px;line-height:1.5;margin:10px 0 14px}
+.account-application dl{display:grid;grid-template-columns:92px minmax(0,1fr);gap:8px 14px;font-size:13px;margin:0 0 14px}
+.account-application dt{color:#74747a}.account-application dd{margin:0;overflow-wrap:anywhere}
+.account-empty{padding:20px 0;color:#777;font-size:14px}
+.account-legacy{margin-bottom:0;padding:14px;border-color:#e4e4df;background:#fafaf8;font-size:13px}
+.account-legacy summary{font-weight:500}
+.account-auditions>.member-button{width:auto;font-size:13px}
+.account-auditions>.member-button[hidden]{display:none}

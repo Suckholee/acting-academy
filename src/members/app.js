@@ -1,4 +1,4 @@
-import {createClient} from '@supabase/supabase-js';
+import {getMemberClient} from './session.js';
 const {safeReturn,passwordError,phoneError}=require('./model.cjs');
 const root=document.querySelector('#member-app');if(!root)throw Error('Member root missing');
 const page=root.dataset.page;let config,client,current,profile;
@@ -21,8 +21,8 @@ function consent(form){
 }
 function submit(form,label,callback){const b=node('button',label,{type:'submit',class:'member-button member-primary'});const msg=status(form);form.append(b);form.onsubmit=async e=>{e.preventDefault();b.disabled=true;msg.textContent='처리 중입니다…';try{await callback(msg);}catch(error){msg.textContent=error.message;}finally{b.disabled=false;}};return msg;}
 function navlinks(parent,links){const p=node('p',null,{class:'member-links'});for(const [text,href]of links)p.append(node('a',text,{href}));parent.append(p);}
-function rememberReturn(){const value=safeReturn(new URLSearchParams(location.search).get('next'));sessionStorage.setItem('kjt-member-return',value);return value;}
-function finish(){location.assign(safeReturn(sessionStorage.getItem('kjt-member-return')));}
+function rememberReturn(){const value=safeReturn(new URLSearchParams(location.search).get('next')||sessionStorage.getItem('kjt-member-return'));sessionStorage.setItem('kjt-member-return',value);return value;}
+function finish(){const destination=safeReturn(sessionStorage.getItem('kjt-member-return'));sessionStorage.removeItem('kjt-member-return');location.assign(destination);}
 function social(parent,link=false,connected=[]){const message=status(parent);for(const provider of ['google','kakao']){if(link&&connected.includes(provider))continue;const button=action(parent,providerName(provider)+(link?' 계정 연결':'로 계속하기'),async()=>{button.disabled=true;try{
  if(!config.providers.includes(provider))throw Error(providerName(provider)+' 로그인을 준비하고 있습니다. 이메일로 계속해주세요.');
  if(config.demo){await demo(link?'link':'oauth',{provider});if(link)location.reload();else finish();return;}
@@ -55,6 +55,35 @@ function signup(){rememberReturn();if(!config.demo&&!config.registrationOpen){ro
 }
 function reset(){root.append(node('h1','비밀번호 재설정'),node('p','이메일로 가입한 계정의 비밀번호를 다시 설정합니다.'));const form=node('form'),email=field(form,'이메일','email',{required:'',autocomplete:'email'});submit(form,'재설정 메일 요청',async msg=>{if(config.demo){const data=await demo('recover',{email:email.value});msg.textContent=data.message;}else{await client.auth.resetPasswordForEmail(email.value.trim(),{redirectTo:location.origin+'/account?recovery=1'});msg.textContent='일치하는 계정이 있다면 안내 메일을 보내드립니다. 스팸함과 이메일 주소를 확인해주세요.';}});root.append(form);navlinks(root,[['로그인으로 돌아가기','/login']]);}
 async function logout(){for(const key of Object.keys(sessionStorage))if(key.startsWith('kjt-member-draft-'))sessionStorage.removeItem(key);if(config.demo)await demo('logout');else{const {error}=await client.auth.signOut();if(error)throw Error('로그아웃을 완료하지 못했습니다. 다시 시도해주세요.');}}
+async function accountAuditions(parent){
+ const section=node('section',null,{class:'account-section account-auditions','aria-labelledby':'account-auditions-title'});
+ section.append(node('h2','내 오디션 신청 내역',{id:'account-auditions-title'}),node('p','신청한 배역과 접수 정보를 확인하세요. 심사 일정과 결과는 담당자가 별도로 안내합니다.',{class:'account-section-description'}));
+ const list=node('div',null,{class:'account-application-list'}),message=status(section);section.append(list);parent.append(section);
+ let offset=0;
+ const more=action(section,'신청 내역 더 보기',()=>load(false));more.hidden=true;
+ async function call(data,method='GET',page=0){const {data:session}=await client.auth.getSession();return api('/api/member-casting'+(method==='GET'?'?offset='+page:''),data,method,session.session?.access_token);}
+ const date=value=>new Date(value).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
+ async function load(reset){
+  more.disabled=true;message.textContent='신청 내역을 불러오고 있습니다…';
+  try{
+   const result=await call(null,'GET',reset?0:offset);if(reset)list.replaceChildren();
+   if(!result.applications.length&&!list.children.length)list.append(node('p','아직 신청한 오디션이 없습니다. 모집 중인 오디션을 확인해보세요.',{class:'account-empty'}));
+   for(const a of result.applications){
+    const item=node('article',null,{class:'account-application'});item.append(node('span',a.status,{class:'member-badge'}),node('h3',a.title));
+    const details=node('dl');for(const [label,value]of [['지원 배역',a.roles.join(' · ')],['접수일',date(a.submittedAt)],['참석 가능일',a.dates.join(' · ')],['프로필',a.profileName]]){details.append(node('dt',label),node('dd',value||'—'));}item.append(details);
+    if(a.closesAt)item.append(node('p',(a.canEdit?'수정 가능 기한: ':'접수 마감: ')+date(a.closesAt),{class:'account-section-description'}));
+    const links=[];if(a.viewUrl)links.push([a.canEdit?'지원서 확인 · 수정':'제출한 지원서 보기',a.viewUrl]);if(a.callUrl)links.push(['공고 보기',a.callUrl]);navlinks(item,links);list.append(item);
+   }
+   offset=result.nextOffset;more.hidden=offset===null;message.textContent='';
+  }catch(e){message.textContent=e.message;more.hidden=false;more.textContent='다시 불러오기';}
+  finally{more.disabled=false;}
+ }
+ navlinks(section,[['모집 중인 오디션 보기','/auditions']]);
+ const legacy=node('details',null,{class:'member-help account-legacy'});legacy.append(node('summary','이전에 제출한 지원서 연결'),node('p','회원가입 전에 제출했다면 접수 완료 화면에서 받은 수정 전용 링크로 본인 지원서를 연결할 수 있습니다.',{class:'account-section-description'}));
+ const form=node('form'),url=field(form,'수정 전용 링크','url',{required:'',maxlength:'2048',autocomplete:'off',placeholder:'https://www.kactstar.com/audition-edit#…'});
+ submit(form,'내 계정에 연결',async msg=>{let parsed;try{parsed=new URL(url.value);}catch{throw Error('수정 전용 링크를 확인해주세요.');}if(!['www.kactstar.com','kactstar.com',location.hostname].includes(parsed.hostname)||parsed.pathname!=='/audition-edit')throw Error('홈페이지에서 받은 수정 전용 링크를 입력해주세요.');const values=new URLSearchParams(parsed.hash.slice(1));await call({action:'link',id:values.get('id'),key:values.get('key')},'POST');url.value='';await load(true);msg.textContent='지원서를 내 계정에 연결했습니다.';});
+ legacy.append(form);section.append(legacy);await load(true);
+}
 function accountSetting(title,description,open=false){
  const section=node('details',null,{class:'account-setting'});
  if(open)section.open=true;
@@ -83,8 +112,8 @@ async function accountPage(loadedResult){
    root.append(node('p',profile.status==='withdrawal_requested'?'탈퇴 요청이 접수되었습니다. 운영자가 처리하면 별도로 안내드립니다.':'현재 이용이 중지된 계정입니다.'));
    action(root,'로그아웃',async()=>{await logout();location.assign('/login');});return;
   }
-  const headerNav=document.querySelector('.member-header nav');
-  if(headerNav)headerNav.replaceChildren(node('a','홈페이지',{href:'/'}),node('a','내 계정',{href:'/account','aria-current':'page'}));
+  const pendingReturn=safeReturn(sessionStorage.getItem('kjt-member-return'));
+  if(profile.consented_at&&!recovery&&pendingReturn.startsWith('/auditions/')){sessionStorage.removeItem('kjt-member-return');location.assign(pendingReturn);return;}
   const onboarding=!profile.consented_at&&!recovery;
   if(onboarding){root.querySelector('h1').textContent='가입 마무리';root.querySelector('.account-intro').textContent='필수 정보와 이용 동의만 확인하면 가입이 완료됩니다.';}
   if(!onboarding&&new URLSearchParams(location.search).get('welcome')==='1')root.append(node('p','가입이 완료되었습니다. 아카데미에 오신 것을 환영합니다.',{class:'account-welcome',role:'status'}));
@@ -109,6 +138,7 @@ async function accountPage(loadedResult){
    await account('PATCH',{name:name.value,phone:phone.value,consent:needsConsent&&agree.checked});
    sessionStorage.removeItem(draftKey);
    if(onboarding){
+    if(pendingReturn.startsWith('/auditions/')){sessionStorage.removeItem('kjt-member-return');location.assign(pendingReturn);return;}
     const updated=await account();
     const reduceMotion=typeof window!=='undefined'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const fade=root.animate&&!reduceMotion?root.animate([{opacity:1},{opacity:0}],{duration:120,fill:'forwards'}):null;
@@ -125,6 +155,7 @@ async function accountPage(loadedResult){
   });
   profileSection.append(form);root.append(profileSection);
   if(onboarding){root.classList.add('account-onboarding');navlinks(root,[['홈페이지로 돌아가기','/']]);return;}
+  const auditionArea=node('div');root.insertBefore(auditionArea,profileSection);accountAuditions(auditionArea);
   root.append(node('h2','로그인 및 보안',{class:'account-group-title'}),node('p','필요한 항목을 열어 설정하세요. 추가 로그인 방법은 선택 사항입니다.',{class:'account-section-description'}));
   const identities=config.demo?current.providers.map(provider=>({provider,id:provider})):((await client.auth.getUserIdentities()).data?.identities||[]);
   const identityPanel=accountSetting('로그인 방법',identities.map(i=>providerName(i.provider)).join(' · ')+' 연결됨');
@@ -160,7 +191,7 @@ async function accountPage(loadedResult){
  }catch(error){root.append(node('p',error.message,{role:'alert'}));navlinks(root,[['로그인하기','/login?next=/account']]);}
 }
 async function adminPage(){root.append(node('h1','회원 관리'),node('p','이름·이메일·연락처로 검색하고 회원 이용 상태를 관리합니다. 일반 회원가입으로 관리자 권한이 부여되지 않습니다.'));const auth=await api('/api/admin-auth',null,'GET');if(!auth.authenticated){const form=node('form'),password=field(form,'관리자 비밀번호','password',{required:'',autocomplete:'current-password'});submit(form,'관리자로 로그인',async()=>{await api('/api/admin-auth',{password:password.value});location.reload();});root.append(form);return;}navlinks(root,[['상담방·일지 열기','/admin/consultation'],['홈페이지 관리','/?admin=1']]);action(root,'관리자 로그아웃',async()=>{await api('/api/admin-auth',{},'DELETE');location.reload();});const form=node('form',null,{class:'member-search'}),search=field(form,'회원 검색','search',{placeholder:'이름, 이메일, 연락처',maxlength:'80'});root.append(form);const result=node('div');root.append(result);let offset=0;async function load(){result.replaceChildren();try{const data=await api('/api/admin-members?q='+encodeURIComponent(search.value)+'&offset='+offset,null,'GET');const members=data.members||[];result.append(node('p',`${offset+1}번째부터 ${members.length}명 표시`));for(const member of members){const card=node('article',null,{class:'member-record'});card.append(node('h2',member.name||'가입 정보 입력 전'),node('p',member.email),node('p',member.phone||'연락처 미입력'),node('p','가입일 '+new Date(member.created_at).toLocaleDateString('ko-KR')));const label=node('label','이용 상태'),select=node('select');for(const [v,t]of [['active','이용 가능'],['inactive','이용 중지'],['withdrawal_requested','탈퇴 요청']]){const opt=node('option',t,{value:v});select.append(opt);}select.value=member.status;label.append(select);card.append(label);const msg=status(card);action(card,'회원 상태 저장',async()=>{try{await api('/api/admin-members',{id:member.user_id,status:select.value},'PATCH');msg.textContent='회원 상태를 저장했습니다.';}catch(e){msg.textContent=e.message;}});result.append(card);}if(!members.length)result.append(node('p','검색 결과가 없습니다.'));const pager=node('div',null,{class:'member-links'});if(offset>0)action(pager,'이전 50명',()=>{offset-=50;load();});if(members.length===50)action(pager,'다음 50명',()=>{offset+=50;load();});result.append(pager);}catch(error){result.append(node('p',error.message,{role:'alert'}));}}submit(form,'검색',async()=>{offset=0;await load();});await load();}
-(async()=>{root.replaceChildren(node('p','화면을 준비하고 있습니다…'));try{config=await api('/api/member-config',null,'GET');root.replaceChildren();if(config.demo){root.append(node('p','로컬 데모 — 소셜 인증·메일 발송은 실제 연동되지 않습니다.',{class:'member-note'}));current=(await api('/api/member-demo',null,'GET')).user;}else if(config.ready){client=createClient(config.url,config.key,{auth:{flowType:'pkce',detectSessionInUrl:true,persistSession:true,autoRefreshToken:true}});await client.auth.getSession();}else if(page!=='admin'){root.append(node('h1','회원 서비스를 준비하고 있습니다'),node('p','인증 서비스 연결 후 회원가입·로그인을 사용할 수 있습니다.'));return;}
+(async()=>{root.replaceChildren(node('p','화면을 준비하고 있습니다…'));try{config=await api('/api/member-config',null,'GET');root.replaceChildren();if(config.demo){root.append(node('p','로컬 데모 — 소셜 인증·메일 발송은 실제 연동되지 않습니다.',{class:'member-note'}));current=(await api('/api/member-demo',null,'GET')).user;}else if(config.ready){client=getMemberClient(config);await client.auth.getSession();}else if(page!=='admin'){root.append(node('h1','회원 서비스를 준비하고 있습니다'),node('p','인증 서비스 연결 후 회원가입·로그인을 사용할 수 있습니다.'));return;}
  const params=new URLSearchParams(location.search);if(params.get('error')||location.hash.includes('error=')){root.append(node('p','인증이 취소되었거나 링크가 만료되었습니다. 로그인 화면에서 다시 시작해주세요.',{role:'alert'}));history.replaceState(null,'',location.pathname);}
  if(page==='login')login();else if(page==='signup')signup();else if(page==='reset')reset();else if(page==='account')await accountPage();else if(page==='admin')await adminPage();
  }catch(error){root.replaceChildren(node('h1','연결 상태를 확인해주세요'),node('p',error.message,{role:'alert'}));navlinks(root,[['다시 시도','/login']]);}})();

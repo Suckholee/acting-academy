@@ -9,10 +9,11 @@ async function retry(operation,{onRetry=()=>{},sleep=ms=>new Promise(r=>setTimeo
   onRetry({attempt:attempt+1,delay,status:e.status});await sleep(delay);
  }
 }
-async function request(body,{onRetry,fetcher=(...args)=>fetch(...args)}={}){
+async function request(body,{onRetry,getToken,fetcher=(...args)=>fetch(...args)}={}){
  const encoded=JSON.stringify(body);
  return retry(async()=>{
-  const response=await fetcher('/api/casting',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:encoded,signal:AbortSignal.timeout(30000)});
+  const token=getToken?await getToken():null;
+  const response=await fetcher('/api/casting',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{})},body:encoded,signal:AbortSignal.timeout(30000)});
   let result;try{result=await response.json();}catch{throw Object.assign(Error('응답을 확인하지 못했습니다. 잠시 후 다시 시도해주세요.'),{status:response.status>=500?response.status:502});}
   if(!response.ok)throw Object.assign(Error(result.error||'요청을 처리하지 못했습니다.'),{status:response.status,retryAfter:response.headers.get('Retry-After')});return result;
  },{onRetry});

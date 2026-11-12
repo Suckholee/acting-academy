@@ -7,8 +7,8 @@ const model=require('../src/members/model.cjs');
 async function screen(page,providers,registrationOpen=true){
  const {document}=parseHTML(`<html><body><section id="member-app" data-page="${page}"></section></body></html>`);
  const calls=[],storage=new Map();
- const context={document,require:()=>model,URLSearchParams,location:{origin:'https://www.kactstar.com',pathname:'/'+page,search:'',hash:'',assign(){}},sessionStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},createClient:()=>({auth:{getSession:async()=>({data:{session:null}}),signInWithOAuth:async args=>{calls.push(args);return {error:null};}}}),fetch:async()=>({ok:true,json:async()=>({ready:true,url:'https://project.supabase.co',key:'publishable-test',providers,registrationOpen,policiesReady:true,termsUrl:'/terms',privacyUrl:'/privacy'})})};
- vm.runInNewContext(fs.readFileSync('src/members/app.js','utf8').replace("import {createClient} from '@supabase/supabase-js';",''),context);
+ const context={document,require:()=>model,URLSearchParams,location:{origin:'https://www.kactstar.com',pathname:'/'+page,search:'',hash:'',assign(){}},sessionStorage:{getItem:k=>storage.get(k),setItem:(k,v)=>storage.set(k,v)},getMemberClient:()=>({auth:{getSession:async()=>({data:{session:null}}),signInWithOAuth:async args=>{calls.push(args);return {error:null};}}}),fetch:async()=>({ok:true,json:async()=>({ready:true,url:'https://project.supabase.co',key:'publishable-test',providers,registrationOpen,policiesReady:true,termsUrl:'/terms',privacyUrl:'/privacy'})})};
+ vm.runInNewContext(fs.readFileSync('src/members/app.js','utf8').replace("import {getMemberClient} from './session.js';",''),context);
  await new Promise(resolve=>setImmediate(resolve));
  return {document,calls};
 }
