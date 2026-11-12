@@ -117,6 +117,7 @@ async function accountPage(loadedResult){
   const pendingReturn=safeReturn(sessionStorage.getItem('kjt-member-return'));
   if(profile.consented_at&&!recovery&&pendingReturn.startsWith('/auditions/')){sessionStorage.removeItem('kjt-member-return');location.assign(pendingReturn);return;}
   const onboarding=!profile.consented_at&&!recovery;
+  const identities=onboarding?[]:config.demo?current.providers.map(provider=>({provider,id:provider})):((await client.auth.getUserIdentities()).data?.identities||[]);
   if(onboarding){root.querySelector('h1').textContent='가입 마무리';root.querySelector('.account-intro').textContent='필수 정보와 이용 동의만 확인하면 가입이 완료됩니다.';}
   if(!onboarding&&new URLSearchParams(location.search).get('welcome')==='1')root.append(node('p','가입이 완료되었습니다. 아카데미에 오신 것을 환영합니다.',{class:'account-welcome',role:'status'}));
   const overview=node('div',null,{class:'account-overview'});
@@ -159,7 +160,6 @@ async function accountPage(loadedResult){
   if(onboarding){root.classList.add('account-onboarding');navlinks(root,[['홈페이지로 돌아가기','/']]);return;}
   const auditionArea=node('div');root.insertBefore(auditionArea,profileSection);
   root.append(node('h2','로그인 및 보안',{class:'account-group-title'}),node('p','필요한 항목을 열어 설정하세요. 추가 로그인 방법은 선택 사항입니다.',{class:'account-section-description'}));
-  const identities=config.demo?current.providers.map(provider=>({provider,id:provider})):((await client.auth.getUserIdentities()).data?.identities||[]);
   const identityPanel=accountSetting('로그인 방법',identities.map(i=>providerName(i.provider)).join(' · ')+' 연결됨');
   for(const identity of identities){
    const row=node('div',null,{class:'member-identity'});row.append(node('span',providerName(identity.provider)+' 연결됨'));
