@@ -8,7 +8,7 @@ function openAnnouncement() {
   if (new URLSearchParams(location.search).has('admin') || new URLSearchParams(location.search).get('chat') === '1') return;
   const auditionUrl = '/auditions/ffc75f4b-4ef8-45fd-b966-e8a4e16bfb32#application';
   const posters = [
-    { src: '/assets/audition-evil-method-poster-20261112-v2.png', label: '오디션 모집 안내', title: '《악인의 방식》 공개 오디션', href: auditionUrl, action: '오디션 지원하기', width: 1024, height: 1536, sourceHeight: 1536, offset: 0, alt: '숏폼드라마 악인의 방식 공개 오디션 최종 포스터. 접수는 11월 12일부터 11월 23일 오후 6시까지입니다.' },
+    { src: '/assets/audition-evil-method-poster-20261112-final.png', label: '오디션 모집 안내', title: '《악인의 방식》 공개 오디션', href: auditionUrl, action: '오디션 지원하기', width: 1007, height: 1620, sourceHeight: 1620, offset: 0, alt: '숏폼드라마 악인의 방식 공개 오디션 최종 포스터. 접수는 11월 12일부터 11월 23일 오후 6시까지입니다.' },
     { src: '/assets/audition-next-lead-banner-20261112.png', label: '다음 주인공은 당신', title: '《악인의 방식》 공개 오디션', href: auditionUrl, action: '오디션 지원하기', width: 1672, height: 941, sourceHeight: 941, offset: 0, alt: '김정태 배우아카데미 × 스토리나인. 다음 주인공은 당신입니다.' }
   ];
   const dialog = document.createElement('dialog');
